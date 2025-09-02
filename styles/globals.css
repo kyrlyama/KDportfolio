@@ -1,9 +1,17 @@
-@import "tailwindcss";
+@import "tailwindcss";  
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  /* высота навбара; поправьте под вашу фактическую */
+  --nav-h: 64px;
+
+    --page-pad-x: clamp(16px, 3vw, 80px);
+  --page-pad-b: clamp(40px, 8vh, 96px);
+  
 }
+
+html, body, #__next { height: 100%; }
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -19,8 +27,30 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+body{
+  margin: 0;
+  color: #111;
+  background: radial-gradient(1200px 800px at 15% 0%,
+    rgba(255,255,255,0.95) 0%,
+    rgba(235,242,255,0.85) 35%,
+    rgba(242,226,255,0.8) 60%,
+    rgba(254,233,247,0.8) 85%,
+    rgb(251,226,226) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
+
+/* Обёртка страницы: БОЛЬШЕ НЕ РИСУЕТ ФОН, а только даёт отступ под navbar */
+.pageGradient{ background: transparent; padding-top: 0; }
+
+
+/* Если используете глобальный контейнер – у него тоже не должно быть фона */
+/* Глобальный контейнер страницы: прозрачный и на весь экран до навбара */
+/* верхняя «подушка» под фикс-navbar, без боковых отступов */
+.pageGradient{
+  background: transparent;
+  padding: var(--nav-h) 0 0 0;  /* только сверху */
+}
+
+/* ПОЛНОШИРИННЫЙ контейнер — от левого до правого края */
