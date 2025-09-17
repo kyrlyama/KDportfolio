@@ -1,0 +1,126 @@
+/* Корневой контейнер страницы Skills */
+.skillsPage {
+  min-height: 100vh;
+  padding: 110px 24px 80px; /* ниже навбара */
+  color: #111;
+  position: relative;
+}
+
+/* Обёртка по ширине */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Верхняя сетка: Tools | Languages | Soft */
+.row{
+  display: grid;
+  /* лево, центр, право */
+  grid-template-columns:
+    minmax(420px, 1fr)
+    minmax(340px, 0.7fr)
+    minmax(420px, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+/* Карточки */
+.bigCard {
+  background: #fff;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.fullWidth { grid-column: 1 / -1; }
+
+.title {
+  margin: 4px 6px 16px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #111;
+}
+
+/* Грид из двух колонок по умолчанию */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Вариант на одну колонку (для Languages, Soft) */
+.oneCol { grid-template-columns: 1fr; gap: 12px; }
+
+/* Малые карточки-строки */
+.smallCard {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px 14px;
+  min-height: 60px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* Когда нет иконки (Languages/Soft) — делаем одну колонку и чуть выше */
+.singleCell {
+  grid-template-columns: 1fr;
+  min-height: 64px;
+}
+
+/* Иконка тулзы */
+.iconBox {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 30%, #f2f7ff 0%, #eef1ff 60%, #f7ecff 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* Текст в маленьких карточках */
+.smallText {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #222;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Секции-списки (Technologies, Approaches) */
+.listStack { display: grid; gap: 12px; }
+
+.lineCard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: #222;
+}
+
+/* Выделение лид-части строки */
+.lead { font-weight: 800; color: #111; }
+.lineText { color: #222; }
+
+
+/* узкая средняя колонка (доп.правила по желанию) */
+.languagesCol {}
+
+/* текст в языках — без переноса слов на десктопе */
+.noWrap {
+  white-space: nowrap;        /* не переносить строки */
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Адаптив */
+@media (max-width: 980px) {
+  .row { grid-template-columns: 1fr; }  /* и так у тебя было — одна колонка */
+  .noWrap { white-space: normal; }
+}

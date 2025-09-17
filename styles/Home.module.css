@@ -1,23 +1,21 @@
-/* pages/styles/Home.module.css (или ваш CSS для главной) */
-.container{
+.homeContainer{
+  --index-offset: 40px; /* можно подстроить 32–64px */
+
   position: relative;
   width: 100%;
-  /* контейнер именно до нижней кромки навбара */
-  margin-top: var(--nav-h);
-  /* высота окна минус высота навбара */
-  min-height: calc(100vh - var(--nav-h));
-  /* лучше (для мобилок) — динамическая высота: */
-  height: calc(100dvh - var(--nav-h));
+  /* смещаем ВСЮ сцену ниже навбара */
+  padding-top: calc(var(--nav-h) + var(--index-offset));
+  /* чтобы блок оставался во весь экран, отнимаем этот отступ из высоты */
+  min-height: calc(100vh - var(--nav-h) - var(--index-offset));
+  height:  calc(100dvh - var(--nav-h) - var(--index-offset));
 
-  overflow: hidden;
-  background: transparent;  /* без белого блока/рамки */
-  box-shadow: none;
-  border: 0;
-  border-radius: 0;
+  margin-top: 0;
+  overflow: visible;
+  background: transparent;
 }
 
 /* Фото в центре */
-.centerPhoto{
+.centerPhoto {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -27,142 +25,50 @@
   border-radius: 50%;
   border: 8px solid rgba(255,255,255,.9);
   box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  z-index: 2;                 /* поверх пузырей */
+  z-index: 2;
+}
+/* styles/Home.module.css */
+.photoWrap{
+  position: absolute;          /* можно: absolute — как и было у фото */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;            /* обрезаем по кругу */
+  border: 8px solid rgba(255,255,255,.9);
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  z-index: 2;
+}
+.photoImg{
+  object-fit: cover;           /* без искажений */
+  object-position: center;
+  /* Next/Image с `fill` сам растянет img на контейнер */
 }
 
-
-/* Общий стиль пузырей */
+/* Основные кликабельные пузыри */
 .floatingCircle {
   position: absolute;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  position: relative;
-  animation: float 3.5s ease-in-out infinite;
-  background: radial-gradient(
-    circle at 75% 30%,
-    white 5px,
-    aqua 8%,
-    darkblue 60%,
-    aqua 100%
-  );
-  
-  box-shadow:
-    inset 0 0 20px #fff,
-    inset 10px 0 46px #eaf5fc,
-    inset 88px 0px 60px #c2d8fe,
-    inset -20px -60px 100px #fde9ea,
-    inset 0 50px 140px #fde9ea,
-    0 0 90px #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: #000;
-  font-size: 20px;
-  transition: transform 0.3s ease;
-}
-
-.floatingCircle:hover {
-  transform: scale(1.1);
-}
-
-/* Индивидуальные позиции и анимации */
-.websites {
-  position: absolute;
-  top: 5%;
-  left: 30%;
-  animation-name: float1;
-}
-
-.figma {
-  position: absolute;
-  bottom: 10%;
-  left: 30%;
-  animation-name: float2;
-}
-
-.android_studio {
-  position: absolute;
-  top: 10%;
-  right: 30%;
-  animation-name: float3;
-}
-
-.illustrator {
-  position: absolute;
-  bottom: 10%;
-  right: 30%;
-  animation-name: float4;
-}
-
-
-
-/* РАЗНЫЕ анимации */
-
-/* Анимации */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-80px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-
-@keyframes fade {
-  0% {
-    transform: scale(0.6) translate(0, 0);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1.4) translateY(-20px);
-    opacity: 0;
-  }
-}
-
-/* Декоративные пузыри */
-/* Базовый стиль декоративных пузырей: тот же «мыльный» градиент с бликом */
-/* ОСНОВНЫЕ кликабельные пузыри */
-.floatingCircle {
-  position: absolute;
-  z-index: 3;            /* выше любых декоров */
-}
-/* ДЕКОР без текста */
-.decor {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;  /* чтобы точно не мешали клику */
-  z-index: 0;            /* ниже основных */
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #000; font-size: 20px;
   background: radial-gradient(120% 120% at 30% 30%,
-              rgba(255,255,255,0.95) 0%,
-              rgba(224,236,255,0.8) 35%,
-              rgba(223,205,245,0.65) 70%,
-              rgba(255,240,248,0.6) 100%);
-  box-shadow:
-    0 0 40px rgba(180,200,255,0.35) inset,
-    0 18px 48px rgba(140,160,200,0.20),
-    0 0 1px rgba(255,255,255,0.3);
+      rgba(255,255,255,0.95) 0%,
+      rgba(224,236,255,0.85) 35%,
+      rgba(223,205,245,0.70) 70%,
+      rgba(255,240,248,0.65) 100%);
+  box-shadow: inset 0 0 22px rgba(255,255,255,0.9),
+              0 0 90px rgba(255,255,255,0.7);
+  transition: transform .3s ease, filter .3s ease;
+  z-index: 3;
 }
+.floatingCircle:hover { transform: scale(1.08); filter: saturate(1.05); }
 
-/* размеры */
-.bubbleLg { width: 280px; height: 280px; }
-.bubbleMd { width: 180px; height: 180px; }
-.bubbleSm { width: 90px;  height: 90px;  }
-
-/* лёгкий блик */
-.decor::after {
-  content: "";
-  position: absolute;
-  top: 12%;
-  left: 68%;
-  width: 16%;
-  height: 16%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,255,255,0) 60%);
-  filter: blur(2px);
-}
+/* позиции */
+.websites { top: 15%; left: 30%; }
+.figma { bottom: 10%; left: 30%; }
+.android_studio { top: 10%; right: 30%; }
+.illustrator { bottom: 10%; right: 30%; }

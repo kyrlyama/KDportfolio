@@ -5,24 +5,9 @@ import Image from 'next/image';
 
 export default function Figma() {
   return (
-    <>
-
-<div
-  className="min-h-screen flex items-center justify-center px-6 pt-40 pb-20"
-  style={{
-    background: `
-      radial-gradient(circle at 30% 30%,
-        rgb(255, 255, 255) 0%,
-        rgba(172, 206, 241, 0.6) 30%,
-        rgba(186, 149, 255, 0.5) 60%,
-        rgba(250, 202, 250, 0.4) 90%,
-        rgb(255, 255, 255) 100%)`,
-    backdropFilter: "blur(100px)",
-  }}
->
-  
-          <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-            <h1 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>  My Figma Projects </h1>
+  <div className="pageWrapper">
+    <h1 className="pageTitle">My Figma Projects</h1>
+    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
 
           {/* Первый проект — Travel App */}
           <ProjectBlock
@@ -44,7 +29,6 @@ export default function Figma() {
 
         </div>
       </div>
-    </>
   );
 }
 

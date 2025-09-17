@@ -1,56 +1,127 @@
-@import "tailwindcss";  
+/* ====== БАЗОВЫЕ ПЕРЕМЕННЫЕ ====== */
+:root {
+  --container-max: 1200px;
 
-:root{
-  /* высота навбара; поправьте под вашу фактическую */
+  /* брейкпоинты */
+  --bp-lg: 1200px;
+  --bp-md: 992px;
+  --bp-sm: 768px;
+  --bp-xs: 480px;
+
+  /* типографика */
+  --fz-h1: clamp(24px, 3.5vw, 44px);
+  --fz-h2: clamp(20px, 2.6vw, 32px);
+  --fz-h3: clamp(18px, 2.2vw, 26px);
+  --fz-body: clamp(14px, 1.4vw, 18px);
+
+  /* отступы */
+  --space-1: clamp(8px, 1.2vw, 12px);
+  --space-2: clamp(12px, 1.6vw, 16px);
+  --space-3: clamp(16px, 2vw, 24px);
+  --space-4: clamp(20px, 2.6vw, 32px);
+  --space-6: clamp(28px, 3.6vw, 48px);
+
+  /* высота навбара */
   --nav-h: 64px;
-
-    --page-pad-x: clamp(16px, 3vw, 80px);
-  --page-pad-b: clamp(40px, 8vh, 96px);
-  
 }
 
-html, body, #__next { height: 100%; }
+/* сбросы */
+html, body { margin: 0; padding: 0; height: 100%; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { margin: 0; }
 
-
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-
+/* фон всего сайта */
 body{
-  margin: 0;
-  color: #111;
-  background: radial-gradient(1200px 800px at 15% 0%,
-    rgba(255,255,255,0.95) 0%,
-    rgba(235,242,255,0.85) 35%,
-    rgba(242,226,255,0.8) 60%,
-    rgba(254,233,247,0.8) 85%,
-    rgb(251,226,226) 100%);
+  background: radial-gradient(1200px 800px at 50% -10%,
+    rgba(255,255,255,1) 0%,
+    rgba(240,246,255,0.9) 45%,
+    rgba(242,230,255,0.85) 75%,
+    rgba(255,236,243,0.85) 100%);
   background-attachment: fixed;
-  background-repeat: no-repeat;
+  color:#000;
 }
 
-/* Обёртка страницы: БОЛЬШЕ НЕ РИСУЕТ ФОН, а только даёт отступ под navbar */
-.pageGradient{ background: transparent; padding-top: 0; }
-
-
-/* Если используете глобальный контейнер – у него тоже не должно быть фона */
-/* Глобальный контейнер страницы: прозрачный и на весь экран до навбара */
-/* верхняя «подушка» под фикс-navbar, без боковых отступов */
-.pageGradient{
-  background: transparent;
-  padding: var(--nav-h) 0 0 0;  /* только сверху */
+/* слой фона под всем контентом */
+.site-bg{
+  position: fixed;
+  inset: 0;
+  z-index: 0;             /* контент сверху */
+  pointer-events: none;
 }
 
-/* ПОЛНОШИРИННЫЙ контейнер — от левого до правого края */
+/* гарантируем, что контент поверх фона */
+.pageContainer{ position: relative; z-index: 1; }
+
+/* те же «пятна», что были в About */
+.blob{
+  position: absolute;
+  filter: blur(60px);
+  border-radius: 50%;
+  opacity: .55;
+  pointer-events: none;
+}
+.blob.b1{
+  width:420px; height:420px;
+  top:-80px; left:-60px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #b9d3ff 35%, #e5c9ff 70%, #ffd6e6 100%);
+}
+.blob.b2{
+  width:360px; height:360px;
+  bottom:10%; right:8%;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #bfe1ff 35%, #dbcbff 70%, #ffe6ef 100%);
+}
+.blob.b3{
+  width:300px; height:300px;
+  top:30%; right:35%;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #c9e0ff 35%, #e6d6ff 70%, #ffeaf2 100%);
+}
+
+@media (max-width:1024px){
+  .blob.b1{ width:320px; height:320px; }
+  .blob.b2{ width:270px; height:270px; }
+  .blob.b3{ display:none; }
+}
+
+/* утилита, если нужно такое же поле, как было в About */
+.aboutPad{
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+/* контейнеры */
+.container { width: min(100%, var(--container-max)); margin-inline: auto; }
+.section { padding-block: var(--space-3); }
+
+/* отступ под фикс-навбар */
+.pageContainer{
+  position: relative;
+  min-height: 100vh;
+  padding-top: 0; /* без «невидимых рамок» */
+}
+
+/* навбар */
+.site-nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 999;
+  background: #111; padding: 16px;
+}
+.site-nav__list {
+  display: flex; gap: 20px; justify-content: center;
+  margin: 0; padding: 0; list-style: none;
+}
+.site-nav__link {
+  color: #fff; text-decoration: none;
+  padding: 10px 16px; border-radius: 6px;
+  transition: transform .3s ease, background .3s ease;
+}
+.site-nav__link:hover { background: #333; transform: scale(1.1); }
+
+.pageWrapper{
+  min-height: calc(100vh - var(--nav-h));
+  padding-top: calc(var(--nav-h) + 32px); /* на одно деление ниже навбара */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}

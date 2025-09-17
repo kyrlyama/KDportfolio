@@ -1,24 +1,32 @@
 // pages/skills.js
 import Image from "next/image";
+import styles from "@/styles/Skills.module.css";
 
 export default function Skills() {
-  // ==== ДАННЫЕ (убедитесь, что пути к иконкам верные) ====
+  // ==== ДАННЫЕ ====
   const TOOLS = [
     { img: "/tools/figma.png",      title: "Figma" },
     { img: "/tools/photoshop.png",  title: "Photoshop" },
     { img: "/tools/illustrator.png",title: "Illustrator" },
     { img: "/tools/vscode.png",     title: "VS Code" },
     { img: "/tools/github.png",     title: "Git & GitHub" },
-    { img: "/tools/xampp.png",      title: "XAMPP / Docke" },
+    { img: "/tools/xampp.png",      title: "XAMPP" },
+    { img: "/tools/dockerdesktop.png",     title: "Dockerdesktop" },
     { img: "/tools/wix.png",        title: "Wix / Google Sites" },
     { img: "/tools/chatgpt.png",    title: "ChatGPT" },
+    { img: "/tools/androidstudio.png", title: "Android Studio" },
+    { img: "/tools/canva.png",      title: "Canva" },
+    { img: "/tools/oracle.png",  title: "Oracle" },
+    { img: "/tools/notepad.png",  title: "Notepad++" },
+
+
   ];
 
-const LANGS = [
-  "Russian — native",
-  "English — B2",
-  "Estonian — A2",
-];
+  const LANGS = [
+    "Russian — native",
+    "English — B2",
+    "Estonian — A2",
+  ];
 
   const SOFT = [
     "Creativity and visual thinking",
@@ -73,174 +81,88 @@ const LANGS = [
     "MVC Pattern (Model–View–Controller) — separating business logic, UI, and data for clean and scalable design. (was disclosed in the diploma)",
   ];
 
-  const s = styles;
-
   return (
-    <div style={s.page}>
-      <div style={s.wrap}>
+    <div className={styles.skillsPage}>
+      <div className={styles.wrap}>
 
         {/* Ряд 1: Tools, Languages, Soft Skills */}
-        <div style={s.row}>
-          <section style={s.bigCard}>
-            <h2 style={s.title}>Tools &amp; Software</h2>
-            <div style={s.grid2}>
-              {TOOLS.map((t, i) => (
-                <div key={i} style={s.smallCard}>
-                  <div style={s.iconBox}>
-<Image src={t.img} alt="" width={22} height={22} />
-                  </div>
-                  <div style={s.smallText}>{t.title}</div>
-                </div>
-              ))}
-            </div>
-          </section>
+        <div className={styles.row}>
 
-<section style={s.bigCard}>
-  <h2 style={s.title}>Languages</h2>
-  <div style={{ ...s.grid2, gridTemplateColumns: "1fr", gap: 12 }}>
-    {LANGS.map((t, i) => (
-                <div key={i} style={{ ...s.smallCard, gridTemplateColumns: "1fr", minHeight: 64 }}>
-                  <div style={s.smallText}>{t}</div>
-      </div>
-    ))}
-  </div>
-</section>
-
-
-          <section style={s.bigCard}>
-            <h2 style={s.title}>Soft Skills</h2>
-            <div style={s.grid2}>
-              {SOFT.map((t, i) => (
-                <div key={i} style={{ ...s.smallCard, gridTemplateColumns: "1fr", minHeight: 64 }}>
-                  <div style={s.smallText}>{t}</div>
-                </div>
-              ))}
-            </div>
-          </section>
+  <section className={styles.bigCard}>
+    <h2 className={styles.title}>Tools &amp; Software</h2>
+    <div className={styles.grid2}>
+      {TOOLS.map((t, i) => (
+        <div key={i} className={styles.smallCard}>
+          <div className={styles.iconBox}>
+            <Image src={t.img} alt={`${t.title} icon`} width={22} height={22} />
+          </div>
+          <div className={styles.smallText}>{t.title}</div>
         </div>
+      ))}
+    </div>
+  </section>
+
+  <section className={`${styles.bigCard} ${styles.languagesCol}`}>
+    <h2 className={styles.title}>Languages</h2>
+    <div className={`${styles.grid2} ${styles.oneCol}`}>
+      {LANGS.map((t, i) => (
+        <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
+          <div className={`${styles.smallText} ${styles.noWrap}`}>{t}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+
+  <section className={styles.bigCard}>
+    <h2 className={styles.title}>Soft Skills</h2>
+    <div className={styles.grid2}>
+      {SOFT.map((t, i) => (
+        <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
+          <div className={styles.smallText}>{t}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+</div>
 
         {/* Ряд 2: Technologies */}
-        <section style={{ ...s.bigCard, ...s.fullWidth, marginBottom: "44px" }}>
-          <h2 style={s.title}>Technologies</h2>
-          <div style={s.listStack}>
+        <section className={`${styles.bigCard} ${styles.fullWidth}`} style={{ marginBottom: 44 }}>
+          <h2 className={styles.title}>Technologies</h2>
+          <div className={styles.listStack}>
             {TECHNOLOGIES.map((it, i) => (
-              <div key={i} style={s.lineCard}>
-                <span style={s.lead}>{it.lead}</span>
-                <span style={s.lineText}> — {it.text}</span>
+              <div key={i} className={styles.lineCard}>
+                <span className={styles.lead}>{it.lead}</span>
+                <span className={styles.lineText}> — {it.text}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* Ряд 3: Design Approaches */}
-        <section style={{ ...s.bigCard, ...s.fullWidth }}>
-          <h2 style={s.title}>Design Approaches</h2>
-          <div style={s.listStack}>
-            {APPROACHES.map((t, i) => (
-              <div key={i} style={s.lineCard}>
-                {highlightLead(t)}
+        <section className={`${styles.bigCard} ${styles.fullWidth}`}>
+          <h2 className={styles.title}>Design Approaches</h2>
+          <div className={styles.listStack}>
+            {APPROACHES.map((txt, i) => (
+              <div key={i} className={styles.lineCard}>
+                {highlightLead(txt)}
               </div>
             ))}
           </div>
         </section>
-      </div>
 
-      {/* Простая адаптивность */}
-      <style jsx global>{`
-        @media (max-width: 980px) {
-          .skills-row {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+      </div>
     </div>
   );
 }
 
+/* Выделение лид-части строки «Lead — текст» */
 function highlightLead(str) {
   const [lead, rest] = str.split(" — ");
   return (
     <>
-      <span style={styles.lead}>{lead}</span>
-      {rest ? <span style={styles.lineText}> — {rest}</span> : null}
+      <span className={styles.lead}>{lead}</span>
+      {rest ? <span className={styles.lineText}> — {rest}</span> : null}
     </>
   );
 }
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    padding: "110px 24px 80px",
-    color: "#111",
-    background:
-      "radial-gradient(1200px 800px at 15% 0%, rgba(255,255,255,0.95) 0%, rgba(235,242,255,0.85) 35%, rgba(242,226,255,0.8) 60%, rgba(254,233,247,0.8) 85%, rgb(251,226,226) 100%)",
-  },
-  wrap: { maxWidth: 1200, margin: "0 auto" },
-  row: {
-    display: "grid",
-    gridTemplateColumns: "1fr 0.8fr 1fr",
-    gap: 24,
-    marginBottom: 28,
-  },
-  bigCard: {
-    background: "#fff",
-    borderRadius: 22,
-    padding: 20,
-    boxShadow: "0 10px 25px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.6)",
-  },
-  fullWidth: { gridColumn: "1 / -1" },
-  title: {
-    margin: "4px 6px 16px",
-    fontSize: 22,
-    fontWeight: 800,
-    letterSpacing: 0.2,
-    color: "#111",
-  },
-
-  grid2: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 12,
-  },
-  smallCard: {
-    display: "grid",
-    gridTemplateColumns: "32px 1fr",
-    alignItems: "center",
-    gap: 10,
-    background: "#fff",
-    borderRadius: 16,
-    padding: "12px 14px",
-    minHeight: 60,
-    boxShadow: "0 6px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
-  },
-  iconBox: {
-    width: 32,
-    height: 32,
-    borderRadius: 8,
-    display: "grid",
-    placeItems: "center",
-    background:
-      "radial-gradient(circle at 30% 30%, #f2f7ff 0%, #eef1ff 60%, #f7ecff 100%)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
-  },
-  smallText: {
-    fontSize: 15,
-    lineHeight: 1.4,
-    color: "#222",
-    wordBreak: "normal",
-    overflowWrap: "anywhere",
-  },
-
-  listStack: { display: "grid", gap: 12 },
-  lineCard: {
-    background: "#fff",
-    borderRadius: 14,
-    padding: "12px 14px",
-    boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
-    fontSize: 15.5,
-    lineHeight: 1.45,
-    color: "#222",
-  },
-  lead: { fontWeight: 800, color: "#111" },
-  lineText: { color: "#222" },
-};

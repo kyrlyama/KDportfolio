@@ -4,35 +4,15 @@ import Image from 'next/image';
 
 export default function Websites() {
   return (
-    <>
-
-      {/* Фон и контейнер */}
-      <div
-        style={{
-          padding: '120px 40px',
-          fontFamily: 'sans-serif',
-          minHeight: '100vh',
-          background: `
-            radial-gradient(circle at 30% 30%,
-              rgba(255, 255, 255, 1) 0%,
-              rgba(172, 206, 241, 0.6) 30%,
-              rgba(215, 186, 254, 0.5) 60%,
-              rgba(250, 202, 250, 0.4) 90%,
-              rgb(251, 226, 226) 100%)
-          `,
-          backdropFilter: 'blur(100px)',
-          color: '#000'
-        }}
-      >
-        <h1 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>  My Android Studio Projects </h1>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-          {projects.map((project, index) => (
-            <ProjectBlock key={index} {...project} reverse={index % 2 !== 0} />
-          ))}
-        </div>
-      </div>
-    </>
-  );
+  <div className="pageWrapper">
+    <h1 className="pageTitle">My Android Studio Projects</h1>
+    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
+      {projects.map((project, index) => (
+        <ProjectBlock key={index} {...project} reverse={index % 2 !== 0} />
+      ))}
+    </div>
+  </div>
+);
 }
 
 const projects = [

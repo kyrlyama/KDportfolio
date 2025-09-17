@@ -1,0 +1,96 @@
+/* страница ниже фикс-навбара */
+.page {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 32px) 24px 80px;
+}
+
+/* центрируем контент по ширине */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* белая карточка-ряд: текст слева + слайдер справа */
+.cardRow {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  padding: 24px 28px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* колонки */
+.colText  { flex: 1 1 520px; min-width: 300px; }
+.colMedia { flex: 1 1 520px; min-width: 300px; display: flex; flex-direction: column; align-items: center; }
+
+/* типографика */
+.title   { font-size: 28px; margin: 0 0 20px; font-weight: 800; color: #111; }
+.p       { margin: 0 0 20px; color: #333; line-height: 1.7; }
+.h2      { font-size: 20px; margin: 18px 0 10px; font-weight: 800; color: #111; }
+.ul      { padding-left: 20px; line-height: 1.8; color: #333; }
+
+/* кнопка-линк на прототип */
+.figmaBtn{
+  display: inline-block;
+  background: #e6f2ff;
+  color: #0047ab;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+  margin-bottom: 12px;
+}
+.figmaBtn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* слайдер с фиксированной «рамкой», чтобы ничего не дёргалось */
+.slider{
+  position: relative;
+  width: 420px;
+  height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.img{
+  object-fit: contain;       /* не растягиваем макеты */
+  border-radius: 8px;
+}
+
+/* стрелки */
+.arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: background .3s ease;
+}
+.arrow:hover { background: rgba(0,0,0,0.6); }
+.left  { left: 10px; }
+.right { right: 10px; }
+
+/* адаптив */
+@media (max-width: 920px){
+  .slider{ width: 360px; height: 560px; }
+}
+@media (max-width: 520px){
+  .slider{ width: 300px; height: 480px; }
+}

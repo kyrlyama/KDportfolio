@@ -4,27 +4,8 @@ import Image from 'next/image';
 
 export default function Websites() {
   return (
-    <>
-  
-      {/* Простой серый фон */}
-<div
-  style={{
-    padding: '120px 40px',
-    fontFamily: 'sans-serif',
-    minHeight: '100vh',
-    background: `
-      radial-gradient(circle at 30% 30%,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(172, 206, 241, 0.6) 30%,
-        rgba(215, 186, 254, 0.5) 60%,
-        rgba(250, 202, 250, 0.4) 90%,
-        rgb(251, 226, 226) 100%)
-    `,
-    backdropFilter: 'blur(100px)',
-    color: '#000'
-  }}
->
-  <h1 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>  My Website Projects </h1>
+<main className="pageWrapper">
+  <h1>Websites</h1>
 
 
   {/* ➜ Добавили такой же центральный контейнер, как в Figma/Websites */}
@@ -33,9 +14,9 @@ export default function Websites() {
       <ProjectBlock key={index} {...project} reverse={index % 2 !== 0} />
     ))}
   </div>
-</div>
+</main>
 
-    </>
+
   );
 }
 

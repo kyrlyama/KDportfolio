@@ -1,0 +1,116 @@
+/* Корневой паддинг: ниже навбара и с низом для воздуха */
+.page {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 32px) 24px 80px;
+  position: relative;
+  color: #111;
+}
+
+/* Центровка контента по ширине */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Белая «карточка» текста */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+}
+
+/* Типографика */
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+
+.h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 18px 0 10px;
+  color: #111;
+}
+
+.p {
+  margin: 0 0 16px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.list {
+  margin: 0 0 10px;
+  padding-left: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Кнопка-ссылка на репозиторий */
+.repoBtn {
+  display: inline-block;
+  background-color: #e6f2ff;
+  color: #0047ab;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  margin-top: 12px;
+}
+.repoBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Слайдер */
+.slider {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Стрелки */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: background .3s ease;
+}
+.arrow:hover { background: rgba(0,0,0,0.6); }
+.left  { left: 10px; }
+.right { right: 10px; }
+
+@media (max-width: 640px) {
+  .title { font-size: 24px; }
+  .h2    { font-size: 18px; }
+  .page  { padding: calc(var(--nav-h) + 24px) 16px 60px; }
+}
