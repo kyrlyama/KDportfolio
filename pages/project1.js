@@ -13,7 +13,7 @@ export default function Project1() {
     <div className={styles.page}>
       <div className={styles.container}>
         {/* Текстовая карточка */}
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.column}`}>
           <h1 className={styles.title}>CleanseTeam — Cleaning Service Website</h1>
 
           <p className={styles.p}>
@@ -57,6 +57,7 @@ export default function Project1() {
             width={800}
             height={500}
             className={styles.image}
+            sizes="(max-width: 640px) 100vw, 1000px"
             priority
           />
           <button aria-label="Previous image" className={`${styles.arrow} ${styles.left}`} onClick={prevImage}>

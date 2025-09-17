@@ -1,46 +1,45 @@
-// pages/androidstudio3.js
-import styles from "@/styles/AndroidStudio.module.css";
+import Link from "next/link";
+import as from "@/styles/AndroidStudio.module.css";
 
 export default function AndroidStudio3() {
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
+    <main className={as.page}>
+      <div className={as.container}>
+        <section className={`${as.cardRow} ${as.cardRowSingle} ${as.cardRowCompact}`}>
+          <div className={as.colText}>
+            <h1 className={`${as.title} ${as.titleSm}`}>EUR → USD — Currency Converter</h1>
 
-        {/* одиночная белая карточка без медиа-колонки */}
-        <div className={styles.card}>
-          <h1 className={styles.title}>EUR to USD — Currency Converter App</h1>
+            <p className={`${as.p} ${as.pSm}`}>
+              Lightweight currency converter demonstrating formatted input,
+              instant conversion and simple state management. Compact UI with
+              clear validation and error feedback.
+            </p>
 
-          <p className={styles.p}>
-            A simple currency converter mobile application created in Android Studio. It allows users to convert
-            Euros (EUR) to US Dollars (USD) with a single tap. The exchange rate is hardcoded for simplicity and
-            demonstration purposes. Interface follows clean, readable Material Design.
-          </p>
+            <h2 className={as.h2}>Key Features</h2>
+            <ul className={as.ul}>
+              <li>Real-time conversion</li>
+              <li>Locale-aware formatting</li>
+              <li>Input validation</li>
+              <li>Clean Material layout</li>
+            </ul>
 
-          <h2 className={styles.h2}>Basic functionality</h2>
-          <ul className={styles.ul}>
-            <li><strong>Input:</strong> users can enter any amount in EUR.</li>
-            <li><strong>Conversion:</strong> instant calculation to USD.</li>
-            <li><strong>UI:</strong> simple and user-friendly layout with clear controls.</li>
-          </ul>
+            <h2 className={as.h2}>Technology Stack</h2>
+            <ul className={as.ul}>
+              <li>Android Studio (Kotlin)</li>
+              <li>Material Design</li>
+            </ul>
 
-          <h2 className={styles.h2}>Technology</h2>
-          <ul className={styles.ul}>
-            <li><strong>Language:</strong> Java</li>
-            <li><strong>Environment:</strong> Android Studio</li>
-            <li><strong>Platform:</strong> Android</li>
-            <li><strong>Design:</strong> XML layouts (Material Design)</li>
-          </ul>
-
-          <a
-            href="https://github.com/kyrlyama/EURtoUSD"
-            target="_blank" rel="noopener noreferrer"
-            className={styles.repoBtn}
-          >
-            GitHub repository
-          </a>
-        </div>
-
+            <Link
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={as.repoBtn}
+            >
+              GitHub repository
+            </Link>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

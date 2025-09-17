@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "@/styles/Project.module.css";
 
 export default function Project4() {
-  const images = ["/project4.png"]; // один слайд — кнопки всё равно работают
+  const images = ["/project4.png", "/project41.png", "/project42.png"]; 
   const [current, setCurrent] = useState(0);
 
   const nextImage = () => setCurrent((current + 1) % images.length);
@@ -12,7 +12,7 @@ export default function Project4() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.column}`}>
           <h1 className={styles.title}>Practice</h1>
 
           <p className={styles.p}>
@@ -53,6 +53,7 @@ export default function Project4() {
             width={800}
             height={500}
             className={styles.image}
+            sizes="(max-width: 640px) 100vw, 1000px"
           />
           <button aria-label="Previous image" className={`${styles.arrow} ${styles.left}`} onClick={prevImage}>
             &#10094;

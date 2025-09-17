@@ -1,31 +1,30 @@
-// pages/androidstudio1.js
-import Image from "next/image";
-import { useState } from "react";
-import styles from "@/styles/AndroidStudio.module.css";
+import Link from "next/link";
+import Carousel from "@/components/Carousel";
+
+// Базовый каркас карточки и типографика
+import pm from "@/styles/Project.module.css";
+// Широкая «горизонтальная» карточка — ровно как в figma1
+import fm from "@/styles/Figma.module.css";
 
 export default function AndroidStudio1() {
-  const images = ["/androidstudio1.png", "/androidstudio12.png", "/androidstudio13.png"];
-  const [current, setCurrent] = useState(0);
-  const next = () => setCurrent((current + 1) % images.length);
-  const prev = () => setCurrent((current - 1 + images.length) % images.length);
-
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
+    <main className={fm.page}>
+      <div className={`${pm.container} ${fm.containerWide}`}>
+        {/* Тот же макет, что и figma1: fm.androidLike */}
+        <section className={`${pm.card} ${fm.androidLike}`}>
+          {/* слева — текст (как в figma1) */}
+          <div className={`${pm.text} ${fm.colText}`}>
+            <h1 className={pm.title}>Translator — Android Studio App</h1>
 
-        <div className={styles.cardRow}>
-          {/* текст слева */}
-          <div className={styles.colText}>
-            <h1 className={styles.title}>Translator — Android Studio App</h1>
-
-            <p className={styles.p}>
-              Translator is an Android application that allows users to translate text between
-              Russian, English, Estonian, and German. It features a simple Material Design interface,
-              translation history, and cloud synchronization.
+            <p className={pm.p}>
+              Translator is an Android application that allows users to translate
+              text between Russian, English, Estonian, and German. It features a
+              clean Material Design interface, translation history, and simple
+              cloud synchronization.
             </p>
 
-            <h2 className={styles.h2}>Key Features</h2>
-            <ul className={styles.ul}>
+            <h2 className={pm.h2}>Key Features</h2>
+            <ul className={pm.list}>
               <li><strong>Multilingual:</strong> translate between 4 languages.</li>
               <li><strong>History:</strong> view and clear past translations.</li>
               <li><strong>Cloud sync:</strong> settings and history synchronized across devices.</li>
@@ -33,47 +32,36 @@ export default function AndroidStudio1() {
               <li><strong>MVC architecture:</strong> structured project design.</li>
             </ul>
 
-            <h2 className={styles.h2}>Technology Stack</h2>
-            <ul className={styles.ul}>
+            <h2 className={pm.h2}>Technology Stack</h2>
+            <ul className={pm.list}>
               <li>Android Studio (Java)</li>
               <li>Material Design</li>
               <li>Lingva Translate API</li>
               <li>Cloud storage</li>
             </ul>
 
-            <a
-              href="https://github.com/kyrlyama/Translate"
-              target="_blank" rel="noopener noreferrer"
-              className={styles.repoBtn}
+            <Link
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={pm.btn}
             >
               GitHub repository
-            </a>
+            </Link>
           </div>
 
-          {/* слайдер справа */}
-          <div className={styles.colMedia}>
-            <div className={styles.sliderFrame}>
-              <div className={styles.imgWrap}>
-                <Image
-                  src={images[current]}
-                  alt={`Translator screen ${current + 1}`}
-                  fill
-                  sizes="400px"
-                  className={styles.img}
-                  priority
-                />
-              </div>
-              {images.length > 1 && (
-                <>
-                  <button aria-label="Prev" className={`${styles.arrow} ${styles.left}`} onClick={prev}>&#10094;</button>
-                  <button aria-label="Next" className={`${styles.arrow} ${styles.right}`} onClick={next}>&#10095;</button>
-                </>
-              )}
+          {/* справа — медиа, панорамная рамка как в figma1 */}
+          <div className={`${pm.media} ${fm.colMedia}`}>
+            <div className={`${pm.frame} ${fm.mediaFrame}`}>
+              <Carousel
+                images={["/androidstudio1.png","/androidstudio12.png","/androidstudio13.png"]}
+                alt="Translator — Android Studio App screenshots"
+                aspect="landscape"
+              />
             </div>
           </div>
-        </div>
-
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

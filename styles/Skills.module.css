@@ -15,7 +15,6 @@
 /* Верхняя сетка: Tools | Languages | Soft */
 .row{
   display: grid;
-  /* лево, центр, право */
   grid-template-columns:
     minmax(420px, 1fr)
     minmax(340px, 0.7fr)
@@ -42,18 +41,25 @@
   color: #111;
 }
 
-/* Грид из двух колонок по умолчанию */
+/* Базовый грид из двух колонок */
 .grid2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-/* Вариант на одну колонку (для Languages, Soft) */
+/* Вариант на одну колонку */
 .oneCol { grid-template-columns: 1fr; gap: 12px; }
 
-/* Малые карточки-строки */
+/* Soft Skills: на мобиле строго 1 колонка */
+.softGrid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 820px){
+  .softGrid { grid-template-columns: 1fr; }
+}
+
+/* Малые карточки (иконка + текст) */
 .smallCard {
+  width: 100%;
   display: grid;
   grid-template-columns: 32px 1fr;
   align-items: center;
@@ -65,11 +71,8 @@
   box-shadow: 0 6px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
-/* Когда нет иконки (Languages/Soft) — делаем одну колонку и чуть выше */
-.singleCell {
-  grid-template-columns: 1fr;
-  min-height: 64px;
-}
+/* Когда нет иконки — одна колонка */
+.singleCell { grid-template-columns: 1fr; min-height: 64px; }
 
 /* Иконка тулзы */
 .iconBox {
@@ -82,13 +85,46 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
 }
 
-/* Текст в маленьких карточках */
+/* Базовый текст в карточках */
 .smallText {
   font-size: 15px;
   line-height: 1.4;
   color: #222;
+  white-space: normal;
   word-break: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;   /* переносим по словам */
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+}
+
+/* ===== Languages: одна строка «Язык — Уровень» ===== */
+.langList { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.langRow{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: nowrap;      /* вся строка не переносится */
+}
+.langName, .langLevel, .langSep{ display: inline-block; }
+.langSep{ opacity: .9; }
+
+/* ===== Soft Skills: стиль, как у Technologies ===== */
+.softCard{
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  display: block;           /* не grid — как lineCard */
+}
+.softText{
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: #222;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;  /* перенос только по словам */
+  hyphens: none;
 }
 
 /* Секции-списки (Technologies, Approaches) */
@@ -108,19 +144,19 @@
 .lead { font-weight: 800; color: #111; }
 .lineText { color: #222; }
 
-
-/* узкая средняя колонка (доп.правила по желанию) */
-.languagesCol {}
-
-/* текст в языках — без переноса слов на десктопе */
-.noWrap {
-  white-space: nowrap;        /* не переносить строки */
-  word-break: normal;
-  overflow-wrap: normal;
+/* ====== Адаптив ====== */
+@media (max-width: 980px) {
+  .row { grid-template-columns: 1fr; }  /* блоки столбцом */
 }
 
-/* Адаптив */
-@media (max-width: 980px) {
-  .row { grid-template-columns: 1fr; }  /* и так у тебя было — одна колонка */
-  .noWrap { white-space: normal; }
+@media (max-width: 640px){
+  /* Tools & Software: 1 колонка — карточки широкие */
+  .grid2 { grid-template-columns: 1fr; }
+  .smallCard{
+    grid-template-columns: 40px 1fr;
+    min-height: 64px;
+    padding: 13px 16px;
+  }
+  .iconBox{ width: 40px; height: 40px; }
+  .smallText{ font-size: 16px; }
 }

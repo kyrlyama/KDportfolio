@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
-import "@/styles/bubbles.css";
 import NavBar from "@/components/NavBar";
 
 export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
@@ -29,17 +28,19 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <title>KD Portfolio</title>
       </Head>
 
-      <div className={jakarta.className}>
+      {/* ВАЖНО: id="app-root" — сюда будем порталом монтировать мобильное меню */}
+      <div id="app-root" className={jakarta.className}>
+        <a href="#main" className="skipLink">Skip to content</a>
+
         <NavBar />
 
-        {/* Глобальный фон, как на About (фиксированный ниже всего контента) */}
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />
           <div className="blob b2" />
           <div className="blob b3" />
         </div>
 
-        <main className="pageContainer">
+        <main id="main" role="main" className="pageContainer">
           <Component {...pageProps} />
         </main>
       </div>

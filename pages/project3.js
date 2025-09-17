@@ -12,7 +12,7 @@ export default function Project3() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles.column}`}>
           <h1 className={styles.title}>Choose Your Musician</h1>
 
           <p className={styles.p}>
@@ -54,6 +54,7 @@ export default function Project3() {
             width={800}
             height={500}
             className={styles.image}
+            sizes="(max-width: 640px) 100vw, 1000px"
           />
           <button aria-label="Previous image" className={`${styles.arrow} ${styles.left}`} onClick={prevImage}>
             &#10094;

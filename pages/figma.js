@@ -1,137 +1,58 @@
-import Link from 'next/link';
-import { useState } from 'react';
-import Image from 'next/image';
-
+// pages/figma.js
+import Link from "next/link";
+import Carousel from "@/components/Carousel";
+import pm from "@/styles/Project.module.css";
+import fm from "@/styles/Figma.module.css";
 
 export default function Figma() {
   return (
-  <div className="pageWrapper">
-    <h1 className="pageTitle">My Figma Projects</h1>
-    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-
-          {/* Первый проект — Travel App */}
-          <ProjectBlock
-            title="Travel Planning App"
-            description="A prototype for an app that helps friends plan group trips. Features include destination selection, joint budgets, AI recommendations, and swipe-based decision making for activities."
-            images={["/figma22.png", "/figma23.png", "/figma24.png", "/figma25.png", "/figma26.png", "/figma27.png", "/figma28.png", "/figma29.png"]}
-            reverse={false}
-            slug="figma1"
-          />
-
-          {/* Второй проект — Gift Helper */}
-          <ProjectBlock
-            title="Gift Helper"
-            description="A mobile app that helps users find the perfect gift based on filters like age, budget, hobbies, and occasion. Includes calendar reminders and a contacts list for organizing ideas."
-            images={["/figma1.png", "/figma12.png", "/figma13.png", "/figma14.png", "/figma15.png", "/figma16.png", "/figma17.png"]}
-            reverse={true}
-            slug="figma2"
-          />
-
-        </div>
+      <main className={fm.page}>
+        <h1 className="pageTitle">Figma</h1>
+      <div className={`${pm.container} ${fm.grid}`}>
+        <ProjectBlock
+          title="Travel Planning App"
+          description="A prototype for an app that helps friends plan group trips. Features include destination selection, joint budgets, AI recommendations, and swipe-based decision making for activities."
+          images={[
+            // СТАВИМ РАБОЧЕЕ ИЗОБРАЖЕНИЕ ПЕРВЫМ
+            "/figma23.png","/figma24.png","/figma25.png",
+            "/figma26.png","/figma27.png","/figma28.png","/figma29.png",
+            // проблемное (бывшее первое) оставим последним — или вовсе убери его
+            "/figma22.png",
+          ]}
+          slug="figma1"
+        />
+        <ProjectBlock
+          title="Gift Helper"
+          description="A mobile app that helps users find the perfect gift based on filters like age, budget, hobbies, and occasion. Includes calendar reminders and a contacts list for organizing ideas."
+          images={["/figma1.png","/figma12.png","/figma13.png","/figma14.png","/figma15.png","/figma16.png","/figma17.png"]}
+          slug="figma2"
+        />
       </div>
+    </main>
   );
 }
 
-function ProjectBlock({ title, description, images, reverse, slug }) {
-  const [current, setCurrent] = useState(0);
-  const nextImage = () => setCurrent((current + 1) % images.length);
-  const prevImage = () => setCurrent((current - 1 + images.length) % images.length);
-  const padding = reverse ? '0 60px 0 0' : '0 0 0 40px';
+function ProjectBlock({ title, description, images, slug }) {
+  const hasImages = images && images.length > 0;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: reverse ? 'row-reverse' : 'row',
-        alignItems: 'center',
-        margin: '60px 0',
-        borderRadius: '20px',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-        background: '#fff',
-        padding: '20px',
-      }}
-    >
-      {/* Блок изображения */}
-      <div style={{
-        position: 'relative',
-        width: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <div style={{ position: 'relative', width: '80%' }}>
-          <Image
-            src={images[current]}
-            alt={`Figma project ${current + 1}`}
-            width={800}
-            height={600}
-            style={{
-              width: '100%',
-              height: 'auto',
-              borderRadius: '12px',
-            }}
-          />
-          {images.length > 1 && (
-            <>
-              <button onClick={prevImage} style={arrowStyle('left')}>&#10094;</button>
-              <button onClick={nextImage} style={arrowStyle('right')}>&#10095;</button>
-            </>
-          )}
+    <section className={`${pm.card} ${fm.row}`}>
+      {hasImages && (
+        <div className={`${pm.media} ${fm.media}`}>
+          <div className={`${pm.frame} ${fm.frame}`}>
+            {/* без aspect="landscape", чтобы на мобиле не резало */}
+            <Carousel images={images} alt={`${title} preview`} tight />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Текстовый блок */}
-      <div style={{ width: '50%', padding }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#000', marginBottom: '12px' }}>{title}</h2>
-        <p style={{ color: '#333', lineHeight: '1.6' }}>{description}</p>
-        <Link
-          href={`/${slug}`}
-          style={{
-            marginTop: '16px',
-            display: 'inline-block',
-            padding: '10px 20px',
-            backgroundColor: '#e0f0ff',
-            color: '#00509e',
-            fontWeight: '600',
-            borderRadius: '8px',
-            textDecoration: 'none',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-            transition: 'all 0.3s ease',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#f0f8ff';
-            e.currentTarget.style.transform = 'scale(1.02)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#e0f0ff';
-            e.currentTarget.style.transform = 'scale(1)';
-          }}
-        >
+      <div className={`${pm.text} ${fm.text}`}>
+        <h2 className={pm.title}>{title}</h2>
+        <p className={pm.p}>{description}</p>
+        <Link href={`/${slug}`} className={pm.btn} aria-label={`${title} — details`}>
           See more details
         </Link>
       </div>
-    </div>
+    </section>
   );
-}
-
-function arrowStyle(position) {
-  return {
-    position: 'absolute',
-    top: '50%',
-    [position]: '10px',
-    transform: 'translateY(-50%)',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    border: 'none',
-    color: 'white',
-    fontSize: '32px',
-    cursor: 'pointer',
-    borderRadius: '50%',
-    width: '40px',
-    height: '40px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 2,
-    transition: 'background 0.3s',
-  };
 }

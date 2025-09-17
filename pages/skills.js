@@ -3,29 +3,27 @@ import Image from "next/image";
 import styles from "@/styles/Skills.module.css";
 
 export default function Skills() {
-  // ==== ДАННЫЕ ====
+  /* ==== ДАННЫЕ ==== */
   const TOOLS = [
-    { img: "/tools/figma.png",      title: "Figma" },
-    { img: "/tools/photoshop.png",  title: "Photoshop" },
-    { img: "/tools/illustrator.png",title: "Illustrator" },
-    { img: "/tools/vscode.png",     title: "VS Code" },
-    { img: "/tools/github.png",     title: "Git & GitHub" },
-    { img: "/tools/xampp.png",      title: "XAMPP" },
-    { img: "/tools/dockerdesktop.png",     title: "Dockerdesktop" },
-    { img: "/tools/wix.png",        title: "Wix / Google Sites" },
-    { img: "/tools/chatgpt.png",    title: "ChatGPT" },
+    { img: "/tools/figma.png",         title: "Figma" },
+    { img: "/tools/photoshop.png",     title: "Photoshop" },
+    { img: "/tools/illustrator.png",   title: "Illustrator" },
+    { img: "/tools/vscode.png",        title: "VS\u00A0Code" },
+    { img: "/tools/github.png",        title: "Git &\u00A0GitHub" },
+    { img: "/tools/xampp.png",         title: "XAMPP" },
+    { img: "/tools/dockerdesktop.png", title: "Docker\u00A0Desktop" },
+    { img: "/tools/wix.png",           title: "Wix / Google\u00A0Sites" },
+    { img: "/tools/chatgpt.png",       title: "ChatGPT" },
     { img: "/tools/androidstudio.png", title: "Android Studio" },
-    { img: "/tools/canva.png",      title: "Canva" },
-    { img: "/tools/oracle.png",  title: "Oracle" },
-    { img: "/tools/notepad.png",  title: "Notepad++" },
-
-
+    { img: "/tools/canva.png",         title: "Canva" },
+    { img: "/tools/oracle.png",        title: "Oracle" },
+    { img: "/tools/notepad.png",       title: "Notepad++" },
   ];
 
   const LANGS = [
-    "Russian — native",
-    "English — B2",
-    "Estonian — A2",
+    { name: "Russian",  level: "native" },
+    { name: "English",  level: "B2" },
+    { name: "Estonian", level: "A2" },
   ];
 
   const SOFT = [
@@ -88,43 +86,49 @@ export default function Skills() {
         {/* Ряд 1: Tools, Languages, Soft Skills */}
         <div className={styles.row}>
 
-  <section className={styles.bigCard}>
-    <h2 className={styles.title}>Tools &amp; Software</h2>
-    <div className={styles.grid2}>
-      {TOOLS.map((t, i) => (
-        <div key={i} className={styles.smallCard}>
-          <div className={styles.iconBox}>
-            <Image src={t.img} alt={`${t.title} icon`} width={22} height={22} />
-          </div>
-          <div className={styles.smallText}>{t.title}</div>
-        </div>
-      ))}
-    </div>
-  </section>
+          <section className={styles.bigCard}>
+            <h2 className={styles.title}>Tools &amp; Software</h2>
+            <div className={styles.grid2}>
+              {TOOLS.map((t, i) => (
+                <div key={i} className={styles.smallCard}>
+                  <div className={styles.iconBox}>
+                    <Image src={t.img} alt={`${t.title} icon`} width={22} height={22} />
+                  </div>
+                  <div className={styles.smallText}>{t.title}</div>
+                </div>
+              ))}
+            </div>
+          </section>
 
-  <section className={`${styles.bigCard} ${styles.languagesCol}`}>
-    <h2 className={styles.title}>Languages</h2>
-    <div className={`${styles.grid2} ${styles.oneCol}`}>
-      {LANGS.map((t, i) => (
-        <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
-          <div className={`${styles.smallText} ${styles.noWrap}`}>{t}</div>
-        </div>
-      ))}
-    </div>
-  </section>
+          <section className={styles.bigCard}>
+            <h2 className={styles.title}>Languages</h2>
+            <div className={styles.langList}>
+              {LANGS.map((l, i) => (
+                <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
+                  <div className={styles.langRow}>
+                    <span className={styles.langName}>{l.name}</span>
+                    <span className={styles.langSep}>—</span>
+                    <span className={styles.langLevel}>{l.level}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
+          <section className={styles.bigCard}>
+            <h2 className={styles.title}>Soft Skills</h2>
 
-  <section className={styles.bigCard}>
-    <h2 className={styles.title}>Soft Skills</h2>
-    <div className={styles.grid2}>
-      {SOFT.map((t, i) => (
-        <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
-          <div className={styles.smallText}>{t}</div>
+            {/* тот же визуальный стиль, что и в Technologies */}
+            <div className={`${styles.grid2} ${styles.softGrid}`}>
+              {SOFT.map((t, i) => (
+                <div key={i} className={styles.softCard}>
+                  <div className={styles.softText}>{t}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
         </div>
-      ))}
-    </div>
-  </section>
-</div>
 
         {/* Ряд 2: Technologies */}
         <section className={`${styles.bigCard} ${styles.fullWidth}`} style={{ marginBottom: 44 }}>

@@ -1,102 +1,102 @@
 // pages/illustrator.js
 import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
+import styles from "@/styles/Illustrator.module.css";
 
 export default function Illustrator() {
-  // Положи файлы в /public/images и подставь свои имена
+  // Положи реальные файлы в /public/images/...
   const works = [
-    { svg: "/images/poster1.svg" },
-    { svg: "/images/poster2.svg" },
-    { svg: "/images/poster3.svg" },
-    { svg: "/images/poster4.svg" },
-    { svg: "/images/poster5.svg" },
-    { svg: "/images/poster6.svg" },
-    { svg: "/images/poster7.svg" },
-    { svg: "/images/poster8.svg" },
+    { src: "/images/poster1.svg", alt: "Poster 1" },
+    { src: "/images/poster2.svg", alt: "Poster 2" },
+    { src: "/images/poster3.svg", alt: "Poster 3" },
+    { src: "/images/poster4.svg", alt: "Poster 4" },
+    { src: "/images/poster5.svg", alt: "Poster 5" },
+    { src: "/images/poster6.svg", alt: "Poster 6" },
+    { src: "/images/poster7.svg", alt: "Poster 7" },
+    { src: "/images/poster8.svg", alt: "Poster 8" },
   ];
 
+  const [openIndex, setOpenIndex] = useState(null);
+  const close = useCallback(() => setOpenIndex(null), []);
+
+  // Закрытие по Esc + блокировка прокрутки фона
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && close();
+    if (openIndex !== null) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", onKey);
+      return () => {
+        document.body.style.overflow = prev;
+        document.removeEventListener("keydown", onKey);
+      };
+    }
+  }, [openIndex, close]);
+
   return (
-    <>
-
-
-      {/* Контент */}
-      <main
-        style={{
-          paddingTop: "100px",
-          paddingBottom: "60px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          background: "#f5f5f5",
-          minHeight: "100vh",
-          fontFamily: "sans-serif",
-          color: "#111",
-        }}
-      >
-        {/* Заголовок + описание */}
-        <header style={{ maxWidth: 1320, margin: "0 auto 32px", textAlign: "center" }}>
-          <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 10 }}>
-            Illustrator Portfolio
-          </h1>
-          <p style={{ fontSize: 16, color: "#555", maxWidth: 720, margin: "0 auto" }}>
+    <main className={styles.page}>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h1 className="pageTitle">Illustrator</h1>
+          <p className={styles.lead}>
             I keep studying Adobe Illustrator and Photoshop and will continue to expand this portfolio.
           </p>
         </header>
 
-        {/* Галерея: ровно 3 постера в ряд, каждый полностью виден (уменьшенный) */}
-        <section
-          style={{
-            maxWidth: 1320,            // 3 карточки по ~400px + отступы
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(0, 1fr))", // ровно 3 колонки
-            gap: "24px",
-          }}
-        >
+        <section className={styles.grid}>
           {works.map((item, i) => (
-            <a
+            <button
               key={i}
-              href={item.svg}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: "#fff",
-                borderRadius: 16,
-                boxShadow: "0 10px 24px rgba(0,0,0,0.08)",
-                overflow: "hidden",
-                display: "block",
-                transition: "transform .25s ease, box-shadow .25s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 14px 32px rgba(0,0,0,0.12)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 10px 24px rgba(0,0,0,0.08)";
-              }}
+              type="button"
+              className={styles.card}
+              onClick={() => setOpenIndex(i)}
+              aria-label={`Open ${item.alt}`}
             >
-              {/* Контейнер: единая пропорция для “постеров” (портрет). 
-                  Если у тебя ландшафтные — поменяй на "16/9". */}
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "3 / 4",        // близко к A4 (портрет)
-                  background: "#f5f5f5",       // совпадает с фоном страницы — “рамки” не видны
-                }}
-              >
+              <div className={styles.thumb}>
                 <Image
-                  src={item.svg}
-                  alt="Illustration work"
+                  src={item.src}
+                  alt={item.alt}
                   fill
-                  style={{ objectFit: "contain" }} // показываем весь постер целиком
-                  sizes="(max-width: 1320px) 33vw, 440px"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                  style={{ objectFit: "contain" }}
                   priority={i < 2}
                 />
               </div>
-            </a>
+            </button>
           ))}
         </section>
-      </main>
-    </>
+      </div>
+
+      {openIndex !== null && works[openIndex] && (
+        <div
+          className={styles.modal}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image preview"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) close();
+          }}
+        >
+          {/* крестик фиксированный, всегда поверх и ниже navbar */}
+          <button className={styles.closeBtn} onClick={close} aria-label="Close preview">×</button>
+
+          <div className={styles.modalCard}>
+            <div className={styles.modalBody}>
+              {/* внутри — «воздух» сверху/снизу + вписывание без обрезки */}
+              <div className={styles.imgBox}>
+                <Image
+                  src={works[openIndex].src}
+                  alt={works[openIndex].alt}
+                  fill
+                  sizes="96vw"
+                  style={{ objectFit: "contain" }}
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
   );
 }

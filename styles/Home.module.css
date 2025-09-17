@@ -1,74 +1,225 @@
+/* ========= Главная сцена ========= */
 .homeContainer{
-  --index-offset: 40px; /* можно подстроить 32–64px */
-
+  --index-offset: 48px; /* при желании 32–64px */
   position: relative;
   width: 100%;
-  /* смещаем ВСЮ сцену ниже навбара */
-  padding-top: calc(var(--nav-h) + var(--index-offset));
-  /* чтобы блок оставался во весь экран, отнимаем этот отступ из высоты */
-  min-height: calc(100vh - var(--nav-h) - var(--index-offset));
-  height:  calc(100dvh - var(--nav-h) - var(--index-offset));
-
-  margin-top: 0;
+  padding-top: calc(var(--nav-h) + var(--index-offset));  /* ниже навбара */
+  height: calc(100svh - var(--nav-h) - var(--index-offset));
+  min-height: calc(100svh - var(--nav-h) - var(--index-offset));
   overflow: visible;
   background: transparent;
 }
 
-/* Фото в центре */
-.centerPhoto {
+/* ========= Центральное фото ========= */
+.photoWrap{
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 46%;
   transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
+  width: clamp(160px, 20vw, 220px);
+  height: clamp(160px, 20vw, 220px);
   border-radius: 50%;
+  overflow: hidden;
   border: 8px solid rgba(255,255,255,.9);
   box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  z-index: 2;
+  z-index: 3;
 }
-/* styles/Home.module.css */
-.photoWrap{
-  position: absolute;          /* можно: absolute — как и было у фото */
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
+.photoImg{ object-fit: cover; object-position: center; }
+
+/* ========= 4 кликабельных круга ========= */
+.floatingCircle{
+  position: absolute;
+    width: clamp(140px, 22vw, 200px);
+  height: clamp(140px, 22vw, 200px);
+  font-size: clamp(16px, 2vw, 20px); 
   border-radius: 50%;
-  overflow: hidden;            /* обрезаем по кругу */
-  border: 8px solid rgba(255,255,255,.9);
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  z-index: 2;
+  display: grid; place-items: center;
+  font-weight: 800;  color: #000;
+  text-decoration: none !important; border-bottom: 0 !important;
+
+  background: radial-gradient(120% 120% at 30% 30%,
+    rgba(255,255,255,0.95) 0%,
+    rgba(224,236,255,0.85) 35%,
+    rgba(223,205,245,0.70) 70%,
+    rgba(255,240,248,0.65) 100%);
+  box-shadow: inset 0 0 22px rgba(255,255,255,0.9),
+              0 0 90px rgba(255,255,255,0.7);
+  transition: transform .25s ease, filter .25s ease;
+  z-index: 4;
 }
-.photoImg{
-  object-fit: cover;           /* без искажений */
-  object-position: center;
-  /* Next/Image с `fill` сам растянет img на контейнер */
+.floatingCircle:hover{ transform: scale(1.07); filter: saturate(1.05); }
+.floatingCircle:link,
+.floatingCircle:visited,
+.floatingCircle:hover,
+.floatingCircle:focus,
+.floatingCircle:active{
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
-/* Основные кликабельные пузыри */
-.floatingCircle {
+/* позиции 4 кругов (подстрой под макет при желании) */
+.websites{       top: 12%; left: 28%; }
+.android_studio{ top: 14%; right: 28%; }
+.figma{          bottom: 10%; left: 28%; }
+.illustrator{    bottom: 10%; right: 28%; }
+
+/* ========= Микро-пузырьки вокруг (xs/sm/md фиксировано) ========= */
+.microWrap{
   position: absolute;
-  width: 200px;
-  height: 200px;
+  inset: -32%;               /* область чуть больше самого круга */
+  pointer-events: none;
+  z-index: 3;                /* под текстом, над фоном */
+}
+.micro{
+  position: absolute;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; color: #000; font-size: 20px;
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 6px 16px rgba(13,30,54,.10), inset 0 1px 0 rgba(255,255,255,.9);
+  opacity: 0;
+  transform: scale(.7);
+  transition: opacity .25s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.floatingCircle:hover .micro{ opacity: 1; transform: scale(1); }
+
+/* размеры строго по классам — к-во контролируем в JS через MICRO_COUNTS */
+.micro--xs{ width: 6px;  height: 6px; }
+.micro--sm{ width: 9px;  height: 9px; }
+.micro--md{ width: 14px; height: 14px; }
+
+/* ========= Декоративные фоновые пузыри (перенесено из bubbles.css) ========= */
+.bubblesLayer{
+  position: absolute;
+  top: calc(var(--nav-h) + var(--index-offset)); /* ниже навбара */
+  left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+/* базовые типы */
+.bubblesLayer :global(.decor){
+  position: absolute;
+  border-radius: 50%;
   background: radial-gradient(120% 120% at 30% 30%,
       rgba(255,255,255,0.95) 0%,
       rgba(224,236,255,0.85) 35%,
       rgba(223,205,245,0.70) 70%,
       rgba(255,240,248,0.65) 100%);
-  box-shadow: inset 0 0 22px rgba(255,255,255,0.9),
-              0 0 90px rgba(255,255,255,0.7);
-  transition: transform .3s ease, filter .3s ease;
-  z-index: 3;
+  box-shadow: 0 18px 48px rgba(140,160,200,0.20), 0 0 1px rgba(255,255,255,0.3);
 }
-.floatingCircle:hover { transform: scale(1.08); filter: saturate(1.05); }
+.bubblesLayer :global(.decor)::after{
+  content:""; position:absolute; border-radius:50%;
+  top:12%; left:68%; width:16%; height:16%;
+  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(255,255,255,0) 60%);
+  filter: blur(2px);
+}
+/* размеры */
+.bubblesLayer :global(.bubbleLg){ width: 280px; height: 280px; }
+.bubblesLayer :global(.bubbleMd){ width: 180px; height: 180px; }
+.bubblesLayer :global(.bubbleSm){ width:  90px; height:  90px; }
 
-/* позиции */
-.websites { top: 15%; left: 30%; }
-.figma { bottom: 10%; left: 30%; }
-.android_studio { top: 10%; right: 30%; }
-.illustrator { bottom: 10%; right: 30%; }
+/* Позиции — добавлены все, что используются в index.js */
+@media (min-width: 621px){
+  .bubblesLayer :global(.pos-lg-1){   bottom: 60%;   left: 3%; }
+  .bubblesLayer :global(.pos-lg-2){   bottom: 8%; right: 5%; }
+
+  .bubblesLayer :global(.pos-md-1){   top: 75%;  right: 22%; }
+  .bubblesLayer :global(.pos-md-2){   bottom: 80%; right: 10%; }
+  .bubblesLayer :global(.pos-md-3){   bottom: 10%; left: 10%; }
+  .bubblesLayer :global(.pos-md-4){   top: 22%;  right: 42%; }
+  .bubblesLayer :global(.pos-md-5){   top: 2%;  left: 15%; }
+
+  .bubblesLayer :global(.pos-sm-1){   top: 45%;  left: 20%; }
+  .bubblesLayer :global(.pos-sm-2){   top: 30%;  right: 22%; }
+  .bubblesLayer :global(.pos-sm-3){   bottom:5%; left: 22%; }
+  .bubblesLayer :global(.pos-sm-4){   bottom: 28%; right: 24%; }
+  .bubblesLayer :global(.pos-sm-5){   top: 23%;  left: 28%; }
+  .bubblesLayer :global(.pos-sm-6){   top: 2%;  left: 40%; }
+  .bubblesLayer :global(.pos-sm-7){   bottom: 5%; left: 36%; }
+  .bubblesLayer :global(.pos-sm-8){   top: 38%;  right: 18%; }
+  .bubblesLayer :global(.pos-sm-9){   bottom: 90%; right: 20%; }
+  .bubblesLayer :global(.pos-sm-10){  top: 10%;  left: 34%; }
+  .bubblesLayer :global(.pos-sm-11){  top: 28%;  right: 5%; }
+  .bubblesLayer :global(.pos-sm-12){  bottom: 50%; right: 36%; }
+}
+
+/* ========= Адаптив ========= */
+@media (max-width: 1024px){
+  .websites{       top: 14%; left: 18%; }
+  .android_studio{ top: 16%; right: 18%; }
+  .figma{          bottom: 12%; left: 18%; }
+  .illustrator{    bottom: 12%; right: 18%; }
+}
+@media (max-width: 680px){
+  .floatingCircle{ width: 170px; height: 170px; font-size: 18px; }
+  .photoWrap{ width: 200px; height: 200px; }
+}
+
+@media (max-width: 540px){
+  .websites{       top: 12%; left: 10%; }
+  .android_studio{ top: 12%; right: 10%; }
+  .figma{          bottom: 12%; left: 10%; }
+  .illustrator{    bottom: 12%; right: 10%; }
+}
+
+@media (max-width: 390px){
+  .websites{       top: 10%; left: 6%; }
+  .android_studio{ top: 10%; right: 6%; }
+  .figma{          bottom: 10%; left: 6%; }
+  .illustrator{    bottom: 10%; right: 6%; }
+}
+@media (max-width: 540px){ .microWrap{ inset: -24%; } }
+
+@media (max-width: 390px){ .microWrap{ inset: -20%; } }
+/* На тач-устройствах подсвечиваем по tap/focus */
+@media (hover: none){
+  .floatingCircle:active .micro,
+  .floatingCircle:focus .micro{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Если пользователь просит «меньше движений» */
+@media (prefers-reduced-motion: reduce){
+  .floatingCircle, .micro { transition: none !important; }
+}
+
+/* показываем микропузыри и при фокусе с клавиатуры */
+.floatingCircle:focus .micro{
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-data: reduce){
+  .bubblesLayer :global(.bubbleSm){ display:none; }
+}
+
+
+/* === MOBILE ADDITIONS (append-only) === */
+/* планшеты и ниже */
+/* ==== MOBILE CORNERS LAYOUT (≤620px) ==== */
+/* ==== MOBILE CORNERS LAYOUT (≤620px) ==== */
+@media (max-width: 620px){
+  /* локальная переменная для отступа от углов */
+  .homeContainer{
+    --corner-inset: 12%;
+  }
+  
+.bubblesLayer{ display: none !important; }
+
+  /* скрываем большие и средние */
+  .bubblesLayer :global(.pos-lg-1),
+  .bubblesLayer :global(.pos-md-1){ display: none !important; }
+  
+  /* 4 главных круга — ближе к центру */
+  .websites{       top:    var(--corner-inset); left:  calc(var(--corner-inset) + 2%); }
+  .android_studio{ top:    var(--corner-inset); right: calc(var(--corner-inset) + 2%); }
+  .figma{          bottom: var(--corner-inset); left:  calc(var(--corner-inset) + 2%); }
+  .illustrator{    bottom: var(--corner-inset); right: calc(var(--corner-inset) + 2%); }
+
+  /* размеры главных кругов — чуть компактнее */
+  .floatingCircle{
+    width: clamp(100px, 32vw, 128px);
+    height: clamp(100px, 32vw, 128px);
+    font-size: 13px;
+  }
+  .photoWrap{ width: 140px; height: 140px; }
+} 
