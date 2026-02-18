@@ -18,7 +18,7 @@ export default function Carousel({
   aspect = "landscape",
   tight = false,
   ariaLabel = "Image carousel",
-  whiteFrameFor = [], 
+  whiteFrameFor = [],
 }) {
   const len = images?.length ?? 0;
   const [idx, setIdx] = useState(0);
@@ -28,7 +28,7 @@ export default function Carousel({
 
   const imagesKey = useMemo(
     () => (Array.isArray(images) ? images.join("|") : ""),
-    [images]
+    [images],
   );
   useEffect(() => setIdx(0), [imagesKey]);
 
@@ -58,24 +58,25 @@ export default function Carousel({
     const t = e.changedTouches[0];
     const dx = t.clientX - touchRef.current.x;
     const dy = t.clientY - touchRef.current.y;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
-      dx > 0 ? prev() : next();
-    }
+if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
+  if (dx > 0) prev();
+  else next();
+}
   };
 
   /* 🔑 ВОТ ГЛАВНОЕ */
-const currentSrc = images[idx];
-const useWhiteFrame = Array.isArray(whiteFrameFor) && whiteFrameFor.includes(currentSrc);
-
+  const currentSrc = images[idx];
+  const useWhiteFrame =
+    Array.isArray(whiteFrameFor) && whiteFrameFor.includes(currentSrc);
 
   const frame = {
-  position: "relative",
-  width: "100%",
-  borderRadius: 12,
-  overflow: "hidden",
-  boxShadow: "0 6px 18px rgba(0,0,0,.06)",
-  background: useWhiteFrame ? "#fff" : "transparent",
-  padding: useWhiteFrame ? 18 : 0,
+    position: "relative",
+    width: "100%",
+    borderRadius: 12,
+    overflow: "hidden",
+    boxShadow: "0 6px 18px rgba(0,0,0,.06)",
+    background: useWhiteFrame ? "#fff" : "transparent",
+    padding: useWhiteFrame ? 18 : 0,
   };
 
   const usePad = aspect === "phone" || !tight;
@@ -125,7 +126,11 @@ const useWhiteFrame = Array.isArray(whiteFrameFor) && whiteFrameFor.includes(cur
     >
       {hasArrows && (
         <>
-          <button aria-label="Previous image" onClick={prev} style={btn("left")}>
+          <button
+            aria-label="Previous image"
+            onClick={prev}
+            style={btn("left")}
+          >
             ‹
           </button>
           <button aria-label="Next image" onClick={next} style={btn("right")}>
