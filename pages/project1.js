@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "@/styles/Project.module.css";
 
 export default function Project1() {
@@ -39,14 +40,23 @@ export default function Project1() {
             <li><strong>UI:</strong> Bootstrap components, dynamic lists.</li>
           </ul>
 
-          <a
-            href="https://github.com/kyrlyama/lessons-cleanseteam"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.repoBtn}
-          >
-            GitHub repository
-          </a>
+<div className={styles.btnRow}>
+  <Link
+    href="https://github.com/your-repository-link"
+    target="_blank"
+    className={styles.repoBtn}
+  >
+    GitHub repository
+  </Link>
+
+  <Link
+    href="/uiux/cleaning-website"
+    className={styles.repoBtn}
+  >
+    UI/UX case
+  </Link>
+</div>
+
         </div>
 
         {/* Слайдер */}

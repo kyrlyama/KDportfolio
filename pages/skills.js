@@ -8,6 +8,7 @@ export default function Skills() {
     { img: "/tools/figma.png",         title: "Figma" },
     { img: "/tools/photoshop.png",     title: "Photoshop" },
     { img: "/tools/illustrator.png",   title: "Illustrator" },
+    { img: "/tools/affinity.png",            title: "Affinity" },
     { img: "/tools/vscode.png",        title: "VS\u00A0Code" },
     { img: "/tools/github.png",        title: "Git &\u00A0GitHub" },
     { img: "/tools/xampp.png",         title: "XAMPP" },
@@ -58,7 +59,7 @@ export default function Skills() {
     },
     {
       lead: "Design & Prototyping",
-      text: "Figma, Adobe Photoshop, Adobe Illustrator, Canva",
+      text: "Figma, Adobe Photoshop, Adobe Illustrator, Canva, Affinity",
     },
     {
       lead: "Other Tools",

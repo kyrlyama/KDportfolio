@@ -1,6 +1,6 @@
 /* Отступы под фикс-навбар и безопасные зоны для всех Figma-страниц */
 .page{
-padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
+  padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
   padding-bottom: clamp(80px, 10vh, 140px);
 }
 
@@ -9,12 +9,12 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(20px, 2.4vw, 28px);
-  margin-top: 24px;               
-  margin-bottom: 72px;            
+  margin-top: 24px;
+  margin-bottom: 72px;
 }
 @media (min-width: 980px){
   .grid{
-    grid-template-columns: repeat(2, minmax(0,1fr)); 
+    grid-template-columns: repeat(2, minmax(0,1fr));
     gap: 32px;
   }
 }
@@ -28,7 +28,7 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
 .text {
   width: 46%;
   padding-left: 28px;
-  text-align: left;          
+  text-align: left;
 }
 .text *{ text-align: left; }
 
@@ -74,10 +74,11 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
 /* кадр медиа: панорамный, крупный (не режем высоту) */
 .mediaFrame :where(img, video, canvas){
   width: 100%;
-  height: 100%;
-  object-fit: contain !important;  
-  object-position: center center;
-  background: #fff;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain !important;   /* ВАЖНО */
+  object-position: center ;
+  background: transparent;        /* убираем белый фон */
 }
 
 /* лёгкая компоновка текста */
@@ -85,13 +86,59 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
 .androidLike :where(p){ margin-bottom: 14px; line-height: 1.65; }
 .androidLike :where(ul){ margin: 10px 0 12px 18px; line-height: 1.6; }
 
+/* ===== UI/UX process block ===== */
+.processCard{
+  margin-top: 28px;
+  gap: 20px;
+}
+.processBlocks{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+.processBlock{
+  margin: 0;
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  border: 1px solid rgba(17,17,17,0.08);
+  display: grid;
+  gap: 12px;
+}
+.processImage{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  background: #f5f5f7;
+}
+.processBody{
+  display: grid;
+  gap: 6px;
+}
+.processTitle{
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+  margin: 0;
+}
+.processText{
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+}
+
 /* ещё шире на больших экранах — как «большая» карточка Android */
 @media (min-width: 1440px){
   .androidLike{
     grid-template-columns: 42% 58%;
     min-height: clamp(420px, 28vw, 780px);
   }
-  .mediaFrame{ aspect-ratio: 4 / 3; }  
+  .mediaFrame{ aspect-ratio: 4 / 3; }
 }
 
 /* ноутбуки поуже — оставим пропорции */
@@ -131,11 +178,11 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
     padding: 12px !important;
     border-radius: 12px !important;
     display: flex !important;
-    flex-direction: column !important;   
+    flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
     gap: 10px !important;
-    overflow-x: hidden !important;       
+    overflow-x: hidden !important;
   }
 
   .media{ width: 100% !important; padding: 0 !important; display: grid; place-items: center; }
@@ -153,7 +200,7 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
 
   .frame > *{
     width: 100% !important;
-    height: 100% !important;         
+    height: 100% !important;
     max-height: 100% !important;
   }
 
@@ -198,8 +245,8 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
   }
 
   /* страховка: не даём горизонтального скролла */
-  .page :global(html), 
-  .page :global(body), 
+  .page :global(html),
+  .page :global(body),
   .page :global(.pageWrapper) {
     overflow-x: hidden !important;
   }
@@ -240,4 +287,309 @@ padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
     display: block !important;
     max-width: 100% !important;
   }
+}
+
+
+/* =======================================================================
+   === НОВОЕ: UI/UX layout как в кейсе про клининг (Contents слева)      ===
+   ======================================================================= */
+
+.uxLayout{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  margin-top: 28px;
+  align-items: start;
+}
+
+/* ===== Contents block (Figma 2) ===== */
+/* ===== Contents (Figma 2 – exact like layout) ===== */
+/* Заголовок */
+
+
+/* Правая колонка */
+.uxContent{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Карточки-секции */
+.uxCard{
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.uxH2{
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.uxP{
+  margin: 0 0 14px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.uxList{
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+/* Медиа */
+.uxMedia{
+  border-radius: 16px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+}
+
+.uxImage{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Сетка для персон */
+.uxMediaGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.uxMediaItem{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+}
+
+/* Responsive: на мобильных Contents становится сверху */
+@media (max-width: 980px){
+  .uxLayout{
+    grid-template-columns: 1fr;
+  }
+  .contents{
+    position: relative;
+    top: auto;
+  }
+}
+
+/* ===== Palette & Tone (Gift Helper) ===== */
+.uxH3{
+  margin: 18px 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.paletteGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.colorCard{
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+}
+
+.swatch{
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.colorMeta{
+  display: grid;
+  gap: 6px;
+}
+
+.colorTop{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.colorName{
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.colorHex{
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.colorUsage{
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Typography/Tools cards */
+.metaGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.metaCard{
+  padding: 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.metaTitle{
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.metaText{
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+/* Emotions */
+
+/* === EMOTIONS (как на скрине): 3 карточки в линию === */
+.emotionsGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.emotionCard{
+  background: rgba(255, 232, 205, 0.38); /* тёплый бежевый */
+  border: 1px solid rgba(215, 143, 7, 0.35); /* мягкая оранжевая рамка */
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: none;
+}
+
+.emotionTitle{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.emotionList{
+  margin: 0;
+  padding-left: 22px; /* чтобы буллеты были как на скрине */
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.emotionList li{
+  margin: 6px 0;
+}
+
+/* Планшет: 2 колонки */
+@media (max-width: 980px){
+  .emotionsGrid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Мобилка: 1 колонка */
+@media (max-width: 620px){
+  .emotionsGrid{
+    grid-template-columns: 1fr;
+  }
+  .emotionTitle{
+    font-size: 16px;
+  }
+  .emotionList{
+    font-size: 16px;
+  }
+}
+
+/* ===== Contents (simple like in screenshot) ===== */
+
+.uxCard{
+  scroll-margin-top: calc(var(--nav-h, 60px) + 18px);
+}
+
+
+/*/////////////////////////////////*/
+
+/* =========================================================
+   Contents (Figma) — same behavior as UI/UX (sticky),
+   but VISUAL like your screenshot (no shadows, no bold)
+   Paste this at the VERY END of Figma.module.css
+   ========================================================= */
+
+/* ===== Contents (Figma) — simple like screenshot + sticky ===== */
+
+/* ===== Contents (Figma) — SAME AS UI/UX toc (size + look) ===== */
+/* Поставь ЭТО самым последним в Figma.module.css */
+
+.uxLayout{
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 28px;
+  align-items: start;
+}
+
+.contents{
+  position: sticky;
+  top: calc(var(--nav-h, 60px) + 18px);
+  align-self: start;
+
+  background: #fff;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+.contentsTitle{
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.contentsNav{
+  display: grid;
+  gap: 8px;
+}
+
+.contentsLink{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+
+.contentsLink:hover{
+  transform: none;
+  color: #1d4ccf;
+}
+
+@media (max-width: 960px){
+  .uxLayout{ grid-template-columns: 1fr; }
+  .contents{ position: relative; top: auto; }
 }

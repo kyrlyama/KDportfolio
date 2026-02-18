@@ -17,42 +17,42 @@ export default function About() {
             <h1 className={styles.title}>Kristina Dunajeva</h1>
 
             <p className={styles.p}>
-              I am a recent graduate from the Estonian Entrepreneurship University of Applied Sciences, where I studied Web Technologies and Design.
-              Although I don’t yet have professional work experience in the field,
-              I am eager to apply my fresh knowledge in a real working environment and grow as a designer and developer.
+              I am a graduate of the Estonian Entrepreneurship University of Applied Sciences, where I studied Web Technologies and Design. 
+              During my studies, I developed a strong interest in UX/UI design, especially in the research and ideation stages that precede visual or technical solutions. 
+              Working with personas, scenarios, and empathy maps shaped my understanding of user-centered design and the importance of making decisions based on user needs rather than assumptions.
             </p>
 
             <p className={styles.p}>
-              During my studies, I enjoyed the freedom of experimenting with concepts and visuals, but I especially loved our UX/UI classes.
-              Before creating applications, we spent a lot of time building personas, scenarios, and empathy maps.
-              These tools showed me the importance of understanding users, and I look forward to applying and promoting them in future teamwork.
+              After completing university, I gained hands-on experience working independently on design and development projects across both digital and physical environments. 
+              Without a technical team or professional supervision, I was responsible for translating non-technical business requests into structured UX/UI solutions and functional web implementations. 
+              My experience includes the independent development of an internal inventory management system with a strong focus on staff usability, as well as in-store branding projects such as logo redesign and promotional materials.
             </p>
 
             <p className={styles.p}>
-              At university, we had to focus on a wide range of skills, which gave me a solid foundation but also showed me where I still need to grow.
-              Now I am actively improving my skills in modern and creative design,
-              and I want to join a company where I can learn from professionals and discover what the industry is like outside of university projects.
+              Across these projects, I owned the full process — from clarifying requirements and exploring design approaches to delivering final results and iterating based on stakeholder feedback. 
+              This experience strengthened my ability to balance design, UX, and technical decisions while taking responsibility for outcomes in real business contexts.
             </p>
 
             <p className={styles.p}>
-              In my free time, I create and edit short videos for TikTok, film nature, and combine it with calm music.
-              Since I spend a lot of time at the computer, I balance it with long walks outdoors.
+              I am now motivated to grow within a professional team environment, where I can learn from experienced specialists, exchange knowledge, and deepen my understanding of collaborative workflows beyond academic and independent projects.
+            </p>
+
+            <p className={styles.p}>
+              Outside of work, I create and edit short, calm nature-focused videos for TikTok. 
+              To balance long hours at the computer, I enjoy walking outdoors and practicing Pilates, valuing both mental clarity and physical well-being alongside focused, detail-oriented work.
             </p>
           </div>
 
           {/* Секции-карточки */}
           <div className={styles.cardsGrid}>
-            <section className={styles.card}>
+            <section className={`${styles.card} ${styles.cardWide}`}>
               <h2 className={styles.cardTitle}>Work experience</h2>
-              <p className={styles.cardText}>2020–present: Likefon, sales consultant</p>
+              <p className={styles.cardText}>August 2021 – present: Sales consultant - Likefon OÜ (Narva)</p>
+              <p className={styles.cardText}>August 2024 – May 2025: Frontend Developer (Part-time) - Likefon OÜ (Narva)</p>
+              <p className={styles.cardText}>November 2025 – February 2026: In-store UX & Visual Designer (Part-time) - Likefon OÜ (Narva)</p>
             </section>
 
-            <section className={styles.card}>
-              <h2 className={styles.cardTitle}>Practice</h2>
-              <p className={styles.cardText}>
-                2025 — Development of a web application for inventory management at Likefon
-              </p>
-            </section>
+
 
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Education</h2>
@@ -91,13 +91,13 @@ export default function About() {
             </div>
 
             <div className={styles.barWrap}>
-              <span className={styles.barLabel}>Creativity</span>
+              <span className={styles.barLabel}>UX Research</span>
               <div className={styles.barTrack}><div className={styles.barFill} style={{ width: "90%" }} /></div>
 
-              <span className={styles.barLabel}>Teamwork</span>
+              <span className={styles.barLabel}>Wireframing & UI</span>
               <div className={styles.barTrack}><div className={styles.barFill} style={{ width: "85%" }} /></div>
 
-              <span className={styles.barLabel}>Focus</span>
+              <span className={styles.barLabel}>Frontend (React/Next)</span>
               <div className={styles.barTrack}><div className={styles.barFill} style={{ width: "80%" }} /></div>
             </div>
           </div>

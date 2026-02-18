@@ -6,14 +6,14 @@ import styles from "@/styles/Illustrator.module.css";
 export default function Illustrator() {
   // Положи реальные файлы в /public/images/...
   const works = [
-    { src: "/images/poster1.svg", alt: "Poster 1" },
-    { src: "/images/poster2.svg", alt: "Poster 2" },
-    { src: "/images/poster3.svg", alt: "Poster 3" },
-    { src: "/images/poster4.svg", alt: "Poster 4" },
-    { src: "/images/poster5.svg", alt: "Poster 5" },
-    { src: "/images/poster6.svg", alt: "Poster 6" },
-    { src: "/images/poster7.svg", alt: "Poster 7" },
-    { src: "/images/poster8.svg", alt: "Poster 8" },
+  { src: "/digitaldesign/poster1.png", alt: "Poster 1" },
+  { src: "/digitaldesign/poster2.png", alt: "Poster 2" },
+  { src: "/digitaldesign/poster3.png", alt: "Poster 3" },
+    { src: "/digitaldesign/poster4.png", alt: "Poster 4" },
+  { src: "/digitaldesign/poster5.png", alt: "Poster 5" },
+  { src: "/digitaldesign/poster6.png", alt: "Poster 6" },
+  { src: "/digitaldesign/poster7.png", alt: "Poster 7" },
+  { src: "/digitaldesign/poster8.png", alt: "Poster 8" },
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -37,7 +37,7 @@ export default function Illustrator() {
     <main className={styles.page}>
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className="pageTitle">Illustrator</h1>
+          <h1 className="pageTitle">Digital Design</h1>
           <p className={styles.lead}>
             I keep studying Adobe Illustrator and Photoshop and will continue to expand this portfolio.
           </p>

@@ -42,7 +42,7 @@ function FloatingBubble({ label, href, extraClass }) {
     >
       {label}
       <div className={styles.microWrap}>
-        {burst.map(b => (
+        {burst.map((b) => (
           <span
             key={b.id}
             className={`${styles.micro} ${styles[`micro--${b.kind}`]}`}
@@ -96,10 +96,23 @@ export default function Home() {
       </div>
 
       {/* 4 главных круга */}
-      <FloatingBubble label="Websites"    href="/websites"        extraClass={styles.websites} />
-      <FloatingBubble label="Figma"       href="/figma"           extraClass={styles.figma} />
-      <FloatingBubble label="Android"     href="/android_studio"  extraClass={styles.android_studio} />
-      <FloatingBubble label="Illustrator" href="/illustrator"     extraClass={styles.illustrator} />
+      <FloatingBubble
+        label="Websites"
+        href="/websites"
+        extraClass={styles.websites}
+      />
+      <FloatingBubble label="Figma" href="/figma" extraClass={styles.figma} />
+      <FloatingBubble
+        label="Android"
+        href="/android_studio"
+        extraClass={styles.android_studio}
+      />
+      <FloatingBubble label="UI/UX" href="uiux" extraClass={styles.uiux} />
+      <FloatingBubble
+        label="Illustrator"
+        href="/illustrator"
+        extraClass={styles.illustrator}
+      />
     </main>
   );
 }

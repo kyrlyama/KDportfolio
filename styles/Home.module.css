@@ -62,6 +62,7 @@
 .android_studio{ top: 14%; right: 28%; }
 .figma{          bottom: 10%; left: 28%; }
 .illustrator{    bottom: 10%; right: 28%; }
+.uiux{           top: 50%; left: 10%; }
 
 /* ========= Микро-пузырьки вокруг (xs/sm/md фиксировано) ========= */
 .microWrap{
@@ -147,6 +148,7 @@
   .android_studio{ top: 16%; right: 18%; }
   .figma{          bottom: 12%; left: 18%; }
   .illustrator{    bottom: 12%; right: 18%; }
+  .uiux{           top: 50%; left: 4%; }
 }
 @media (max-width: 680px){
   .floatingCircle{ width: 170px; height: 170px; font-size: 18px; }
@@ -158,6 +160,7 @@
   .android_studio{ top: 12%; right: 10%; }
   .figma{          bottom: 12%; left: 10%; }
   .illustrator{    bottom: 12%; right: 10%; }
+  .uiux{           top: 50%; left: 2%; }
 }
 
 @media (max-width: 390px){
@@ -165,6 +168,7 @@
   .android_studio{ top: 10%; right: 6%; }
   .figma{          bottom: 10%; left: 6%; }
   .illustrator{    bottom: 10%; right: 6%; }
+  .uiux{           top: 50%; left: 2%; }
 }
 @media (max-width: 540px){ .microWrap{ inset: -24%; } }
 
@@ -214,6 +218,7 @@
   .android_studio{ top:    var(--corner-inset); right: calc(var(--corner-inset) + 2%); }
   .figma{          bottom: var(--corner-inset); left:  calc(var(--corner-inset) + 2%); }
   .illustrator{    bottom: var(--corner-inset); right: calc(var(--corner-inset) + 2%); }
+  .uiux{           top: 50%; left: 2%; }
 
   /* размеры главных кругов — чуть компактнее */
   .floatingCircle{
