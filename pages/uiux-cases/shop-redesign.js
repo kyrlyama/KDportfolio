@@ -35,11 +35,14 @@ export default function ShopRedesign() {
           </div>
 
           <div className={styles.heroText}>
-            <p className={styles.kicker}>VISUAL IDENTITY UPDATE · AFFINITY DESIGNER</p>
+            <p className={styles.kicker}>
+              VISUAL IDENTITY UPDATE · AFFINITY DESIGNER
+            </p>
             <h1 className={styles.title}>Logo Redesign for Like</h1>
             <p className={styles.lead}>
-              Refreshing a local phone accessories retailer’s identity to improve clarity, trust,
-              and visibility in a competitive mall environment.
+              Refreshing a local phone accessories retailer’s identity to
+              improve clarity, trust, and visibility in a competitive mall
+              environment.
             </p>
           </div>
         </section>
@@ -68,7 +71,8 @@ export default function ShopRedesign() {
                   const value = e.target.value;
                   if (!value) return;
                   const el = document.getElementById(value);
-                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  if (el)
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
                 <option value="" disabled>
@@ -92,13 +96,16 @@ export default function ShopRedesign() {
                   <strong>Store type:</strong> local retail shop.
                 </li>
                 <li>
-                  <strong>What it sells:</strong> phone accessories and headsets.
+                  <strong>What it sells:</strong> phone accessories and
+                  headsets.
                 </li>
                 <li>
-                  <strong>Location:</strong> a local shop inside a shopping mall.
+                  <strong>Location:</strong> a local shop inside a shopping
+                  mall.
                 </li>
                 <li>
-                  <strong>Competitive context:</strong> strong competition with Click, Evelatus, and OnOff.
+                  <strong>Competitive context:</strong> strong competition with
+                  Click, Evelatus, and OnOff.
                 </li>
               </ul>
             </section>
@@ -106,24 +113,27 @@ export default function ShopRedesign() {
             <section id="goal" className={styles.section}>
               <h2>Goal</h2>
               <p>
-                Create a clearer and more recognisable brand mark that is readable at distance, scalable for print
-                and digital use, and visually connected to the store’s category.
+                Create a clearer and more recognisable brand mark that is
+                readable at distance, scalable for print and digital use, and
+                visually connected to the store’s category.
               </p>
             </section>
 
             <section id="audience" className={styles.section}>
               <h2>Visitors / Audience</h2>
               <p>
-                Mall visitors who need accessories quickly, plus repeat customers looking for repairs, cases, chargers,
-                and small tech essentials.
+                Mall visitors who need accessories quickly, plus repeat
+                customers looking for repairs, cases, chargers, and small tech
+                essentials.
               </p>
             </section>
 
             <section id="audit" className={styles.section}>
               <h2>UX / Visual audit (old logo)</h2>
               <p>
-                The original mark was too abstract and didn’t communicate the store’s category well. It also lost
-                clarity at small sizes, reducing memorability and trust.
+                The original mark was too abstract and didn’t communicate the
+                store’s category well. It also lost clarity at small sizes,
+                reducing memorability and trust.
               </p>
             </section>
 
@@ -132,15 +142,19 @@ export default function ShopRedesign() {
               <ul>
                 <li>Improve recognisability in a noisy retail environment.</li>
                 <li>Increase perceived professionalism and trust.</li>
-                <li>Make the logo readable and consistent across signage, packaging, and digital.</li>
+                <li>
+                  Make the logo readable and consistent across signage,
+                  packaging, and digital.
+                </li>
               </ul>
             </section>
 
             <section id="concept" className={styles.section}>
               <h2>Concept</h2>
               <p>
-                A friendly, modern mark that references communication/phone accessories through a simple and
-                recognisable shape language, while staying scalable and clean.
+                A friendly, modern mark that references communication/phone
+                accessories through a simple and recognisable shape language,
+                while staying scalable and clean.
               </p>
             </section>
 
@@ -171,7 +185,8 @@ export default function ShopRedesign() {
                   </div>
                   <h3 className={styles.h3}>Before</h3>
                   <p className={styles.p}>
-                    Abstract mark with low association to the store’s products and weak scalability.
+                    Abstract mark with low association to the store’s products
+                    and weak scalability.
                   </p>
                 </div>
 
@@ -187,7 +202,8 @@ export default function ShopRedesign() {
                   </div>
                   <h3 className={styles.h3}>After</h3>
                   <p className={styles.p}>
-                    Clearer, more modern logo with recognisable cues and improved legibility for print and digital use.
+                    Clearer, more modern logo with recognisable cues and
+                    improved legibility for print and digital use.
                   </p>
                 </div>
               </div>
@@ -212,16 +228,23 @@ export default function ShopRedesign() {
                   <div className={styles.logoMeta}>
                     <div className={styles.colorRow}>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#EBEBEB" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#EBEBEB" }}
+                        />
                         <span className={styles.colorCode}>#EBEBEB</span>
                       </span>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#000000" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#000000" }}
+                        />
                         <span className={styles.colorCode}>#000000</span>
                       </span>
                     </div>
                     <div className={styles.fontInfo}>
-                      <span className={styles.fontLabel}>Font:</span> Arial Rounded MT Bold
+                      <span className={styles.fontLabel}>Font:</span> Arial
+                      Rounded MT Bold
                     </div>
                   </div>
                 </div>
@@ -240,20 +263,30 @@ export default function ShopRedesign() {
                   <div className={styles.logoMeta}>
                     <div className={styles.colorRow}>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#2D2D2D" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#2D2D2D" }}
+                        />
                         <span className={styles.colorCode}>#2D2D2D</span>
                       </span>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#30D158" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#30D158" }}
+                        />
                         <span className={styles.colorCode}>#30D158</span>
                       </span>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#FAFAF2" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#FAFAF2" }}
+                        />
                         <span className={styles.colorCode}>#FAFAF2</span>
                       </span>
                     </div>
                     <div className={styles.fontInfo}>
-                      <span className={styles.fontLabel}>Font:</span> Arial Rounded MT Bold
+                      <span className={styles.fontLabel}>Font:</span> Arial
+                      Rounded MT Bold
                     </div>
                   </div>
                 </div>
@@ -272,15 +305,24 @@ export default function ShopRedesign() {
                   <div className={styles.logoMeta}>
                     <div className={styles.colorRow}>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#2F47FF" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#2F47FF" }}
+                        />
                         <span className={styles.colorCode}>#2F47FF</span>
                       </span>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#EFF6FF" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#EFF6FF" }}
+                        />
                         <span className={styles.colorCode}>#EFF6FF</span>
                       </span>
                       <span className={styles.colorChip}>
-                        <span className={styles.colorSwatch} style={{ background: "#2D2D2D" }} />
+                        <span
+                          className={styles.colorSwatch}
+                          style={{ background: "#2D2D2D" }}
+                        />
                         <span className={styles.colorCode}>#2D2D2D</span>
                       </span>
                     </div>
@@ -292,88 +334,108 @@ export default function ShopRedesign() {
               </div>
             </section>
 
-{/* MOCKUPS */}
-<section id="mockups" className={styles.section}>
-  <h2>Mockups</h2>
+            {/* MOCKUPS */}
+            <section id="mockups" className={styles.section}>
+              <h2>Mockups</h2>
 
-  <div className={styles.mockupGrid}>
-    {/* STORE SIGNAGE */}
-    <div className={styles.mockupItem}>
-      <div className={styles.mockupMedia}>
-        <Image
-          src="/uiux/redesign/mockup1.jpg"
-          alt="Store signage"
-          fill
-          sizes="(max-width: 720px) 100vw, 50vw"
-          className={styles.mockupImage}
-        />
-      </div>
-      <h3 className={styles.mockupTitle}>Store signage</h3>
-      <p className={styles.mockupText}>
-        Exterior storefront application demonstrating logo visibility, clarity at distance, and improved recognisability in a busy mall environment.
-      </p>
-    </div>
+              <div className={styles.mockupGrid}>
+                {/* STORE SIGNAGE */}
+                <div className={styles.mockupItem}>
+                  <div className={styles.mockupMedia}>
+                    <Image
+                      src="/uiux/redesign/mockup1.jpg"
+                      alt="Store signage"
+                      fill
+                      sizes="(max-width: 720px) 100vw, 50vw"
+                      className={styles.mockupImage}
+                    />
+                  </div>
+                  <h3 className={styles.mockupTitle}>Store signage</h3>
+                  <p className={styles.mockupText}>
+                    Exterior storefront application demonstrating logo
+                    visibility, clarity at distance, and improved
+                    recognisability in a busy mall environment.
+                  </p>
+                </div>
 
-    {/* PACKAGING */}
-    <div className={styles.mockupItem}>
-      <div className={styles.mockupMedia}>
-        <Image
-          src="/uiux/redesign/mockup2.jpg"
-          alt="Packaging"
-          fill
-          sizes="(max-width: 720px) 100vw, 50vw"
-          className={styles.mockupImage}
-        />
-      </div>
-      <h3 className={styles.mockupTitle}>Packaging</h3>
-      <p className={styles.mockupText}>
-        Branded packaging design showcasing clean logo placement, scalable proportions, and consistent visual identity on retail bags.
-      </p>
-    </div>
+                {/* PACKAGING */}
+                <div className={styles.mockupItem}>
+                  <div className={styles.mockupMedia}>
+                    <Image
+                      src="/uiux/redesign/mockup2.jpg"
+                      alt="Packaging"
+                      fill
+                      sizes="(max-width: 720px) 100vw, 50vw"
+                      className={styles.mockupImage}
+                    />
+                  </div>
+                  <h3 className={styles.mockupTitle}>Packaging</h3>
+                  <p className={styles.mockupText}>
+                    Branded packaging design showcasing clean logo placement,
+                    scalable proportions, and consistent visual identity on
+                    retail bags.
+                  </p>
+                </div>
 
-    {/* BRAND VISUAL APPLICATION */}
-    <div className={styles.mockupItem}>
-      <div className={styles.mockupMedia}>
-        <Image
-          src="/uiux/redesign/mockup3.jpg"
-          alt="Brand visual application"
-          fill
-          sizes="(max-width: 720px) 100vw, 50vw"
-          className={styles.mockupImage}
-        />
-      </div>
-      <h3 className={styles.mockupTitle}>Brand visual application</h3>
-      <p className={styles.mockupText}>
-        Compact logo usage as a modern sticker-style element — suitable for business cards, promo materials, and social media visuals.
-      </p>
-    </div>
+                {/* BRAND VISUAL APPLICATION */}
+                <div className={styles.mockupItem}>
+                  <div className={styles.mockupMedia}>
+                    <Image
+                      src="/uiux/redesign/mockup3.jpg"
+                      alt="Brand visual application"
+                      fill
+                      sizes="(max-width: 720px) 100vw, 50vw"
+                      className={styles.mockupImage}
+                    />
+                  </div>
+                  <h3 className={styles.mockupTitle}>
+                    Brand visual application
+                  </h3>
+                  <p className={styles.mockupText}>
+                    Compact logo usage as a modern sticker-style element —
+                    suitable for business cards, promo materials, and social
+                    media visuals.
+                  </p>
+                </div>
 
-    {/* POSTER / PROMO */}
-    <div className={styles.mockupItem}>
-<div className={`${styles.mockupMedia} ${styles.mockupMediaVertical}`}>
-        <Image
-          src="/uiux/redesign/posterlike.png"
-          alt="Promotional poster"
-          fill
-          sizes="(max-width: 720px) 100vw, 50vw"
-          className={styles.mockupImageContain}
-        />
-      </div>
-      <h3 className={styles.mockupTitle}>Promotional poster</h3>
-      <p className={styles.mockupText}>
-        In-store discount / campaign poster showing how the identity works with promotional messaging and remains clear in large-format print.
-      </p>
-    </div>
-  </div>
-</section>
-
+                {/* POSTER / PROMO */}
+                <div className={styles.mockupItem}>
+                  <div
+                    className={`${styles.mockupMedia} ${styles.mockupMediaVertical}`}
+                  >
+                    <Image
+                      src="/uiux/redesign/posterlike.png"
+                      alt="Promotional poster"
+                      fill
+                      sizes="(max-width: 720px) 100vw, 50vw"
+                      className={styles.mockupImageContain}
+                    />
+                  </div>
+                  <h3 className={styles.mockupTitle}>Promotional poster</h3>
+                  <p className={styles.mockupText}>
+                    In-store discount / campaign poster showing how the identity
+                    works with promotional messaging and remains clear in
+                    large-format print.
+                  </p>
+                </div>
+              </div>
+            </section>
 
             <section id="outcome" className={styles.section}>
               <h2>Outcome & learnings</h2>
               <ul>
-                <li>A more readable mark increased clarity and category association.</li>
-                <li>Testing at small sizes helped keep the logo scalable and consistent.</li>
-                <li>Mockups validated how the identity performs in real retail contexts.</li>
+                <li>
+                  A more readable mark increased clarity and category
+                  association.
+                </li>
+                <li>
+                  Testing at small sizes helped keep the logo scalable and
+                  consistent.
+                </li>
+                <li>
+                  Mockups validated how the identity performs in real retail
+                  contexts.
+                </li>
               </ul>
             </section>
           </div>
