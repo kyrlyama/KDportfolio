@@ -1,8 +1,10 @@
 // pages/_app.tsx
-import type { AppProps } from "next/app";
-import type { NextPage } from "next";
-import Head from "next/head";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Head from "next/head";
+
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
+
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
 

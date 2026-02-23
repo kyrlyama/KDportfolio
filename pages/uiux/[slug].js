@@ -1,17 +1,13 @@
-import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { uiuxCases, getUiuxCase } from "@/data/uiuxCases";
-import styles from "@/styles/UiuxCase.module.css";
+import { useEffect, useMemo, useState } from "react";
 
-const slugify = (value) =>
-  value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+import { getUiuxCase, uiuxCases } from "@/data/uiuxCases";
+import styles from "@/styles/UiuxCase.module.css";
 
 function ImageGrid({ images, onSelect, variant }) {
   if (!images || images.length === 0) return null;
+
   return (
     <div className={`${styles.imageGrid} ${variant ? styles[variant] : ""}`}>
       {images.map((image, index) => (
@@ -21,7 +17,13 @@ function ImageGrid({ images, onSelect, variant }) {
           className={styles.imageButton}
           onClick={() => onSelect(index)}
         >
-          <img src={image.src} alt={image.alt || "Case visual"} />
+          <Image
+            src={image.src}
+            alt={image.alt || "Case visual"}
+            width={1600}
+            height={900}
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
         </button>
       ))}
     </div>
@@ -29,13 +31,15 @@ function ImageGrid({ images, onSelect, variant }) {
 }
 
 function SectionContent({ section, onSelect }) {
+  // RESEARCH (с карточками справа)
   if (section.type === "research") {
     return (
       <>
         <div className={styles.sectionSplit}>
           <div className={styles.sectionText}>
-            <p>{section.text}</p>
+            <p className={styles.sectionParagraph}>{section.text}</p>
           </div>
+
           <div className={styles.sectionCards}>
             {(section.cards || []).map((card) => (
               <div key={card.title} className={styles.miniCard}>
@@ -45,359 +49,356 @@ function SectionContent({ section, onSelect }) {
             ))}
           </div>
         </div>
-        <ImageGrid
-          images={section.images}
-          onSelect={(index) => onSelect(index, section.images)}
-        />
+
+        <ImageGrid images={section.images} onSelect={onSelect} />
       </>
     );
   }
 
-  if (section.type === "personas") {
-    return (
-      <>
-        <div className={styles.sectionText}>
-          <p>{section.text}</p>
-        </div>
-        <ImageGrid
-          images={section.images}
-          onSelect={(index) => onSelect(index, section.images)}
-          variant="personaGrid"
-        />
-      </>
-    );
-  }
-
-  if (section.type === "flow") {
-    const image = section.image;
-    return (
-      <div className={styles.flowBlock}>
-        {image && (
-          <button
-            type="button"
-            className={styles.flowImageButton}
-            onClick={() => onSelect(0, [image])}
-          >
-            <img src={image.src} alt={image.alt || "Flow visual"} />
-          </button>
-        )}
-        <p className={styles.flowText}>{section.text}</p>
-        {image?.caption && (
-          <p className={styles.flowCaption}>{image.caption}</p>
-        )}
-      </div>
-    );
-  }
-
+  // PALETTE (цвета квадратиками + типографика + эмоции)
   if (section.type === "palette") {
     return (
       <>
-        <div className={styles.sectionText}>
-          <p>{section.text}</p>
-        </div>
-        <div className={styles.paletteGrid}>
-          {section.colors.map((color) => (
-            <div key={color.hex} className={styles.paletteCard}>
-              <div
-                className={styles.paletteSwatch}
-                style={{ backgroundColor: color.hex }}
-                aria-hidden="true"
-              />
-              <div className={styles.paletteMeta}>
-                <h3>{color.name}</h3>
-                <p>{color.hex}</p>
-                <span>{color.usage}</span>
+        <p className={styles.sectionParagraph}>{section.text}</p>
+
+        {section.colors?.length ? (
+          <div className={styles.paletteGrid}>
+            {section.colors.map((c) => (
+              <div key={c.hex} className={styles.colorCard}>
+                <span
+                  className={styles.swatch}
+                  style={{ backgroundColor: c.hex }}
+                />
+                <div className={styles.colorMeta}>
+                  <div className={styles.colorTop}>
+                    <strong className={styles.colorName}>{c.name}</strong>
+                    <code className={styles.colorHex}>{c.hex}</code>
+                  </div>
+                  <div className={styles.colorUsage}>{c.usage}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className={styles.paletteNotes}>
-          <ul>
-            {section.scheme.map((item) => (
-              <li key={item}>{item}</li>
             ))}
-          </ul>
-          <div className={styles.paletteInfo}>
-            <p>
-              <strong>Typography:</strong> {section.typography}
-            </p>
-            <p>
-              <strong>Tools:</strong> {section.tools}
-            </p>
           </div>
-        </div>
-        <div className={styles.emotionGrid}>
-          {section.emotions.map((emotion) => (
-            <div key={emotion.title} className={styles.emotionCard}>
-              <h3>{emotion.title}</h3>
-              <ul>
-                {emotion.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
+        ) : null}
+
+        {section.scheme?.length ? (
+          <>
+            <h3 className={styles.uxH3}>Scheme</h3>
+            <ul className={styles.uxList}>
+              {section.scheme.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {(section.typography || section.tools) && (
+          <div className={styles.metaGrid}>
+            {section.typography ? (
+              <div className={styles.metaCard}>
+                <h3 className={styles.metaTitle}>Typography</h3>
+                <p className={styles.metaText}>{section.typography}</p>
+              </div>
+            ) : null}
+
+            {section.tools ? (
+              <div className={styles.metaCard}>
+                <h3 className={styles.metaTitle}>Tools</h3>
+                <p className={styles.metaText}>{section.tools}</p>
+              </div>
+            ) : null}
+          </div>
+        )}
+
+        {section.emotions?.length ? (
+          <>
+            <h3 className={styles.uxH3}>Emotional intent</h3>
+            <div className={styles.emotionsGrid}>
+              {section.emotions.map((b) => (
+                <div key={b.title} className={styles.emotionCard}>
+                  <h4 className={styles.emotionTitle}>{b.title}</h4>
+                  <ul className={styles.emotionList}>
+                    {b.points.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : null}
+
+        <ImageGrid images={section.images} onSelect={onSelect} />
       </>
     );
   }
 
-  if (section.type === "wireframes") {
-    return (
-      <>
-        <div className={styles.sectionText}>
-          <p>{section.text}</p>
-        </div>
-        <ImageGrid
-          images={section.images}
-          onSelect={(index) => onSelect(index, section.images)}
-        />
-      </>
-    );
-  }
-
-  return section.text ? <p>{section.text}</p> : null;
+  // DEFAULT
+  return (
+    <>
+      <p className={styles.sectionParagraph}>{section.text}</p>
+      <ImageGrid images={section.images} onSelect={onSelect} />
+    </>
+  );
 }
 
-function Lightbox({ images, index, onClose, onPrev, onNext }) {
-  if (!images || images.length === 0) return null;
-  const current = images[index];
+function ModalCarousel({ images, index, onClose, title }) {
+  const [current, setCurrent] = useState(index ?? 0);
+  const total = images?.length ?? 0;
 
   useEffect(() => {
-    const onKey = (event) => {
+    setCurrent(index ?? 0);
+  }, [index]);
+
+  useEffect(() => {
+    if (!total) return undefined;
+
+    const onKeyDown = (event) => {
       if (event.key === "Escape") onClose();
-      if (event.key === "ArrowLeft") onPrev();
-      if (event.key === "ArrowRight") onNext();
+      if (event.key === "ArrowLeft")
+        setCurrent((value) => (value - 1 + total) % total);
+      if (event.key === "ArrowRight")
+        setCurrent((value) => (value + 1) % total);
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose, onPrev, onNext]);
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose, total]);
+
+  if (!total) return null;
+
+  const image = images[current];
+
+  const goPrevious = () => setCurrent((value) => (value - 1 + total) % total);
+  const goNext = () => setCurrent((value) => (value + 1) % total);
 
   return (
-    <div className={styles.lightbox} role="dialog" aria-modal="true">
-      <button
-        type="button"
-        className={styles.lightboxBackdrop}
-        onClick={onClose}
-      />
-      <div className={styles.lightboxContent}>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={title || "Image preview"}
+        className={styles.modal}
+        onClick={(event) => event.stopPropagation()}
+      >
         <button
           type="button"
-          className={styles.lightboxClose}
           onClick={onClose}
+          aria-label="Close preview"
+          className={styles.modalClose}
         >
-          Close
+          ✕
         </button>
-        <div className={styles.lightboxImageWrap}>
-          <img src={current.src} alt={current.alt || "Case visual"} />
+
+        <div className={styles.modalBody}>
+          <button
+            type="button"
+            onClick={goPrevious}
+            aria-label="Previous image"
+            className={styles.modalArrow}
+          >
+            ‹
+          </button>
+
+          <div className={styles.modalImage}>
+            <Image
+              src={image.src}
+              alt={image.alt || "Selected image"}
+              width={1800}
+              height={1100}
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={goNext}
+            aria-label="Next image"
+            className={styles.modalArrow}
+          >
+            ›
+          </button>
         </div>
-        {current.caption && (
-          <p className={styles.lightboxCaption}>{current.caption}</p>
-        )}
-        <div className={styles.lightboxControls}>
-          <button type="button" onClick={onPrev} aria-label="Previous image">
-            ◀
-          </button>
-          <button type="button" onClick={onNext} aria-label="Next image">
-            ▶
-          </button>
+
+        <div className={styles.modalFooter}>
+          <span className={styles.modalCounter}>
+            {current + 1} / {total}
+          </span>
         </div>
       </div>
     </div>
   );
 }
 
-export default function UiuxCase({ caseData }) {
-  const [lightboxState, setLightboxState] = useState(null);
+export default function UiuxCasePage({ uiuxCase }) {
+  const [modalIndex, setModalIndex] = useState(null);
+  const [modalImages, setModalImages] = useState([]);
+  const [modalTitle, setModalTitle] = useState("");
 
-  const sections = useMemo(() => {
-    if (!caseData) return [];
-    return caseData.sections.map((section) => ({
-      ...section,
-      id: section.id || slugify(section.title),
-    }));
-  }, [caseData]);
+  const openModal = (images, index, title) => {
+    setModalImages(images || []);
+    setModalIndex(index ?? 0);
+    setModalTitle(title || "");
+  };
 
-  if (!caseData) {
+  const closeModal = () => {
+    setModalIndex(null);
+    setModalImages([]);
+    setModalTitle("");
+  };
+
+  const sections = useMemo(() => uiuxCase?.sections || [], [uiuxCase]);
+
+  if (!uiuxCase) {
     return (
       <main className={styles.page}>
-        <p className={styles.notFound}>Case not found.</p>
-        <Link className={styles.backLink} href="/uiux">
-          Back to cases
+        <p>Case not found.</p>
+        <Link href="/uiux" className={styles.btn}>
+          ← Back
         </Link>
       </main>
     );
   }
 
-  const openLightbox = (index, images) => {
-    setLightboxState({ images, index });
-  };
-
-  const closeLightbox = () => setLightboxState(null);
-  const showPrev = () =>
-    setLightboxState((prev) => {
-      if (!prev) return prev;
-      const nextIndex =
-        (prev.index - 1 + prev.images.length) % prev.images.length;
-      return { ...prev, index: nextIndex };
-    });
-  const showNext = () =>
-    setLightboxState((prev) => {
-      if (!prev) return prev;
-      const nextIndex = (prev.index + 1) % prev.images.length;
-      return { ...prev, index: nextIndex };
-    });
+  const toc = sections
+    .filter((s) => s?.id && s?.title)
+    .map((s) => ({ id: s.id, label: s.title }));
 
   return (
     <main className={styles.page}>
-      <section className={styles.hero} id="overview">
-        <div className={styles.heroCover}>
-          <Image
-            src={caseData.cover}
-            alt={`${caseData.title} cover`}
-            fill
-            className={styles.heroImage}
-            sizes="(max-width: 768px) 100vw, 680px"
-          />
-        </div>
-<div className={styles.heroContent}>
-  {caseData.label ? <p className={styles.heroLabel}>{caseData.label}</p> : null}
-
-  <h1>{caseData.title}</h1>
-
-  {caseData.lead ? <p className={styles.heroLead}>{caseData.lead}</p> : null}
-
-  {Array.isArray(caseData.tags) && caseData.tags.length > 0 ? (
-    <div className={styles.tagRow}>
-      {caseData.tags.map((tag) => (
-        <span key={tag}>{tag}</span>
-      ))}
-    </div>
-  ) : null}
-
-  {Array.isArray(caseData.buttons) && caseData.buttons.length > 0 ? (
-    <div className={styles.buttonRow}>
-      {caseData.buttons.map((button) => (
-        <a
-          key={button.label}
-          href={button.href}
-          className={styles.heroButton}
-        >
-          {button.label}
-        </a>
-      ))}
-    </div>
-  ) : null}
-
-  {caseData.note ? <p className={styles.heroNote}>{caseData.note}</p> : null}
-</div>
-
-      </section>
-
-      <section className={styles.snapshot}>
-        <div>
-          <h2>Project Snapshot</h2>
-          <div className={styles.snapshotGrid}>
-            <div>
-              <h3>Problem</h3>
-              <p>{caseData.snapshot.problem}</p>
-            </div>
-            <div>
-              <h3>Goal</h3>
-              <p>{caseData.snapshot.goal}</p>
-            </div>
-          </div>
-        </div>
-        <div className={styles.snapshotGrid}>
-          <div>
-            <h3>Responsibilities</h3>
-            <ul>
-              {caseData.snapshot.responsibilities.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Deliverables</h3>
-            <ul>
-              {caseData.snapshot.deliverables.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.body}>
-        <aside className={styles.toc}>
-          <h3>Contents</h3>
-          <ul>
-            {sections.map((section) => (
-              <li key={section.id}>
-                <a href={`#${section.id}`}>{section.title}</a>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.tocMobile}>
-            <label htmlFor="toc-select">Jump to</label>
-            <select
-              id="toc-select"
-              onChange={(event) => {
-                const sectionId = event.target.value;
-                const el = document.getElementById(sectionId);
-                if (el)
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-            >
-              {sections.map((section) => (
-                <option key={section.id} value={section.id}>
-                  {section.title}
-                </option>
-              ))}
-            </select>
-          </div>
-        </aside>
-
-        <div className={styles.sections}>
-          {sections.map((section) => (
-            <article
-              key={section.id}
-              id={section.id}
-              className={styles.section}
-            >
-              <h2>{section.title}</h2>
-              <SectionContent
-                section={section}
-                onSelect={(index, images = section.images) =>
-                  openLightbox(index, images)
-                }
+      <div className={styles.container}>
+        {/* HERO */}
+        <section className={styles.heroCard}>
+          {uiuxCase.heroImage?.src ? (
+            <div className={styles.heroMedia}>
+              <Image
+                src={uiuxCase.heroImage.src}
+                alt={uiuxCase.heroImage.alt || uiuxCase.title}
+                fill
+                sizes="(max-width: 900px) 100vw, 420px"
+                className={styles.heroImage}
+                priority
               />
-            </article>
-          ))}
-        </div>
-      </section>
+            </div>
+          ) : null}
 
-      {lightboxState && (
-        <Lightbox
-          images={lightboxState.images}
-          index={lightboxState.index}
-          onClose={closeLightbox}
-          onPrev={showPrev}
-          onNext={showNext}
-        />
-      )}
+          <div className={styles.heroText}>
+            {uiuxCase.label ? (
+              <p className={styles.kicker}>{uiuxCase.label}</p>
+            ) : null}
+
+            <h1 className={styles.title}>{uiuxCase.title}</h1>
+
+            {uiuxCase.subtitle ? (
+              <p className={styles.lead}>{uiuxCase.subtitle}</p>
+            ) : null}
+
+            {/* RESULT — остаётся “где стоял”, но как кнопка Open case */}
+            {uiuxCase.buttons?.length ? (
+              <div className={styles.actionsRow}>
+                {uiuxCase.buttons.map((b) => (
+                  <Link key={b.href} href={b.href} className={styles.btn}>
+                    {b.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+
+        {/* BODY */}
+        <div className={styles.body}>
+          <aside className={styles.toc}>
+            <h3>Contents</h3>
+
+            <ul>
+              {toc.map((s) => (
+                <li key={s.id}>
+                  <a href={`#${s.id}`}>{s.label}</a>
+                </li>
+              ))}
+            </ul>
+
+            {/* mobile dropdown */}
+            <div className={styles.tocMobile}>
+              <label htmlFor="tocSelect">Jump to</label>
+              <select
+                id="tocSelect"
+                defaultValue=""
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (!value) return;
+                  const el = document.getElementById(value);
+                  if (el)
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              >
+                <option value="" disabled>
+                  Select section
+                </option>
+                {toc.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* BACK — в aside, самый последний, стиль как Open case */}
+            <div className={styles.tocActions}>
+              <Link href="/uiux" className={styles.btn}>
+                ← Back
+              </Link>
+            </div>
+          </aside>
+
+          <div className={styles.sections}>
+            {uiuxCase.summary ? (
+              <section className={styles.section}>
+                <h2>Overview</h2>
+                <p className={styles.sectionParagraph}>{uiuxCase.summary}</p>
+              </section>
+            ) : null}
+
+            {sections.map((section) => (
+              <section
+                key={section.id || section.title}
+                id={section.id}
+                className={styles.section}
+              >
+                <h2 className={styles.sectionTitle}>{section.title}</h2>
+
+                <SectionContent
+                  section={section}
+                  onSelect={(index) => openModal(section.images, index, section.title)}
+                />
+              </section>
+            ))}
+          </div>
+        </div>
+
+        {modalIndex !== null ? (
+          <ModalCarousel
+            images={modalImages}
+            index={modalIndex}
+            onClose={closeModal}
+            title={modalTitle}
+          />
+        ) : null}
+      </div>
     </main>
   );
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: uiuxCases.map((item) => ({ params: { slug: item.slug } })),
-    fallback: false,
-  };
+  const paths = (uiuxCases || [])
+    .filter((item) => !item.href) // страницы с href (например /uiux/shop-redesign) НЕ идут в [slug]
+    .map((item) => ({ params: { slug: item.slug } }));
+
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const caseData = getUiuxCase(params.slug);
-  return { props: { caseData } };
+  const uiuxCase = getUiuxCase(params.slug) || null;
+  return { props: { uiuxCase } };
 }

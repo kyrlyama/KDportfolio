@@ -1,29 +1,30 @@
 // pages/skills.js
 import Image from "next/image";
+
 import styles from "@/styles/Skills.module.css";
 
 export default function Skills() {
   /* ==== ДАННЫЕ ==== */
   const TOOLS = [
-    { img: "/tools/figma.png",         title: "Figma" },
-    { img: "/tools/photoshop.png",     title: "Photoshop" },
-    { img: "/tools/illustrator.png",   title: "Illustrator" },
-    { img: "/tools/affinity.png",            title: "Affinity" },
-    { img: "/tools/vscode.png",        title: "VS\u00A0Code" },
-    { img: "/tools/github.png",        title: "Git &\u00A0GitHub" },
-    { img: "/tools/xampp.png",         title: "XAMPP" },
+    { img: "/tools/figma.png", title: "Figma" },
+    { img: "/tools/photoshop.png", title: "Photoshop" },
+    { img: "/tools/illustrator.png", title: "Illustrator" },
+    { img: "/tools/affinity.png", title: "Affinity" },
+    { img: "/tools/vscode.png", title: "VS\u00A0Code" },
+    { img: "/tools/github.png", title: "Git &\u00A0GitHub" },
+    { img: "/tools/xampp.png", title: "XAMPP" },
     { img: "/tools/dockerdesktop.png", title: "Docker\u00A0Desktop" },
-    { img: "/tools/wix.png",           title: "Wix / Google\u00A0Sites" },
-    { img: "/tools/chatgpt.png",       title: "ChatGPT" },
+    { img: "/tools/wix.png", title: "Wix / Google\u00A0Sites" },
+    { img: "/tools/chatgpt.png", title: "ChatGPT" },
     { img: "/tools/androidstudio.png", title: "Android Studio" },
-    { img: "/tools/canva.png",         title: "Canva" },
-    { img: "/tools/oracle.png",        title: "Oracle" },
-    { img: "/tools/notepad.png",       title: "Notepad++" },
+    { img: "/tools/canva.png", title: "Canva" },
+    { img: "/tools/oracle.png", title: "Oracle" },
+    { img: "/tools/notepad.png", title: "Notepad++" },
   ];
 
   const LANGS = [
-    { name: "Russian",  level: "native" },
-    { name: "English",  level: "B2" },
+    { name: "Russian", level: "native" },
+    { name: "English", level: "B2" },
     { name: "Estonian", level: "A2" },
   ];
 
@@ -41,13 +42,11 @@ export default function Skills() {
   const TECHNOLOGIES = [
     {
       lead: "Frontend & Web Development",
-      text:
-        "HTML5, CSS3 / SCSS, JavaScript (ES6+), React.js, Next.js, Bootstrap, Tailwind CSS",
+      text: "HTML5, CSS3 / SCSS, JavaScript (ES6+), React.js, Next.js, Bootstrap, Tailwind CSS",
     },
     {
       lead: "Backend & Databases",
-      text:
-        "Node.js (basics, project launch, API), MySQL (creating and working with databases, queries), JSON (working with data, Fetch API)",
+      text: "Node.js (basics, project launch, API), MySQL (creating and working with databases, queries), JSON (working with data, Fetch API)",
     },
     {
       lead: "Mobile Development",
@@ -63,8 +62,7 @@ export default function Skills() {
     },
     {
       lead: "Other Tools",
-      text:
-        "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix (creating websites without code, practical assignments)",
+      text: "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix (creating websites without code, practical assignments)",
     },
   ];
 
@@ -83,17 +81,20 @@ export default function Skills() {
   return (
     <div className={styles.skillsPage}>
       <div className={styles.wrap}>
-
         {/* Ряд 1: Tools, Languages, Soft Skills */}
         <div className={styles.row}>
-
           <section className={styles.bigCard}>
             <h2 className={styles.title}>Tools &amp; Software</h2>
             <div className={styles.grid2}>
               {TOOLS.map((t, i) => (
                 <div key={i} className={styles.smallCard}>
                   <div className={styles.iconBox}>
-                    <Image src={t.img} alt={`${t.title} icon`} width={22} height={22} />
+                    <Image
+                      src={t.img}
+                      alt={`${t.title} icon`}
+                      width={22}
+                      height={22}
+                    />
                   </div>
                   <div className={styles.smallText}>{t.title}</div>
                 </div>
@@ -105,7 +106,10 @@ export default function Skills() {
             <h2 className={styles.title}>Languages</h2>
             <div className={styles.langList}>
               {LANGS.map((l, i) => (
-                <div key={i} className={`${styles.smallCard} ${styles.singleCell}`}>
+                <div
+                  key={i}
+                  className={`${styles.smallCard} ${styles.singleCell}`}
+                >
                   <div className={styles.langRow}>
                     <span className={styles.langName}>{l.name}</span>
                     <span className={styles.langSep}>—</span>
@@ -128,11 +132,13 @@ export default function Skills() {
               ))}
             </div>
           </section>
-
         </div>
 
         {/* Ряд 2: Technologies */}
-        <section className={`${styles.bigCard} ${styles.fullWidth}`} style={{ marginBottom: 44 }}>
+        <section
+          className={`${styles.bigCard} ${styles.fullWidth}`}
+          style={{ marginBottom: 44 }}
+        >
           <h2 className={styles.title}>Technologies</h2>
           <div className={styles.listStack}>
             {TECHNOLOGIES.map((it, i) => (
@@ -155,7 +161,6 @@ export default function Skills() {
             ))}
           </div>
         </section>
-
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 // eslint.config.mjs
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+
 import { FlatCompat } from "@eslint/eslintrc";
 
 // плагин для порядка импортов (совместимый с flat)
@@ -35,4 +36,16 @@ export default [
       "react-hooks/exhaustive-deps": "warn",
     },
   },
+  {
+  rules: {
+    "@typescript-eslint/no-unused-vars": ["warn", {
+      argsIgnorePattern: "^_",
+      varsIgnorePattern: "^_",
+      ignoreRestSiblings: true,
+    }],
+    "no-unused-vars": "off",
+  }
+}
 ];
+
+

@@ -5,11 +5,13 @@
   position: relative;
   /* если фон уже глобальный — эту строку можно убрать;
      если нужен локально — оставь */
-  background: radial-gradient(1200px 800px at 50% -10%,
-    rgba(255,255,255,1) 0%,
-    rgba(240,246,255,0.9) 45%,
-    rgba(242,230,255,0.85) 75%,
-    rgba(255,236,243,0.85) 100%);
+  background: radial-gradient(
+    1200px 800px at 50% -10%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(240, 246, 255, 0.9) 45%,
+    rgba(242, 230, 255, 0.85) 75%,
+    rgba(255, 236, 243, 0.85) 100%
+  );
   backdrop-filter: blur(80px);
 }
 
@@ -22,20 +24,26 @@
   gap: 28px;
 }
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Левая колонка (текст) и правая (aside) — заглушки на будущее */
-.leftCol { min-width: 0; }
-.rightCol { min-width: 0; }
+.leftCol {
+  min-width: 0;
+}
+.rightCol {
+  min-width: 0;
+}
 
 /* Большая карточка с текстом вверху */
 .heroCard {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 18px;
   padding: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Заголовок и параграфы */
@@ -60,16 +68,18 @@
   margin-top: 18px;
 }
 @media (max-width: 768px) {
-  .cardsGrid { grid-template-columns: 1fr; }
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Малые карточки */
 .card {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.05);
-  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 .cardWide {
   grid-column: 1 / -1;
@@ -90,11 +100,11 @@
 .stickyCard {
   position: sticky;
   top: 100px; /* можно: calc(var(--nav-h) + 36px) */
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 18px;
   padding: 20px;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.06);
-  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Аватар и факты */
@@ -107,8 +117,8 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow:
-    0 0 0 6px rgba(255,255,255,0.9),
-    0 10px 26px rgba(0,0,0,0.1);
+    0 0 0 6px rgba(255, 255, 255, 0.9),
+    0 10px 26px rgba(0, 0, 0, 0.1);
 }
 .facts {
   display: flex;
@@ -123,12 +133,18 @@
   font-size: 12px;
   font-weight: 700;
   color: #3a2e7a;
-  background: linear-gradient(135deg, rgba(230,240,255,0.95), rgba(249,238,255,0.95));
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(230, 240, 255, 0.95),
+    rgba(249, 238, 255, 0.95)
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
 }
 
 /* Прогресс-бары */
-.barWrap { margin-top: 6px; }
+.barWrap {
+  margin-top: 6px;
+}
 .barLabel {
   display: inline-block;
   font-size: 12px;
@@ -140,14 +156,19 @@
   width: 100%;
   height: 8px;
   border-radius: 999px;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 .barFill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(184,214,255,1), rgba(215,186,254,1), rgba(255,206,228,1));
-  box-shadow: 0 0 12px rgba(180,160,255,0.35);
+  background: linear-gradient(
+    90deg,
+    rgba(184, 214, 255, 1),
+    rgba(215, 186, 254, 1),
+    rgba(255, 206, 228, 1)
+  );
+  box-shadow: 0 0 12px rgba(180, 160, 255, 0.35);
 }
 
 /* ===== Локальные «пятна» (если фон не глобальный) ===== */
@@ -159,22 +180,54 @@
   pointer-events: none;
 }
 .b1 {
-  width: 420px; height: 420px;
-  top: -80px; left: -60px;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #b9d3ff 35%, #e5c9ff 70%, #ffd6e6 100%);
+  width: 420px;
+  height: 420px;
+  top: -80px;
+  left: -60px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #b9d3ff 35%,
+    #e5c9ff 70%,
+    #ffd6e6 100%
+  );
 }
 .b2 {
-  width: 360px; height: 360px;
-  bottom: 10%; right: 8%;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #bfe1ff 35%, #dbcbff 70%, #ffe6ef 100%);
+  width: 360px;
+  height: 360px;
+  bottom: 10%;
+  right: 8%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #bfe1ff 35%,
+    #dbcbff 70%,
+    #ffe6ef 100%
+  );
 }
 .b3 {
-  width: 300px; height: 300px;
-  top: 30%; right: 35%;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #c9e0ff 35%, #e6d6ff 70%, #ffeaf2 100%);
+  width: 300px;
+  height: 300px;
+  top: 30%;
+  right: 35%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #c9e0ff 35%,
+    #e6d6ff 70%,
+    #ffeaf2 100%
+  );
 }
 @media (max-width: 1024px) {
-  .b1 { width: 320px; height: 320px; }
-  .b2 { width: 270px; height: 270px; }
-  .b3 { display: none; }
+  .b1 {
+    width: 320px;
+    height: 320px;
+  }
+  .b2 {
+    width: 270px;
+    height: 270px;
+  }
+  .b3 {
+    display: none;
+  }
 }

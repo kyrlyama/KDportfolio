@@ -1,6 +1,7 @@
 // pages/project2.js
 import Image from "next/image";
 import { useState } from "react";
+
 import styles from "@/styles/Project.module.css";
 
 export default function Project2() {
@@ -15,7 +16,8 @@ export default function Project2() {
   const [current, setCurrent] = useState(0);
 
   const nextImage = () => setCurrent((current + 1) % images.length);
-  const prevImage = () => setCurrent((current - 1 + images.length) % images.length);
+  const prevImage = () =>
+    setCurrent((current - 1 + images.length) % images.length);
 
   return (
     <div className={styles.page}>
@@ -25,38 +27,51 @@ export default function Project2() {
           <h1 className={styles.title}>Welcome to the world of space!</h1>
 
           <p className={styles.p}>
-            This site is dedicated to the study of space and the planets of the solar system.
-            It is designed to provide users with interesting and useful information about our galaxy,
-            as well as interactive exploration of the planets through quizzes and characterization tables.
+            This site is dedicated to the study of space and the planets of the
+            solar system. It is designed to provide users with interesting and
+            useful information about our galaxy, as well as interactive
+            exploration of the planets through quizzes and characterization
+            tables.
           </p>
 
           <h2 className={styles.h2}>Basic functionality</h2>
           <ul className={styles.list}>
             <li>
-              <strong>Home page —</strong> user welcome and a brief introduction to the space theme.
+              <strong>Home page —</strong> user welcome and a brief introduction
+              to the space theme.
             </li>
             <li>
-              <strong>Planet pages —</strong> each planet has its own page with a description, a table of
-              characteristics and an image.
+              <strong>Planet pages —</strong> each planet has its own page with
+              a description, a table of characteristics and an image.
             </li>
             <li>
-              <strong>Interactive test —</strong> a form with questions about the order of planets in the
-              solar system to test knowledge.
+              <strong>Interactive test —</strong> a form with questions about
+              the order of planets in the solar system to test knowledge.
             </li>
             <li>
-              <strong>Test results —</strong> dynamic checking with highlighting correct/incorrect answers.
+              <strong>Test results —</strong> dynamic checking with highlighting
+              correct/incorrect answers.
             </li>
             <li>
-              <strong>Styling and design —</strong> CSS gradients and interactive effects.
+              <strong>Styling and design —</strong> CSS gradients and
+              interactive effects.
             </li>
           </ul>
 
           <h2 className={styles.h2}>Technology</h2>
           <ul className={styles.list}>
-            <li><strong>HTML —</strong> structure.</li>
-            <li><strong>CSS —</strong> styling, background and link animation.</li>
-            <li><strong>JavaScript —</strong> quiz logic and validation.</li>
-            <li><strong>Bootstrap —</strong> responsive layout and UI components.</li>
+            <li>
+              <strong>HTML —</strong> structure.
+            </li>
+            <li>
+              <strong>CSS —</strong> styling, background and link animation.
+            </li>
+            <li>
+              <strong>JavaScript —</strong> quiz logic and validation.
+            </li>
+            <li>
+              <strong>Bootstrap —</strong> responsive layout and UI components.
+            </li>
           </ul>
 
           <a

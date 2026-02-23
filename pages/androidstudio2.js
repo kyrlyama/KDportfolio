@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Carousel from "@/components/Carousel";
 
-import pm from "@/styles/Project.module.css";
+import Carousel from "@/components/Carousel";
 import fm from "@/styles/Figma.module.css";
+import pm from "@/styles/Project.module.css";
 
 export default function AndroidStudio2() {
   return (

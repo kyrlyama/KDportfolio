@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Home } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+
 import styles from "@/styles/NavBar.module.css";
 
 /** Монтируем порталом внутрь #app-root (если есть), иначе в <body> */

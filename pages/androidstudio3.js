@@ -1,13 +1,18 @@
 import Link from "next/link";
+
 import as from "@/styles/AndroidStudio.module.css";
 
 export default function AndroidStudio3() {
   return (
     <main className={as.page}>
       <div className={as.container}>
-        <section className={`${as.cardRow} ${as.cardRowSingle} ${as.cardRowCompact}`}>
+        <section
+          className={`${as.cardRow} ${as.cardRowSingle} ${as.cardRowCompact}`}
+        >
           <div className={as.colText}>
-            <h1 className={`${as.title} ${as.titleSm}`}>EUR → USD — Currency Converter</h1>
+            <h1 className={`${as.title} ${as.titleSm}`}>
+              EUR → USD — Currency Converter
+            </h1>
 
             <p className={`${as.p} ${as.pSm}`}>
               Lightweight currency converter demonstrating formatted input,

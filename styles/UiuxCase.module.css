@@ -884,3 +884,174 @@
   font-weight: 700;
   text-align: center;
 }
+/* Palette */
+.paletteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.colorCard {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swatch {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  flex: 0 0 auto;
+}
+
+.colorTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.colorHex {
+  opacity: 0.8;
+}
+
+.colorUsage {
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+/* Meta cards (Typography / Tools) */
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.metaCard {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metaTitle {
+  margin: 0 0 6px;
+}
+
+.metaText {
+  margin: 0;
+  opacity: 0.92;
+}
+
+/* Emotional intent: 3 in a row */
+.emotionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .emotionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.emotionCard {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.emotionTitle {
+  margin: 0 0 8px;
+}
+
+.emotionList {
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.92;
+}
+
+/* Buttons */
+.actionsRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 14px 0 18px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.primaryBtn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+/* Back button inside Contents (like in Figma cases) */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 18px;
+  padding: 18px 28px;
+
+  border-radius: 999px;
+  background: #eaf3ff;
+
+  font-size: 28px;
+  font-weight: 800;
+  color: #1f57d6;
+
+  text-decoration: none;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.backBtn:hover {
+  transform: translateY(-1px);
+}
+
+.backBtn:active {
+  transform: translateY(0px);
+}
+
+/* --- Buttons (same as Uiux.module.css .cardLink) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf1ff;
+  color: #1d4ccf;
+  padding: 12px 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  width: max-content;
+}
+
+.btn:hover {
+  background: #dfe9ff;
+}
+
+.tocActions {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}

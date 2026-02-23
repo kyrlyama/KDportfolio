@@ -1,16 +1,16 @@
 /* ===== страница ===== */
-.page{
+.page {
   padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
   padding-bottom: clamp(72px, 10vh, 120px);
 }
-.container{
+.container {
   max-width: 1280px;
   margin: 0 auto;
   padding-inline: clamp(16px, 3vw, 32px);
 }
 
 /* ===== 2 колонки карточек ===== */
-.cards{
+.cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
@@ -18,10 +18,10 @@
 }
 
 /* карточка: слева скрины (без рамок), справа текст */
-.cardH{
+.cardH {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
   padding: clamp(14px, 2vw, 22px);
   display: grid;
   grid-template-columns: 46% 54%;
@@ -30,25 +30,25 @@
 }
 
 /* контейнер под карусель/скрины — БЕЗ любых «рамок» */
-.cardMedia{
+.cardMedia {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.fullText{
+.fullText {
   width: 100% !important;
   padding-left: 0 !important;
 }
 
 /* натуральные скрины, просто ограничиваем габариты */
-.media{
+.media {
   width: clamp(220px, 28vw, 360px); /* вертикальный размер как и был */
-  aspect-ratio: 9 / 19.5;           /* портрет */
+  aspect-ratio: 9 / 19.5; /* портрет */
   display: grid;
   place-items: center;
-  padding: 0;                       /* << убрали внутреннюю «кромку» */
-  background: transparent;          /* << убрали белый фон */
+  padding: 0; /* << убрали внутреннюю «кромку» */
+  background: transparent; /* << убрали белый фон */
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -56,22 +56,28 @@
 }
 
 /* Сам скрин: не обрезаем, не растягиваем */
-.media :where(img, picture, video, canvas){
+.media :where(img, picture, video, canvas) {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
   display: block;
-  border-radius: 0;                 /* без дополнительных скруглений */
+  border-radius: 0; /* без дополнительных скруглений */
 }
 
 /* снимаем навязанные размеры библиотек слайдера */
 /* Сброс фона/скруглений/тени у обёрток слайдера (Embla/Swiper и т.п.) */
-.media :where(
-  [class*="embla"], [class*="Embla"],
-  [class*="swiper"], [class*="Swiper"],
-  [class*="viewport"], [class*="container"],
-  [class*="slide"], [class*="root"], [class*="frame"]
-){
+.media
+  :where(
+    [class*="embla"],
+    [class*="Embla"],
+    [class*="swiper"],
+    [class*="Swiper"],
+    [class*="viewport"],
+    [class*="container"],
+    [class*="slide"],
+    [class*="root"],
+    [class*="frame"]
+  ) {
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -79,48 +85,86 @@
   padding: 0 !important;
 }
 
-
 /* текст справа */
-.cardText{ display:flex; flex-direction:column; gap:12px; text-align:left; }
-.cardTitle{ font-size: clamp(20px, 2.2vw, 28px); font-weight: 800; }
-.cardDesc{ line-height: 1.65; color: #333; }
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+.cardTitle {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 800;
+}
+.cardDesc {
+  line-height: 1.65;
+  color: #333;
+}
 
 /* заглушка, когда нет скринов */
-.noMedia{
-  display:grid; place-items:center;
+.noMedia {
+  display: grid;
+  place-items: center;
   width: 100%;
-  color:#6b7280;
+  color: #6b7280;
 }
 
 /* ===== детальные страницы (оставлены без изменений) ===== */
-.cardRow{
+.cardRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
   padding: clamp(18px, 2.4vw, 26px);
   align-items: center;
 }
 /* одна колонка: контент на всю ширину */
-.cardRowSingle{ grid-template-columns: 1fr; }
+.cardRowSingle {
+  grid-template-columns: 1fr;
+}
 /* вдвое компактнее по вертикали */
-.cardRowCompact{
+.cardRowCompact {
   padding: clamp(9px, 1.2vw, 14px);
   gap: 14px;
 }
-.colText{ display:flex; flex-direction:column; gap:14px; text-align: left; }
-.title{ font-size: clamp(22px, 3vw, 30px); font-weight: 800; margin: 0; }
-.titleSm{ font-size: clamp(20px, 2.4vw, 26px); } /* компактный вариант */
-.h2{ font-size: clamp(18px, 2.2vw, 22px); font-weight: 800; margin: 10px 0 8px; }
-.p{ line-height: 1.65; margin: 0; color: #333; }
-.pSm{ font-size: clamp(14px, 1.6vw, 16px); }     /* компактный текст */
+.colText {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+.title {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  margin: 0;
+}
+.titleSm {
+  font-size: clamp(20px, 2.4vw, 26px);
+} /* компактный вариант */
+.h2 {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 800;
+  margin: 10px 0 8px;
+}
+.p {
+  line-height: 1.65;
+  margin: 0;
+  color: #333;
+}
+.pSm {
+  font-size: clamp(14px, 1.6vw, 16px);
+} /* компактный текст */
 
-.ul{ margin: 0; padding-left: 20px; line-height: 1.6; }
+.ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
 
 /* кнопка GitHub как «See more details» */
-.repoBtn{
+.repoBtn {
   align-self: flex-start;
   background: #eaf3ff;
   color: #1f52c9;
@@ -128,56 +172,68 @@
   padding: 12px 18px;
   border-radius: 14px;
   text-decoration: none;
-  box-shadow: 0 10px 26px rgba(31,82,201,.18);
-  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  box-shadow: 0 10px 26px rgba(31, 82, 201, 0.18);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
-.repoBtn:hover{
+.repoBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(31,82,201,.22);
+  box-shadow: 0 12px 30px rgba(31, 82, 201, 0.22);
   background: #e4efff;
 }
 
 /* адаптив */
-@media (max-width: 1100px){
-  .cards{ grid-template-columns: 1fr; }
-  .cardH{ grid-template-columns: 1fr; }
-  .media{ width: clamp(220px, 60vw, 380px); }
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cardH {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    width: clamp(220px, 60vw, 380px);
+  }
 }
-@media (max-width: 1100px){
-  .cardRow{ gap: 16px; }
+@media (max-width: 1100px) {
+  .cardRow {
+    gap: 16px;
+  }
 }
-@media (max-width: 480px){
-  .cardRow{ padding: 12px; border-radius: 14px; }
+@media (max-width: 480px) {
+  .cardRow {
+    padding: 12px;
+    border-radius: 14px;
+  }
 }
 
 /* === MOBILE ADDITIONS (append-only) === */
-@media (max-width: 1100px){
+@media (max-width: 1100px) {
   /* Список карточек → 1 колонка */
-  .cards{
+  .cards {
     grid-template-columns: 1fr !important;
     gap: 22px;
   }
 
   /* Горизонтальная карточка → вертикально */
-  .cardH{
+  .cardH {
     grid-template-columns: 1fr !important;
     gap: 16px;
   }
 
   /* Скрины чуть шире на планшетах/телефонах */
-  .media{
+  .media {
     width: clamp(220px, 60vw, 380px) !important;
   }
 }
 
-@media (max-width: 480px){
-  .page{
+@media (max-width: 480px) {
+  .page {
     padding-bottom: clamp(60px, 12vh, 96px);
   }
-  .cardH{
+  .cardH {
     padding: 14px 12px;
     border-radius: 14px;
   }
 }
-
-

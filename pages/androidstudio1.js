@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Carousel from "@/components/Carousel";
 
-// Базовый каркас карточки и типографика
-import pm from "@/styles/Project.module.css";
-// Широкая «горизонтальная» карточка — ровно как в figma1
+import Carousel from "@/components/Carousel";
 import fm from "@/styles/Figma.module.css";
+import pm from "@/styles/Project.module.css";
+
 
 export default function AndroidStudio1() {
   return (
@@ -17,19 +16,30 @@ export default function AndroidStudio1() {
             <h1 className={pm.title}>Translator — Android Studio App</h1>
 
             <p className={pm.p}>
-              Translator is an Android application that allows users to translate
-              text between Russian, English, Estonian, and German. It features a
-              clean Material Design interface, translation history, and simple
-              cloud synchronization.
+              Translator is an Android application that allows users to
+              translate text between Russian, English, Estonian, and German. It
+              features a clean Material Design interface, translation history,
+              and simple cloud synchronization.
             </p>
 
             <h2 className={pm.h2}>Key Features</h2>
             <ul className={pm.list}>
-              <li><strong>Multilingual:</strong> translate between 4 languages.</li>
-              <li><strong>History:</strong> view and clear past translations.</li>
-              <li><strong>Cloud sync:</strong> settings and history synchronized across devices.</li>
-              <li><strong>Material Design:</strong> clean and modern UI.</li>
-              <li><strong>MVC architecture:</strong> structured project design.</li>
+              <li>
+                <strong>Multilingual:</strong> translate between 4 languages.
+              </li>
+              <li>
+                <strong>History:</strong> view and clear past translations.
+              </li>
+              <li>
+                <strong>Cloud sync:</strong> settings and history synchronized
+                across devices.
+              </li>
+              <li>
+                <strong>Material Design:</strong> clean and modern UI.
+              </li>
+              <li>
+                <strong>MVC architecture:</strong> structured project design.
+              </li>
             </ul>
 
             <h2 className={pm.h2}>Technology Stack</h2>
@@ -54,7 +64,11 @@ export default function AndroidStudio1() {
           <div className={`${pm.media} ${fm.colMedia}`}>
             <div className={`${pm.frame} ${fm.mediaFrame}`}>
               <Carousel
-                images={["/androidstudio1.png","/androidstudio12.png","/androidstudio13.png"]}
+                images={[
+                  "/androidstudio1.png",
+                  "/androidstudio12.png",
+                  "/androidstudio13.png",
+                ]}
                 alt="Translator — Android Studio App screenshots"
                 aspect="landscape"
               />

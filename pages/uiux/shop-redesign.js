@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
-import pm from "@/styles/Project.module.css";
+import Link from "next/link";
+
 import styles from "@/styles/UiuxCase.module.css";
 
 const toc = [
@@ -47,9 +47,8 @@ export default function ShopRedesign() {
           </div>
         </section>
 
-        {/* BODY GRID: TOC + SECTIONS */}
+        {/* BODY */}
         <div className={styles.body}>
-          {/* LEFT NAV (same as Cleaning case) */}
           <aside className={styles.toc}>
             <h3>Contents</h3>
 
@@ -61,7 +60,6 @@ export default function ShopRedesign() {
               ))}
             </ul>
 
-            {/* mobile dropdown (same behavior as Cleaning case) */}
             <div className={styles.tocMobile}>
               <label htmlFor="tocSelect">Jump to</label>
               <select
@@ -85,9 +83,15 @@ export default function ShopRedesign() {
                 ))}
               </select>
             </div>
+
+            {/* BACK — в aside, самый последний, стиль как Open case */}
+            <div className={styles.tocActions}>
+              <Link href="/uiux" className={styles.btn}>
+                ← Back
+              </Link>
+            </div>
           </aside>
 
-          {/* RIGHT CONTENT */}
           <div className={styles.sections}>
             <section id="background" className={styles.section}>
               <h2>Project background</h2>
@@ -96,12 +100,10 @@ export default function ShopRedesign() {
                   <strong>Store type:</strong> local retail shop.
                 </li>
                 <li>
-                  <strong>What it sells:</strong> phone accessories and
-                  headsets.
+                  <strong>What it sells:</strong> phone accessories and headsets.
                 </li>
                 <li>
-                  <strong>Location:</strong> a local shop inside a shopping
-                  mall.
+                  <strong>Location:</strong> a local shop inside a shopping mall.
                 </li>
                 <li>
                   <strong>Competitive context:</strong> strong competition with
@@ -112,7 +114,7 @@ export default function ShopRedesign() {
 
             <section id="goal" className={styles.section}>
               <h2>Goal</h2>
-              <p>
+              <p className={styles.p}>
                 Create a clearer and more recognisable brand mark that is
                 readable at distance, scalable for print and digital use, and
                 visually connected to the store’s category.
@@ -121,7 +123,7 @@ export default function ShopRedesign() {
 
             <section id="audience" className={styles.section}>
               <h2>Visitors / Audience</h2>
-              <p>
+              <p className={styles.p}>
                 Mall visitors who need accessories quickly, plus repeat
                 customers looking for repairs, cases, chargers, and small tech
                 essentials.
@@ -130,7 +132,7 @@ export default function ShopRedesign() {
 
             <section id="audit" className={styles.section}>
               <h2>UX / Visual audit (old logo)</h2>
-              <p>
+              <p className={styles.p}>
                 The original mark was too abstract and didn’t communicate the
                 store’s category well. It also lost clarity at small sizes,
                 reducing memorability and trust.
@@ -139,7 +141,7 @@ export default function ShopRedesign() {
 
             <section id="why" className={styles.section}>
               <h2>Why redesign</h2>
-              <ul>
+              <ul className={styles.list}>
                 <li>Improve recognisability in a noisy retail environment.</li>
                 <li>Increase perceived professionalism and trust.</li>
                 <li>
@@ -151,7 +153,7 @@ export default function ShopRedesign() {
 
             <section id="concept" className={styles.section}>
               <h2>Concept</h2>
-              <p>
+              <p className={styles.p}>
                 A friendly, modern mark that references communication/phone
                 accessories through a simple and recognisable shape language,
                 while staying scalable and clean.
@@ -160,7 +162,7 @@ export default function ShopRedesign() {
 
             <section id="process" className={styles.section}>
               <h2>Process</h2>
-              <ul>
+              <ul className={styles.list}>
                 <li>Competitive scan + visual direction</li>
                 <li>Logo sketches and iterations</li>
                 <li>Testing at small sizes (print/digital)</li>
@@ -168,7 +170,6 @@ export default function ShopRedesign() {
               </ul>
             </section>
 
-            {/* FINAL RESULT with images */}
             <section id="final" className={styles.section}>
               <h2>Final result</h2>
 
@@ -209,7 +210,6 @@ export default function ShopRedesign() {
               </div>
             </section>
 
-            {/* LOGO DESIGN */}
             <section id="logo" className={styles.section}>
               <h2>Logo design</h2>
 
@@ -334,12 +334,10 @@ export default function ShopRedesign() {
               </div>
             </section>
 
-            {/* MOCKUPS */}
             <section id="mockups" className={styles.section}>
               <h2>Mockups</h2>
 
               <div className={styles.mockupGrid}>
-                {/* STORE SIGNAGE */}
                 <div className={styles.mockupItem}>
                   <div className={styles.mockupMedia}>
                     <Image
@@ -358,7 +356,6 @@ export default function ShopRedesign() {
                   </p>
                 </div>
 
-                {/* PACKAGING */}
                 <div className={styles.mockupItem}>
                   <div className={styles.mockupMedia}>
                     <Image
@@ -377,7 +374,6 @@ export default function ShopRedesign() {
                   </p>
                 </div>
 
-                {/* BRAND VISUAL APPLICATION */}
                 <div className={styles.mockupItem}>
                   <div className={styles.mockupMedia}>
                     <Image
@@ -398,7 +394,6 @@ export default function ShopRedesign() {
                   </p>
                 </div>
 
-                {/* POSTER / PROMO */}
                 <div className={styles.mockupItem}>
                   <div
                     className={`${styles.mockupMedia} ${styles.mockupMediaVertical}`}
@@ -423,7 +418,7 @@ export default function ShopRedesign() {
 
             <section id="outcome" className={styles.section}>
               <h2>Outcome & learnings</h2>
-              <ul>
+              <ul className={styles.list}>
                 <li>
                   A more readable mark increased clarity and category
                   association.

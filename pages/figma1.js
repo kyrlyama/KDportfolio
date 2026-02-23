@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
+
 import Carousel from "@/components/Carousel";
-import pm from "@/styles/Project.module.css";
 import fm from "@/styles/Figma.module.css";
+import pm from "@/styles/Project.module.css";
+
 
 const images = [
   "/figma1/figma23.png",
@@ -27,15 +30,34 @@ const paletteTone = {
   id: "palette-tone",
   type: "palette",
   title: "Palette & Tone",
-  text:
-    "The visual identity uses high contrast and bold purple accents to create a confident, modern, and energetic impression.",
+  text: "The visual identity uses high contrast and bold purple accents to create a confident, modern, and energetic impression.",
   colors: [
-    { name: "Black", hex: "#000000", usage: "Primary text, strong contrast elements" },
-    { name: "Primary Purple", hex: "#7107BD", usage: "CTAs, highlights, interactive elements" },
+    {
+      name: "Black",
+      hex: "#000000",
+      usage: "Primary text, strong contrast elements",
+    },
+    {
+      name: "Primary Purple",
+      hex: "#7107BD",
+      usage: "CTAs, highlights, interactive elements",
+    },
     { name: "White", hex: "#FFFFFF", usage: "Main background, layout clarity" },
-    { name: "Soft Purple", hex: "#DAACFC", usage: "Background accents, UI blocks" },
-    { name: "Light Pink", hex: "#FEEDFF", usage: "Surface backgrounds, soft sections" },
-    { name: "Lavender Accent", hex: "#D9B7F1", usage: "Secondary UI accents, decorative elements" },
+    {
+      name: "Soft Purple",
+      hex: "#DAACFC",
+      usage: "Background accents, UI blocks",
+    },
+    {
+      name: "Light Pink",
+      hex: "#FEEDFF",
+      usage: "Surface backgrounds, soft sections",
+    },
+    {
+      name: "Lavender Accent",
+      hex: "#D9B7F1",
+      usage: "Secondary UI accents, decorative elements",
+    },
   ],
   scheme: [
     "Purple as the dominant accent color.",
@@ -44,7 +66,8 @@ const paletteTone = {
   ],
   typography:
     "Inter — clean geometric sans-serif typeface for modern UI clarity and digital readability.",
-  tools:     "Figma styles and component tokens for scalable interface consistency.",
+  tools:
+    "Figma styles and component tokens for scalable interface consistency.",
   emotions: [
     {
       title: "Young digital audience",
@@ -83,15 +106,17 @@ export default function Figma1() {
             <h1 className={pm.title}>Figma Travel App</h1>
 
             <p className={pm.p}>
-              Prototype of a collaborative travel planning app. Users pick destinations,
-              split budgets, plan schedules, and vote on activities — focused on smooth
-              group decision-making and high-legibility mobile UI.
+              Prototype of a collaborative travel planning app. Users pick
+              destinations, split budgets, plan schedules, and vote on
+              activities — focused on smooth group decision-making and
+              high-legibility mobile UI.
             </p>
 
             <h2 className={pm.h2}>Main features</h2>
             <ul className={pm.list}>
               <li>
-                <strong>Trip planning:</strong> dates, destinations, shared itinerary.
+                <strong>Trip planning:</strong> dates, destinations, shared
+                itinerary.
               </li>
               <li>
                 <strong>Group collaboration:</strong> notes and quick votes.
@@ -149,6 +174,9 @@ export default function Figma1() {
               <a className={fm.contentsLink} href="#palette-tone">
                 Palette & Tone
               </a>
+              <Link href="/figma" className={pm.btn}>
+  ← Back
+</Link>
             </nav>
           </aside>
 
@@ -156,30 +184,37 @@ export default function Figma1() {
             <section id="research" className={fm.uxCard}>
               <h2 className={fm.uxH2}>Research overview</h2>
               <p className={fm.uxP}>
-                The process started with lightweight UX research to understand how groups
-                plan trips, resolve disagreements, and keep schedules clear. Insights were
-                translated into personas, journey scenarios, and user stories, then applied
-                to navigation structure and mobile UI patterns.
+                The process started with lightweight UX research to understand
+                how groups plan trips, resolve disagreements, and keep schedules
+                clear. Insights were translated into personas, journey
+                scenarios, and user stories, then applied to navigation
+                structure and mobile UI patterns.
               </p>
 
               <ul className={fm.uxList}>
                 <li>
-                  <strong>Persona:</strong> key user segments, goals, and constraints
+                  <strong>Persona:</strong> key user segments, goals, and
+                  constraints
                 </li>
                 <li>
-                  <strong>Empathy Map:</strong> emotions and pain points during gift selection
+                  <strong>Empathy Map:</strong> emotions and pain points during
+                  gift selection
                 </li>
                 <li>
-                  <strong>User Scenarios:</strong> step-by-step journey from first search to saving ideas
+                  <strong>User Scenarios:</strong> step-by-step journey from
+                  first search to saving ideas
                 </li>
                 <li>
-                  <strong>User Story:</strong> functional expectations aligned to real needs
+                  <strong>User Story:</strong> functional expectations aligned
+                  to real needs
                 </li>
                 <li>
-                  <strong>Low-friendlity wireframes:</strong> layout, navigation, and micro-interactions
+                  <strong>Low-friendlity wireframes:</strong> layout,
+                  navigation, and micro-interactions
                 </li>
                 <li>
-                  <strong>Palette & Tone:</strong> colors, typography, and component tokens
+                  <strong>Palette & Tone:</strong> colors, typography, and
+                  component tokens
                 </li>
               </ul>
             </section>
@@ -187,88 +222,128 @@ export default function Figma1() {
             <section id="persona" className={fm.uxCard}>
               <h2 className={fm.uxH2}>Persona</h2>
               <p className={fm.uxP}>
-                Personas helped define priorities: quick coordination, clarity of responsibilities,
-                and reducing friction when planning with friends.
+                Personas helped define priorities: quick coordination, clarity
+                of responsibilities, and reducing friction when planning with
+                friends.
               </p>
 
               <div className={fm.uxMediaGrid}>
-                {[assets.persona1, assets.persona2, assets.persona3, assets.persona4].map(
-                  (src, i) => (
-                    <div key={src} className={fm.uxMediaItem}>
-                      <img
-                        className={fm.uxImage}
-                        src={src}
-                        alt={`Persona ${i + 1}`}
-                        loading="lazy"
-                      />
-                    </div>
-                  )
-                )}
+                {[
+                  assets.persona1,
+                  assets.persona2,
+                  assets.persona3,
+                  assets.persona4,
+                ].map((src, i) => (
+                  <div key={src} className={fm.uxMediaItem}>
+<Image
+  className={fm.uxImage}
+  src={src}
+  alt={`Persona ${i + 1}`}
+  width={1200}
+  height={800}
+  style={{ width: "100%", height: "auto" }}
+/>
+
+                  </div>
+                ))}
               </div>
             </section>
 
             <section id="empathy" className={fm.uxCard}>
               <h2 className={fm.uxH2}>Empathy Map</h2>
               <p className={fm.uxP}>
-                Captures what users think, feel, and struggle with when planning trips together,
-                helping shape microcopy and reduce coordination friction.
+                Captures what users think, feel, and struggle with when planning
+                trips together, helping shape microcopy and reduce coordination
+                friction.
               </p>
 
               <div className={fm.uxMedia}>
-                <img className={fm.uxImage} src={assets.empathy} alt="Empathy Map" />
+<Image
+  className={fm.uxImage}
+  src={assets.empathy}
+  alt="Empathy Map"
+  width={1600}
+  height={900}
+  style={{ width: "100%", height: "auto" }}
+/>
+
               </div>
             </section>
 
             <section id="scenarios" className={fm.uxCard}>
               <h2 className={fm.uxH2}>User Scenarios</h2>
               <p className={fm.uxP}>
-                Scenarios describe the flow from intent (“Let’s plan a trip”) to choosing destinations,
-                agreeing on activities, splitting budget, and confirming the final shared plan.
+                Scenarios describe the flow from intent (“Let’s plan a trip”) to
+                choosing destinations, agreeing on activities, splitting budget,
+                and confirming the final shared plan.
               </p>
 
               <div className={fm.uxMedia}>
-                <img className={fm.uxImage} src={assets.scenario} alt="Scenario" />
+<Image
+  className={fm.uxImage}
+  src={assets.scenario}
+  alt="Scenario"
+  width={1200}
+  height={800}
+  sizes="(max-width: 768px) 100vw, 900px"
+/>
+
               </div>
             </section>
 
             <section id="userstory" className={fm.uxCard}>
               <h2 className={fm.uxH2}>User Story</h2>
               <p className={fm.uxP}>
-                User stories helped validate the feature set and keep the prototype aligned with real
-                expectations for group coordination and clarity.
+                User stories helped validate the feature set and keep the
+                prototype aligned with real expectations for group coordination
+                and clarity.
               </p>
 
               <div className={fm.uxMedia}>
-                <img className={fm.uxImage} src={assets.userStory} alt="User Story" />
+<Image
+  className={fm.uxImage}
+  src={assets.userStory}
+  alt="User Story"
+  width={1200}
+  height={800}
+  sizes="(max-width: 768px) 100vw, 900px"
+/>
               </div>
             </section>
-                        <section id="prototype" className={fm.uxCard}>
-  <h2 className={fm.uxH2}>Low-fidelity wireframes</h2>
+            <section id="prototype" className={fm.uxCard}>
+              <h2 className={fm.uxH2}>Low-fidelity wireframes</h2>
 
-  <p className={fm.uxP}>
-    Early hand-drawn prototype created to explore layout structure,
-    navigation flow, and screen hierarchy before moving to high-fidelity
-    design in Figma. This stage helped validate core interactions
-    and reduce unnecessary UI complexity.
-  </p>
+              <p className={fm.uxP}>
+                Early hand-drawn prototype created to explore layout structure,
+                navigation flow, and screen hierarchy before moving to
+                high-fidelity design in Figma. This stage helped validate core
+                interactions and reduce unnecessary UI complexity.
+              </p>
 
-  <div className={fm.uxMedia}>
-    <img
-      className={fm.uxImage}
-      src="/figma1/prototype.png"
-      alt="Low-fidelity hand-drawn prototype"
-    />
-  </div>
-</section>
+              <div className={fm.uxMedia}>
+<Image
+  className={fm.uxImage}
+  src="/figma1/prototype.png"
+  alt="Low-fidelity hand-drawn prototype"
+  width={1600}
+  height={900}
+  style={{ width: "100%", height: "auto" }}
+/>
 
- <section id={paletteTone.id} className={fm.uxCard}>
+              </div>
+            </section>
+
+            <section id={paletteTone.id} className={fm.uxCard}>
               <h2 className={fm.uxH2}>{paletteTone.title}</h2>
               <p className={fm.uxP}>{paletteTone.text}</p>
 
               <div className={fm.paletteGrid}>
                 {paletteTone.colors.map((c) => (
                   <div key={c.hex} className={fm.colorCard}>
-                    <span className={fm.swatch} style={{ backgroundColor: c.hex }} />
+                    <span
+                      className={fm.swatch}
+                      style={{ backgroundColor: c.hex }}
+                    />
                     <div className={fm.colorMeta}>
                       <div className={fm.colorTop}>
                         <strong className={fm.colorName}>{c.name}</strong>
@@ -321,8 +396,6 @@ export default function Figma1() {
                 </>
               ) : null}
             </section>
-
-
           </div>
         </section>
       </div>

@@ -1,19 +1,20 @@
 // pages/illustrator.js
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+
 import styles from "@/styles/Illustrator.module.css";
 
 export default function Illustrator() {
   // Положи реальные файлы в /public/images/...
   const works = [
-  { src: "/digitaldesign/poster1.png", alt: "Poster 1" },
-  { src: "/digitaldesign/poster2.png", alt: "Poster 2" },
-  { src: "/digitaldesign/poster3.png", alt: "Poster 3" },
+    { src: "/digitaldesign/poster1.png", alt: "Poster 1" },
+    { src: "/digitaldesign/poster2.png", alt: "Poster 2" },
+    { src: "/digitaldesign/poster3.png", alt: "Poster 3" },
     { src: "/digitaldesign/poster4.png", alt: "Poster 4" },
-  { src: "/digitaldesign/poster5.png", alt: "Poster 5" },
-  { src: "/digitaldesign/poster6.png", alt: "Poster 6" },
-  { src: "/digitaldesign/poster7.png", alt: "Poster 7" },
-  { src: "/digitaldesign/poster8.png", alt: "Poster 8" },
+    { src: "/digitaldesign/poster5.png", alt: "Poster 5" },
+    { src: "/digitaldesign/poster6.png", alt: "Poster 6" },
+    { src: "/digitaldesign/poster7.png", alt: "Poster 7" },
+    { src: "/digitaldesign/poster8.png", alt: "Poster 8" },
   ];
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -21,16 +22,20 @@ export default function Illustrator() {
 
   // Закрытие по Esc + блокировка прокрутки фона
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && close();
-    if (openIndex !== null) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      document.addEventListener("keydown", onKey);
-      return () => {
-        document.body.style.overflow = prev;
-        document.removeEventListener("keydown", onKey);
-      };
-    }
+    const onKey = (e) => {
+      if (e.key === "Escape") close();
+    };
+
+    if (openIndex === null) return undefined;
+
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
   }, [openIndex, close]);
 
   return (
@@ -39,7 +44,8 @@ export default function Illustrator() {
         <header className={styles.header}>
           <h1 className="pageTitle">Digital Design</h1>
           <p className={styles.lead}>
-            I keep studying Adobe Illustrator and Photoshop and will continue to expand this portfolio.
+            I keep studying Adobe Illustrator and Photoshop and will continue to
+            expand this portfolio.
           </p>
         </header>
 
@@ -77,12 +83,17 @@ export default function Illustrator() {
             if (e.target === e.currentTarget) close();
           }}
         >
-          {/* крестик фиксированный, всегда поверх и ниже navbar */}
-          <button className={styles.closeBtn} onClick={close} aria-label="Close preview">×</button>
+          <button
+            className={styles.closeBtn}
+            onClick={close}
+            aria-label="Close preview"
+            type="button"
+          >
+            ×
+          </button>
 
           <div className={styles.modalCard}>
             <div className={styles.modalBody}>
-              {/* внутри — «воздух» сверху/снизу + вписывание без обрезки */}
               <div className={styles.imgBox}>
                 <Image
                   src={works[openIndex].src}
