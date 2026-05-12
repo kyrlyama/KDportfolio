@@ -415,3 +415,33 @@ html {
   --case-fw-semibold: 600;
   --case-fw-bold: 800;
 }
+
+
+/* Site-wide responsive safety for narrow screens */
+html,
+body {
+  overflow-x: hidden;
+}
+
+#__next {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    width: 100%;
+    padding-top: calc(var(--nav-h) + 18px + env(safe-area-inset-top));
+    padding-inline: clamp(10px, 3vw, 18px);
+  }
+
+  .pageTitle {
+    max-width: min(100%, 680px);
+    font-size: clamp(24px, 8vw, 34px);
+    margin-bottom: clamp(14px, 5vw, 28px);
+  }
+
+  .container,
+  .section {
+    width: 100%;
+  }
+}

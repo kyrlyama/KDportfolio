@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import Carousel from "@/components/Carousel";
+import ZoomableImage from "@/components/ZoomableImage";
 import fm from "@/styles/Figma.module.css";
 import pm from "@/styles/Project.module.css";
 
@@ -105,7 +105,7 @@ const paletteTone = {
 
 export default function Figma2() {
   return (
-    <main className={fm.page}>
+    <main className={`${fm.page} ${fm.figmaLegacyCase}`}>
       <div className={`${pm.container} ${fm.containerWide}`}>
         {/* === TOP CARD (prototype + carousel + figma link) === */}
         <section className={`${pm.card} ${fm.androidLike}`}>
@@ -246,8 +246,8 @@ export default function Figma2() {
                   assets.persona4,
                 ].map((src, i) => (
                   <div key={src} className={fm.uxMediaItem}>
-<Image
-  className={fm.uxImage}
+<ZoomableImage
+  imageClassName={fm.uxImage}
   src={src}
   alt={`Persona ${i + 1}`}
   width={1600}
@@ -267,8 +267,8 @@ export default function Figma2() {
               </p>
 
               <div className={fm.uxMedia}>
-<Image
-  className={fm.uxImage}
+<ZoomableImage
+  imageClassName={fm.uxImage}
   src={assets.empathy}
   alt="Empathy Map"
   width={1600}
@@ -287,8 +287,8 @@ export default function Figma2() {
               </p>
 
               <div className={fm.uxMedia}>
-<Image
-  className={fm.uxImage}
+<ZoomableImage
+  imageClassName={fm.uxImage}
   src={assets.scenario}
   alt="Scenario"
   width={1600}
@@ -307,8 +307,8 @@ export default function Figma2() {
               </p>
 
               <div className={fm.uxMedia}>
-<Image
-  className={fm.uxImage}
+<ZoomableImage
+  imageClassName={fm.uxImage}
   src={assets.userStory}
   alt="User Story"
   width={1600}
@@ -330,8 +330,8 @@ export default function Figma2() {
               </p>
 
               <div className={fm.uxMedia}>
-<Image
-  className={fm.uxImage}
+<ZoomableImage
+  imageClassName={fm.uxImage}
   src="/figma2/prototype.png"
   alt="Low-fidelity hand-drawn prototype"
   width={1600}

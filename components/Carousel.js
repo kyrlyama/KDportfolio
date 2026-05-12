@@ -7,8 +7,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
  * props:
  *  - images: string[]
  *  - alt: string
- *  - aspect: "landscape" | "phone"
- *  - tight?: boolean
+ *  - aspect: "landscape" | "phone" | "square"
+*  - tight?: boolean
  *  - ariaLabel?: string
  *  - whiteFrameFor?: string[]   // ← НОВОЕ
  */
@@ -80,8 +80,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
   };
 
   const usePad = aspect === "phone" || !tight;
-  const ratio = aspect === "phone" ? 19.5 / 9 : 10 / 16;
-
+  const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 10 / 16;
   const pad = { width: "100%", paddingTop: `${ratio * 100}%` };
   const fill = {
     position: "absolute",
@@ -133,11 +132,49 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
           >
             ‹
           </button>
-          <button aria-label="Next image" onClick={next} style={btn("right")}>
-            ›
+          <button type="button" aria-label="Next image" onClick={next} style={btn("right")}>            
+          ›
           </button>
         </>
       )}
+
+
+            {hasArrows ? (
+        <div
+          aria-label="Choose image"
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: 10,
+            zIndex: 3,
+            display: "flex",
+            gap: 7,
+            transform: "translateX(-50%)",
+          }}
+        >
+          {images.map((src, dotIndex) => (
+            <button
+              key={src}
+              type="button"
+              aria-label={`Show image ${dotIndex + 1}`}
+              aria-current={dotIndex === idx ? "true" : undefined}
+              onClick={() => setIdx(dotIndex)}
+              style={{
+                width: coarse ? 12 : 9,
+                height: coarse ? 12 : 9,
+                padding: 0,
+                border: 0,
+                borderRadius: "999px",
+                background: dotIndex === idx ? "#fff" : "rgba(255,255,255,.45)",
+                boxShadow: "0 0 0 1px rgba(0,0,0,.18)",
+                cursor: "pointer",
+              }}
+            />
+          ))}
+        </div>
+      ) : null}
+
+
 
       {usePad ? (
         <>

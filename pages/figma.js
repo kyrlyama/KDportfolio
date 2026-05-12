@@ -27,6 +27,13 @@ export default function Figma() {
           ]}
           slug="figma1"
         />
+
+        <ProjectBlock
+          title="Likefon Marketing Website"
+          description="A Figma case study plan for a marketing website that improves Likefon’s online visibility in Narva, showcases accessories and services, highlights promotions, and turns online searches into offline store visits."
+          images={["/figma3/figma1.png"]}
+          slug="figma3"
+        />
         <ProjectBlock
           title="Gift Helper"
           description="A mobile app that helps users find the perfect gift based on filters like age, budget, hobbies, and occasion. Includes calendar reminders and a contacts list for organizing ideas."
@@ -51,11 +58,18 @@ function ProjectBlock({ title, description, images, slug }) {
 
   return (
     <section className={`${pm.card} ${fm.row}`}>
-      {hasImages && (
+      {hasImages ? (
         <div className={`${pm.media} ${fm.media}`}>
           <div className={`${pm.frame} ${fm.frame}`}>
             {/* без aspect="landscape", чтобы на мобиле не резало */}
             <Carousel images={images} alt={`${title} preview`} tight />
+          </div>
+        </div>
+      ) : (
+        <div className={`${pm.media} ${fm.media}`}>
+          <div className={`${pm.frame} ${fm.frame} ${fm.projectPlaceholder}`}>
+            <strong>Likefon</strong>
+            <span>Case study preview</span>
           </div>
         </div>
       )}
