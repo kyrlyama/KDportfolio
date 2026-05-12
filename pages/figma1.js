@@ -144,8 +144,11 @@ export default function Figma1() {
 
           <div className={`${pm.media} ${fm.colMedia}`}>
             <div className={`${pm.frame} ${fm.mediaFrame}`}>
-              <Carousel images={images} alt="Figma Travel App screens" />
-            </div>
+<Carousel
+  images={images}
+  alt="Figma Travel App screens"
+  aspect="phone"
+/>            </div>
           </div>
         </section>
 

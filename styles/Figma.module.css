@@ -2451,3 +2451,253 @@
     max-height: 300px;
   }
 }
+
+/* === Unified zoomable images for Figma case pages === */
+
+.zoomImageButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.zoomImageButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.uxMedia,
+.uxMediaItem {
+  background: transparent !important;
+  border: 0 !important;
+  overflow: visible !important;
+}
+
+.uxMediaItem {
+  padding: 0 !important;
+}
+
+.imageLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 40px);
+}
+
+.imageLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.82);
+  cursor: zoom-out;
+}
+
+.imageLightboxPanel {
+  position: relative;
+  z-index: 1;
+  width: min(96vw, 1500px);
+  max-height: 92vh;
+  display: grid;
+  place-items: center;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.imageLightboxClose {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 10000;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111827;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.imageLightboxImageWrap {
+  width: 100%;
+  max-height: 92vh;
+  display: grid;
+  place-items: center;
+}
+
+.imageLightboxImageWrap img {
+  width: auto !important;
+  max-width: 96vw !important;
+  height: auto !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.caseImageCard .zoomImageButton {
+  background: transparent !important;
+}
+
+.caseImageCard .caseZoomImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .uxMediaGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .imageLightbox {
+    padding: 8px;
+  }
+
+  .imageLightboxPanel {
+    width: 100%;
+  }
+
+  .imageLightboxClose {
+    top: 10px;
+    right: 10px;
+  }
+
+  .imageLightboxImageWrap img {
+    max-width: 96vw !important;
+    max-height: 86vh !important;
+  }
+}
+
+/* === Large image preview / lightbox === */
+
+.zoomImageButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.zoomImageButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* затемнённый фон */
+.imageLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* клик по фону закрывает картинку */
+.imageLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.86);
+  cursor: zoom-out;
+}
+
+/* убираем рамку/карточку вокруг большой картинки */
+.imageLightboxPanel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 96vw;
+  height: 100%;
+  max-height: 92vh;
+  display: grid;
+  place-items: center;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* большой видимый крестик */
+.imageLightboxClose {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 100000;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111827;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 400;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* контейнер большой картинки */
+.imageLightboxImageWrap {
+  width: 100%;
+  height: 100%;
+  max-width: 96vw;
+  max-height: 90vh;
+  display: grid;
+  place-items: center;
+}
+
+/* сама большая картинка */
+.imageLightboxImageWrap img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* чтобы маленькие картинки на странице не получали лишние рамки */
+.uxMedia,
+.uxMediaItem {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* mobile */
+@media (max-width: 760px) {
+  .imageLightbox {
+    padding: 10px;
+  }
+
+  .imageLightboxClose {
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 32px;
+  }
+
+  .imageLightboxImageWrap img {
+    max-width: 96vw !important;
+    max-height: 86vh !important;
+  }
+}

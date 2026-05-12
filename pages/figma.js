@@ -11,43 +11,42 @@ export default function Figma() {
       <h1 className="pageTitle">Figma</h1>
       <div className={`${pm.container} ${fm.grid}`}>
         <ProjectBlock
-          title="Travel Planning App"
-          description="A prototype for an app that helps friends plan group trips. Features include destination selection, joint budgets, AI recommendations, and swipe-based decision making for activities."
-          images={[
-            // СТАВИМ РАБОЧЕЕ ИЗОБРАЖЕНИЕ ПЕРВЫМ
-            "/figma23.png",
-            "/figma24.png",
-            "/figma25.png",
-            "/figma26.png",
-            "/figma27.png",
-            "/figma28.png",
-            "/figma29.png",
-            // проблемное (бывшее первое) оставим последним — или вовсе убери его
-            "/figma22.png",
-          ]}
-          slug="figma1"
-        />
+  title="Likefon Marketing Website"
+  description="A Figma case study plan for a marketing website that improves Likefon’s online visibility in Narva, showcases accessories and services, highlights promotions, and turns online searches into offline store visits."
+  images={["/figma3/figma1.png"]}
+  slug="figma3"
+/>
 
-        <ProjectBlock
-          title="Likefon Marketing Website"
-          description="A Figma case study plan for a marketing website that improves Likefon’s online visibility in Narva, showcases accessories and services, highlights promotions, and turns online searches into offline store visits."
-          images={["/figma3/figma1.png"]}
-          slug="figma3"
-        />
-        <ProjectBlock
-          title="Gift Helper"
-          description="A mobile app that helps users find the perfect gift based on filters like age, budget, hobbies, and occasion. Includes calendar reminders and a contacts list for organizing ideas."
-          images={[
-            "/figma1.png",
-            "/figma12.png",
-            "/figma13.png",
-            "/figma14.png",
-            "/figma15.png",
-            "/figma16.png",
-            "/figma17.png",
-          ]}
-          slug="figma2"
-        />
+<ProjectBlock
+  title="Travel Planning App"
+  description="A prototype for an app that helps friends plan group trips. Features include destination selection, joint budgets, AI recommendations, and swipe-based decision making for activities."
+  images={[
+    "/figma23.png",
+    "/figma24.png",
+    "/figma25.png",
+    "/figma26.png",
+    "/figma27.png",
+    "/figma28.png",
+    "/figma29.png",
+    "/figma22.png",
+  ]}
+  slug="figma1"
+/>
+
+<ProjectBlock
+  title="Gift Helper"
+  description="A mobile app that helps users find the perfect gift based on filters like age, budget, hobbies, and occasion. Includes calendar reminders and a contacts list for organizing ideas."
+  images={[
+    "/figma1.png",
+    "/figma12.png",
+    "/figma13.png",
+    "/figma14.png",
+    "/figma15.png",
+    "/figma16.png",
+    "/figma17.png",
+  ]}
+  slug="figma2"
+/>
       </div>
     </main>
   );

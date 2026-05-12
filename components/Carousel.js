@@ -80,7 +80,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
   };
 
   const usePad = aspect === "phone" || !tight;
-  const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 10 / 16;
+const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 9 / 16;
   const pad = { width: "100%", paddingTop: `${ratio * 100}%` };
   const fill = {
     position: "absolute",

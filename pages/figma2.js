@@ -149,12 +149,12 @@ export default function Figma2() {
 
           <div className={`${pm.media} ${fm.colMedia}`}>
             <div className={`${pm.frame} ${fm.mediaFrame}`}>
-              {/* ✅ рамка только на большой картинке */}
-              <Carousel
-                images={images}
-                alt="Gift Helper screens"
-                whiteFrameFor={["/figma1.png"]}
-              />
+<Carousel
+  images={images}
+  alt="Gift Helper screens"
+  aspect="phone"
+  whiteFrameFor={["/figma1.png"]}
+/>
             </div>
           </div>
         </section>
@@ -243,7 +243,6 @@ export default function Figma2() {
                   assets.persona1,
                   assets.persona2,
                   assets.persona3,
-                  assets.persona4,
                 ].map((src, i) => (
                   <div key={src} className={fm.uxMediaItem}>
 <ZoomableImage
