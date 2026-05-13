@@ -152,7 +152,7 @@ export default function Figma2() {
 <Carousel
   images={images}
   alt="Gift Helper screens"
-  aspect="phone"
+  tight
   whiteFrameFor={["/figma1.png"]}
 />
             </div>

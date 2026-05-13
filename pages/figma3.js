@@ -666,13 +666,14 @@ export default function Figma3() {
             <div className={fm.likefonPreviewGrid} aria-label="Likefon Figma screenshots">
               {figma3PreviewImages.map((src) => (
                 <figure key={src} className={`${fm.caseImageCard} ${fm.heroPreviewCard}`}>
-                  <Image
-                    src={src}
-                    alt="Likefon Figma project screenshot"
-                    width={1200}
-                    height={760}
-                    priority
-                  />
+<ZoomableImage
+  src={src}
+  alt="Likefon Figma project screenshot"
+  width={1200}
+  height={760}
+  imageClassName={fm.caseZoomImage}
+  priority
+/>
                 </figure>
               ))}
             </div>

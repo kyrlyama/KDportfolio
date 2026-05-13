@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+
 /**
  * Универсальная карусель.
  *
@@ -80,7 +81,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
   };
 
   const usePad = aspect === "phone" || !tight;
-const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 9 / 16;
+const ratio = aspect === "phone" ? 9 / 16 : aspect === "square" ? 1 : 9 / 16;
   const pad = { width: "100%", paddingTop: `${ratio * 100}%` };
   const fill = {
     position: "absolute",
@@ -176,29 +177,30 @@ const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 9 / 16;
 
 
 
-      {usePad ? (
-        <>
-          <div style={pad} />
-          <Image
-            src={currentSrc}
-            alt={alt}
-            fill
-            sizes="(max-width: 480px) 100vw, (max-width: 880px) 90vw, 720px"
-            style={fill}
-            priority={false}
-          />
-        </>
-      ) : (
-        <Image
-          src={currentSrc}
-          alt={alt}
-          width={1600}
-          height={900}
-          sizes="(max-width: 480px) 100vw, (max-width: 880px) 90vw, 720px"
-          style={{ width: "100%", height: "auto", display: "block" }}
-          priority={false}
-        />
-      )}
+{usePad ? (
+  <>
+    <div style={pad} />
+    <Image
+      src={currentSrc}
+      alt={alt}
+      fill
+      sizes="(max-width: 480px) 100vw, (max-width: 880px) 90vw, 720px"
+      style={fill}
+      priority={false}
+    />
+  </>
+) : (
+  <Image
+    src={currentSrc}
+    alt={alt}
+    width={1600}
+    height={900}
+    sizes="(max-width: 480px) 100vw, (max-width: 880px) 90vw, 720px"
+    style={{ width: "100%", height: "auto", display: "block" }}
+    priority={false}
+  />
+)}
+
     </div>
   );
 }

@@ -147,8 +147,9 @@ export default function Figma1() {
 <Carousel
   images={images}
   alt="Figma Travel App screens"
-  aspect="phone"
-/>            </div>
+  tight
+/>  
+</div>
           </div>
         </section>
 

@@ -2130,97 +2130,6 @@
   }
 }
 
-/* In-page image zoom modal used by Figma case-study pages */
-.zoomImageButton {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: inherit;
-  background: transparent;
-  color: inherit;
-  cursor: zoom-in;
-  font: inherit;
-  overflow: hidden;
-}
-
-.zoomImageButton img {
-  transition: transform 180ms ease, filter 180ms ease;
-}
-
-.zoomImageButton:hover img,
-.zoomImageButton:focus-visible img {
-  filter: saturate(1.04) contrast(1.02);
-  transform: scale(1.01);
-}
-
-.zoomImageButton:focus-visible {
-  outline: 3px solid rgba(113, 7, 189, 0.35);
-  outline-offset: 4px;
-}
-
-.imageLightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 5000;
-  display: grid;
-  place-items: center;
-  padding: clamp(14px, 3vw, 34px);
-}
-
-.imageLightboxBackdrop {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: rgba(15, 23, 42, 0.72);
-  cursor: zoom-out;
-}
-
-.imageLightboxPanel {
-  position: relative;
-  z-index: 1;
-  width: min(96vw, 1280px);
-  max-height: 92svh;
-  display: grid;
-  gap: 12px;
-  padding: clamp(12px, 2vw, 20px);
-  border-radius: 24px;
-  background: #fff;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
-}
-
-.imageLightboxClose {
-  justify-self: end;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 999px;
-  background: #111827;
-  color: #fff;
-  cursor: pointer;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.imageLightboxImageWrap {
-  display: grid;
-  max-height: calc(92svh - 96px);
-  place-items: center;
-  overflow: auto;
-  border-radius: 18px;
-  background: #f8fafc;
-}
-
-.imageLightboxImageWrap img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: calc(92svh - 108px);
-  object-fit: contain;
-}
-
 /* Figma 1/2: smaller neutral media previews with in-page zoom */
 .figmaLegacyCase .uxMedia,
 .figmaLegacyCase .uxMediaGrid {
@@ -2386,9 +2295,51 @@
 
 .figmaLegacyCase .uxImage {
   width: 100% !important;
-  max-height: 360px;
-  object-fit: contain;
-  background: #fff;
+  height: auto !important;
+  max-height: 420px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* mobile */
+@media (max-width: 760px) {
+  .imageLightbox {
+    padding: 10px !important;
+  }
+
+  .zoomOutButton {
+    top: 10px !important;
+    right: 10px !important;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 38px !important;
+  }
+
+  .zoomIcon {
+    right: 8px;
+    bottom: 8px;
+    width: 30px;
+    height: 30px;
+    font-size: 21px;
+  }
+
+  .imageLightboxImageWrap img {
+    max-width: 96vw !important;
+    max-height: 82vh !important;
+  }
+
+  .imageLightbox[aria-label*="Empathy"] .imageLightboxImageWrap img,
+  .imageLightbox[aria-label*="Empathy Map"] .imageLightboxImageWrap img {
+    max-width: 98vw !important;
+    max-height: 88vh !important;
+  }
+
+  .likefonCase .caseZoomImage,
+  .likefonCase .designSystemZoomImage,
+  .likefonCase .mainFlowZoomImage,
+  .figmaLegacyCase .uxImage {
+    max-height: 340px !important;
+  }
 }
 
 .likefonCase .imageGallery {
@@ -2452,252 +2403,289 @@
   }
 }
 
-/* === Unified zoomable images for Figma case pages === */
+/* =========================================================
+   FINAL CLEAN IMAGE SYSTEM FOR FIGMA CASE PAGES
+   Keep this block at the very end of Figma.module.css
+   ========================================================= */
 
-.zoomImageButton {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: zoom-in;
+/* ---------- Top carousel previews: figma1 / figma2 ---------- */
+
+.figmaLegacyCase .mediaFrame {
+  width: min(100%, 720px) !important;
+  height: clamp(300px, 34vw, 460px) !important;
+  max-height: 460px !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  display: grid !important;
+  place-items: center !important;
+  margin: 0 auto !important;
+  background: transparent !important;
 }
 
-.zoomImageButton img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
+.figmaLegacyCase .mediaFrame > * {
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.uxMedia,
-.uxMediaItem {
+.figmaLegacyCase .mediaFrame img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* ---------- Content images: figma1 / figma2 ---------- */
+
+.figmaLegacyCase .uxMedia {
+  width: min(100%, 720px) !important;
+  margin: 18px auto 0 !important;
+  overflow: visible !important;
   background: transparent !important;
   border: 0 !important;
+  box-shadow: none !important;
+}
+
+.figmaLegacyCase .uxMediaGrid {
+  width: min(100%, 900px) !important;
+  margin: 18px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.figmaLegacyCase .uxMediaItem {
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.figmaLegacyCase .uxImage {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 390px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
+}
+
+/* ---------- Figma3 previews ---------- */
+
+.likefonCase .caseImageCard {
   overflow: visible !important;
 }
 
-.uxMediaItem {
-  padding: 0 !important;
+.likefonCase .caseImageCard img,
+.likefonCase .caseZoomImage,
+.likefonCase .designSystemZoomImage,
+.likefonCase .mainFlowZoomImage,
+.likefonCase .designSystemFlow .designSystemCardMedia img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 390px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
 }
 
-.imageLightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
+/* ---------- Clickable image button ---------- */
+
+.zoomImageButton {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  cursor: zoom-in !important;
+  overflow: visible !important;
+  font: inherit !important;
+}
+
+.mediaFrame .zoomImageButton {
+  height: 100% !important;
+}
+
+
+.zoomImageButton img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* plus icon on preview */
+.zoomIcon {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
   display: grid;
+  width: 34px;
+  height: 34px;
   place-items: center;
-  padding: clamp(12px, 3vw, 40px);
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.84);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ---------- Opened image lightbox ---------- */
+
+.imageLightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 24px !important;
 }
 
 .imageLightboxBackdrop {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: rgba(0, 0, 0, 0.82);
-  cursor: zoom-out;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  border: 0 !important;
+  background: rgba(0, 0, 0, 0.88) !important;
+  cursor: zoom-out !important;
+}
+
+.zoomOutButton {
+  position: fixed !important;
+  top: 18px !important;
+  right: 18px !important;
+  z-index: 2147483647 !important;
+  display: grid !important;
+  width: 54px !important;
+  height: 54px !important;
+  place-items: center !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 42px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  cursor: zoom-out !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
 }
 
 .imageLightboxPanel {
-  position: relative;
-  z-index: 1;
-  width: min(96vw, 1500px);
-  max-height: 92vh;
-  display: grid;
-  place-items: center;
+  position: relative !important;
+  z-index: 2 !important;
+  display: grid !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  place-items: center !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+  pointer-events: none !important;
 }
 
 .imageLightboxClose {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 10000;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #111827;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  position: fixed !important;
+  top: 18px !important;
+  right: 18px !important;
+  z-index: 2147483647 !important;
+  width: 52px !important;
+  height: 52px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 36px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  display: grid !important;
+  place-items: center !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: auto !important;
 }
 
 .imageLightboxImageWrap {
-  width: 100%;
-  max-height: 92vh;
-  display: grid;
-  place-items: center;
+  display: grid !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  place-items: center !important;
+  overflow: visible !important;
+  background: transparent !important;
+  pointer-events: none !important;
 }
 
 .imageLightboxImageWrap img {
   width: auto !important;
-  max-width: 96vw !important;
   height: auto !important;
-  max-height: 90vh !important;
+  max-width: min(94vw, 1400px) !important;
+  max-height: 86vh !important;
   object-fit: contain !important;
+  object-position: center !important;
   border-radius: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
 }
 
-.caseImageCard .zoomImageButton {
-  background: transparent !important;
-}
-
-.caseImageCard .caseZoomImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
+/* ---------- Mobile ---------- */
 
 @media (max-width: 760px) {
-  .uxMediaGrid {
+  .figmaLegacyCase .mediaFrame {
+    width: 100% !important;
+    height: clamp(240px, 70vw, 380px) !important;
+    max-height: 380px !important;
+  }
+
+  .figmaLegacyCase .uxMediaGrid {
     grid-template-columns: 1fr !important;
   }
 
-  .imageLightbox {
-    padding: 8px;
-  }
-
-  .imageLightboxPanel {
-    width: 100%;
-  }
-
-  .imageLightboxClose {
-    top: 10px;
-    right: 10px;
-  }
-
-  .imageLightboxImageWrap img {
-    max-width: 96vw !important;
-    max-height: 86vh !important;
-  }
+  .figmaLegacyCase .uxImage,
+.likefonCase .caseImageCard .zoomImageButton,
+.likefonCase .designSystemCardMedia .zoomImageButton,
+.likefonCase .mainFlowVisual .zoomImageButton {
+  width: 100% !important;
 }
 
-/* === Large image preview / lightbox === */
 
-.zoomImageButton {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: zoom-in;
-}
-
-.zoomImageButton img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* затемнённый фон */
-.imageLightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-/* клик по фону закрывает картинку */
-.imageLightboxBackdrop {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: rgba(0, 0, 0, 0.86);
-  cursor: zoom-out;
-}
-
-/* убираем рамку/карточку вокруг большой картинки */
-.imageLightboxPanel {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 96vw;
-  height: 100%;
-  max-height: 92vh;
-  display: grid;
-  place-items: center;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* большой видимый крестик */
-.imageLightboxClose {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 100000;
-  width: 48px;
-  height: 48px;
-  border: 0;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #111827;
-  font-size: 34px;
-  line-height: 1;
-  font-weight: 400;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-}
-
-/* контейнер большой картинки */
-.imageLightboxImageWrap {
-  width: 100%;
-  height: 100%;
-  max-width: 96vw;
-  max-height: 90vh;
-  display: grid;
-  place-items: center;
-}
-
-/* сама большая картинка */
-.imageLightboxImageWrap img {
-  width: auto !important;
+.likefonCase .caseZoomImage,
+.likefonCase .designSystemZoomImage,
+.likefonCase .mainFlowZoomImage {
+  display: block !important;
+  width: 100% !important;
   height: auto !important;
-  max-width: 96vw !important;
-  max-height: 90vh !important;
+  max-height: 420px !important;
   object-fit: contain !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  object-position: center !important;
 }
 
-/* чтобы маленькие картинки на странице не получали лишние рамки */
-.uxMedia,
-.uxMediaItem {
-  background: transparent !important;
-  border: 0 !important;
-}
-
-/* mobile */
-@media (max-width: 760px) {
   .imageLightbox {
-    padding: 10px;
+    padding: 10px !important;
   }
 
+  .imageLightbox[aria-label*="Empathy"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Empathy Map"] .imageLightboxImageWrap img {
+  max-width: min(98vw, 1700px) !important;
+  max-height: 92vh !important;
+}
+
   .imageLightboxClose {
-    top: 10px;
-    right: 10px;
-    width: 44px;
-    height: 44px;
-    font-size: 32px;
+    top: 10px !important;
+    right: 10px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 32px !important;
   }
 
   .imageLightboxImageWrap img {
     max-width: 96vw !important;
-    max-height: 86vh !important;
+    max-height: 80vh !important;
   }
 }
