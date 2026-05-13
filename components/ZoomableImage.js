@@ -54,10 +54,6 @@ export default function ZoomableImage({
           style={style}
           priority={priority}
         />
-
-        <span className={fm.zoomIcon} aria-hidden="true">
-          +
-        </span>
       </button>
 
       {isOpen ? (

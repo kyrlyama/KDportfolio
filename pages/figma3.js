@@ -592,13 +592,13 @@ function ImageTopicBlock({ title, description, images, columns = "two", link }) 
       <div className={`${fm.imageGallery} ${columns === "three" ? fm.imageGallery3 : ""}`}>
         {images.map((image) => (
           <figure key={image.src} className={fm.caseImageCard}>
-            <ZoomableImage
-              src={image.src}
-              alt={image.title}
-              width={900}
-              height={620}
-              imageClassName={fm.caseZoomImage}
-            />
+<ZoomableImage
+  src={image.src}
+  alt={image.title}
+  width={1600}
+  height={1100}
+  imageClassName={fm.caseZoomImage}
+/>
             <figcaption>
               <strong>{image.title}</strong>
               <span>{image.description}</span>
@@ -1099,13 +1099,18 @@ export default function Figma3() {
                       </div>
                       {card.image ? (
                         <figure className={fm.designSystemCardMedia}>
-                          <ZoomableImage
-                            src={card.image.src}
-                            alt={card.image.alt}
-                            width={1200}
-                            height={820}
-                            imageClassName={fm.designSystemZoomImage}
-                          />
+<ZoomableImage
+  src={card.image.src}
+  alt={card.image.alt}
+  width={1200}
+  height={820}
+  className={
+    card.title === "Reusable components" || card.title === "Interaction states"
+      ? fm.compactZoomImage
+      : ""
+  }
+  imageClassName={fm.designSystemZoomImage}
+/>
                         </figure>
                       ) : null}
                       <Link href={figmaPrototypeUrl} className={fm.smallFigmaButton}>
