@@ -81,8 +81,8 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
   };
 
   const usePad = aspect === "phone" || !tight;
-const ratio = aspect === "phone" ? 9 / 16 : aspect === "square" ? 1 : 9 / 16;
-  const pad = { width: "100%", paddingTop: `${ratio * 100}%` };
+  const ratio = aspect === "phone" ? 19.5 / 9 : aspect === "square" ? 1 : 10 / 16;
+    const pad = { width: "100%", paddingTop: `${ratio * 100}%` };
   const fill = {
     position: "absolute",
     inset: 0,
@@ -127,6 +127,7 @@ const ratio = aspect === "phone" ? 9 / 16 : aspect === "square" ? 1 : 9 / 16;
       {hasArrows && (
         <>
           <button
+          type="button"
             aria-label="Previous image"
             onClick={prev}
             style={btn("left")}
@@ -140,7 +141,7 @@ const ratio = aspect === "phone" ? 9 / 16 : aspect === "square" ? 1 : 9 / 16;
       )}
 
 
-            {hasArrows ? (
+{hasArrows ? (
         <div
           aria-label="Choose image"
           style={{
@@ -174,7 +175,6 @@ const ratio = aspect === "phone" ? 9 / 16 : aspect === "square" ? 1 : 9 / 16;
           ))}
         </div>
       ) : null}
-
 
 
 {usePad ? (

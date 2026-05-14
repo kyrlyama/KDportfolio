@@ -230,3 +230,174 @@
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   FINAL MOBILE NAV FIX
+   Shorter menu + clear X close icon
+   ========================================================= */
+
+@media (max-width: 880px) {
+  .menuBtn {
+    position: relative !important;
+    z-index: 10003 !important;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32) !important;
+  }
+
+  .menuBtn span {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    display: block !important;
+    width: 24px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    transform-origin: center !important;
+    transition:
+      transform 0.25s ease,
+      opacity 0.2s ease !important;
+  }
+
+  .menuBtn span:nth-child(1) {
+    transform: translate(-50%, -50%) translateY(-7px) !important;
+  }
+
+  .menuBtn span:nth-child(2) {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .menuBtn span:nth-child(3) {
+    transform: translate(-50%, -50%) translateY(7px) !important;
+  }
+
+  .menuOpen span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+  }
+
+  .menuOpen span:nth-child(2) {
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) scaleX(0) !important;
+  }
+
+  .menuOpen span:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg) !important;
+  }
+
+  .overlay {
+    height: min(66svh, 560px) !important;
+    max-height: calc(100svh - var(--nav-h, 60px)) !important;
+    overflow: hidden !important;
+    border-bottom-left-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+  }
+
+  .sheet {
+    height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    align-content: start !important;
+    padding: 14px 12px calc(24px + env(safe-area-inset-bottom)) !important;
+    gap: 8px !important;
+    scrollbar-width: thin;
+  }
+
+  .item {
+    min-width: min(84vw, 400px) !important;
+    padding: 11px 14px !important;
+  }
+}
+/* =========================================================
+   FINAL MOBILE NAV FIX
+   Compact menu + clear X close icon
+   Keep this as the LAST block in NavBar.module.css
+   ========================================================= */
+
+@media (max-width: 880px) {
+  .menuBtn {
+    position: relative !important;
+    z-index: 10003 !important;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32) !important;
+  }
+
+  .menuBtn span {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    display: block !important;
+    width: 24px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    transform-origin: center !important;
+    transition:
+      transform 0.25s ease,
+      opacity 0.2s ease !important;
+  }
+
+  .menuBtn span:nth-child(1) {
+    transform: translate(-50%, -50%) translateY(-7px) !important;
+  }
+
+  .menuBtn span:nth-child(2) {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .menuBtn span:nth-child(3) {
+    transform: translate(-50%, -50%) translateY(7px) !important;
+  }
+
+  .menuOpen span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+  }
+
+  .menuOpen span:nth-child(2) {
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) scaleX(0) !important;
+  }
+
+  .menuOpen span:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg) !important;
+  }
+
+  .overlay {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  .sheet {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: min(58svh, 500px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    background: #111 !important;
+    border-bottom-left-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+
+    align-content: start !important;
+    justify-items: center !important;
+    padding: 12px 12px 18px !important;
+    gap: 7px !important;
+    scrollbar-width: thin;
+  }
+
+  .item {
+    min-width: min(84vw, 400px) !important;
+    padding: 9px 14px !important;
+  }
+}

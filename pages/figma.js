@@ -11,11 +11,11 @@ export default function Figma() {
       <h1 className="pageTitle">Figma</h1>
       <div className={`${pm.container} ${fm.grid}`}>
         <ProjectBlock
-  title="Likefon Marketing Website"
-  description="A Figma case study plan for a marketing website that improves Likefon’s online visibility in Narva, showcases accessories and services, highlights promotions, and turns online searches into offline store visits."
-  images={["/figma3/figma1.png"]}
-  slug="figma3"
-/>
+          title="Likefon Marketing Website"
+          description="A Figma case study plan for a marketing website that improves Likefon’s online visibility in Narva, showcases accessories and services, highlights promotions, and turns online searches into offline store visits."
+          images={["/figma3/figma1.png"]}
+          slug="figma3"
+        />
 
 <ProjectBlock
   title="Travel Planning App"

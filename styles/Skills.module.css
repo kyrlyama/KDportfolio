@@ -1,210 +1,430 @@
-/* Корневой контейнер страницы Skills */
-.skillsPage {
-  min-height: 100vh;
-  padding: 110px 24px 80px; /* ниже навбара */
-  color: #111;
-  position: relative;
-}
-
-/* Обёртка по ширине */
-.wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Верхняя сетка: Tools | Languages | Soft */
-.row {
-  display: grid;
-  grid-template-columns:
-    minmax(420px, 1fr)
-    minmax(340px, 0.7fr)
-    minmax(420px, 1fr);
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-/* Карточки */
-.bigCard {
-  background: #fff;
-  border-radius: 22px;
-  padding: 20px;
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-}
+/* =========================================================
+   FINAL PROFESSIONAL SKILLS PAGE LAYOUT
+   Skills dashboard for frontend / UIUX portfolio
+   ========================================================= */
 
 .fullWidth {
   grid-column: 1 / -1;
 }
 
-.title {
-  margin: 4px 6px 16px;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  color: #111;
-}
-
-/* Базовый грид из двух колонок */
 .grid2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-/* Вариант на одну колонку */
-.oneCol {
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-/* Soft Skills: на мобиле строго 1 колонка */
-.softGrid {
-  grid-template-columns: 1fr 1fr;
-}
-@media (max-width: 820px) {
-  .softGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Малые карточки (иконка + текст) */
 .smallCard {
   width: 100%;
   display: grid;
-  grid-template-columns: 32px 1fr;
+  grid-template-columns: 32px minmax(0, 1fr);
   align-items: center;
   gap: 10px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 12px 14px;
   min-height: 60px;
-  box-shadow:
-    0 6px 16px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #ffffff;
 }
 
-/* Когда нет иконки — одна колонка */
 .singleCell {
   grid-template-columns: 1fr;
   min-height: 64px;
 }
 
-/* Иконка тулзы */
 .iconBox {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
   display: grid;
   place-items: center;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #f2f7ff 0%,
-    #eef1ff 60%,
-    #f7ecff 100%
-  );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
 }
 
-/* Базовый текст в карточках */
 .smallText {
+  color: #222;
   font-size: 15px;
   line-height: 1.4;
-  color: #222;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word; /* переносим по словам */
-  hyphens: none;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
+  overflow-wrap: break-word;
 }
 
-/* ===== Languages: одна строка «Язык — Уровень» ===== */
 .langList {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 12px;
 }
+
 .langRow {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
-  white-space: nowrap; /* вся строка не переносится */
+  white-space: nowrap;
 }
+
 .langName,
 .langLevel,
 .langSep {
   display: inline-block;
 }
+
 .langSep {
-  opacity: 0.9;
+  opacity: 0.75;
 }
 
-/* ===== Soft Skills: стиль, как у Technologies ===== */
-.softCard {
-  background: #fff;
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  display: block; /* не grid — как lineCard */
+.softGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+.softCard {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
 .softText {
+  color: #222;
   font-size: 15.5px;
   line-height: 1.45;
-  color: #222;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word; /* перенос только по словам */
-  hyphens: none;
+  overflow-wrap: break-word;
 }
 
-/* Секции-списки (Technologies, Approaches) */
-.listStack {
+.lineCard {
+  padding: 14px 16px;
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+.lead {
+  font-weight: 900;
+}
+
+.lineText {
+  color: #374151;
+}
+
+.skillsPage {
+  min-height: 100svh;
+  padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
+    clamp(14px, 3vw, 34px)
+    calc(88px + env(safe-area-inset-bottom)) !important;
+  color: #111827;
+  overflow-x: hidden;
+}
+
+.wrap {
+  max-width: clamp(1180px, 92vw, 1560px) !important;
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 24px;
+  padding: clamp(28px, 4vw, 52px);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(31, 82, 201, 0.12), transparent 34%),
+    linear-gradient(145deg, #ffffff, #f8fbff);
+  border: 1px solid rgba(31, 82, 201, 0.08);
+  box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
+}
+
+.eyebrow {
+  width: max-content;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eaf3ff;
+  color: #1f52c9;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  max-width: 900px;
+  margin: 0;
+  color: #111827;
+  font-size: clamp(34px, 4.4vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+}
+
+.heroLead {
+  max-width: 820px;
+  margin: 16px 0 0;
+  color: #374151;
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.7;
+}
+
+.coreGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.coreCard,
+.bigCard,
+.techCard,
+.lineCard {
+  background: #ffffff !important;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  box-shadow: 0 14px 38px rgba(17, 24, 39, 0.07);
+}
+
+.coreCard {
+  padding: 22px;
+  border-radius: 24px;
+}
+
+.coreCard h2 {
+  margin: 0 0 10px;
+  color: #1f52c9;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.coreCard p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.65;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tagRow span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #eaf3ff;
+  color: #1f52c9;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.row {
+  display: grid !important;
+  grid-template-columns: minmax(420px, 1.1fr) minmax(260px, 0.65fr) minmax(360px, 0.95fr) !important;
+  gap: 28px !important;
+  margin: 0 !important;
+  align-items: stretch !important;
+}
+
+.bigCard {
+  border-radius: 26px !important;
+  padding: 22px !important;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.cardHeader span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.title {
+  margin: 0 !important;
+  color: #111827 !important;
+  font-size: 22px !important;
+  line-height: 1.15;
+  font-weight: 900 !important;
+}
+
+.smallCard,
+.softCard {
+  border: 1px solid rgba(31, 82, 201, 0.08);
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.05) !important;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.smallCard:hover,
+.softCard:hover,
+.techCard:hover,
+.lineCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08) !important;
+}
+
+.iconBox {
+  background: #eaf3ff !important;
+}
+
+.langName {
+  font-weight: 900;
+  color: #111827;
+}
+
+.langLevel {
+  color: #1f52c9;
+  font-weight: 900;
+}
+
+.softCard {
+  background: linear-gradient(180deg, #ffffff, #f8fbff) !important;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.techCard {
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.techCard h3 {
+  margin: 0 0 8px;
+  color: #1f52c9;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.techCard p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.65;
+}
+
+.approachGrid {
   display: grid;
   gap: 12px;
 }
 
 .lineCard {
-  background: #fff;
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  font-size: 15.5px;
-  line-height: 1.45;
-  color: #222;
+  border-radius: 16px !important;
 }
 
-/* Выделение лид-части строки */
 .lead {
-  font-weight: 800;
-  color: #111;
-}
-.lineText {
-  color: #222;
+  color: #111827 !important;
 }
 
-/* ====== Адаптив ====== */
-@media (max-width: 980px) {
+.lineText {
+  color: #374151 !important;
+}
+
+@media (max-width: 1100px) {
+  .coreGrid,
   .row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .techGrid {
     grid-template-columns: 1fr;
-  } /* блоки столбцом */
+  }
 }
 
 @media (max-width: 640px) {
-  /* Tools & Software: 1 колонка — карточки широкие */
-  .grid2 {
-    grid-template-columns: 1fr;
+  .skillsPage {
+    padding-inline: 12px !important;
+    padding-top: calc(var(--nav-h, 60px) + 16px + env(safe-area-inset-top)) !important;
   }
+
+  .hero,
+  .bigCard,
+  .coreCard {
+    border-radius: 20px !important;
+    padding: 16px !important;
+  }
+
+  .heroTitle {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+  .heroLead {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .cardHeader {
+    display: grid;
+    gap: 4px;
+  }
+
+  .grid2,
+  .softGrid,
+  .techGrid {
+    grid-template-columns: 1fr !important;
+  }
+
   .smallCard {
-    grid-template-columns: 40px 1fr;
-    min-height: 64px;
-    padding: 13px 16px;
+    grid-template-columns: 40px 1fr !important;
   }
-  .iconBox {
-    width: 40px;
-    height: 40px;
+
+  .singleCell {
+    grid-template-columns: 1fr !important;
   }
-  .smallText {
-    font-size: 16px;
+}
+
+.wrap {
+  display: grid !important;
+  gap: 28px !important;
+}
+
+.hero,
+.coreGrid,
+.row,
+.bigCard.fullWidth {
+  margin: 0 !important;
+}
+
+.coreGrid {
+  display: grid !important;
+  gap: 28px !important;
+}
+
+.row {
+  display: grid !important;
+  gap: 28px !important;
+}
+
+.grid2,
+.langList,
+.softGrid,
+.techGrid,
+.approachGrid {
+  gap: 16px !important;
+}
+
+.bigCard {
+  min-width: 0 !important;
+}
+
+@media (max-width: 1100px) {
+  .row,
+  .coreGrid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    gap: 20px !important;
+  }
+
+  .row,
+  .coreGrid {
+    gap: 20px !important;
+  }
+
+  .grid2,
+  .langList,
+  .softGrid,
+  .techGrid,
+  .approachGrid {
+    gap: 14px !important;
   }
 }

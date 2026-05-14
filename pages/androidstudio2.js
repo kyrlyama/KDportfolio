@@ -1,17 +1,15 @@
 import Link from "next/link";
 
 import Carousel from "@/components/Carousel";
-import fm from "@/styles/Figma.module.css";
+import a from "@/styles/AndroidStudio.module.css";
 import pm from "@/styles/Project.module.css";
 
 export default function AndroidStudio2() {
   return (
-    <main className={fm.page}>
-      <div className={`${pm.container} ${fm.containerWide}`}>
-        {/* Один в один макет figma2: широкая горизонтальная карточка */}
-        <section className={`${pm.card} ${fm.androidLike}`}>
-          {/* слева — текст */}
-          <div className={`${pm.text} ${fm.colText}`}>
+<main className={a.page}>
+  <div className={a.container}>
+    <section className={a.cardRow}>
+      <div className={a.colText}>
             <h1 className={pm.title}>Calculator — Android Studio App</h1>
 
             <p className={pm.p}>
@@ -44,19 +42,18 @@ export default function AndroidStudio2() {
             </Link>
           </div>
 
-          {/* справа — медиа в той же панорамной рамке */}
-          <div className={`${pm.media} ${fm.colMedia}`}>
-            <div className={`${pm.frame} ${fm.mediaFrame}`}>
-              <Carousel
-                images={[
-                  "/androidstudio2.png",
-                  "/androidstudio22.png",
-                  "/androidstudio23.png",
-                  "/androidstudio24.png",
-                ]}
-                alt="Calculator — Android Studio App screenshots"
-                aspect="landscape"
-              />
+<div className={a.cardMedia}>
+  <div className={a.media}>
+<Carousel
+  images={[
+    "/androidstudio2.png",
+    "/androidstudio22.png",
+    "/androidstudio23.png",
+    "/androidstudio24.png",
+  ]}
+  alt="Calculator — Android Studio App screenshots"
+  aspect="phone"
+/>
             </div>
           </div>
         </section>

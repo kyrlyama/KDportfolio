@@ -105,8 +105,8 @@ const paletteTone = {
 
 export default function Figma2() {
   return (
-    <main className={`${fm.page} ${fm.figmaLegacyCase}`}>
-      <div className={`${pm.container} ${fm.containerWide}`}>
+<main className={`${fm.page} ${fm.figmaLegacyCase}`}>
+        <div className={`${pm.container} ${fm.containerWide}`}>
         {/* === TOP CARD (prototype + carousel + figma link) === */}
         <section className={`${pm.card} ${fm.androidLike}`}>
           <div className={`${pm.text} ${fm.colText}`}>
@@ -152,7 +152,7 @@ export default function Figma2() {
 <Carousel
   images={images}
   alt="Gift Helper screens"
-  tight
+  aspect="square"
   whiteFrameFor={["/figma1.png"]}
 />
             </div>

@@ -25,6 +25,14 @@ const projects = [
       "Website for cleaning services in Tallinn. Built during 3rd year of study.",
     images: ["/project1.png", "/project12.png", "/project13.png"],
   },
+
+    {
+    title: "Practical experience",
+    slug: "project4",
+    description: "Store inventory management web app for Likefon internship.",
+    images: ["/project4.png", "/project41.png", "/project42.png"],
+  },
+
   {
     title: "Welcome to the world space!",
     slug: "project2",
@@ -44,12 +52,6 @@ const projects = [
     description:
       "Year 2 project. Based on your answers, a musician is selected from the library.",
     images: ["/project3.png", "/project31.png", "/project32.png"],
-  },
-  {
-    title: "Practical experience",
-    slug: "project4",
-    description: "Store inventory management web app for Likefon internship.",
-    images: ["/project4.png", "/project41.png", "/project42.png"],
   },
 ];
 

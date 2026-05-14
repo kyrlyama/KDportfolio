@@ -100,7 +100,7 @@ const paletteTone = {
 export default function Figma1() {
   return (
     <main className={`${fm.page} ${fm.figmaLegacyCase}`}>
-       <div className={`${pm.container} ${fm.containerWide}`}>
+      <div className={`${pm.container} ${fm.containerWide}`}>
         {/* === TOP CARD (prototype + carousel + figma link) === */}
         <section className={`${pm.card} ${fm.androidLike}`}>
           <div className={`${pm.text} ${fm.colText}`}>

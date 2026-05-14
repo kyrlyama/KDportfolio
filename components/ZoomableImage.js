@@ -26,7 +26,6 @@ export default function ZoomableImage({
     };
 
     document.addEventListener("keydown", handleKeyDown);
-
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -57,38 +56,24 @@ export default function ZoomableImage({
       </button>
 
       {isOpen ? (
-        <div
-          className={fm.imageLightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-label={alt}
-        >
+        <div className={fm.imageLightbox} role="dialog" aria-modal="true" aria-label={alt}>
           <button
             type="button"
             className={fm.imageLightboxBackdrop}
             onClick={() => setIsOpen(false)}
             aria-label="Close image preview"
           />
-
-          <button
-            type="button"
-            className={fm.zoomOutButton}
-            onClick={() => setIsOpen(false)}
-            aria-label="Close image preview"
-          >
-            −
-          </button>
-
           <div className={fm.imageLightboxPanel}>
+            <button
+              type="button"
+              className={fm.imageLightboxClose}
+              onClick={() => setIsOpen(false)}
+              aria-label="Close image preview"
+            >
+              ×
+            </button>
             <div className={fm.imageLightboxImageWrap}>
-              <Image
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                sizes="100vw"
-                priority
-              />
+              <Image src={src} alt={alt} width={width} height={height} />
             </div>
           </div>
         </div>

@@ -1055,3 +1055,375 @@
   display: grid;
   gap: 10px;
 }
+
+/* =========================================================
+   UI/UX Case Palette & Tone — same visual style as Figma Travel App
+   Keep this block at the very end of UiuxCase.module.css
+   ========================================================= */
+
+.section:has(.paletteGrid) {
+  background: #ffffff !important;
+  border-radius: 26px !important;
+  padding: clamp(22px, 3vw, 32px) !important;
+  box-shadow: 0 18px 45px rgba(31, 35, 46, 0.08) !important;
+}
+
+.section:has(.paletteGrid) .sectionParagraph {
+  margin-bottom: 22px !important;
+  color: #2f2f2f !important;
+  font-size: clamp(16px, 1.6vw, 20px) !important;
+  line-height: 1.55 !important;
+}
+
+/* Color cards */
+.section:has(.paletteGrid) .paletteGrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 18px 0 24px !important;
+}
+
+.section:has(.paletteGrid) .colorCard {
+  display: grid !important;
+  grid-template-columns: 68px minmax(0, 1fr) !important;
+  gap: 16px !important;
+  align-items: center !important;
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(113, 7, 189, 0.14) !important;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04) !important;
+}
+
+.section:has(.paletteGrid) .swatch {
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(17, 24, 39, 0.12) !important;
+  box-shadow: none !important;
+}
+
+.section:has(.paletteGrid) .colorMeta {
+  min-width: 0 !important;
+  display: grid !important;
+  gap: 6px !important;
+}
+
+.section:has(.paletteGrid) .colorTop {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+}
+
+.section:has(.paletteGrid) .colorName {
+  color: #7107bd !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+}
+
+.section:has(.paletteGrid) .colorHex {
+  color: #111827 !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  letter-spacing: 0.03em !important;
+  opacity: 0.85 !important;
+}
+
+.section:has(.paletteGrid) .colorUsage {
+  color: #2f2f2f !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+  opacity: 1 !important;
+}
+
+/* Scheme */
+.section:has(.paletteGrid) .uxH3 {
+  margin: 20px 0 10px !important;
+  color: #7107bd !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+}
+
+.section:has(.paletteGrid) .uxList {
+  margin: 0 0 20px !important;
+  padding-left: 18px !important;
+  color: #111827 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Typography + Tools cards */
+.section:has(.paletteGrid) .metaGrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 20px 0 22px !important;
+}
+
+.section:has(.paletteGrid) .metaCard {
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(113, 7, 189, 0.14) !important;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04) !important;
+}
+
+.section:has(.paletteGrid) .metaTitle {
+  margin: 0 0 8px !important;
+  color: #7107bd !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+
+.section:has(.paletteGrid) .metaText {
+  margin: 0 !important;
+  color: #2f2f2f !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  opacity: 1 !important;
+}
+
+/* Emotional intent cards */
+.section:has(.paletteGrid) .emotionsGrid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin-top: 14px !important;
+}
+
+.section:has(.paletteGrid) .emotionCard {
+  padding: 18px 20px !important;
+  border-radius: 18px !important;
+  background: rgba(254, 237, 255, 0.44) !important;
+  border: 1px solid rgba(113, 7, 189, 0.14) !important;
+  box-shadow: none !important;
+}
+
+.section:has(.paletteGrid) .emotionTitle {
+  margin: 0 0 10px !important;
+  color: #7107bd !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+.section:has(.paletteGrid) .emotionList {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  color: #111827 !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  opacity: 1 !important;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .section:has(.paletteGrid) .paletteGrid,
+  .section:has(.paletteGrid) .metaGrid,
+  .section:has(.paletteGrid) .emotionsGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section:has(.paletteGrid) .colorCard {
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+    padding: 12px !important;
+  }
+
+  .section:has(.paletteGrid) .swatch {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .section:has(.paletteGrid) .colorTop {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL ARCHITECTURE ALIGNMENT FOR UI/UX CASE PAGES
+   Make UIUX case pages closer to Figma 3 layout concept
+   ========================================================= */
+
+.page {
+  padding: calc(var(--nav-h, 60px) + 26px + env(safe-area-inset-top))
+    clamp(16px, 3vw, 34px)
+    calc(88px + env(safe-area-inset-bottom)) !important;
+}
+
+.container {
+  max-width: clamp(1180px, 92vw, 1560px) !important;
+  gap: 28px !important;
+}
+
+.heroCard {
+  margin-top: clamp(24px, 3vw, 44px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr) !important;
+  gap: clamp(28px, 4vw, 54px) !important;
+  align-items: center !important;
+  min-height: clamp(420px, 34vw, 640px) !important;
+  padding: clamp(26px, 3.5vw, 44px) !important;
+  border-radius: 28px !important;
+  background: #ffffff !important;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, 0.1) !important;
+}
+
+.heroMedia {
+  width: 100% !important;
+  height: clamp(260px, 28vw, 430px) !important;
+  border-radius: 24px !important;
+  background: #ffffff !important;
+}
+
+.heroText {
+  max-width: 720px !important;
+  gap: 14px !important;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 54px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.lead {
+  font-size: clamp(16px, 1.35vw, 19px) !important;
+  line-height: 1.7 !important;
+}
+
+.body {
+  max-width: clamp(1180px, 92vw, 1560px) !important;
+  display: grid !important;
+  grid-template-columns: 220px minmax(0, 1fr) !important;
+  gap: clamp(24px, 3vw, 36px) !important;
+  align-items: start !important;
+}
+
+.toc {
+  position: sticky !important;
+  top: calc(var(--nav-h, 60px) + 18px) !important;
+  align-self: start !important;
+  padding: 18px !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08) !important;
+}
+
+.toc h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.toc ul {
+  display: grid !important;
+  gap: 8px !important;
+}
+
+.toc a {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  color: #1d1d1d !important;
+}
+
+.sections {
+  display: grid !important;
+  gap: 24px !important;
+}
+
+.section {
+  padding: clamp(22px, 3vw, 34px) !important;
+  border-radius: 24px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(17, 24, 39, 0.06) !important;
+  box-shadow: 0 14px 36px rgba(17, 24, 39, 0.07) !important;
+}
+
+.sectionTitle,
+.section h2 {
+  font-size: clamp(24px, 2.4vw, 34px) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 12px !important;
+}
+
+.sectionParagraph,
+.section p,
+.section li {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+.sectionSplit {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) !important;
+  gap: 22px !important;
+}
+
+.miniCard,
+.colorCard,
+.metaCard,
+.emotionCard {
+  border-radius: 16px !important;
+}
+
+.btn {
+  border-radius: 999px !important;
+}
+
+@media (max-width: 980px) {
+  .heroCard {
+    grid-template-columns: 1fr !important;
+    min-height: unset !important;
+  }
+
+  .body {
+    grid-template-columns: 1fr !important;
+  }
+
+  .toc {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .toc ul {
+    display: none !important;
+  }
+
+  .tocMobile {
+    display: grid !important;
+  }
+
+  .sectionSplit {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding-inline: 12px !important;
+  }
+
+  .heroCard,
+  .section,
+  .toc {
+    border-radius: 18px !important;
+    padding: 16px !important;
+  }
+
+  .heroMedia {
+    height: 220px !important;
+  }
+
+  .paletteGrid,
+  .metaGrid,
+  .emotionsGrid,
+  .imageGrid,
+  .compareGrid,
+  .mediaGrid,
+  .mockupGrid {
+    grid-template-columns: 1fr !important;
+  }
+}

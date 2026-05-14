@@ -96,6 +96,12 @@ export default function Home() {
         />
       </div>
 
+      <div className={styles.introText}>
+  <p className={styles.eyebrow}>Portfolio</p>
+  <h1>Kristina Dunajeva</h1>
+  <p>Frontend Developer &amp; UI/UX Designer</p>
+</div>
+
       {/* 4 главных круга */}
       <FloatingBubble
         label="Websites"

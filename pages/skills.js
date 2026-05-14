@@ -4,17 +4,16 @@ import Image from "next/image";
 import styles from "@/styles/Skills.module.css";
 
 export default function Skills() {
-  /* ==== ДАННЫЕ ==== */
   const TOOLS = [
     { img: "/tools/figma.png", title: "Figma" },
     { img: "/tools/photoshop.png", title: "Photoshop" },
     { img: "/tools/illustrator.png", title: "Illustrator" },
     { img: "/tools/affinity.png", title: "Affinity" },
-    { img: "/tools/vscode.png", title: "VS\u00A0Code" },
-    { img: "/tools/github.png", title: "Git &\u00A0GitHub" },
+    { img: "/tools/vscode.png", title: "VS Code" },
+    { img: "/tools/github.png", title: "Git & GitHub" },
     { img: "/tools/xampp.png", title: "XAMPP" },
-    { img: "/tools/dockerdesktop.png", title: "Docker\u00A0Desktop" },
-    { img: "/tools/wix.png", title: "Wix / Google\u00A0Sites" },
+    { img: "/tools/dockerdesktop.png", title: "Docker Desktop" },
+    { img: "/tools/wix.png", title: "Wix / Google Sites" },
     { img: "/tools/chatgpt.png", title: "ChatGPT" },
     { img: "/tools/androidstudio.png", title: "Android Studio" },
     { img: "/tools/canva.png", title: "Canva" },
@@ -23,7 +22,7 @@ export default function Skills() {
   ];
 
   const LANGS = [
-    { name: "Russian", level: "native" },
+    { name: "Russian", level: "Native" },
     { name: "English", level: "B2" },
     { name: "Estonian", level: "A2" },
   ];
@@ -46,15 +45,15 @@ export default function Skills() {
     },
     {
       lead: "Backend & Databases",
-      text: "Node.js (basics, project launch, API), MySQL (creating and working with databases, queries), JSON (working with data, Fetch API)",
+      text: "Node.js basics, API project launch, MySQL databases and queries, JSON, Fetch API",
     },
     {
       lead: "Mobile Development",
-      text: "Android Studio, Java / Kotlin (basic level, calculator, translator app)",
+      text: "Android Studio, Java / Kotlin basics, calculator and translator app projects",
     },
     {
       lead: "Version Control & Deployment",
-      text: "Git, GitHub (publication of projects, open source code)",
+      text: "Git, GitHub, publishing projects, working with repositories and project versions",
     },
     {
       lead: "Design & Prototyping",
@@ -62,7 +61,7 @@ export default function Skills() {
     },
     {
       lead: "Other Tools",
-      text: "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix (creating websites without code, practical assignments)",
+      text: "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix, Notepad++",
     },
   ];
 
@@ -75,19 +74,66 @@ export default function Skills() {
     "Usability Testing — validating ideas with users and iterating designs.",
     "Design Systems & UI Guidelines — ensuring consistency across the product.",
     "Microinteractions & Chatbot Flows — focusing on details that improve user experience.",
-    "MVC Pattern (Model–View–Controller) — separating business logic, UI, and data for clean and scalable design. (was disclosed in the diploma)",
+    "MVC Pattern — separating business logic, UI, and data for cleaner and more scalable design.",
+  ];
+
+  const CORE = [
+    {
+      title: "Frontend development",
+      text: "Building responsive pages, interactive UI, forms, galleries, filters, and project case layouts.",
+      tags: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
+    },
+    {
+      title: "UI/UX design",
+      text: "Creating user flows, wireframes, prototypes, design systems, and case-study presentations.",
+      tags: ["Figma", "User flows", "Wireframes", "Prototypes"],
+    },
+    {
+      title: "Data & logic",
+      text: "Working with JSON, Fetch API, localStorage, filtering, validation, and basic database logic.",
+      tags: ["JSON", "Fetch API", "localStorage", "MySQL"],
+    },
   ];
 
   return (
-    <div className={styles.skillsPage}>
+    <main className={styles.skillsPage}>
       <div className={styles.wrap}>
-        {/* Ряд 1: Tools, Languages, Soft Skills */}
+        <section className={styles.hero}>
+          <p className={styles.eyebrow}>Skills overview</p>
+          <h1 className={styles.heroTitle}>
+            Frontend, UI/UX and practical product-building skills
+          </h1>
+          <p className={styles.heroLead}>
+            I combine frontend development with UI/UX thinking: building
+            responsive interfaces, structuring content, prototyping user flows,
+            and turning design ideas into working web pages.
+          </p>
+        </section>
+
+        <section className={styles.coreGrid}>
+          {CORE.map((item) => (
+            <article key={item.title} className={styles.coreCard}>
+              <h2>{item.title}</h2>
+              <p>{item.text}</p>
+              <div className={styles.tagRow}>
+                {item.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
+
         <div className={styles.row}>
           <section className={styles.bigCard}>
-            <h2 className={styles.title}>Tools &amp; Software</h2>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.title}>Tools & Software</h2>
+              <span>{TOOLS.length} tools</span>
+            </div>
+
             <div className={styles.grid2}>
-              {TOOLS.map((t, i) => (
-                <div key={i} className={styles.smallCard}>
+              {TOOLS.map((t) => (
+                <div key={t.title} className={styles.smallCard}>
                   <div className={styles.iconBox}>
                     <Image
                       src={t.img}
@@ -103,11 +149,15 @@ export default function Skills() {
           </section>
 
           <section className={styles.bigCard}>
-            <h2 className={styles.title}>Languages</h2>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.title}>Languages</h2>
+              <span>Communication</span>
+            </div>
+
             <div className={styles.langList}>
-              {LANGS.map((l, i) => (
+              {LANGS.map((l) => (
                 <div
-                  key={i}
+                  key={l.name}
                   className={`${styles.smallCard} ${styles.singleCell}`}
                 >
                   <div className={styles.langRow}>
@@ -121,12 +171,14 @@ export default function Skills() {
           </section>
 
           <section className={styles.bigCard}>
-            <h2 className={styles.title}>Soft Skills</h2>
+            <div className={styles.cardHeader}>
+              <h2 className={styles.title}>Soft Skills</h2>
+              <span>Work style</span>
+            </div>
 
-            {/* тот же визуальный стиль, что и в Technologies */}
             <div className={`${styles.grid2} ${styles.softGrid}`}>
-              {SOFT.map((t, i) => (
-                <div key={i} className={styles.softCard}>
+              {SOFT.map((t) => (
+                <div key={t} className={styles.softCard}>
                   <div className={styles.softText}>{t}</div>
                 </div>
               ))}
@@ -134,39 +186,41 @@ export default function Skills() {
           </section>
         </div>
 
-        {/* Ряд 2: Technologies */}
-        <section
-          className={`${styles.bigCard} ${styles.fullWidth}`}
-          style={{ marginBottom: 44 }}
-        >
-          <h2 className={styles.title}>Technologies</h2>
-          <div className={styles.listStack}>
-            {TECHNOLOGIES.map((it, i) => (
-              <div key={i} className={styles.lineCard}>
-                <span className={styles.lead}>{it.lead}</span>
-                <span className={styles.lineText}> — {it.text}</span>
-              </div>
+        <section className={`${styles.bigCard} ${styles.fullWidth}`}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.title}>Technologies</h2>
+            <span>Development stack</span>
+          </div>
+
+          <div className={styles.techGrid}>
+            {TECHNOLOGIES.map((it) => (
+              <article key={it.lead} className={styles.techCard}>
+                <h3>{it.lead}</h3>
+                <p>{it.text}</p>
+              </article>
             ))}
           </div>
         </section>
 
-        {/* Ряд 3: Design Approaches */}
         <section className={`${styles.bigCard} ${styles.fullWidth}`}>
-          <h2 className={styles.title}>Design Approaches</h2>
-          <div className={styles.listStack}>
-            {APPROACHES.map((txt, i) => (
-              <div key={i} className={styles.lineCard}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.title}>Design Approaches</h2>
+            <span>UX process</span>
+          </div>
+
+          <div className={styles.approachGrid}>
+            {APPROACHES.map((txt) => (
+              <article key={txt} className={styles.lineCard}>
                 {highlightLead(txt)}
-              </div>
+              </article>
             ))}
           </div>
         </section>
       </div>
-    </div>
+    </main>
   );
 }
 
-/* Выделение лид-части строки «Lead — текст» */
 function highlightLead(str) {
   const [lead, rest] = str.split(" — ");
   return (

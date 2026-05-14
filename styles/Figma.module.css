@@ -2075,6 +2075,25 @@
 }
 
 /* Click-to-zoom image behavior and row layout for Likefon design-system artifacts */
+.zoomImageLink {
+  display: block;
+  cursor: zoom-in;
+}
+
+.zoomImageLink img {
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.zoomImageLink:hover img {
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.01);
+}
+
+.likefonCase .mainFlowVisual .zoomImageLink,
+.likefonCase .caseImageCard .zoomImageLink,
+.likefonCase .designSystemCardMedia .zoomImageLink {
+  width: 100%;
+}
 
 .likefonCase .designSystemFlow {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2109,6 +2128,97 @@
   .likefonCase .designSystemFlow {
     grid-template-columns: 1fr;
   }
+}
+
+/* In-page image zoom modal used by Figma case-study pages */
+.zoomImageButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: zoom-in;
+  font: inherit;
+  overflow: hidden;
+}
+
+.zoomImageButton img {
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.zoomImageButton:hover img,
+.zoomImageButton:focus-visible img {
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.01);
+}
+
+.zoomImageButton:focus-visible {
+  outline: 3px solid rgba(113, 7, 189, 0.35);
+  outline-offset: 4px;
+}
+
+.imageLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 34px);
+}
+
+.imageLightboxBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 23, 42, 0.72);
+  cursor: zoom-out;
+}
+
+.imageLightboxPanel {
+  position: relative;
+  z-index: 1;
+  width: min(96vw, 1280px);
+  max-height: 92svh;
+  display: grid;
+  gap: 12px;
+  padding: clamp(12px, 2vw, 20px);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+}
+
+.imageLightboxClose {
+  justify-self: end;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.imageLightboxImageWrap {
+  display: grid;
+  max-height: calc(92svh - 96px);
+  place-items: center;
+  overflow: auto;
+  border-radius: 18px;
+  background: #f8fafc;
+}
+
+.imageLightboxImageWrap img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(92svh - 108px);
+  object-fit: contain;
 }
 
 /* Figma 1/2: smaller neutral media previews with in-page zoom */
@@ -2162,6 +2272,15 @@
   justify-content: center;
   margin-top: 10px;
   text-align: center;
+}
+
+.likefonCase .caseZoomImage,
+.likefonCase .designSystemZoomImage,
+.likefonCase .mainFlowZoomImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 760px) {
@@ -2234,6 +2353,12 @@
     border-radius: 18px;
   }
 
+  .imageLightboxClose {
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+  }
+
   .imageLightboxImageWrap,
   .imageLightboxImageWrap img {
     max-height: calc(94svh - 78px);
@@ -2261,37 +2386,9 @@
 
 .figmaLegacyCase .uxImage {
   width: 100% !important;
-  height: auto !important;
-  max-height: 420px !important;
-  object-fit: contain !important;
-  object-position: center !important;
-}
-
-/* mobile */
-@media (max-width: 760px) {
-  .imageLightbox {
-    padding: 10px !important;
-  }
-
-  .zoomOutButton {
-    top: 10px !important;
-    right: 10px !important;
-    width: 48px !important;
-    height: 48px !important;
-    font-size: 38px !important;
-  }
-
-  .imageLightboxImageWrap img {
-    max-width: 96vw !important;
-    max-height: 82vh !important;
-  }
-
-  .imageLightbox[aria-label*="Empathy"] .imageLightboxImageWrap img,
-  .imageLightbox[aria-label*="Empathy Map"] .imageLightboxImageWrap img {
-    max-width: 98vw !important;
-    max-height: 88vh !important;
-  }
-
+  max-height: 360px;
+  object-fit: contain;
+  background: #fff;
 }
 
 .likefonCase .imageGallery {
@@ -2355,83 +2452,298 @@
   }
 }
 
+/* Static Likefon hero preview: no zoom/click behavior */
+.staticHeroPreview,
+.staticHeroPreview img {
+  cursor: default !important;
+}
+
+.staticHeroPreview img {
+  transform: none !important;
+  filter: none !important;
+}
+
 /* =========================================================
-   FINAL CLEAN IMAGE SYSTEM FOR FIGMA CASE PAGES
-   Keep this block at the very end of Figma.module.css
+   FINAL FIGMA 3 MOBILE LAYOUT FIX
+   Put this at the very end of Figma.module.css
    ========================================================= */
 
-/* ---------- Top carousel previews: figma1 / figma2 ---------- */
+@media (max-width: 760px) {
+  .likefonCase {
+    width: 100%;
+    overflow-x: hidden !important;
+  }
 
-.figmaLegacyCase .mediaFrame {
-  width: min(100%, 720px) !important;
-  height: clamp(300px, 34vw, 460px) !important;
-  max-height: 460px !important;
-  aspect-ratio: auto !important;
-  overflow: hidden !important;
-  display: grid !important;
-  place-items: center !important;
-  margin: 0 auto !important;
-  background: transparent !important;
+  .likefonCase .containerWide {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-inline: 12px !important;
+  }
+
+  .likefonCase .uxLayout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .likefonCase .uxContent,
+  .likefonCase .uxCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .likefonCase .uxCard {
+    padding: 14px !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+
+  .likefonCase .contents {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .likefonCase .contentsNav {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .likefonCase .contentsLink,
+  .likefonCase .contentsBackButton {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+
+  .likefonCase .factGrid,
+  .likefonCase .audienceGrid,
+  .likefonCase .twoColGrid,
+  .likefonCase .cardGrid3,
+  .likefonCase .hypothesisGrid,
+  .likefonCase .insightGrid,
+  .likefonCase .requirementGrid,
+  .likefonCase .stateGrid,
+  .likefonCase .imageGallery,
+  .likefonCase .imageGallery3,
+  .likefonCase .journeyStack,
+  .likefonCase .designHeroGrid,
+  .likefonCase .designSystemGrid,
+  .likefonCase .componentPreviewPanel,
+  .likefonCase .componentPreviewBoard,
+  .likefonCase .futureAssetsGrid,
+  .likefonCase .designSystemFlow,
+  .likefonCase .prototypePreviewGrid,
+  .likefonCase .mainFlowInfoGrid,
+  .likefonCase .flowBottomGrid,
+  .likefonCase .heroOverviewGrid,
+  .likefonCase .techGrid,
+  .likefonCase .developmentGrid,
+  .likefonCase .seoGrid,
+  .likefonCase .finalPolishGrid,
+  .likefonCase .colorSystem,
+  .likefonCase .colorSwatches {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .likefonCase .typeScaleItem,
+  .likefonCase .decisionRow {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .likefonCase .caseImageCard,
+  .likefonCase .heroPreviewCard,
+  .likefonCase .designIntroCard,
+  .likefonCase .designSystemCard,
+  .likefonCase .typographyPanel,
+  .likefonCase .componentPreviewPanel,
+  .likefonCase .futureAssetsBox,
+  .likefonCase .factCard,
+  .likefonCase .audienceCard,
+  .likefonCase .storyCard,
+  .likefonCase .hypothesisCard,
+  .likefonCase .insightMiniCard,
+  .likefonCase .requirementCard,
+  .likefonCase .stateCard,
+  .likefonCase .journeyCard,
+  .likefonCase .deliverable,
+  .likefonCase .colorGroup,
+  .likefonCase .mainFlowVisual,
+  .likefonCase .prototypePreviewCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .likefonCase img,
+  .likefonCase svg,
+  .likefonCase video,
+  .likefonCase canvas {
+    max-width: 100% !important;
+  }
+
+  .likefonCase img {
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .likefonCase .caseImageCard img,
+  .likefonCase .designSystemCardMedia img,
+  .likefonCase .mainFlowVisual img,
+  .likefonCase .heroPreviewCard img,
+  .likefonCase .prototypePreviewCard img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 360px !important;
+    object-fit: contain !important;
+  }
+
+  .likefonCase .tableWrap,
+  .likefonCase .architectureTree {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .likefonCase .summaryTable,
+  .likefonCase .journeyTable {
+    min-width: 640px !important;
+  }
+
+  .likefonCase .uxH2 {
+    font-size: clamp(22px, 7vw, 30px) !important;
+    line-height: 1.15 !important;
+  }
+
+  .likefonCase .uxH3,
+  .likefonCase .imageTopicHeader h3 {
+    font-size: clamp(18px, 5.6vw, 23px) !important;
+    line-height: 1.2 !important;
+  }
+
+  .likefonCase p,
+  .likefonCase li,
+  .likefonCase figcaption,
+  .likefonCase .uxP,
+  .likefonCase .compactList {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .likefonCase .heroButtonRow {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .likefonCase .heroButtonRow a {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
 }
 
-.figmaLegacyCase .mediaFrame > * {
-  width: 100% !important;
-  height: 100% !important;
+  .likefonCase .summaryTable,
+  .likefonCase .journeyTable {
+    min-width: 620px;
+  }
+
+  /* =========================================================
+   FINAL FIGMA 1/2 PALETTE & TONE MOBILE FIX
+   Put this after the Figma 3 mobile fix
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .figmaLegacyCase .paletteGrid,
+  .figmaLegacyCase .metaGrid,
+  .figmaLegacyCase .emotionsGrid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .figmaLegacyCase .colorCard,
+  .figmaLegacyCase .metaCard,
+  .figmaLegacyCase .emotionCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .figmaLegacyCase .colorCard {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    align-items: start !important;
+  }
+
+  .figmaLegacyCase .swatch {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+  }
+
+  .figmaLegacyCase .colorMeta {
+    min-width: 0 !important;
+  }
+
+  .figmaLegacyCase .colorTop {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+  }
+
+  .figmaLegacyCase .colorName,
+  .figmaLegacyCase .colorHex,
+  .figmaLegacyCase .colorUsage,
+  .figmaLegacyCase .metaText,
+  .figmaLegacyCase .emotionList {
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .figmaLegacyCase .colorUsage,
+  .figmaLegacyCase .metaText {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .figmaLegacyCase .emotionTitle {
+    font-size: 16px !important;
+  }
+
+  .figmaLegacyCase .emotionList {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding-left: 18px !important;
+  }
 }
 
-.figmaLegacyCase .mediaFrame img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-}
-
-/* ---------- Content images: figma1 / figma2 ---------- */
-
-.figmaLegacyCase .uxMedia {
-  width: min(100%, 720px) !important;
-  margin: 18px auto 0 !important;
-  overflow: visible !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-.figmaLegacyCase .uxMediaGrid {
-  width: min(100%, 900px) !important;
-  margin: 18px auto 0 !important;
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 16px !important;
-}
-
-.figmaLegacyCase .uxMediaItem {
-  overflow: visible !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-.figmaLegacyCase .uxImage {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 390px !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  background: transparent !important;
-}
-
-/* ---------- Clickable image button ---------- */
-
-.zoomImageButton img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
-  object-position: center !important;
-}
-
-/* ---------- Opened image lightbox ---------- */
+/* =========================================================
+   FINAL IMAGE LIGHTBOX SIZE FIX FOR ALL FIGMA PAGES
+   Bigger image, no huge empty white panel
+   Keep this at the very end of Figma.module.css
+   ========================================================= */
 
 .imageLightbox {
   position: fixed !important;
@@ -2439,7 +2751,7 @@
   z-index: 2147483647 !important;
   display: grid !important;
   place-items: center !important;
-  padding: 24px !important;
+  padding: 18px !important;
 }
 
 .imageLightboxBackdrop {
@@ -2447,8 +2759,69 @@
   inset: 0 !important;
   z-index: 1 !important;
   border: 0 !important;
-  background: rgba(0, 0, 0, 0.88) !important;
+  background: rgba(0, 0, 0, 0.82) !important;
   cursor: zoom-out !important;
+}
+
+.imageLightboxPanel {
+  position: relative !important;
+  z-index: 2 !important;
+  display: grid !important;
+  place-items: center !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 90vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.imageLightboxImageWrap {
+  display: grid !important;
+  place-items: center !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 90vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.imageLightboxImageWrap img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 88vh !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Make very wide research boards / maps use more screen space */
+.imageLightbox[aria-label*="Persona"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Journey"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Map"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Scenario"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Story"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="wireframe"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Wireframe"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="architecture"] .imageLightboxImageWrap img,
+.imageLightbox[aria-label*="Architecture"] .imageLightboxImageWrap img {
+  max-width: 98vw !important;
+  max-height: 90vh !important;
 }
 
 .zoomOutButton {
@@ -2457,137 +2830,237 @@
   right: 18px !important;
   z-index: 2147483647 !important;
   display: grid !important;
-  width: 54px !important;
-  height: 54px !important;
+  width: 52px !important;
+  height: 52px !important;
   place-items: center !important;
   border: 0 !important;
   border-radius: 999px !important;
   background: #ffffff !important;
   color: #111827 !important;
-  font-size: 42px !important;
+  font-size: 40px !important;
   font-weight: 600 !important;
   line-height: 1 !important;
   cursor: zoom-out !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: auto !important;
 }
-
-.imageLightboxPanel {
-  position: relative !important;
-  z-index: 2 !important;
-  display: grid !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
-  place-items: center !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  pointer-events: none !important;
-}
-
-.imageLightboxImageWrap {
-  display: grid !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
-  place-items: center !important;
-  overflow: visible !important;
-  background: transparent !important;
-  pointer-events: none !important;
-}
-
-.imageLightboxImageWrap img {
-  width: auto !important;
-  height: auto !important;
-  max-width: min(94vw, 1400px) !important;
-  max-height: 86vh !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* ---------- Mobile ---------- */
 
 @media (max-width: 760px) {
-  .figmaLegacyCase .mediaFrame {
-    width: 100% !important;
-    height: clamp(240px, 70vw, 380px) !important;
-    max-height: 380px !important;
+  .imageLightbox {
+    padding: 8px !important;
   }
 
-  .figmaLegacyCase .uxMediaGrid {
+  .imageLightboxPanel,
+  .imageLightboxImageWrap {
+    max-width: 98vw !important;
+    max-height: 88vh !important;
+  }
+
+  .imageLightboxImageWrap img {
+    max-width: 98vw !important;
+    max-height: 84vh !important;
+  }
+
+  .zoomOutButton {
+    top: 10px !important;
+    right: 10px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 36px !important;
+  }
+}
+
+/* =========================================================
+   FINAL ARCHITECTURE ALIGNMENT FOR FIGMA 1/2
+   Make legacy Figma cases closer to Figma 3 layout concept
+   ========================================================= */
+
+.figmaLegacyCase {
+  overflow-x: hidden;
+}
+
+.figmaLegacyCase .containerWide {
+  max-width: clamp(1180px, 92vw, 1560px) !important;
+  padding-inline: clamp(18px, 3vw, 34px) !important;
+}
+
+.figmaLegacyCase .androidLike {
+  margin: clamp(28px, 4vw, 54px) 0 clamp(26px, 3vw, 42px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr) !important;
+  gap: clamp(28px, 4vw, 54px) !important;
+  align-items: center !important;
+  min-height: clamp(460px, 38vw, 680px) !important;
+  padding: clamp(26px, 3.5vw, 44px) !important;
+  border-radius: 28px !important;
+  background: #ffffff !important;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, 0.1) !important;
+}
+
+.figmaLegacyCase .colText {
+  max-width: 620px !important;
+}
+
+.figmaLegacyCase .colMedia {
+  width: 100% !important;
+}
+
+.figmaLegacyCase .mediaFrame {
+  width: 100% !important;
+  max-width: 760px !important;
+  margin-inline: auto !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+}
+
+.figmaLegacyCase .uxLayout {
+  display: grid !important;
+  grid-template-columns: 220px minmax(0, 1fr) !important;
+  gap: clamp(24px, 3vw, 36px) !important;
+  align-items: start !important;
+  margin-top: 28px !important;
+}
+
+.figmaLegacyCase .contents {
+  position: sticky !important;
+  top: calc(var(--nav-h, 60px) + 18px) !important;
+  align-self: start !important;
+  padding: 18px !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08) !important;
+}
+
+.figmaLegacyCase .contentsTitle {
+  margin-bottom: 12px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.figmaLegacyCase .contentsNav {
+  display: grid !important;
+  gap: 8px !important;
+}
+
+.figmaLegacyCase .contentsLink {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  color: #1d1d1d !important;
+}
+
+.figmaLegacyCase .uxContent {
+  display: grid !important;
+  gap: 24px !important;
+}
+
+.figmaLegacyCase .uxCard {
+  padding: clamp(22px, 3vw, 34px) !important;
+  border-radius: 24px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(17, 24, 39, 0.06) !important;
+  box-shadow: 0 14px 36px rgba(17, 24, 39, 0.07) !important;
+}
+
+.figmaLegacyCase .uxH2 {
+  font-size: clamp(24px, 2.4vw, 34px) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 12px !important;
+}
+
+.figmaLegacyCase .uxP,
+.figmaLegacyCase .uxList {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+.figmaLegacyCase .uxMedia,
+.figmaLegacyCase .uxMediaGrid {
+  margin-top: 18px !important;
+}
+
+@media (max-width: 980px) {
+  .figmaLegacyCase .androidLike {
+    grid-template-columns: 1fr !important;
+    min-height: unset !important;
+  }
+
+  .figmaLegacyCase .uxLayout {
     grid-template-columns: 1fr !important;
   }
 
-  .imageLightbox {
-    padding: 10px !important;
+  .figmaLegacyCase .contents {
+    position: relative !important;
+    top: auto !important;
   }
-
-  .imageLightbox[aria-label*="Empathy"] .imageLightboxImageWrap img,
-.imageLightbox[aria-label*="Empathy Map"] .imageLightboxImageWrap img {
-  max-width: min(98vw, 1700px) !important;
-  max-height: 92vh !important;
 }
 
-  .imageLightboxImageWrap img {
-    max-width: 96vw !important;
-    max-height: 80vh !important;
+@media (max-width: 760px) {
+  .figmaLegacyCase .containerWide {
+    padding-inline: 12px !important;
+  }
+
+  .figmaLegacyCase .androidLike,
+  .figmaLegacyCase .uxCard,
+  .figmaLegacyCase .contents {
+    border-radius: 18px !important;
+    padding: 16px !important;
+  }
+
+  .figmaLegacyCase .uxMediaGrid,
+  .figmaLegacyCase .paletteGrid,
+  .figmaLegacyCase .metaGrid,
+  .figmaLegacyCase .emotionsGrid {
+    grid-template-columns: 1fr !important;
   }
 }
 
 
 /* =========================================================
-   FINAL UNIFIED ZOOM SIZE
-   Same opened size for all zoomable images
+   FINAL FIGMA 1/2 HERO CAROUSEL IMAGE FIX
+   Do not crop images in the first hero block
    ========================================================= */
 
-.imageLightboxImageWrap img {
-  width: auto !important;
+.figmaLegacyCase .androidLike .mediaFrame {
+  width: 100% !important;
+  max-width: 760px !important;
   height: auto !important;
-  max-width: min(94vw, 1400px) !important;
-  max-height: 86vh !important;
+  min-height: 420px !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+  display: grid !important;
+  place-items: center !important;
+  background: transparent !important;
+}
+
+.figmaLegacyCase .androidLike .mediaFrame > div {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 420px !important;
+  overflow: visible !important;
+}
+
+.figmaLegacyCase .androidLike .mediaFrame img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 520px !important;
   object-fit: contain !important;
   object-position: center !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* =========================================================
-   Smaller opened zoom only for Reusable components and Interaction states
-   Keep this at the very end of Figma.module.css
-   ========================================================= */
-
-.smallZoomImage + .imageLightbox .imageLightboxImageWrap img {
-  max-width: min(72vw, 900px) !important;
-  max-height: 68vh !important;
+  display: block !important;
 }
 
 @media (max-width: 760px) {
-  .smallZoomImage + .imageLightbox .imageLightboxImageWrap img {
-    max-width: 92vw !important;
-    max-height: 68vh !important;
+  .figmaLegacyCase .androidLike .mediaFrame {
+    min-height: 300px !important;
+    max-width: 100% !important;
   }
-}
 
-/* Compact opened zoom for selected Figma 3 design-system images */
-.compactZoomImage + .imageLightbox .imageLightboxImageWrap img {
-  max-width: min(68vw, 820px) !important;
-  max-height: 62vh !important;
-}
-
-@media (max-width: 760px) {
-  .compactZoomImage + .imageLightbox .imageLightboxImageWrap img {
-    max-width: 90vw !important;
-    max-height: 62vh !important;
+  .figmaLegacyCase .androidLike .mediaFrame > div {
+    min-height: 300px !important;
   }
-}
 
-.compactZoomImage + .imageLightbox .imageLightboxImageWrap img {
-  max-width: min(60vw, 720px) !important;
-  max-height: 58vh !important;
+  .figmaLegacyCase .androidLike .mediaFrame img {
+    max-height: 360px !important;
+  }
 }
