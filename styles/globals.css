@@ -307,7 +307,7 @@ html {
 
 /* меньше картинок/эффектов при экономии трафика */
 @media (prefers-reduced-data: reduce) {
-  .bubblesLayer :global(.bubbleSm) {
+  .bubblesLayer .bubbleSm {
     display: none;
   } /* пример: убрали мелкий декор */
 }
@@ -444,4 +444,55 @@ body {
   .section {
     width: 100%;
   }
+}
+
+/* Senior UI/UX case pages use the same background language as the rest of the portfolio. */
+.seniorCase {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(900px 620px at 6% 6%, rgba(185, 211, 255, 0.52), transparent 58%),
+    radial-gradient(820px 620px at 92% 12%, rgba(255, 214, 230, 0.52), transparent 58%),
+    radial-gradient(760px 560px at 48% 46%, rgba(229, 201, 255, 0.38), transparent 62%),
+    radial-gradient(
+      1200px 800px at 50% -10%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(240, 246, 255, 0.9) 45%,
+      rgba(242, 230, 255, 0.85) 75%,
+      rgba(255, 236, 243, 0.85) 100%
+    ) !important;
+  background-attachment: fixed !important;
+}
+
+.seniorCase::before,
+.seniorCase::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(62px);
+  opacity: 0.46;
+  pointer-events: none;
+}
+
+.seniorCase::before {
+  width: 440px;
+  height: 440px;
+  top: 40px;
+  left: -90px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #b9d3ff 35%, #e5c9ff 70%, #ffd6e6 100%);
+}
+
+.seniorCase::after {
+  width: 380px;
+  height: 380px;
+  top: 22%;
+  right: -80px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #bfe1ff 35%, #dbcbff 70%, #ffe6ef 100%);
+}
+
+.seniorCase > * {
+  position: relative;
+  z-index: 1;
 }
