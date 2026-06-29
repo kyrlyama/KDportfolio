@@ -5,6 +5,7 @@ import styles from "@/styles/Project.module.css";
 import Websites from "./websites";
 import AndroidStudio from "./android_studio";
 import Figma from "./figma";
+import UiuxCases from "./uiux/index";
 import Illustrator from "./illustrator";
 
 export default function Projects() {
@@ -12,6 +13,7 @@ export default function Projects() {
   const ActiveProjects =
     active === "Android" ? AndroidStudio :
     active === "Figma" ? Figma :
+    active === "UI/UX" ? UiuxCases :
     active === "Illustrator" ? Illustrator :
     Websites;
 
