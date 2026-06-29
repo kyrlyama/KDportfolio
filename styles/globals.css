@@ -307,9 +307,9 @@ html {
 
 /* меньше картинок/эффектов при экономии трафика */
 @media (prefers-reduced-data: reduce) {
-  .bubblesLayer :global(.bubbleSm) {
-    display: none;
-  } /* пример: убрали мелкий декор */
+.bubblesLayer .bubbleSm {
+  display: none;
+}
 }
 
 /* поддержка высокой контрастности (Windows/Android) */
