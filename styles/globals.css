@@ -305,17 +305,10 @@ html {
   }
 }
 
-/* меньше картинок/эффектов при экономии трафика */
 @media (prefers-reduced-data: reduce) {
-<<<<<<< HEAD
-.bubblesLayer .bubbleSm {
-  display: none;
-}
-=======
   .bubblesLayer .bubbleSm {
     display: none;
-  } /* пример: убрали мелкий декор */
->>>>>>> 3dd180cdf4569b41f86554842fa8e36aed60479b
+  }
 }
 
 /* поддержка высокой контрастности (Windows/Android) */
