@@ -51,21 +51,16 @@ export default function NavBar() {
       active: (p) => p.startsWith("/skills"),
     },
     {
-      href: "/websites",
-      label: "Websites",
-      active: (p) => p.startsWith("/websites") || p.startsWith("/project"),
-    },
-    {
-      href: "/android_studio",
-      label: "Android",
-      active: (p) => p.startsWith("/android_studio"),
-    },
-    { href: "/figma", label: "Figma", active: (p) => p.startsWith("/figma") },
-    { href: "/uiux", label: "UI/UX", active: (p) => p.startsWith("/uiux") },
-    {
-      href: "/illustrator",
-      label: "Illustrator",
-      active: (p) => p.startsWith("/illustrator"),
+      href: "/projects",
+      label: "Projects",
+      active: (p) =>
+        p.startsWith("/projects") ||
+        p.startsWith("/websites") ||
+        p.startsWith("/android_studio") ||
+        p.startsWith("/figma") ||
+        p.startsWith("/uiux") ||
+        p.startsWith("/illustrator") ||
+        p.startsWith("/project"),
     },
     {
       href: "/contacts",
