@@ -9,13 +9,14 @@ import UiuxCases from "./uiux/index";
 import Illustrator from "./illustrator";
 
 export default function Projects() {
-  const [active, setActive] = useState("Websites");
+  const [active, setActive] = useState(null);
   const ActiveProjects =
+    active === "Websites" ? Websites :
     active === "Android" ? AndroidStudio :
     active === "Figma" ? Figma :
     active === "UI/UX" ? UiuxCases :
     active === "Illustrator" ? Illustrator :
-    Websites;
+    null;
 
   return (
     <main className={styles.page}>
@@ -27,9 +28,11 @@ export default function Projects() {
         <ProjectOrbit active={active} onChange={setActive} />
       </section>
 
-      <section style={{ marginTop: 24 }} aria-live="polite">
-        <ActiveProjects />
-      </section>
+      {ActiveProjects && (
+        <section style={{ marginTop: 24 }} aria-live="polite">
+          <ActiveProjects />
+        </section>
+      )}
     </main>
   );
 }
