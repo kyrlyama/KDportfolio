@@ -11,6 +11,55 @@ const cleaningScreens = [
   { src: "/project13.png", alt: "Cleaning website booking screen" },
 ];
 
+const heroCarouselStyle = {
+  position: "relative",
+  height: 320,
+  borderRadius: 22,
+  overflow: "hidden",
+  background: "#fff",
+};
+
+const heroButtonStyle = {
+  position: "relative",
+  display: "block",
+  width: "100%",
+  height: "100%",
+  border: 0,
+  padding: 0,
+  background: "transparent",
+  cursor: "zoom-in",
+};
+
+const zoomHintStyle = {
+  position: "absolute",
+  right: 14,
+  bottom: 14,
+  padding: "8px 12px",
+  borderRadius: 999,
+  background: "rgba(255,255,255,.88)",
+  color: "#111827",
+  fontSize: 12,
+  fontWeight: 800,
+  boxShadow: "0 10px 24px rgba(0,0,0,.12)",
+};
+
+const arrowBaseStyle = {
+  position: "absolute",
+  top: "50%",
+  width: 42,
+  height: 42,
+  borderRadius: "50%",
+  border: 0,
+  background: "rgba(255,255,255,.9)",
+  color: "#111827",
+  fontSize: 28,
+  lineHeight: 1,
+  boxShadow: "0 10px 24px rgba(0,0,0,.14)",
+  cursor: "pointer",
+  transform: "translateY(-50%)",
+  zIndex: 2,
+};
+
 function ImageGrid({ images, onSelect, variant }) {
   if (!images || images.length === 0) return null;
 
@@ -41,10 +90,10 @@ function HeroCarousel({ images, onOpen }) {
   const image = images[current];
 
   return (
-    <div className={styles.caseHeroCarousel}>
+    <div style={heroCarouselStyle}>
       <button
         type="button"
-        className={styles.caseHeroImageButton}
+        style={heroButtonStyle}
         onClick={() => onOpen(images, current, "Cleaning website screens")}
       >
         <Image
@@ -55,32 +104,54 @@ function HeroCarousel({ images, onOpen }) {
           className={styles.heroImage}
           priority
         />
-        <span className={styles.zoomHint}>Zoom</span>
+        <span style={zoomHintStyle}>Zoom</span>
       </button>
 
       <button
         type="button"
-        className={`${styles.caseHeroArrow} ${styles.caseHeroPrev}`}
+        style={{ ...arrowBaseStyle, left: 14 }}
         onClick={() => setCurrent((value) => (value - 1 + images.length) % images.length)}
         aria-label="Previous image"
       >
         ‹
       </button>
+
       <button
         type="button"
-        className={`${styles.caseHeroArrow} ${styles.caseHeroNext}`}
+        style={{ ...arrowBaseStyle, right: 14 }}
         onClick={() => setCurrent((value) => (value + 1) % images.length)}
         aria-label="Next image"
       >
         ›
       </button>
 
-      <div className={styles.caseHeroDots}>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          bottom: 14,
+          display: "flex",
+          gap: 8,
+          padding: "7px 10px",
+          borderRadius: 999,
+          background: "rgba(255,255,255,.82)",
+          transform: "translateX(-50%)",
+          zIndex: 2,
+        }}
+      >
         {images.map((item, index) => (
           <button
             key={item.src}
             type="button"
-            className={index === current ? styles.caseHeroDotActive : styles.caseHeroDot}
+            style={{
+              width: index === current ? 24 : 8,
+              height: 8,
+              border: 0,
+              borderRadius: 999,
+              padding: 0,
+              background: index === current ? "#111827" : "#94a3b8",
+              cursor: "pointer",
+            }}
             onClick={() => setCurrent(index)}
             aria-label={`Show image ${index + 1}`}
           />
@@ -150,13 +221,8 @@ function ModalCarousel({ images, index, onClose, title }) {
   const [zoom, setZoom] = useState(1);
   const total = images?.length ?? 0;
 
-  useEffect(() => {
-    setCurrent(index ?? 0);
-  }, [index]);
-
-  useEffect(() => {
-    setZoom(1);
-  }, [current]);
+  useEffect(() => setCurrent(index ?? 0), [index]);
+  useEffect(() => setZoom(1), [current]);
 
   useEffect(() => {
     if (!total) return undefined;
@@ -178,10 +244,20 @@ function ModalCarousel({ images, index, onClose, title }) {
         role="dialog"
         aria-modal="true"
         aria-label={title || "Image preview"}
-        className={styles.zoomModal}
         onClick={(event) => event.stopPropagation()}
+        style={{
+          width: "min(96vw, 1440px)",
+          height: "min(88vh, 920px)",
+          display: "grid",
+          gridTemplateRows: "auto 1fr auto",
+          gap: 12,
+          background: "#fff",
+          borderRadius: 24,
+          padding: 16,
+          boxShadow: "0 28px 90px rgba(0,0,0,.35)",
+        }}
       >
-        <div className={styles.zoomToolbar}>
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 8 }}>
           <button type="button" onClick={() => setZoom((value) => Math.max(1, value - 0.25))}>−</button>
           <span>{Math.round(zoom * 100)}%</span>
           <button type="button" onClick={() => setZoom((value) => Math.min(3, value + 0.25))}>+</button>
@@ -193,15 +269,9 @@ function ModalCarousel({ images, index, onClose, title }) {
             <button type="button" onClick={() => setCurrent((value) => (value - 1 + total) % total)} aria-label="Previous image" className={styles.modalArrow}>‹</button>
           ) : null}
 
-          <div className={styles.zoomModalImage}>
-            <div className={styles.zoomCanvas} style={{ width: `${zoom * 100}%` }}>
-              <Image
-                src={image.src}
-                alt={image.alt || "Selected image"}
-                width={2200}
-                height={1500}
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
+          <div style={{ width: "100%", height: "100%", overflow: "auto", borderRadius: 18, background: "#f8fafc" }}>
+            <div style={{ width: `${zoom * 100}%`, minWidth: "100%", margin: "0 auto" }}>
+              <Image src={image.src} alt={image.alt || "Selected image"} width={2200} height={1500} style={{ width: "100%", height: "auto", display: "block" }} />
             </div>
           </div>
 
@@ -210,9 +280,7 @@ function ModalCarousel({ images, index, onClose, title }) {
           ) : null}
         </div>
 
-        <div className={styles.modalFooter}>
-          <span className={styles.modalCounter}>{current + 1} / {total}</span>
-        </div>
+        <div className={styles.modalFooter}><span className={styles.modalCounter}>{current + 1} / {total}</span></div>
       </div>
     </div>
   );
@@ -222,6 +290,7 @@ export default function UiuxCasePage({ uiuxCase }) {
   const [modalIndex, setModalIndex] = useState(null);
   const [modalImages, setModalImages] = useState([]);
   const [modalTitle, setModalTitle] = useState("");
+  const sections = useMemo(() => uiuxCase?.sections || [], [uiuxCase]);
 
   const openModal = (images, index, title) => {
     setModalImages(images || []);
@@ -235,16 +304,7 @@ export default function UiuxCasePage({ uiuxCase }) {
     setModalTitle("");
   };
 
-  const sections = useMemo(() => uiuxCase?.sections || [], [uiuxCase]);
-
-  if (!uiuxCase) {
-    return (
-      <main className={styles.page}>
-        <p>Case not found.</p>
-        <Link href="/uiux" className={styles.btn}>← Back</Link>
-      </main>
-    );
-  }
+  if (!uiuxCase) return <main className={styles.page}><p>Case not found.</p><Link href="/uiux" className={styles.btn}>← Back</Link></main>;
 
   const toc = sections.filter((s) => s?.id && s?.title).map((s) => ({ id: s.id, label: s.title }));
   const isCleaning = uiuxCase.slug === "cleaning-website";
@@ -260,14 +320,11 @@ export default function UiuxCasePage({ uiuxCase }) {
               <Image src={uiuxCase.heroImage.src} alt={uiuxCase.heroImage.alt || uiuxCase.title} fill sizes="(max-width: 900px) 100vw, 420px" className={styles.heroImage} priority />
             </div>
           ) : null}
-
           <div className={styles.heroText}>
             {uiuxCase.label ? <p className={styles.kicker}>{uiuxCase.label}</p> : null}
             <h1 className={styles.title}>{uiuxCase.title}</h1>
             {uiuxCase.subtitle ? <p className={styles.lead}>{uiuxCase.subtitle}</p> : null}
-            {uiuxCase.buttons?.length ? (
-              <div className={styles.actionsRow}>{uiuxCase.buttons.map((b) => <Link key={b.href} href={b.href} className={styles.btn}>{b.label}</Link>)}</div>
-            ) : null}
+            {uiuxCase.buttons?.length ? <div className={styles.actionsRow}>{uiuxCase.buttons.map((b) => <Link key={b.href} href={b.href} className={styles.btn}>{b.label}</Link>)}</div> : null}
           </div>
         </section>
 
@@ -277,18 +334,11 @@ export default function UiuxCasePage({ uiuxCase }) {
             <ul>{toc.map((s) => <li key={s.id}><a href={`#${s.id}`}>{s.label}</a></li>)}</ul>
             <div className={styles.tocActions}><Link href="/uiux" className={styles.btn}>← Back</Link></div>
           </aside>
-
           <div className={styles.sections}>
             {uiuxCase.summary ? <section className={styles.section}><h2>Overview</h2><p className={styles.sectionParagraph}>{uiuxCase.summary}</p></section> : null}
-            {sections.map((section) => (
-              <section key={section.id || section.title} id={section.id} className={styles.section}>
-                <h2 className={styles.sectionTitle}>{section.title}</h2>
-                <SectionContent section={section} onSelect={(index) => openModal(section.images, index, section.title)} />
-              </section>
-            ))}
+            {sections.map((section) => <section key={section.id || section.title} id={section.id} className={styles.section}><h2 className={styles.sectionTitle}>{section.title}</h2><SectionContent section={section} onSelect={(index) => openModal(section.images, index, section.title)} /></section>)}
           </div>
         </div>
-
         {modalIndex !== null ? <ModalCarousel images={modalImages} index={modalIndex} onClose={closeModal} title={modalTitle} /> : null}
       </div>
     </main>
