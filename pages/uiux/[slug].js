@@ -2,9 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-import SeniorUiuxCase from "@/components/SeniorUiuxCase";
 import { getUiuxCase, uiuxCases } from "@/data/uiuxCases";
 import styles from "@/styles/UiuxCase.module.css";
+
+const cleaningScreens = [
+  { src: "/project1.png", alt: "Cleaning website home screen" },
+  { src: "/project12.png", alt: "Cleaning website services screen" },
+  { src: "/project13.png", alt: "Cleaning website booking screen" },
+];
 
 function ImageGrid({ images, onSelect, variant }) {
   if (!images || images.length === 0) return null;
@@ -27,6 +32,60 @@ function ImageGrid({ images, onSelect, variant }) {
           />
         </button>
       ))}
+    </div>
+  );
+}
+
+function HeroCarousel({ images, onOpen }) {
+  const [current, setCurrent] = useState(0);
+  const image = images[current];
+
+  return (
+    <div className={styles.caseHeroCarousel}>
+      <button
+        type="button"
+        className={styles.caseHeroImageButton}
+        onClick={() => onOpen(images, current, "Cleaning website screens")}
+      >
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes="(max-width: 900px) 100vw, 420px"
+          className={styles.heroImage}
+          priority
+        />
+        <span className={styles.zoomHint}>Zoom</span>
+      </button>
+
+      <button
+        type="button"
+        className={`${styles.caseHeroArrow} ${styles.caseHeroPrev}`}
+        onClick={() => setCurrent((value) => (value - 1 + images.length) % images.length)}
+        aria-label="Previous image"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        className={`${styles.caseHeroArrow} ${styles.caseHeroNext}`}
+        onClick={() => setCurrent((value) => (value + 1) % images.length)}
+        aria-label="Next image"
+      >
+        ›
+      </button>
+
+      <div className={styles.caseHeroDots}>
+        {images.map((item, index) => (
+          <button
+            key={item.src}
+            type="button"
+            className={index === current ? styles.caseHeroDotActive : styles.caseHeroDot}
+            onClick={() => setCurrent(index)}
+            aria-label={`Show image ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -88,11 +147,16 @@ function SectionContent({ section, onSelect }) {
 
 function ModalCarousel({ images, index, onClose, title }) {
   const [current, setCurrent] = useState(index ?? 0);
+  const [zoom, setZoom] = useState(1);
   const total = images?.length ?? 0;
 
   useEffect(() => {
     setCurrent(index ?? 0);
   }, [index]);
+
+  useEffect(() => {
+    setZoom(1);
+  }, [current]);
 
   useEffect(() => {
     if (!total) return undefined;
@@ -110,16 +174,45 @@ function ModalCarousel({ images, index, onClose, title }) {
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
-      <div role="dialog" aria-modal="true" aria-label={title || "Image preview"} className={styles.modal} onClick={(event) => event.stopPropagation()}>
-        <button type="button" onClick={onClose} aria-label="Close preview" className={styles.modalClose}>✕</button>
-        <div className={styles.modalBody}>
-          <button type="button" onClick={() => setCurrent((value) => (value - 1 + total) % total)} aria-label="Previous image" className={styles.modalArrow}>‹</button>
-          <div className={styles.modalImage}>
-            <Image src={image.src} alt={image.alt || "Selected image"} width={1800} height={1100} style={{ width: "100%", height: "auto", display: "block" }} />
-          </div>
-          <button type="button" onClick={() => setCurrent((value) => (value + 1) % total)} aria-label="Next image" className={styles.modalArrow}>›</button>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={title || "Image preview"}
+        className={styles.zoomModal}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className={styles.zoomToolbar}>
+          <button type="button" onClick={() => setZoom((value) => Math.max(1, value - 0.25))}>−</button>
+          <span>{Math.round(zoom * 100)}%</span>
+          <button type="button" onClick={() => setZoom((value) => Math.min(3, value + 0.25))}>+</button>
+          <button type="button" onClick={onClose} aria-label="Close preview">✕</button>
         </div>
-        <div className={styles.modalFooter}><span className={styles.modalCounter}>{current + 1} / {total}</span></div>
+
+        <div className={styles.modalBody}>
+          {total > 1 ? (
+            <button type="button" onClick={() => setCurrent((value) => (value - 1 + total) % total)} aria-label="Previous image" className={styles.modalArrow}>‹</button>
+          ) : null}
+
+          <div className={styles.zoomModalImage}>
+            <div className={styles.zoomCanvas} style={{ width: `${zoom * 100}%` }}>
+              <Image
+                src={image.src}
+                alt={image.alt || "Selected image"}
+                width={2200}
+                height={1500}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
+          </div>
+
+          {total > 1 ? (
+            <button type="button" onClick={() => setCurrent((value) => (value + 1) % total)} aria-label="Next image" className={styles.modalArrow}>›</button>
+          ) : null}
+        </div>
+
+        <div className={styles.modalFooter}>
+          <span className={styles.modalCounter}>{current + 1} / {total}</span>
+        </div>
       </div>
     </div>
   );
@@ -129,10 +222,6 @@ export default function UiuxCasePage({ uiuxCase }) {
   const [modalIndex, setModalIndex] = useState(null);
   const [modalImages, setModalImages] = useState([]);
   const [modalTitle, setModalTitle] = useState("");
-
-  if (uiuxCase?.slug === "cleaning-website") {
-    return <SeniorUiuxCase caseId="cleaning" />;
-  }
 
   const openModal = (images, index, title) => {
     setModalImages(images || []);
@@ -158,16 +247,20 @@ export default function UiuxCasePage({ uiuxCase }) {
   }
 
   const toc = sections.filter((s) => s?.id && s?.title).map((s) => ({ id: s.id, label: s.title }));
+  const isCleaning = uiuxCase.slug === "cleaning-website";
 
   return (
     <main className={styles.page}>
       <div className={styles.container}>
         <section className={styles.heroCard}>
-          {uiuxCase.heroImage?.src ? (
+          {isCleaning ? (
+            <HeroCarousel images={cleaningScreens} onOpen={openModal} />
+          ) : uiuxCase.heroImage?.src ? (
             <div className={styles.heroMedia}>
               <Image src={uiuxCase.heroImage.src} alt={uiuxCase.heroImage.alt || uiuxCase.title} fill sizes="(max-width: 900px) 100vw, 420px" className={styles.heroImage} priority />
             </div>
           ) : null}
+
           <div className={styles.heroText}>
             {uiuxCase.label ? <p className={styles.kicker}>{uiuxCase.label}</p> : null}
             <h1 className={styles.title}>{uiuxCase.title}</h1>
@@ -184,6 +277,7 @@ export default function UiuxCasePage({ uiuxCase }) {
             <ul>{toc.map((s) => <li key={s.id}><a href={`#${s.id}`}>{s.label}</a></li>)}</ul>
             <div className={styles.tocActions}><Link href="/uiux" className={styles.btn}>← Back</Link></div>
           </aside>
+
           <div className={styles.sections}>
             {uiuxCase.summary ? <section className={styles.section}><h2>Overview</h2><p className={styles.sectionParagraph}>{uiuxCase.summary}</p></section> : null}
             {sections.map((section) => (
@@ -194,6 +288,7 @@ export default function UiuxCasePage({ uiuxCase }) {
             ))}
           </div>
         </div>
+
         {modalIndex !== null ? <ModalCarousel images={modalImages} index={modalIndex} onClose={closeModal} title={modalTitle} /> : null}
       </div>
     </main>
