@@ -9,6 +9,10 @@ const cleaningScreens = [
   { src: "/project1.png", alt: "Cleaning website home screen" },
   { src: "/project12.png", alt: "Cleaning website services screen" },
   { src: "/project13.png", alt: "Cleaning website booking screen" },
+  { src: "/project14.png", alt: "Cleaning website order confirmation screen" },
+  { src: "/project15.png", alt: "Cleaning website reviews screen" },
+  { src: "/project16.png", alt: "Cleaning website gallery screen" },
+  { src: "/project17.png", alt: "Cleaning website contact screen" },
 ];
 
 const heroCarouselStyle = {

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import styles from "@/styles/Project.module.css";
 
-const images = ["/project1.png", "/project12.png", "/project13.png"];
+const images = ["/project1.png", "/project12.png", "/project13.png, /project14.png", "/project15.png", "/project16.png", "/project17.png"];
 
 const snapshot = [
   {
