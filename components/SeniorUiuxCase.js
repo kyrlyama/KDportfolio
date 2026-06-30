@@ -168,8 +168,8 @@ function ZoomModal({ images, index, onClose, onChange }) {
   useEffect(() => {
     const onKey = (event) => {
       if (event.key === "Escape") onClose();
-      if (event.key === "ArrowLeft") onChange((index - 1 + images.length) % images.length);
-      if (event.key === "ArrowRight") onChange((index + 1) % images.length);
+      if (event.key === "ArrowLeft" && images.length > 1) onChange((index - 1 + images.length) % images.length);
+      if (event.key === "ArrowRight" && images.length > 1) onChange((index + 1) % images.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -180,9 +180,9 @@ function ZoomModal({ images, index, onClose, onChange }) {
   return (
     <div className="zoomOverlay" onClick={onClose}>
       <div className="zoomToolbar" onClick={(event) => event.stopPropagation()}>
-        <button type="button" onClick={() => setScale((value) => Math.max(1, value - 0.25))}>−</button>
+        <button type="button" onClick={() => setScale((value) => Math.max(1, value - 0.25))} aria-label="Zoom out">−</button>
         <span>{Math.round(scale * 100)}%</span>
-        <button type="button" onClick={() => setScale((value) => Math.min(3, value + 0.25))}>+</button>
+        <button type="button" onClick={() => setScale((value) => Math.min(3, value + 0.25))} aria-label="Zoom in">+</button>
         <button type="button" onClick={onClose} aria-label="Close image preview">×</button>
       </div>
 
@@ -191,7 +191,7 @@ function ZoomModal({ images, index, onClose, onChange }) {
       )}
 
       <div className="zoomViewport" onClick={(event) => event.stopPropagation()}>
-        <div className="zoomCanvas" style={{ transform: `scale(${scale})` }}>
+        <div className="zoomCanvas" style={{ width: `${scale * 100}%` }}>
           <Image src={current[0]} alt={current[1]} width={2200} height={1500} className="zoomImage" priority />
         </div>
       </div>
@@ -321,7 +321,7 @@ export default function SeniorUiuxCase({ caseId }) {
         .layout{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px;align-items:start}.toc{position:sticky;top:116px;border-radius:28px;padding:18px;display:grid;gap:8px}.toc a{color:#334155;text-decoration:none;font-weight:800;padding:10px 12px;border-radius:999px}.toc a:hover{background:rgba(255,255,255,.72);color:#0f172a}
         .content{display:grid;gap:24px}.section{border-radius:34px;padding:clamp(24px,4vw,46px);scroll-margin-top:130px}.section h2{margin:8px 0 14px;font-size:clamp(30px,4vw,56px);line-height:.98;letter-spacing:-.05em}.sectionText{max-width:860px;margin:0;color:#334155;font-size:18px;line-height:1.75}.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.card p,.visualCard p{margin:8px 0 0;color:#475569;line-height:1.6}
         .compare,.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}.singleGallery{grid-template-columns:1fr}.visualCard{padding:14px;border-radius:26px;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.72)}.visual,.galleryItem{aspect-ratio:16/10;border-radius:22px;background:#fff;min-height:320px}.singleGallery .galleryItem{min-height:520px}.visualCard h3{margin:14px 0 0;font-size:18px}
-        .zoomOverlay{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;padding:76px 78px 54px;background:rgba(15,23,42,.82);backdrop-filter:blur(18px)}.zoomViewport{width:min(92vw,1500px);height:min(78vh,980px);overflow:auto;border-radius:24px;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.4)}.zoomCanvas{width:100%;min-height:100%;transform-origin:center center;transition:transform .2s ease}.zoomImage{width:100%;height:auto;display:block;object-fit:contain}.zoomToolbar{position:fixed;top:20px;right:24px;z-index:6;display:flex;align-items:center;gap:8px;padding:8px;border-radius:999px;background:rgba(255,255,255,.94)}.zoomToolbar button{width:38px;height:38px;border:0;border-radius:50%;background:#eef2f7;font-size:22px;cursor:pointer}.zoomToolbar span{min-width:54px;text-align:center;font-weight:800}.modalArrow{position:fixed;width:52px;height:52px;font-size:34px;transform:translateY(-50%)}.modalPrev{left:18px}.modalNext{right:18px}.zoomCaption{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.94);font-weight:800;color:#334155}
+        .zoomOverlay{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;padding:76px 78px 54px;background:rgba(15,23,42,.82);backdrop-filter:blur(18px)}.zoomViewport{width:min(92vw,1500px);height:min(78vh,980px);overflow:auto;border-radius:24px;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.4)}.zoomCanvas{min-width:100%;min-height:100%;margin:0 auto;transition:width .2s ease}.zoomImage{width:100%;height:auto;display:block;object-fit:contain}.zoomToolbar{position:fixed;top:20px;right:24px;z-index:6;display:flex;align-items:center;gap:8px;padding:8px;border-radius:999px;background:rgba(255,255,255,.94)}.zoomToolbar button{width:38px;height:38px;border:0;border-radius:50%;background:#eef2f7;font-size:22px;cursor:pointer}.zoomToolbar span{min-width:54px;text-align:center;font-weight:800}.modalArrow{position:fixed;width:52px;height:52px;font-size:34px;transform:translateY(-50%)}.modalPrev{left:18px}.modalNext{right:18px}.zoomCaption{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.94);font-weight:800;color:#334155}
         @media(max-width:980px){.seniorCase{margin-top:-92px;padding-top:150px}.hero,.layout{grid-template-columns:1fr}.toc{position:relative;top:auto;display:flex;overflow-x:auto}.metaGrid,.cards,.compare,.gallery{grid-template-columns:1fr}.heroCarousel,.heroMockup{min-height:390px}.visual,.galleryItem,.singleGallery .galleryItem{min-height:300px}.zoomOverlay{padding:72px 16px 56px}.modalArrow{width:44px;height:44px}.modalPrev{left:8px}.modalNext{right:8px}}
         @media(max-width:560px){.seniorCase{padding-inline:12px}.heroText,.section{border-radius:26px}h1{font-size:clamp(44px,16vw,70px)}.heroCarousel,.heroMockup{min-height:320px}.heroArrow{width:40px;height:40px}.zoomToolbar{right:12px}.zoomCaption{max-width:86vw;text-align:center}}
       `}</style>
