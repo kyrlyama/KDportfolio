@@ -15,10 +15,10 @@ const toc = [
 ];
 
 const likeImages = {
-  hero: [{ src: "/uiux/redesign/redesign.png", alt: "Redesign Like store cover" }],
+  hero: [{ src: "/uiux/redesign/like-store-final.webp", alt: "Like store after the logo redesign" }],
   compare: [
     { src: "/uiux/redesign/beforeredesign.jpg", alt: "Before redesign" },
-    { src: "/uiux/redesign/redesign.png", alt: "After redesign" },
+    { src: "/uiux/redesign/like-store-final.webp", alt: "Like store after redesign" },
   ],
   logo: [
     { src: "/uiux/redesign/Logo_likefon_1.png", alt: "Logo Likefon concept 1" },
@@ -26,6 +26,7 @@ const likeImages = {
     { src: "/uiux/redesign/logo_likefon_3.png", alt: "Logo Likefon concept 3" },
   ],
   mockups: [
+    { src: "/uiux/redesign/like-brand-mockup.webp", alt: "Like brand identity mockup" },
     { src: "/uiux/redesign/mockup1.jpg", alt: "Store signage" },
     { src: "/uiux/redesign/mockup2.jpg", alt: "Packaging" },
     { src: "/uiux/redesign/mockup3.jpg", alt: "Brand visual application" },
@@ -86,7 +87,7 @@ export default function ShopRedesign() {
       <div className={styles.container}>
         <section className={styles.heroCard}>
           <button type="button" className={`${styles.heroMedia} ${styles.zoomImageButton}`} onClick={() => openModal(likeImages.hero, 0)}>
-            <Image src="/uiux/redesign/redesign.png" alt="Redesign Like store cover" fill sizes="(max-width: 900px) 100vw, 420px" className={styles.heroImage} priority />
+            <Image src={likeImages.hero[0].src} alt={likeImages.hero[0].alt} fill sizes="(max-width: 900px) 100vw, 420px" className={styles.heroImage} priority />
             <span className={styles.zoomHint}>Zoom</span>
           </button>
           <div className={styles.heroText}>
@@ -118,7 +119,7 @@ export default function ShopRedesign() {
                       <span className={styles.zoomHint}>Zoom</span>
                     </button>
                     <h3 className={styles.h3}>{index === 0 ? "Before" : "After"}</h3>
-                    <p className={styles.p}>{index === 0 ? "Abstract mark with low association to the store’s products and weak scalability." : "Clearer, more modern logo with recognisable cues and improved legibility for print and digital use."}</p>
+                    <p className={styles.p}>{index === 0 ? "Abstract mark with low association to the store’s products and weak scalability." : "The redesigned identity is now visible in the real retail environment and works clearly at storefront scale."}</p>
                   </div>
                 ))}
               </div>
