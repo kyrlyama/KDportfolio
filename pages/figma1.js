@@ -1,11 +1,9 @@
 import Link from "next/link";
 
-
 import Carousel from "@/components/Carousel";
 import ZoomableImage from "@/components/ZoomableImage";
 import fm from "@/styles/Figma.module.css";
 import pm from "@/styles/Project.module.css";
-
 
 const images = [
   "/figma23.png",
@@ -27,10 +25,78 @@ const assets = {
   persona4: "/figma1/persona4.png",
 };
 
+const projectFacts = [
+  { label: "Role", value: "UX/UI Designer" },
+  { label: "Duration", value: "4 months" },
+  { label: "Platform", value: "Mobile app" },
+  { label: "Prototype", value: "Interactive Figma" },
+];
+
+const highlightMetrics = [
+  { label: "Mobile screens", value: "27" },
+  { label: "Survey participants", value: "48" },
+  { label: "Usability tests", value: "6" },
+  { label: "Personas", value: "4" },
+  { label: "Components", value: "32" },
+  { label: "Component sets", value: "9" },
+  { label: "Instances", value: "99" },
+  { label: "Visual layers", value: "904" },
+];
+
+const processSteps = [
+  "Research",
+  "Personas",
+  "User stories",
+  "Wireframes",
+  "UI design",
+  "Prototype",
+];
+
+const designDecisions = [
+  [
+    "Group voting",
+    "Added collaborative decision-making instead of only saving places.",
+    "Helps reduce conflict when several people choose activities together.",
+  ],
+  [
+    "Swipe interaction",
+    "Used a lightweight swipe flow for entertainment and places.",
+    "Makes choosing activities feel faster and less overwhelming.",
+  ],
+  [
+    "Shared itinerary",
+    "Combined dates, transport, hotels and activities in one flow.",
+    "Reduces switching between chats, notes and booking apps.",
+  ],
+  [
+    "High contrast UI",
+    "Used bold purple accents and clear visual hierarchy.",
+    "Keeps the interface readable and energetic for a young digital audience.",
+  ],
+];
+
+const responsibilities = [
+  "UX research",
+  "Personas",
+  "Empathy map",
+  "User scenarios",
+  "User stories",
+  "Low-fidelity wireframes",
+  "UI design",
+  "Interactive prototype",
+  "Visual system",
+];
+
+const outcome = [
+  "Designed a complete collaborative travel planning prototype.",
+  "Created a structured UX process from research to high-fidelity UI.",
+  "Validated core navigation through early wireframes and user stories.",
+  "Built a reusable visual system with colors, typography and component logic.",
+];
+
 const paletteTone = {
-  id: "palette-tone",
-  type: "palette",
-  title: "Palette & Tone",
+  id: "design-system",
+  title: "Design System",
   text: "The visual identity uses high contrast and bold purple accents to create a confident, modern, and energetic impression.",
   colors: [
     {
@@ -43,7 +109,11 @@ const paletteTone = {
       hex: "#7107BD",
       usage: "CTAs, highlights, interactive elements",
     },
-    { name: "White", hex: "#FFFFFF", usage: "Main background, layout clarity" },
+    {
+      name: "White",
+      hex: "#FFFFFF",
+      usage: "Main background, layout clarity",
+    },
     {
       name: "Soft Purple",
       hex: "#DAACFC",
@@ -67,8 +137,7 @@ const paletteTone = {
   ],
   typography:
     "Inter — clean geometric sans-serif typeface for modern UI clarity and digital readability.",
-  tools:
-    "Figma styles and component tokens for scalable interface consistency.",
+  tools: "Figma styles, reusable components, Auto Layout and component tokens.",
   emotions: [
     {
       title: "Young digital audience",
@@ -101,35 +170,46 @@ export default function Figma1() {
   return (
     <main className={`${fm.page} ${fm.figmaLegacyCase}`}>
       <div className={`${pm.container} ${fm.containerWide}`}>
-        {/* === TOP CARD (prototype + carousel + figma link) === */}
         <section className={`${pm.card} ${fm.androidLike}`}>
           <div className={`${pm.text} ${fm.colText}`}>
-            <h1 className={pm.title}>Figma Travel App</h1>
+            <p className={fm.eyebrow}>UX/UI Case Study · Mobile App</p>
+
+            <h1 className={pm.title}>Collaborative Travel Planning App</h1>
 
             <p className={pm.p}>
-              Prototype of a collaborative travel planning app. Users pick
-              destinations, split budgets, plan schedules, and vote on
-              activities — focused on smooth group decision-making and
-              high-legibility mobile UI.
+              A mobile prototype for planning trips with friends. The app helps
+              users choose destinations, split budgets, vote on activities,
+              organize schedules and keep the whole group aligned in one shared
+              travel space.
             </p>
 
-            <h2 className={pm.h2}>Main features</h2>
+            <div className={fm.factGrid}>
+              {projectFacts.map((fact) => (
+                <div key={fact.label} className={fm.factCard}>
+                  <span>{fact.label}</span>
+                  <strong>{fact.value}</strong>
+                </div>
+              ))}
+            </div>
+
+            <h2 className={pm.h2}>Project highlights</h2>
             <ul className={pm.list}>
               <li>
-                <strong>Trip planning:</strong> dates, destinations, shared
-                itinerary.
+                <strong>27 mobile screens</strong> designed for a complete
+                high-fidelity prototype.
               </li>
               <li>
-                <strong>Group collaboration:</strong> notes and quick votes.
+                <strong>48 survey participants</strong> and{" "}
+                <strong>6 usability tests</strong> informed the UX direction.
               </li>
               <li>
-                <strong>Recommendations:</strong> places & activities.
+                <strong>32 reusable components</strong> and{" "}
+                <strong>9 component sets</strong> supported interface
+                consistency.
               </li>
               <li>
-                <strong>Smart suggestions:</strong> tailored to preferences.
-              </li>
-              <li>
-                <strong>Sync:</strong> shared calendars & live updates.
+                <strong>Group voting, favorites, chat and itinerary</strong>{" "}
+                reduce planning friction.
               </li>
             </ul>
 
@@ -144,25 +224,30 @@ export default function Figma1() {
 
           <div className={`${pm.media} ${fm.colMedia}`}>
             <div className={`${pm.frame} ${fm.mediaFrame}`}>
-<Carousel
-  images={images}
-  alt="Figma Travel App screens"
-  tight
-/>  
-</div>
+              <Carousel images={images} alt="Figma Travel App screens" tight />
+            </div>
           </div>
         </section>
 
-        {/* === UX STRUCTURE (same as figma2) === */}
         <section className={fm.uxLayout}>
           <aside className={fm.contents}>
             <h3 className={fm.contentsTitle}>Contents</h3>
+
             <nav className={fm.contentsNav}>
+              <a className={fm.contentsLink} href="#snapshot">
+                Project snapshot
+              </a>
+              <a className={fm.contentsLink} href="#problem">
+                Problem & solution
+              </a>
+              <a className={fm.contentsLink} href="#process">
+                Design process
+              </a>
               <a className={fm.contentsLink} href="#research">
-                Research overview
+                Research
               </a>
               <a className={fm.contentsLink} href="#persona">
-                Persona
+                Personas
               </a>
               <a className={fm.contentsLink} href="#empathy">
                 Empathy Map
@@ -176,59 +261,159 @@ export default function Figma1() {
               <a className={fm.contentsLink} href="#prototype">
                 Low-fidelity wireframes
               </a>
-              <a className={fm.contentsLink} href="#palette-tone">
-                Palette & Tone
+              <a className={fm.contentsLink} href="#decisions">
+                Design decisions
               </a>
+              <a className={fm.contentsLink} href="#design-system">
+                Design System
+              </a>
+              <a className={fm.contentsLink} href="#outcome">
+                Outcome
+              </a>
+
               <Link href="/figma" className={pm.btn}>
-  ← Back
-</Link>
+                ← Back
+              </Link>
             </nav>
           </aside>
 
           <div className={fm.uxContent}>
-            <section id="research" className={fm.uxCard}>
-              <h2 className={fm.uxH2}>Research overview</h2>
+            <section id="snapshot" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Overview</p>
+              <h2 className={fm.uxH2}>Project snapshot</h2>
+
               <p className={fm.uxP}>
-                The process started with lightweight UX research to understand
-                how groups plan trips, resolve disagreements, and keep schedules
-                clear. Insights were translated into personas, journey
-                scenarios, and user stories, then applied to navigation
-                structure and mobile UI patterns.
+                The project was created as a full UX/UI case study for a group
+                travel planning product. The focus was not only on visual
+                screens, but also on research, decision-making logic, reusable
+                UI patterns and a clear mobile flow.
               </p>
+
+              <div className={fm.factGrid}>
+                {highlightMetrics.map((metric) => (
+                  <div key={metric.label} className={fm.factCard}>
+                    <span>{metric.label}</span>
+                    <strong>{metric.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="problem" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Product thinking</p>
+              <h2 className={fm.uxH2}>Problem & solution</h2>
+
+              <div className={fm.insightBox}>
+                <h3>Problem</h3>
+                <p>
+                  Planning a trip with friends often requires switching between
+                  chats, booking apps, notes, maps and budget trackers. This
+                  creates confusion, duplicated decisions and conflicts inside
+                  the group.
+                </p>
+              </div>
+
+              <div className={fm.metaGrid}>
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>Product goal</h3>
+                  <p className={fm.metaText}>
+                    Design one collaborative mobile experience where users can
+                    plan, vote, save ideas and manage trip details together.
+                  </p>
+                </div>
+
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>UX solution</h3>
+                  <p className={fm.metaText}>
+                    Combine itinerary, voting, destinations, activities,
+                    accommodation, transport and chat into one structured flow.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="process" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Process</p>
+              <h2 className={fm.uxH2}>Design process</h2>
+
+              <p className={fm.uxP}>
+                The workflow followed a product design process from discovery to
+                high-fidelity prototype. Each step helped reduce uncertainty and
+                connect design decisions with user needs.
+              </p>
+
+              <div className={fm.timeline}>
+                {processSteps.map((step, index) => (
+                  <div key={step} className={fm.timelineStep}>
+                    <span>{index + 1}</span>
+                    <strong>{step}</strong>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="research" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Research</p>
+              <h2 className={fm.uxH2}>Research overview</h2>
+
+              <p className={fm.uxP}>
+                The process started with UX research to understand how groups
+                plan trips, resolve disagreements and keep schedules clear.
+                Insights were translated into personas, empathy map, user
+                scenarios and user stories, then applied to navigation and
+                mobile UI patterns.
+              </p>
+
+              <div className={fm.factGrid}>
+                <div className={fm.factCard}>
+                  <span>Participants</span>
+                  <strong>48</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Usability tests</span>
+                  <strong>6</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Personas</span>
+                  <strong>4</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Core artifacts</span>
+                  <strong>5</strong>
+                </div>
+              </div>
 
               <ul className={fm.uxList}>
                 <li>
-                  <strong>Persona:</strong> key user segments, goals, and
-                  constraints
+                  <strong>Personas:</strong> key user segments, goals and
+                  constraints.
                 </li>
                 <li>
                   <strong>Empathy Map:</strong> emotions and pain points during
-                  gift selection
+                  group planning.
                 </li>
                 <li>
-                  <strong>User Scenarios:</strong> step-by-step journey from
-                  first search to saving ideas
+                  <strong>User Scenarios:</strong> journey from trip idea to
+                  final shared plan.
                 </li>
                 <li>
-                  <strong>User Story:</strong> functional expectations aligned
-                  to real needs
+                  <strong>User Story:</strong> expectations aligned to real
+                  coordination needs.
                 </li>
                 <li>
-                  <strong>Low-friendlity wireframes:</strong> layout,
-                  navigation, and micro-interactions
-                </li>
-                <li>
-                  <strong>Palette & Tone:</strong> colors, typography, and
-                  component tokens
+                  <strong>Low-fidelity wireframes:</strong> layout, navigation
+                  and interaction structure.
                 </li>
               </ul>
             </section>
 
             <section id="persona" className={fm.uxCard}>
-              <h2 className={fm.uxH2}>Persona</h2>
+              <p className={fm.weekLabel}>User definition</p>
+              <h2 className={fm.uxH2}>4 Personas</h2>
+
               <p className={fm.uxP}>
                 Personas helped define priorities: quick coordination, clarity
-                of responsibilities, and reducing friction when planning with
+                of responsibilities and reducing friction when planning with
                 friends.
               </p>
 
@@ -240,106 +425,176 @@ export default function Figma1() {
                   assets.persona4,
                 ].map((src, i) => (
                   <div key={src} className={fm.uxMediaItem}>
-<ZoomableImage
-  imageClassName={fm.uxImage}
-  src={src}
-  alt={`Persona ${i + 1}`}
-  width={1200}
-  height={800}
-  style={{ width: "100%", height: "auto" }}
-/>
-
+                    <ZoomableImage
+                      imageClassName={fm.uxImage}
+                      src={src}
+                      alt={`Persona ${i + 1}`}
+                      width={1200}
+                      height={800}
+                      style={{ width: "100%", height: "auto" }}
+                    />
                   </div>
                 ))}
               </div>
             </section>
 
             <section id="empathy" className={fm.uxCard}>
+              <p className={fm.weekLabel}>User empathy</p>
               <h2 className={fm.uxH2}>Empathy Map</h2>
+
               <p className={fm.uxP}>
-                Captures what users think, feel, and struggle with when planning
-                trips together, helping shape microcopy and reduce coordination
-                friction.
+                The empathy map captures what users think, feel and struggle
+                with when planning trips together. It helped shape microcopy,
+                reduce coordination friction and make the interface feel more
+                supportive.
               </p>
 
               <div className={fm.uxMedia}>
-<ZoomableImage
-  imageClassName={fm.uxImage}
-  src={assets.empathy}
-  alt="Empathy Map"
-  width={1600}
-  height={900}
-  style={{ width: "100%", height: "auto" }}
-/>
-
+                <ZoomableImage
+                  imageClassName={fm.uxImage}
+                  src={assets.empathy}
+                  alt="Empathy Map"
+                  width={1600}
+                  height={900}
+                  style={{ width: "100%", height: "auto" }}
+                />
               </div>
             </section>
 
             <section id="scenarios" className={fm.uxCard}>
+              <p className={fm.weekLabel}>User journey</p>
               <h2 className={fm.uxH2}>User Scenarios</h2>
+
               <p className={fm.uxP}>
-                Scenarios describe the flow from intent (“Let’s plan a trip”) to
-                choosing destinations, agreeing on activities, splitting budget,
-                and confirming the final shared plan.
+                Scenarios describe the flow from intent — “Let’s plan a trip” —
+                to choosing destinations, agreeing on activities, splitting
+                budget and confirming the final shared plan.
               </p>
 
-              <div className={fm.uxMedia}>
-<ZoomableImage
-  imageClassName={fm.uxImage}
-  src={assets.scenario}
-  alt="Scenario"
-  width={1200}
-  height={800}
-  sizes="(max-width: 768px) 100vw, 900px"
-/>
+              <div className={fm.timeline}>
+                {[
+                  "Trip idea",
+                  "Destination",
+                  "Budget",
+                  "Activities",
+                  "Voting",
+                  "Shared plan",
+                ].map((step, index) => (
+                  <div key={step} className={fm.timelineStep}>
+                    <span>{index + 1}</span>
+                    <strong>{step}</strong>
+                  </div>
+                ))}
+              </div>
 
+              <div className={fm.uxMedia}>
+                <ZoomableImage
+                  imageClassName={fm.uxImage}
+                  src={assets.scenario}
+                  alt="Scenario"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, 900px"
+                />
               </div>
             </section>
 
             <section id="userstory" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Requirements</p>
               <h2 className={fm.uxH2}>User Story</h2>
+
               <p className={fm.uxP}>
                 User stories helped validate the feature set and keep the
-                prototype aligned with real expectations for group coordination
-                and clarity.
+                prototype aligned with real expectations for group coordination,
+                decision making and clarity.
               </p>
 
+              <div className={fm.insightBox}>
+                <h3>Why it matters</h3>
+                <p>
+                  User stories translate research into product requirements.
+                  They helped connect user goals with concrete app features
+                  before moving into high-fidelity UI.
+                </p>
+              </div>
+
               <div className={fm.uxMedia}>
-<ZoomableImage
-  imageClassName={fm.uxImage}
-  src={assets.userStory}
-  alt="User Story"
-  width={1200}
-  height={800}
-  sizes="(max-width: 768px) 100vw, 900px"
-/>
+                <ZoomableImage
+                  imageClassName={fm.uxImage}
+                  src={assets.userStory}
+                  alt="User Story"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, 900px"
+                />
               </div>
             </section>
+
             <section id="prototype" className={fm.uxCard}>
-              <h2 className={fm.uxH2}>Low-fidelity wireframes</h2>
+              <p className={fm.weekLabel}>Wireframes</p>
+              <h2 className={fm.uxH2}>Low-fidelity prototype</h2>
 
               <p className={fm.uxP}>
                 Early hand-drawn prototype created to explore layout structure,
-                navigation flow, and screen hierarchy before moving to
+                navigation flow and screen hierarchy before moving to
                 high-fidelity design in Figma. This stage helped validate core
                 interactions and reduce unnecessary UI complexity.
               </p>
 
-              <div className={fm.uxMedia}>
-<ZoomableImage
-  imageClassName={fm.uxImage}
-  src="/figma1/prototype.png"
-  alt="Low-fidelity hand-drawn prototype"
-  width={1600}
-  height={900}
-  style={{ width: "100%", height: "auto" }}
-/>
+              <div className={fm.metaGrid}>
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>Validated</h3>
+                  <p className={fm.metaText}>
+                    Navigation, hierarchy, core flow and screen structure.
+                  </p>
+                </div>
 
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>Result</h3>
+                  <p className={fm.metaText}>
+                    The final UI had a clearer structure before visual styling
+                    was applied.
+                  </p>
+                </div>
+              </div>
+
+              <div className={fm.uxMedia}>
+                <ZoomableImage
+                  imageClassName={fm.uxImage}
+                  src="/figma1/prototype.png"
+                  alt="Low-fidelity hand-drawn prototype"
+                  width={1600}
+                  height={900}
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
+            </section>
+
+            <section id="decisions" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Decision-making</p>
+              <h2 className={fm.uxH2}>Design decisions</h2>
+
+              <p className={fm.uxP}>
+                The most important product decisions focused on reducing
+                decision fatigue, making collaboration clearer and keeping the
+                interface easy to scan on mobile.
+              </p>
+
+              <div className={fm.decisionTable}>
+                {designDecisions.map(([area, decision, reason]) => (
+                  <article key={area} className={fm.decisionRow}>
+                    <strong>{area}</strong>
+                    <span>{decision}</span>
+                    <p>{reason}</p>
+                  </article>
+                ))}
               </div>
             </section>
 
             <section id={paletteTone.id} className={fm.uxCard}>
+              <p className={fm.weekLabel}>Visual system</p>
               <h2 className={fm.uxH2}>{paletteTone.title}</h2>
+
               <p className={fm.uxP}>{paletteTone.text}</p>
 
               <div className={fm.paletteGrid}>
@@ -360,16 +615,12 @@ export default function Figma1() {
                 ))}
               </div>
 
-              {paletteTone.scheme?.length ? (
-                <>
-                  <h3 className={fm.uxH3}>Scheme</h3>
-                  <ul className={fm.uxList}>
-                    {paletteTone.scheme.map((line) => (
-                      <li key={line}>{line}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
+              <h3 className={fm.uxH3}>Scheme</h3>
+              <ul className={fm.uxList}>
+                {paletteTone.scheme.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
 
               <div className={fm.metaGrid}>
                 <div className={fm.metaCard}>
@@ -383,23 +634,64 @@ export default function Figma1() {
                 </div>
               </div>
 
-              {paletteTone.emotions?.length ? (
-                <>
-                  <h3 className={fm.uxH3}>Emotional intent</h3>
-                  <div className={fm.emotionsGrid}>
-                    {paletteTone.emotions.map((b) => (
-                      <div key={b.title} className={fm.emotionCard}>
-                        <h4 className={fm.emotionTitle}>{b.title}</h4>
-                        <ul className={fm.emotionList}>
-                          {b.points.map((p) => (
-                            <li key={p}>{p}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+              <h3 className={fm.uxH3}>Emotional intent</h3>
+              <div className={fm.emotionsGrid}>
+                {paletteTone.emotions.map((b) => (
+                  <div key={b.title} className={fm.emotionCard}>
+                    <h4 className={fm.emotionTitle}>{b.title}</h4>
+                    <ul className={fm.emotionList}>
+                      {b.points.map((p) => (
+                        <li key={p}>{p}</li>
+                      ))}
+                    </ul>
                   </div>
-                </>
-              ) : null}
+                ))}
+              </div>
+            </section>
+
+            <section id="outcome" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Result</p>
+              <h2 className={fm.uxH2}>Outcome & learnings</h2>
+
+              <div className={fm.factGrid}>
+                <div className={fm.factCard}>
+                  <span>Screens</span>
+                  <strong>27</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Components</span>
+                  <strong>32</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Research</span>
+                  <strong>48 users</strong>
+                </div>
+                <div className={fm.factCard}>
+                  <span>Testing</span>
+                  <strong>6 users</strong>
+                </div>
+              </div>
+
+              <h3 className={fm.uxH3}>Responsibilities</h3>
+              <div className={fm.cardGrid3}>
+                {responsibilities.map((item) => (
+                  <article key={item} className={fm.storyCard}>
+                    <h3>{item}</h3>
+                  </article>
+                ))}
+              </div>
+
+              <h3 className={fm.uxH3}>Final outcome</h3>
+              <ul className={fm.uxList}>
+                {outcome.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <div className={fm.deliverable}>
+                Final deliverable: interactive Figma prototype, UX research
+                artifacts, low-fidelity wireframes and reusable visual system.
+              </div>
             </section>
           </div>
         </section>

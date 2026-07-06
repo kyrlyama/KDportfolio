@@ -3064,3 +3064,182 @@
     max-height: 360px !important;
   }
 }
+
+
+/* =========================================================
+   Figma 3 / Likefon — unified purple theme
+   Removes orange visual style and matches other Figma cases
+   ========================================================= */
+
+.likefonCase {
+  --figma3-primary: #7107bd;
+  --figma3-primary-soft: #f2e7ff;
+  --figma3-primary-bg: #f8f3ff;
+  --figma3-primary-hover: #5b21b6;
+  --figma3-primary-mid: #8b5cf6;
+  --figma3-border: rgba(113, 7, 189, 0.18);
+  --figma3-border-strong: rgba(113, 7, 189, 0.28);
+  --figma3-shadow: rgba(113, 7, 189, 0.12);
+}
+
+.likefonCase .likefonHero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(113, 7, 189, 0.14), transparent 34%),
+    radial-gradient(circle at 12% 88%, rgba(218, 172, 252, 0.26), transparent 36%),
+    #fff !important;
+}
+
+.likefonCase .eyebrow,
+.likefonCase .weekLabel {
+  background: var(--figma3-primary-bg) !important;
+  color: var(--figma3-primary) !important;
+}
+
+.likefonCase .orangeButton,
+.likefonCase .smallFigmaButton,
+.likefonCase .figmaPrototypeButton,
+.likefonCase .inlineFigmaLink {
+  background: linear-gradient(
+    135deg,
+    var(--figma3-primary-mid),
+    var(--figma3-primary)
+  ) !important;
+  color: #fff !important;
+  box-shadow: 0 16px 34px rgba(113, 7, 189, 0.24) !important;
+}
+
+.likefonCase .orangeButton:hover,
+.likefonCase .smallFigmaButton:hover,
+.likefonCase .figmaPrototypeButton:hover,
+.likefonCase .inlineFigmaLink:hover {
+  background: linear-gradient(
+    135deg,
+    var(--figma3-primary),
+    var(--figma3-primary-hover)
+  ) !important;
+  box-shadow: 0 18px 38px rgba(91, 33, 182, 0.3) !important;
+}
+
+.likefonCase .secondaryCaseButton {
+  color: var(--figma3-primary) !important;
+  background: #fff !important;
+  border-color: var(--figma3-border-strong) !important;
+  box-shadow: none !important;
+}
+
+.likefonCase .secondaryCaseButton:hover {
+  color: var(--figma3-primary-hover) !important;
+  background: var(--figma3-primary-bg) !important;
+}
+
+.likefonCase .uxCard,
+.likefonCase .componentPreviewPanel,
+.likefonCase .statesBoardPanel,
+.likefonCase .typographyPanel,
+.likefonCase .futureAssetsBox,
+.likefonCase .designIntroCard,
+.likefonCase .designSystemCard {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(113, 7, 189, 0.08), transparent 34%),
+    linear-gradient(145deg, #fff, var(--figma3-primary-bg)) !important;
+  border-color: var(--figma3-border) !important;
+}
+
+.likefonCase .factCard,
+.likefonCase .audienceCard,
+.likefonCase .storyCard,
+.likefonCase .hypothesisCard,
+.likefonCase .techPill,
+.likefonCase .placeholderPanel,
+.likefonCase .metaCard,
+.likefonCase .insightMiniCard,
+.likefonCase .requirementCard,
+.likefonCase .stateCard,
+.likefonCase .journeyCard,
+.likefonCase .deliverable,
+.likefonCase .colorGroup {
+  background: linear-gradient(180deg, #fff, var(--figma3-primary-bg)) !important;
+  border-color: var(--figma3-border) !important;
+}
+
+.likefonCase .caseImageCard,
+.likefonCase .tableWrap,
+.likefonCase .designSystemCardMedia,
+.likefonCase .componentPreviewBoard,
+.likefonCase .statesBoardPanel {
+  border-color: var(--figma3-border) !important;
+  background: #fff !important;
+  box-shadow: 0 18px 45px var(--figma3-shadow) !important;
+}
+
+.likefonCase .insightBox {
+  border-left-color: var(--figma3-primary) !important;
+  background: var(--figma3-primary-bg) !important;
+}
+
+.likefonCase .decisionRow {
+  background: var(--figma3-primary-bg) !important;
+  border-color: var(--figma3-border) !important;
+}
+
+.likefonCase .decisionRow strong,
+.likefonCase .audienceCard h4,
+.likefonCase .storyCard h3,
+.likefonCase .hypothesisCard h3,
+.likefonCase .insightMiniCard h4,
+.likefonCase .stateCard h4,
+.likefonCase .journeyCard h3,
+.likefonCase .imageTopicHeader h3,
+.likefonCase .caseImageCard figcaption strong,
+.likefonCase .requirementCard p,
+.likefonCase .futureAssetsGrid strong,
+.likefonCase .typeScaleItem span,
+.likefonCase .designIntroCard svg,
+.likefonCase .designSystemCard svg,
+.likefonCase .typographyHeader svg {
+  color: var(--figma3-primary) !important;
+}
+
+.likefonCase .timelineStep span {
+  background: #ddd6fe !important;
+  color: var(--figma3-primary-hover) !important;
+}
+
+.likefonCase .summaryTable th,
+.likefonCase .journeyTable th {
+  background: var(--figma3-primary-bg) !important;
+  color: var(--figma3-primary) !important;
+}
+
+.likefonCase .summaryTable td,
+.likefonCase .summaryTable th,
+.likefonCase .journeyTable td,
+.likefonCase .journeyTable th {
+  border-bottom-color: rgba(113, 7, 189, 0.12) !important;
+}
+
+.likefonCase .colorSwatch {
+  background: linear-gradient(
+    135deg,
+    var(--figma3-primary-mid),
+    var(--figma3-primary)
+  ) !important;
+  color: #fff !important;
+}
+
+.likefonCase .colorSwatch:nth-child(3n),
+.likefonCase .colorSwatch:nth-child(4n) {
+  background: var(--figma3-primary-soft) !important;
+  color: #111827 !important;
+}
+
+.likefonCase .mockHeroBanner {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
+    radial-gradient(circle at 80% 12%, rgba(218, 172, 252, 0.9), transparent 32%) !important;
+}
+
+.likefonCase .likefonMockup,
+.likefonCase .projectPlaceholder {
+  background: linear-gradient(145deg, #111827, var(--figma3-primary)) !important;
+}

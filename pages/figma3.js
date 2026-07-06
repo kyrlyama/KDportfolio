@@ -123,6 +123,21 @@ const quickFacts = [
   { label: "Deliverable", value: "Discovery document for PDF / Notion" },
 ];
 
+const projectMetrics = [
+  { label: "Business goal", value: "+30% foot traffic" },
+  { label: "Target visitors", value: "1,500 / month" },
+  { label: "Primary users", value: "35–60" },
+  { label: "Secondary users", value: "18–35" },
+  { label: "Personas", value: "3" },
+  { label: "Journey maps", value: "3" },
+  { label: "JTBD statements", value: "9" },
+  { label: "Hypotheses", value: "5" },
+  { label: "UX decisions", value: "7" },
+  { label: "Edge cases", value: "4" },
+  { label: "Technical stack", value: "8 items" },
+  { label: "SEO tasks", value: "5" },
+];
+
 const targetAudiences = [
   {
     title: "Primary audience — 35–60",
@@ -683,6 +698,7 @@ export default function Figma3() {
           <aside className={fm.contents}>
             <h3 className={fm.contentsTitle}>Contents</h3>
             <nav className={fm.contentsNav}>
+              <a className={fm.contentsLink} href="#snapshot">Project snapshot</a>
               <a className={fm.contentsLink} href="#framing">Product framing</a>
               <a className={fm.contentsLink} href="#research">Research</a>
               <a className={fm.contentsLink} href="#jtbd">JTBD</a>
