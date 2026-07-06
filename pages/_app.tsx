@@ -6,7 +6,6 @@ import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 import "@/styles/globals.css";
-import "@/styles/figma3-purple.css";
 import NavBar from "@/components/NavBar";
 
 export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
