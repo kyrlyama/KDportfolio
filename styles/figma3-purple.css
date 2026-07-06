@@ -1,0 +1,98 @@
+[class*="likefonCase"] {
+  --figma3-primary: #7107bd;
+  --figma3-primary-soft: #f2e7ff;
+  --figma3-primary-bg: #f8f3ff;
+  --figma3-primary-hover: #5b21b6;
+  --figma3-primary-mid: #8b5cf6;
+  --figma3-border: rgba(113, 7, 189, 0.18);
+}
+
+[class*="likefonCase"] [class*="likefonHero"] {
+  background: radial-gradient(circle at 82% 18%, rgba(113, 7, 189, 0.14), transparent 34%), radial-gradient(circle at 12% 88%, rgba(218, 172, 252, 0.26), transparent 36%), #fff !important;
+}
+
+[class*="likefonCase"] [class*="eyebrow"],
+[class*="likefonCase"] [class*="weekLabel"] {
+  background: var(--figma3-primary-bg) !important;
+  color: var(--figma3-primary) !important;
+}
+
+[class*="likefonCase"] [class*="orangeButton"],
+[class*="likefonCase"] [class*="smallFigmaButton"],
+[class*="likefonCase"] [class*="figmaPrototypeButton"],
+[class*="likefonCase"] [class*="inlineFigmaLink"] {
+  background: linear-gradient(135deg, var(--figma3-primary-mid), var(--figma3-primary)) !important;
+  color: #fff !important;
+  box-shadow: 0 16px 34px rgba(113, 7, 189, 0.24) !important;
+}
+
+[class*="likefonCase"] [class*="secondaryCaseButton"] {
+  color: var(--figma3-primary) !important;
+  background: #fff !important;
+  border-color: rgba(113, 7, 189, 0.28) !important;
+  box-shadow: none !important;
+}
+
+[class*="likefonCase"] [class*="uxCard"],
+[class*="likefonCase"] [class*="componentPreviewPanel"],
+[class*="likefonCase"] [class*="statesBoardPanel"],
+[class*="likefonCase"] [class*="typographyPanel"],
+[class*="likefonCase"] [class*="futureAssetsBox"],
+[class*="likefonCase"] [class*="designIntroCard"],
+[class*="likefonCase"] [class*="designSystemCard"],
+[class*="likefonCase"] [class*="factCard"],
+[class*="likefonCase"] [class*="audienceCard"],
+[class*="likefonCase"] [class*="storyCard"],
+[class*="likefonCase"] [class*="hypothesisCard"],
+[class*="likefonCase"] [class*="techPill"],
+[class*="likefonCase"] [class*="placeholderPanel"],
+[class*="likefonCase"] [class*="metaCard"],
+[class*="likefonCase"] [class*="insightMiniCard"],
+[class*="likefonCase"] [class*="requirementCard"],
+[class*="likefonCase"] [class*="stateCard"],
+[class*="likefonCase"] [class*="journeyCard"],
+[class*="likefonCase"] [class*="deliverable"],
+[class*="likefonCase"] [class*="colorGroup"] {
+  background: linear-gradient(145deg, #fff, var(--figma3-primary-bg)) !important;
+  border-color: var(--figma3-border) !important;
+}
+
+[class*="likefonCase"] [class*="insightBox"] {
+  border-left-color: var(--figma3-primary) !important;
+  background: var(--figma3-primary-bg) !important;
+}
+
+[class*="likefonCase"] [class*="decisionRow"] {
+  background: var(--figma3-primary-bg) !important;
+  border-color: var(--figma3-border) !important;
+}
+
+[class*="likefonCase"] [class*="decisionRow"] strong,
+[class*="likefonCase"] [class*="audienceCard"] h4,
+[class*="likefonCase"] [class*="storyCard"] h3,
+[class*="likefonCase"] [class*="hypothesisCard"] h3,
+[class*="likefonCase"] [class*="insightMiniCard"] h4,
+[class*="likefonCase"] [class*="stateCard"] h4,
+[class*="likefonCase"] [class*="journeyCard"] h3,
+[class*="likefonCase"] [class*="imageTopicHeader"] h3,
+[class*="likefonCase"] [class*="caseImageCard"] figcaption strong,
+[class*="likefonCase"] [class*="requirementCard"] p,
+[class*="likefonCase"] [class*="typeScaleItem"] span {
+  color: var(--figma3-primary) !important;
+}
+
+[class*="likefonCase"] [class*="timelineStep"] span {
+  background: #ddd6fe !important;
+  color: var(--figma3-primary-hover) !important;
+}
+
+[class*="likefonCase"] [class*="summaryTable"] th,
+[class*="likefonCase"] [class*="journeyTable"] th {
+  background: var(--figma3-primary-bg) !important;
+  color: var(--figma3-primary) !important;
+}
+
+[class*="likefonCase"] [class*="colorSwatch"] {
+  background: linear-gradient(135deg, var(--figma3-primary-mid), var(--figma3-primary)) !important;
+  color: #fff !important;
+}
