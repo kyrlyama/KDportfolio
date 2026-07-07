@@ -527,8 +527,8 @@
 }
 
 .emotionCard {
-  background: rgba(255, 232, 205, 0.38); /* тёплый бежевый */
-  border: 1px solid rgba(215, 143, 7, 0.35); /* мягкая оранжевая рамка */
+  background: rgba(255, 255, 255, 0.84); /* тёплый бежевый */
+  border: 1px solid rgba(31, 82, 201, 0.12); /* мягкая оранжевая рамка */
   border-radius: 18px;
   padding: 18px 20px;
   box-shadow: none;
@@ -631,7 +631,7 @@
 
 .contentsLink:hover {
   transform: none;
-  color: #ba471d;
+  color: #163f9f;
 }
 
 @media (max-width: 960px) {
@@ -647,8 +647,8 @@
 /* ===== Likefon case study page ===== */
 .likefonHero {
   background:
-    radial-gradient(circle at 82% 18%, rgba(237, 122, 50, 0.18), transparent 32%),
-    radial-gradient(circle at 12% 88%, rgba(255, 194, 87, 0.24), transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(31, 82, 201, 0.12), transparent 32%),
+    radial-gradient(circle at 12% 88%, rgba(218, 229, 255, 0.42), transparent 34%),
     #fff;
 }
 
@@ -658,8 +658,8 @@
   margin: 0 0 10px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: #fff8f0;
-  color: #de5f25;
+  background: #ffffff;
+  color: #1f52c9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -673,7 +673,7 @@
   margin-inline: auto;
   padding: clamp(16px, 2vw, 26px);
   border-radius: 28px;
-  background: linear-gradient(145deg, #111827, #de5f25);
+  background: linear-gradient(145deg, #111827, #1f52c9);
   box-shadow: 0 28px 70px rgba(17, 24, 39, 0.28);
   color: #fff;
 }
@@ -712,7 +712,7 @@
   border: 0;
   border-radius: 999px;
   padding: 9px 14px;
-  color: #de5f25;
+  color: #1f52c9;
   background: #fff;
   font-weight: 900;
 }
@@ -726,7 +726,7 @@
   border-radius: 22px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
-    radial-gradient(circle at 80% 12%, rgba(255, 194, 87, 0.9), transparent 32%);
+    radial-gradient(circle at 80% 12%, rgba(218, 229, 255, 0.92), transparent 32%);
 }
 
 .mockHeroBanner span {
@@ -784,8 +784,8 @@
 .hypothesisCard,
 .techPill,
 .placeholderPanel {
-  border: 1px solid rgba(237, 122, 50, 0.18);
-  background: linear-gradient(180deg, #ffffff, #fff8f0);
+  border: 1px solid rgba(31, 82, 201, 0.12);
+  background: linear-gradient(180deg, #ffffff, #ffffff);
   border-radius: 18px;
   padding: 16px;
 }
@@ -808,9 +808,9 @@
 .insightBox {
   margin: 18px 0;
   padding: 18px;
-  border-left: 5px solid #de5f25;
+  border-left: 5px solid #1f52c9;
   border-radius: 16px;
-  background: #fff8f0;
+  background: #ffffff;
 }
 
 .insightBox h3,
@@ -853,13 +853,13 @@
 
 .audienceCard h4 {
   margin-bottom: 6px;
-  color: #de5f25;
+  color: #1f52c9;
 }
 
 .storyCard h3,
 .hypothesisCard h3 {
   margin-bottom: 10px;
-  color: #de5f25;
+  color: #1f52c9;
 }
 
 .timeline {
@@ -886,7 +886,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #ffc257;
+  background: #dbeafe;
   color: #111827;
   font-weight: 900;
 }
@@ -917,12 +917,12 @@
   align-items: start;
   padding: 14px;
   border-radius: 16px;
-  background: #fff8f0;
-  border: 1px solid rgba(237, 122, 50, 0.14);
+  background: #ffffff;
+  border: 1px solid rgba(31, 82, 201, 0.10);
 }
 
 .decisionRow strong {
-  color: #de5f25;
+  color: #1f52c9;
 }
 
 .decisionRow span {
@@ -944,7 +944,7 @@
   border-radius: 18px;
   overflow-x: auto;
   background: #111827;
-  color: #fff8f0;
+  color: #ffffff;
   line-height: 1.8;
 }
 
@@ -955,12 +955,12 @@
   place-items: center;
   text-align: center;
   background:
-    repeating-linear-gradient(45deg, rgba(237, 122, 50, 0.10) 0 12px, transparent 12px 24px),
-    #fff8f0;
+    repeating-linear-gradient(45deg, rgba(31, 82, 201, 0.06) 0 12px, transparent 12px 24px),
+    #ffffff;
 }
 
 .placeholderPanel strong {
-  color: #de5f25;
+  color: #1f52c9;
   font-size: 20px;
 }
 
@@ -1006,7 +1006,7 @@
   color: #fff;
   background:
     radial-gradient(circle at 75% 20%, rgba(255, 194, 87, 0.95), transparent 28%),
-    linear-gradient(145deg, #111827, #de5f25) !important;
+    linear-gradient(145deg, #111827, #1f52c9) !important;
 }
 
 .projectPlaceholder strong {
@@ -1040,9 +1040,9 @@
 .caseImageCard {
   overflow: hidden;
   margin: 0;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 18px;
-  background: #fff8f0;
+  background: #ffffff;
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
 }
 
@@ -1080,9 +1080,9 @@
 .stateCard,
 .journeyCard,
 .deliverable {
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 18px;
-  background: #fff8f0;
+  background: #ffffff;
 }
 
 .insightMiniCard,
@@ -1096,7 +1096,7 @@
 .stateCard h4,
 .journeyCard h3 {
   margin: 0 0 8px;
-  color: #de5f25;
+  color: #1f52c9;
 }
 
 .insightMiniCard p,
@@ -1109,7 +1109,7 @@
   overflow-x: auto;
   margin: 16px 0;
   border-radius: 18px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
 }
 
 .summaryTable,
@@ -1126,7 +1126,7 @@
 .journeyTable th,
 .journeyTable td {
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(237, 122, 50, 0.14);
+  border-bottom: 1px solid rgba(31, 82, 201, 0.10);
   text-align: left;
   vertical-align: top;
   line-height: 1.45;
@@ -1134,8 +1134,8 @@
 
 .summaryTable th,
 .journeyTable th {
-  background: #fff8f0;
-  color: #de5f25;
+  background: #ffffff;
+  color: #1f52c9;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1151,7 +1151,7 @@
   padding: 14px 16px;
   color: #111827;
   font-weight: 900;
-  background: linear-gradient(135deg, #fff7e8, #fff8f0);
+  background: linear-gradient(135deg, #fff7e8, #ffffff);
 }
 
 .requirementGrid {
@@ -1176,7 +1176,7 @@
 
 .requirementCard p {
   margin: 6px 0 0;
-  color: #de5f25;
+  color: #1f52c9;
   font-weight: 900;
   line-height: 1.45;
 }
@@ -1214,7 +1214,7 @@
   gap: 14px;
   margin: 28px 0;
   padding-top: 18px;
-  border-top: 1px solid rgba(237, 122, 50, 0.18);
+  border-top: 1px solid rgba(31, 82, 201, 0.12);
 }
 
 .imageTopicHeader {
@@ -1224,7 +1224,7 @@
 
 .imageTopicHeader h3 {
   margin: 0;
-  color: #de5f25;
+  color: #1f52c9;
   font-size: clamp(20px, 2vw, 26px);
 }
 
@@ -1246,7 +1246,7 @@
 
 .caseImageCard figcaption strong {
   margin-bottom: 6px;
-  color: #de5f25;
+  color: #1f52c9;
   font-size: 14px;
 }
 
@@ -1298,9 +1298,9 @@
 .typographyPanel,
 .componentPreviewPanel,
 .futureAssetsBox {
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 22px;
-  background: linear-gradient(145deg, #fff, #fff8f0);
+  background: linear-gradient(145deg, #fff, #ffffff);
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.06);
 }
 
@@ -1315,7 +1315,7 @@
 .typographyHeader svg {
   width: 34px;
   height: 34px;
-  color: #ed7a32;
+  color: #1f52c9;
 }
 
 .designIntroCard h3,
@@ -1415,7 +1415,7 @@
 }
 
 .typeScaleItem span {
-  color: #ed7a32;
+  color: #1f52c9;
   font-weight: 900;
 }
 
@@ -1461,7 +1461,7 @@
   padding: 18px;
   border-radius: 18px;
   background: #fff;
-  border: 1px dashed rgba(237, 122, 50, 0.46);
+  border: 1px dashed rgba(31, 82, 201, 0.30);
 }
 
 .primaryDemoButton,
@@ -1475,16 +1475,16 @@
 
 .primaryDemoButton {
   color: #fff;
-  background: #ed7a32;
+  background: #1f52c9;
 }
 
 .primaryDemoButtonHover {
   color: #fff;
-  background: #ba471d;
+  background: #163f9f;
 }
 
 .secondaryDemoButton {
-  color: #ed7a32;
+  color: #1f52c9;
   background: #fff;
   border: 1px solid #d1d5db;
 }
@@ -1504,7 +1504,7 @@
   align-items: center;
   gap: 8px;
   padding: 0 14px;
-  border: 1px solid #ed7a32;
+  border: 1px solid #1f52c9;
   border-radius: 14px;
   color: #6b7280;
   background: #fff;
@@ -1516,15 +1516,15 @@
   gap: 8px;
   padding: 14px;
   border-radius: 18px;
-  background: #fbf3ea;
-  border: 1px solid rgba(237, 122, 50, 0.45);
+  background: #f6f9ff;
+  border: 1px solid rgba(31, 82, 201, 0.22);
 }
 
 .demoProductImage {
   min-height: 86px;
   border-radius: 16px;
   background:
-    radial-gradient(circle at 72% 28%, rgba(237, 122, 50, 0.36), transparent 28%),
+    radial-gradient(circle at 72% 28%, rgba(31, 82, 201, 0.18), transparent 28%),
     linear-gradient(135deg, #fff, #f3f4f6);
   border: 1px solid #e5e7eb;
 }
@@ -1553,7 +1553,7 @@
 }
 
 .futureAssetsGrid strong {
-  color: #ed7a32;
+  color: #1f52c9;
 }
 
 .futureAssetsGrid span {
@@ -1570,14 +1570,14 @@
   padding: 12px 18px;
   border-radius: 999px;
   color: #fff;
-  background: #ed7a32;
+  background: #1f52c9;
   font-weight: 900;
   text-decoration: none;
-  box-shadow: 0 14px 28px rgba(237, 122, 50, 0.28);
+  box-shadow: 0 14px 28px rgba(31, 82, 201, 0.18);
 }
 
 .figmaPrototypeButton:hover {
-  background: #ba471d;
+  background: #163f9f;
 }
 
 @media (max-width: 1180px) {
@@ -1605,7 +1605,7 @@
   overflow: hidden;
   margin: 14px 0 0;
   border-radius: 16px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   background: #fff;
 }
 
@@ -1636,25 +1636,25 @@
   overflow: hidden;
   margin: 22px 0;
   padding: 18px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 22px;
-  background: linear-gradient(145deg, #fff, #fff8f0);
+  background: linear-gradient(145deg, #fff, #ffffff);
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.06);
 }
 
 .orangeButton,
 .smallFigmaButton,
 .figmaPrototypeButton {
-  background: linear-gradient(135deg, #ed7a32, #de5f25) !important;
+  background: linear-gradient(135deg, #1f52c9, #1f52c9) !important;
   color: #fff !important;
-  box-shadow: 0 16px 34px rgba(237, 122, 50, 0.26) !important;
+  box-shadow: 0 16px 34px rgba(31, 82, 201, 0.16) !important;
 }
 
 .orangeButton:hover,
 .smallFigmaButton:hover,
 .figmaPrototypeButton:hover {
-  background: linear-gradient(135deg, #de5f25, #ba471d) !important;
-  box-shadow: 0 18px 38px rgba(186, 71, 29, 0.32) !important;
+  background: linear-gradient(135deg, #1f52c9, #163f9f) !important;
+  box-shadow: 0 18px 38px rgba(31, 82, 201, 0.22) !important;
 }
 
 .uxCard,
@@ -1664,9 +1664,9 @@
 .typographyPanel,
 .futureAssetsBox {
   background:
-    radial-gradient(circle at 92% 8%, rgba(237, 122, 50, 0.10), transparent 34%),
-    linear-gradient(145deg, #fff, #fff8f0) !important;
-  border-color: rgba(237, 122, 50, 0.18) !important;
+    radial-gradient(circle at 92% 8%, rgba(31, 82, 201, 0.06), transparent 34%),
+    linear-gradient(145deg, #fff, #ffffff) !important;
+  border-color: rgba(31, 82, 201, 0.12) !important;
 }
 
 .designCardTopline {
@@ -1684,8 +1684,8 @@
   height: 28px;
   padding-inline: 10px;
   border-radius: 999px;
-  background: #fbf3ea;
-  color: #ba471d;
+  background: #f6f9ff;
+  color: #163f9f;
   font-size: 13px;
   font-weight: 900;
 }
@@ -1705,7 +1705,7 @@
   width: 130px;
   height: 130px;
   border-radius: 999px;
-  background: rgba(237, 122, 50, 0.10);
+  background: rgba(31, 82, 201, 0.06);
   pointer-events: none;
 }
 
@@ -1716,8 +1716,8 @@
 .designSystemCardMedia,
 .componentPreviewBoard,
 .statesBoardPanel {
-  border-color: rgba(237, 122, 50, 0.24) !important;
-  box-shadow: 0 20px 52px rgba(237, 122, 50, 0.10);
+  border-color: rgba(31, 82, 201, 0.12) !important;
+  box-shadow: 0 20px 52px rgba(31, 82, 201, 0.06);
 }
 
 .designSystemCardMedia img,
@@ -1817,9 +1817,9 @@
   grid-template-columns: 1fr !important;
   gap: 16px;
   background:
-    radial-gradient(circle at 95% 5%, rgba(237, 122, 50, 0.08), transparent 28%),
+    radial-gradient(circle at 95% 5%, rgba(31, 82, 201, 0.05), transparent 28%),
     #fff !important;
-  border: 1px solid rgba(237, 122, 50, 0.18) !important;
+  border: 1px solid rgba(31, 82, 201, 0.12) !important;
 }
 
 .designSystemFlow .designSystemCardBody {
@@ -1862,13 +1862,13 @@
   display: grid;
   gap: 6px;
   padding: 14px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 16px;
   background: #fff;
 }
 
 .heroOverviewGrid span {
-  color: #de5f25;
+  color: #1f52c9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -1896,15 +1896,15 @@
 }
 
 .secondaryCaseButton {
-  color: #de5f25 !important;
+  color: #1f52c9 !important;
   background: #fff !important;
-  border: 1px solid rgba(237, 122, 50, 0.28) !important;
+  border: 1px solid rgba(31, 82, 201, 0.18) !important;
   box-shadow: none !important;
 }
 
 .secondaryCaseButton:hover {
-  color: #ba471d !important;
-  background: #fff8f0 !important;
+  color: #163f9f !important;
+  background: #ffffff !important;
 }
 
 .inlineFigmaLink {
@@ -1917,16 +1917,16 @@
   padding: 8px 12px;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #ed7a32, #de5f25);
+  background: linear-gradient(135deg, #1f52c9, #1f52c9);
   font-size: 13px;
   font-weight: 900;
   line-height: 1;
   text-decoration: none;
-  box-shadow: 0 14px 28px rgba(237, 122, 50, 0.22);
+  box-shadow: 0 14px 28px rgba(31, 82, 201, 0.16);
 }
 
 .inlineFigmaLink:hover {
-  background: linear-gradient(135deg, #de5f25, #ba471d);
+  background: linear-gradient(135deg, #1f52c9, #163f9f);
 }
 
 .prototypePreviewGrid {
@@ -1975,7 +1975,7 @@
   overflow: hidden;
   width: 100%;
   margin: 20px 0 18px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 22px;
   background: #fff;
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
@@ -1999,7 +1999,7 @@
 .likefonCase .flowInfoCard,
 .likefonCase .flowBottomCard {
   padding: 18px;
-  border: 1px solid rgba(237, 122, 50, 0.18);
+  border: 1px solid rgba(31, 82, 201, 0.12);
   border-radius: 20px;
   background: #fff;
   box-shadow: 0 12px 28px rgba(17, 24, 39, 0.05);
@@ -2008,7 +2008,7 @@
 .likefonCase .flowInfoCard h3,
 .likefonCase .flowBottomCard h3 {
   margin: 0 0 10px;
-  color: #de5f25;
+  color: #1f52c9;
   font-size: 18px;
   font-weight: 900;
   line-height: 1.25;
@@ -3065,181 +3065,134 @@
   }
 }
 
-
 /* =========================================================
-   Figma 3 / Likefon — unified purple theme
-   Removes orange visual style and matches other Figma cases
+   Final unified Figma case styling
+   Keeps Travel App, Gift Helper and Likefon visually consistent:
+   shared site background, white cards, neutral/blue UI accents.
+   Important: design-system color swatches keep their real colors.
    ========================================================= */
 
-.likefonCase {
-  --figma3-primary: #7107bd;
-  --figma3-primary-soft: #f2e7ff;
-  --figma3-primary-bg: #f8f3ff;
-  --figma3-primary-hover: #5b21b6;
-  --figma3-primary-mid: #8b5cf6;
-  --figma3-border: rgba(113, 7, 189, 0.18);
-  --figma3-border-strong: rgba(113, 7, 189, 0.28);
-  --figma3-shadow: rgba(113, 7, 189, 0.12);
+.figmaLegacyCase .androidLike,
+.likefonCase .androidLike {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(17, 24, 39, 0.06) !important;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, 0.08) !important;
 }
 
-.likefonCase .likefonHero {
-  background:
-    radial-gradient(circle at 82% 18%, rgba(113, 7, 189, 0.14), transparent 34%),
-    radial-gradient(circle at 12% 88%, rgba(218, 172, 252, 0.26), transparent 36%),
-    #fff !important;
+.figmaLegacyCase .uxCard,
+.likefonCase .uxCard,
+.figmaLegacyCase .factCard,
+.likefonCase .factCard,
+.figmaLegacyCase .metaCard,
+.likefonCase .metaCard,
+.figmaLegacyCase .storyCard,
+.likefonCase .storyCard,
+.figmaLegacyCase .hypothesisCard,
+.likefonCase .hypothesisCard,
+.figmaLegacyCase .audienceCard,
+.likefonCase .audienceCard,
+.figmaLegacyCase .requirementCard,
+.likefonCase .requirementCard,
+.figmaLegacyCase .journeyCard,
+.likefonCase .journeyCard,
+.figmaLegacyCase .stateCard,
+.likefonCase .stateCard,
+.figmaLegacyCase .techPill,
+.likefonCase .techPill,
+.figmaLegacyCase .placeholderPanel,
+.likefonCase .placeholderPanel,
+.figmaLegacyCase .designIntroCard,
+.likefonCase .designIntroCard,
+.figmaLegacyCase .designSystemCard,
+.likefonCase .designSystemCard,
+.figmaLegacyCase .typographyPanel,
+.likefonCase .typographyPanel,
+.figmaLegacyCase .componentPreviewPanel,
+.likefonCase .componentPreviewPanel,
+.figmaLegacyCase .futureAssetsBox,
+.likefonCase .futureAssetsBox,
+.figmaLegacyCase .colorGroup,
+.likefonCase .colorGroup,
+.figmaLegacyCase .deliverable,
+.likefonCase .deliverable {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(17, 24, 39, 0.08) !important;
+  box-shadow: 0 14px 38px rgba(17, 24, 39, 0.06) !important;
 }
 
+.figmaLegacyCase .eyebrow,
+.figmaLegacyCase .weekLabel,
 .likefonCase .eyebrow,
 .likefonCase .weekLabel {
-  background: var(--figma3-primary-bg) !important;
-  color: var(--figma3-primary) !important;
+  background: #eef5ff !important;
+  color: #1f52c9 !important;
+}
+
+.figmaLegacyCase .insightBox,
+.likefonCase .insightBox {
+  background: #f7fbff !important;
+  border-left-color: #1f52c9 !important;
+}
+
+.figmaLegacyCase .contentsLink:hover,
+.likefonCase .contentsLink:hover,
+.figmaLegacyCase .decisionRow strong,
+.likefonCase .decisionRow strong,
+.figmaLegacyCase .typeScaleItem span,
+.likefonCase .typeScaleItem span,
+.figmaLegacyCase .caseImageCard figcaption strong,
+.likefonCase .caseImageCard figcaption strong,
+.figmaLegacyCase .requirementCard p,
+.likefonCase .requirementCard p {
+  color: #1f52c9 !important;
 }
 
 .likefonCase .orangeButton,
 .likefonCase .smallFigmaButton,
 .likefonCase .figmaPrototypeButton,
 .likefonCase .inlineFigmaLink {
-  background: linear-gradient(
-    135deg,
-    var(--figma3-primary-mid),
-    var(--figma3-primary)
-  ) !important;
-  color: #fff !important;
-  box-shadow: 0 16px 34px rgba(113, 7, 189, 0.24) !important;
+  background: #eaf3ff !important;
+  color: #1f52c9 !important;
+  box-shadow: 0 18px 40px rgba(31, 82, 201, 0.16) !important;
 }
 
 .likefonCase .orangeButton:hover,
 .likefonCase .smallFigmaButton:hover,
 .likefonCase .figmaPrototypeButton:hover,
 .likefonCase .inlineFigmaLink:hover {
-  background: linear-gradient(
-    135deg,
-    var(--figma3-primary),
-    var(--figma3-primary-hover)
-  ) !important;
-  box-shadow: 0 18px 38px rgba(91, 33, 182, 0.3) !important;
+  background: #e3eeff !important;
+  color: #163f9f !important;
+  box-shadow: 0 22px 48px rgba(31, 82, 201, 0.20) !important;
 }
 
-.likefonCase .secondaryCaseButton {
-  color: var(--figma3-primary) !important;
-  background: #fff !important;
-  border-color: var(--figma3-border-strong) !important;
-  box-shadow: none !important;
-}
-
-.likefonCase .secondaryCaseButton:hover {
-  color: var(--figma3-primary-hover) !important;
-  background: var(--figma3-primary-bg) !important;
-}
-
-.likefonCase .uxCard,
-.likefonCase .componentPreviewPanel,
-.likefonCase .statesBoardPanel,
-.likefonCase .typographyPanel,
-.likefonCase .futureAssetsBox,
-.likefonCase .designIntroCard,
-.likefonCase .designSystemCard {
-  background:
-    radial-gradient(circle at 92% 8%, rgba(113, 7, 189, 0.08), transparent 34%),
-    linear-gradient(145deg, #fff, var(--figma3-primary-bg)) !important;
-  border-color: var(--figma3-border) !important;
-}
-
-.likefonCase .factCard,
-.likefonCase .audienceCard,
-.likefonCase .storyCard,
-.likefonCase .hypothesisCard,
-.likefonCase .techPill,
-.likefonCase .placeholderPanel,
-.likefonCase .metaCard,
-.likefonCase .insightMiniCard,
-.likefonCase .requirementCard,
-.likefonCase .stateCard,
-.likefonCase .journeyCard,
-.likefonCase .deliverable,
-.likefonCase .colorGroup {
-  background: linear-gradient(180deg, #fff, var(--figma3-primary-bg)) !important;
-  border-color: var(--figma3-border) !important;
-}
-
-.likefonCase .caseImageCard,
-.likefonCase .tableWrap,
-.likefonCase .designSystemCardMedia,
-.likefonCase .componentPreviewBoard,
-.likefonCase .statesBoardPanel {
-  border-color: var(--figma3-border) !important;
-  background: #fff !important;
-  box-shadow: 0 18px 45px var(--figma3-shadow) !important;
-}
-
-.likefonCase .insightBox {
-  border-left-color: var(--figma3-primary) !important;
-  background: var(--figma3-primary-bg) !important;
-}
-
-.likefonCase .decisionRow {
-  background: var(--figma3-primary-bg) !important;
-  border-color: var(--figma3-border) !important;
-}
-
-.likefonCase .decisionRow strong,
-.likefonCase .audienceCard h4,
-.likefonCase .storyCard h3,
-.likefonCase .hypothesisCard h3,
-.likefonCase .insightMiniCard h4,
-.likefonCase .stateCard h4,
-.likefonCase .journeyCard h3,
-.likefonCase .imageTopicHeader h3,
-.likefonCase .caseImageCard figcaption strong,
-.likefonCase .requirementCard p,
-.likefonCase .futureAssetsGrid strong,
-.likefonCase .typeScaleItem span,
-.likefonCase .designIntroCard svg,
-.likefonCase .designSystemCard svg,
-.likefonCase .typographyHeader svg {
-  color: var(--figma3-primary) !important;
-}
-
-.likefonCase .timelineStep span {
-  background: #ddd6fe !important;
-  color: var(--figma3-primary-hover) !important;
+.figmaLegacyCase .timelineStep span,
+.likefonCase .timelineStep span,
+.likefonCase .designCardTopline span {
+  background: #eef5ff !important;
+  color: #1f52c9 !important;
 }
 
 .likefonCase .summaryTable th,
 .likefonCase .journeyTable th {
-  background: var(--figma3-primary-bg) !important;
-  color: var(--figma3-primary) !important;
+  background: #f7fbff !important;
+  color: #1f52c9 !important;
 }
 
-.likefonCase .summaryTable td,
-.likefonCase .summaryTable th,
-.likefonCase .journeyTable td,
-.likefonCase .journeyTable th {
-  border-bottom-color: rgba(113, 7, 189, 0.12) !important;
+.figmaLegacyCase .emotionCard,
+.likefonCase .emotionCard {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(17, 24, 39, 0.08) !important;
+  box-shadow: 0 14px 38px rgba(17, 24, 39, 0.06) !important;
 }
 
-.likefonCase .colorSwatch {
-  background: linear-gradient(
-    135deg,
-    var(--figma3-primary-mid),
-    var(--figma3-primary)
-  ) !important;
-  color: #fff !important;
-}
-
-.likefonCase .colorSwatch:nth-child(3n),
-.likefonCase .colorSwatch:nth-child(4n) {
-  background: var(--figma3-primary-soft) !important;
-  color: #111827 !important;
-}
-
-.likefonCase .mockHeroBanner {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08)),
-    radial-gradient(circle at 80% 12%, rgba(218, 172, 252, 0.9), transparent 32%) !important;
+.likefonCase .likefonHero {
+  background: rgba(255, 255, 255, 0.94) !important;
 }
 
 .likefonCase .likefonMockup,
 .likefonCase .projectPlaceholder {
-  background: linear-gradient(145deg, #111827, var(--figma3-primary)) !important;
+  background: linear-gradient(145deg, #111827, #1f52c9) !important;
 }
+
+/* Keep Likefon Design System readable and correct:
+   do not override .colorSwatch background here — colors come from inline token values. */
