@@ -94,77 +94,136 @@ const outcome = [
   "Built a reusable visual system with colors, typography and component logic.",
 ];
 
-const paletteTone = {
+const designSystemIntro = {
   id: "design-system",
   title: "Design System",
-  text: "The visual identity uses high contrast and bold purple accents to create a confident, modern, and energetic impression.",
-  colors: [
-    {
-      name: "Black",
-      hex: "#000000",
-      usage: "Primary text, strong contrast elements",
-    },
-    {
-      name: "Primary Purple",
-      hex: "#7107BD",
-      usage: "CTAs, highlights, interactive elements",
-    },
-    {
-      name: "White",
-      hex: "#FFFFFF",
-      usage: "Main background, layout clarity",
-    },
-    {
-      name: "Soft Purple",
-      hex: "#DAACFC",
-      usage: "Background accents, UI blocks",
-    },
-    {
-      name: "Light Pink",
-      hex: "#FEEDFF",
-      usage: "Surface backgrounds, soft sections",
-    },
-    {
-      name: "Lavender Accent",
-      hex: "#D9B7F1",
-      usage: "Secondary UI accents, decorative elements",
-    },
-  ],
-  scheme: [
-    "Purple as the dominant accent color.",
-    "High contrast with black for strong hierarchy.",
-    "Soft pastel surfaces for visual balance.",
-  ],
-  typography:
-    "Inter — clean geometric sans-serif typeface for modern UI clarity and digital readability.",
-  tools: "Figma styles, reusable components, Auto Layout and component tokens.",
-  emotions: [
-    {
-      title: "Young digital audience",
-      points: [
-        "Energetic visual tone",
-        "High contrast for clarity",
-        "Modern minimal aesthetic",
-      ],
-    },
-    {
-      title: "Brand confidence",
-      points: [
-        "Strong purple as identity anchor",
-        "Clear hierarchy",
-        "Memorable visual presence",
-      ],
-    },
-    {
-      title: "Usability focus",
-      points: [
-        "Readable typography",
-        "Clean spacing",
-        "Balanced visual rhythm",
-      ],
-    },
-  ],
+  text: "The design system is structured as reusable product foundations: color tokens, semantic states, typography, components, spacing, radius, icons and design principles.",
 };
+
+const colorTokenGroups = [
+  {
+    title: "Primary",
+    description:
+      "Primary purple palette used for CTAs, navigation, active states and important collaborative interactions.",
+    tokens: [
+      { name: "Primary 600", value: "#8A2DCE", text: "#FFFFFF" },
+      { name: "Primary 500", value: "#A84DE8", text: "#FFFFFF" },
+      { name: "Primary 100", value: "#F1E1FE", text: "#111827" },
+    ],
+  },
+  {
+    title: "Hover / Active",
+    description:
+      "Stronger purple for hover, pressed, selected and active controls in the mobile flow.",
+    tokens: [
+      { name: "Primary 700", value: "#7107BD", text: "#FFFFFF" },
+      { name: "Primary 50", value: "#D194FC", text: "#111827" },
+    ],
+  },
+  {
+    title: "Neutrals",
+    description:
+      "Neutral palette for typography, surfaces, cards, dividers, disabled controls and quiet background areas.",
+    tokens: [
+      { name: "Neutral 900", value: "#111827", text: "#FFFFFF" },
+      { name: "Neutral 700", value: "#374151", text: "#FFFFFF" },
+      { name: "Neutral 500", value: "#6B7280", text: "#FFFFFF" },
+      { name: "Neutral 300", value: "#D1D5DB", text: "#111827" },
+      { name: "Neutral 200", value: "#E5E7EB", text: "#111827" },
+      { name: "Neutral 100", value: "#F3F4F6", text: "#111827" },
+      { name: "Neutral 50", value: "#F9FAFB", text: "#111827" },
+    ],
+  },
+  {
+    title: "Semantic",
+    description:
+      "Semantic feedback colors for success confirmations, validation errors and attention states.",
+    tokens: [
+      { name: "Success", value: "#10B981", text: "#FFFFFF" },
+      { name: "Error", value: "#EF4444", text: "#FFFFFF" },
+      { name: "Warning", value: "#9500FF", text: "#111827" },
+    ],
+  },
+];
+
+const typographyScale = [
+  {
+    label: "H1",
+    sample: "Headline",
+    usage: "Large page titles and onboarding screens",
+    className: "typeH1",
+  },
+  {
+    label: "H2",
+    sample: "Headline",
+    usage: "Section titles and screen headings",
+    className: "typeH2",
+  },
+  {
+    label: "Body",
+    sample: "Body text",
+    usage: "Descriptions, cards and interface content",
+    className: "typeBody",
+  },
+  {
+    label: "Caption",
+    sample: "Caption",
+    usage: "Supporting text and helper labels",
+    className: "typeCaption",
+  },
+];
+
+const componentSystem = [
+  {
+    title: "Buttons",
+    items: ["Primary button", "Secondary button", "Icon button", "Disabled state"],
+  },
+  {
+    title: "Inputs",
+    items: ["Search", "Text input", "Dropdown", "Filter chips"],
+  },
+  {
+    title: "Cards",
+    items: ["Destination card", "Travel card", "Activity card", "Voting card"],
+  },
+  {
+    title: "Navigation",
+    items: ["Tab bar", "Back action", "Progress flow", "Contextual CTA"],
+  },
+];
+
+const systemRules = [
+  {
+    title: "Spacing",
+    value: "8 / 16 / 24 / 32 px",
+    text: "Based on an 8-point grid system for predictable rhythm across mobile screens.",
+  },
+  {
+    title: "Radius",
+    value: "8 / 12 / 16 / 24 px",
+    text: "Rounded UI supports a friendly, soft and approachable travel experience.",
+  },
+  {
+    title: "Icons",
+    value: "Outlined set",
+    text: "Used for navigation, travel, accommodation, activities, budget, chat and profile actions.",
+  },
+];
+
+const designPrinciples = [
+  {
+    title: "Collaboration",
+    text: "The system supports planning with friends through voting, shared itinerary and group decisions.",
+  },
+  {
+    title: "Clarity",
+    text: "Simple hierarchy, readable cards and predictable actions reduce planning complexity.",
+  },
+  {
+    title: "Consistency",
+    text: "Reusable tokens and components keep the experience coherent across trip-planning flows.",
+  },
+];
 
 export default function Figma1() {
   return (
@@ -591,64 +650,116 @@ export default function Figma1() {
               </div>
             </section>
 
-            <section id={paletteTone.id} className={fm.uxCard}>
+            <section id={designSystemIntro.id} className={fm.uxCard}>
               <p className={fm.weekLabel}>Visual system</p>
-              <h2 className={fm.uxH2}>{paletteTone.title}</h2>
+              <h2 className={fm.uxH2}>{designSystemIntro.title}</h2>
 
-              <p className={fm.uxP}>{paletteTone.text}</p>
+              <p className={fm.uxP}>{designSystemIntro.text}</p>
 
-              <div className={fm.paletteGrid}>
-                {paletteTone.colors.map((c) => (
-                  <div key={c.hex} className={fm.colorCard}>
-                    <span
-                      className={fm.swatch}
-                      style={{ backgroundColor: c.hex }}
-                    />
-                    <div className={fm.colorMeta}>
-                      <div className={fm.colorTop}>
-                        <strong className={fm.colorName}>{c.name}</strong>
-                        <code className={fm.colorHex}>{c.hex}</code>
-                      </div>
-                      <div className={fm.colorUsage}>{c.usage}</div>
+              <div className={fm.designHeroGrid}>
+                <article className={fm.designIntroCard}>
+                  <h3>Color tokens</h3>
+                  <p>
+                    Tokens are grouped by function, not only by appearance. This
+                    makes the system easier to use in real product screens and
+                    keeps CTAs, active states, surfaces and feedback consistent.
+                  </p>
+                </article>
+
+                <article className={fm.designIntroCard}>
+                  <h3>Typography scale</h3>
+                  <p>
+                    The type scale separates screen titles, section headings,
+                    body copy and helper labels so mobile screens stay readable
+                    during travel planning.
+                  </p>
+                </article>
+              </div>
+
+              <div className={fm.colorSystem}>
+                {colorTokenGroups.map((group) => (
+                  <article key={group.title} className={fm.colorGroup}>
+                    <div>
+                      <h3>{group.title}</h3>
+                      <p>{group.description}</p>
                     </div>
+
+                    <div className={fm.colorSwatches}>
+                      {group.tokens.map((token) => (
+                        <div
+                          key={token.name}
+                          className={fm.colorSwatch}
+                          style={{ backgroundColor: token.value, color: token.text }}
+                        >
+                          <strong>{token.name}</strong>
+                          <span>{token.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className={fm.typographyPanel}>
+                <div className={fm.typographyHeader}>
+                  <div>
+                    <h3>Typography</h3>
+                    <p>
+                      Readable hierarchy for a mobile travel product with
+                      planning, voting, booking and chat content.
+                    </p>
                   </div>
-                ))}
-              </div>
-
-              <h3 className={fm.uxH3}>Scheme</h3>
-              <ul className={fm.uxList}>
-                {paletteTone.scheme.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-
-              <div className={fm.metaGrid}>
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Typography</h3>
-                  <p className={fm.metaText}>{paletteTone.typography}</p>
                 </div>
 
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Tools</h3>
-                  <p className={fm.metaText}>{paletteTone.tools}</p>
+                <div className={fm.typeScaleList}>
+                  {typographyScale.map((item) => (
+                    <article key={item.label} className={fm.typeScaleItem}>
+                      <span>{item.label}</span>
+                      <strong className={fm[item.className]}>{item.sample}</strong>
+                      <p>{item.usage}</p>
+                    </article>
+                  ))}
                 </div>
               </div>
 
-              <h3 className={fm.uxH3}>Emotional intent</h3>
-              <div className={fm.emotionsGrid}>
-                {paletteTone.emotions.map((b) => (
-                  <div key={b.title} className={fm.emotionCard}>
-                    <h4 className={fm.emotionTitle}>{b.title}</h4>
-                    <ul className={fm.emotionList}>
-                      {b.points.map((p) => (
-                        <li key={p}>{p}</li>
+              <h3 className={fm.uxH3}>Components</h3>
+              <div className={fm.cardGrid3}>
+                {componentSystem.map((group) => (
+                  <article key={group.title} className={fm.storyCard}>
+                    <h3>{group.title}</h3>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li key={item}>{item}</li>
                       ))}
                     </ul>
-                  </div>
+                  </article>
+                ))}
+              </div>
+
+              <h3 className={fm.uxH3}>Foundation rules</h3>
+              <div className={fm.metaGrid}>
+                {systemRules.map((rule) => (
+                  <article key={rule.title} className={fm.metaCard}>
+                    <h3 className={fm.metaTitle}>{rule.title}</h3>
+                    <p className={fm.metaText}>
+                      <strong>{rule.value}</strong>
+                      <br />
+                      {rule.text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+
+              <h3 className={fm.uxH3}>Design principles</h3>
+              <div className={fm.emotionsGrid}>
+                {designPrinciples.map((principle) => (
+                  <article key={principle.title} className={fm.emotionCard}>
+                    <h4 className={fm.emotionTitle}>{principle.title}</h4>
+                    <p className={fm.metaText}>{principle.text}</p>
+                  </article>
                 ))}
               </div>
             </section>
-
             <section id="outcome" className={fm.uxCard}>
               <p className={fm.weekLabel}>Result</p>
               <h2 className={fm.uxH2}>Outcome & learnings</h2>
