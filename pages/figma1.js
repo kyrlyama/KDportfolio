@@ -5,15 +5,7 @@ import ZoomableImage from "@/components/ZoomableImage";
 import fm from "@/styles/Figma.module.css";
 import pm from "@/styles/Project.module.css";
 
-const images = [
-  "/figma23.png",
-  "/figma24.png",
-  "/figma25.png",
-  "/figma26.png",
-  "/figma27.png",
-  "/figma28.png",
-  "/figma29.png",
-];
+const images = ["/figma23.png", "/figma24.png", "/figma25.png", "/figma26.png", "/figma27.png", "/figma28.png", "/figma29.png"];
 
 const assets = {
   empathy: "/figma1/empathymap.png",
@@ -43,14 +35,7 @@ const highlightMetrics = [
   { label: "Visual layers", value: "904" },
 ];
 
-const processSteps = [
-  "Research",
-  "Personas",
-  "User stories",
-  "Wireframes",
-  "UI design",
-  "Prototype",
-];
+const processSteps = ["Research", "Personas", "User stories", "Wireframes", "UI design", "Prototype"];
 
 const designDecisions = [
   ["Group voting", "Added collaborative decision-making instead of only saving places.", "Helps reduce conflict when several people choose activities together."],
@@ -59,17 +44,7 @@ const designDecisions = [
   ["High contrast UI", "Used bold purple accents and clear visual hierarchy.", "Keeps the interface readable and energetic for a young digital audience."],
 ];
 
-const responsibilities = [
-  "UX research",
-  "Personas",
-  "Empathy map",
-  "User scenarios",
-  "User stories",
-  "Low-fidelity wireframes",
-  "UI design",
-  "Interactive prototype",
-  "Visual system",
-];
+const responsibilities = ["UX research", "Personas", "Empathy map", "User scenarios", "User stories", "Low-fidelity wireframes", "UI design", "Interactive prototype", "Visual system"];
 
 const outcome = [
   "Designed a complete collaborative travel planning prototype.",
@@ -134,30 +109,9 @@ const typographyScale = [
 ];
 
 const designSystemCards = [
-  {
-    step: "01",
-    title: "8pt grid",
-    text: "Spacing follows 8px steps so trip cards, filters, voting blocks and responsive mobile sections stay predictable.",
-    src: "/figma1/8pt.png",
-    alt: "Collaborative Travel App 8pt spacing grid",
-    href: "#",
-  },
-  {
-    step: "02",
-    title: "Reusable components",
-    text: "Buttons, inputs, search, destination cards, travel cards, activity cards, voting cards and navigation patterns.",
-    src: "/figma1/components.png",
-    alt: "Collaborative Travel App reusable components",
-    href: "#",
-  },
-  {
-    step: "03",
-    title: "Interaction states",
-    text: "Default, hover, active, disabled and selected states are prepared for buttons, filters, cards and voting actions.",
-    src: "/figma1/states.png",
-    alt: "Collaborative Travel App interaction states",
-    href: "#",
-  },
+  { step: "01", title: "8pt grid", text: "Spacing follows 8px steps so trip cards, filters, voting blocks and responsive mobile sections stay predictable.", src: "/figma1/8pt.png", alt: "Collaborative Travel App 8pt spacing grid", href: "#" },
+  { step: "02", title: "Reusable components", text: "Buttons, inputs, search, destination cards, travel cards, activity cards, voting cards and navigation patterns.", src: "/figma1/components.png", alt: "Collaborative Travel App reusable components", href: "#" },
+  { step: "03", title: "Interaction states", text: "Default, hover, active, disabled and selected states are prepared for buttons, filters, cards and voting actions.", src: "/figma1/states.png", alt: "Collaborative Travel App interaction states", href: "#" },
 ];
 
 const prototypeInfo = [
@@ -172,6 +126,13 @@ const mainUserFlowInfo = [
   { title: "Flow summary", text: "Add your flow summary here: explain the path from first screen to completed action." },
 ];
 
+const stickyContentsStyle = {
+  position: "sticky",
+  top: 118,
+  alignSelf: "start",
+  zIndex: 3,
+};
+
 const safeGrid = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
@@ -179,22 +140,21 @@ const safeGrid = {
   width: "100%",
   maxWidth: "100%",
   minWidth: 0,
-  overflow: "hidden",
 };
 
-const safeThreeGrid = {
+const designSystemThreeGrid = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
   gap: 22,
   width: "100%",
   maxWidth: "100%",
   minWidth: 0,
-  overflow: "hidden",
+  alignItems: "stretch",
 };
 
 export default function Figma1() {
   return (
-    <main className={`${fm.page} ${fm.figmaLegacyCase}`} style={{ overflowX: "hidden" }}>
+    <main className={`${fm.page} ${fm.likefonCase} ${fm.figmaLegacyCase}`} style={{ overflowX: "hidden" }}>
       <div className={`${pm.container} ${fm.containerWide}`} style={{ overflowX: "hidden" }}>
         <section className={`${pm.card} ${fm.androidLike}`}>
           <div className={`${pm.text} ${fm.colText}`}>
@@ -215,7 +175,7 @@ export default function Figma1() {
         </section>
 
         <section className={fm.uxLayout}>
-          <aside className={fm.contents}>
+          <aside className={fm.contents} style={stickyContentsStyle}>
             <h3 className={fm.contentsTitle}>Contents</h3>
             <nav className={fm.contentsNav}>
               <a className={fm.contentsLink} href="#snapshot">Project snapshot</a>
@@ -232,7 +192,7 @@ export default function Figma1() {
               <a className={fm.contentsLink} href="#hi-fi-prototype">High-fidelity prototype</a>
               <a className={fm.contentsLink} href="#main-user-flow">Main User Flow</a>
               <a className={fm.contentsLink} href="#outcome">Outcome</a>
-              <Link href="/figma" className={pm.btn}>← Back</Link>
+              <Link href="/figma" className={`${pm.btn} ${fm.contentsBackButton}`}>← Back</Link>
             </nav>
           </aside>
 
@@ -268,26 +228,10 @@ export default function Figma1() {
                 <article className={fm.designIntroCard}><h3>Typography scale</h3><p>The type scale uses Inter Regular and separates screen titles, section headings, body copy and helper labels so mobile screens stay readable during travel planning.</p></article>
               </div>
               <div className={fm.colorSystem} style={{ display: "grid", gap: 16, width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}>
-                {colorTokenGroups.map((group) => (
-                  <article key={group.title} className={fm.colorGroup} style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}>
-                    <div><h3>{group.title}</h3><p>{group.description}</p></div>
-                    <div className={fm.colorSwatches} style={safeGrid}>
-                      {group.tokens.map((token) => (
-                        <div key={token.name} className={fm.colorSwatch} style={{ backgroundColor: token.value, color: token.text, minWidth: 0, width: "100%", maxWidth: "100%", overflow: "hidden" }}>
-                          <strong>{token.name}</strong><span>{token.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </article>
-                ))}
+                {colorTokenGroups.map((group) => <article key={group.title} className={fm.colorGroup} style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}><div><h3>{group.title}</h3><p>{group.description}</p></div><div className={fm.colorSwatches} style={safeGrid}>{group.tokens.map((token) => <div key={token.name} className={fm.colorSwatch} style={{ backgroundColor: token.value, color: token.text, minWidth: 0, width: "100%", maxWidth: "100%", overflow: "hidden" }}><strong>{token.name}</strong><span>{token.value}</span></div>)}</div></article>)}
               </div>
-              <div className={fm.typographyPanel} style={{ overflowX: "hidden", maxWidth: "100%" }}>
-                <div className={fm.typographyHeader}><div><h3>Typography</h3><p>Inter Regular typography system for mobile travel planning screens.</p></div></div>
-                <div className={fm.typeScaleList}>{typographyScale.map((item) => <article key={item.label} className={fm.typeScaleItem}><span>{item.label}</span><strong style={{ fontFamily: "Inter, sans-serif", fontSize: item.size, fontWeight: 400, lineHeight: 1.15 }}>{item.sample}</strong><p>{item.usage}</p></article>)}</div>
-              </div>
-              <div className={`${fm.cardGrid3} ${fm.designSystemFlow}`} style={safeThreeGrid}>
-                {designSystemCards.map((card) => <article key={card.title} className={fm.designSystemCard} style={{ minWidth: 0, overflow: "hidden" }}><div className={fm.designSystemCardBody}><div className={fm.designCardTopline}><span>{card.step}</span></div><h3>{card.title}</h3><p>{card.text}</p></div><figure className={fm.designSystemCardMedia}><ZoomableImage src={card.src} alt={card.alt} width={1200} height={820} imageClassName={fm.designSystemZoomImage} /></figure><Link href={card.href} className={fm.smallFigmaButton}>Figma source ↗</Link></article>)}
-              </div>
+              <div className={fm.typographyPanel} style={{ overflowX: "hidden", maxWidth: "100%" }}><div className={fm.typographyHeader}><div><h3>Typography</h3><p>Inter Regular typography system for mobile travel planning screens.</p></div></div><div className={fm.typeScaleList}>{typographyScale.map((item) => <article key={item.label} className={fm.typeScaleItem}><span>{item.label}</span><strong style={{ fontFamily: "Inter, sans-serif", fontSize: item.size, fontWeight: 400, lineHeight: 1.15 }}>{item.sample}</strong><p>{item.usage}</p></article>)}</div></div>
+              <div className={fm.designSystemFlow} style={designSystemThreeGrid}>{designSystemCards.map((card) => <article key={card.title} className={fm.designSystemCard} style={{ minWidth: 0, overflow: "hidden" }}><div className={fm.designSystemCardBody}><div className={fm.designCardTopline}><span>{card.step}</span></div><h3>{card.title}</h3><p>{card.text}</p></div><figure className={fm.designSystemCardMedia}><ZoomableImage src={card.src} alt={card.alt} width={1200} height={820} imageClassName={fm.designSystemZoomImage} /></figure><Link href={card.href} className={fm.smallFigmaButton}>Figma source ↗</Link></article>)}</div>
             </section>
 
             <section id="hi-fi-prototype" className={fm.uxCard}><p className={fm.weekLabel}>Stage 6</p><h2 className={fm.uxH2}>High-fidelity UI + prototype</h2><p className={fm.uxP}>Add your final prototype explanation here. This block is prepared for the screenshot named figma1 from the figma1 folder.</p><div className={fm.metaGrid}>{prototypeInfo.map((item) => <article key={item.title} className={fm.metaCard}><h3 className={fm.metaTitle}>{item.title}</h3><p className={fm.metaText}>{item.text}</p></article>)}</div><div className={fm.uxMedia}><ZoomableImage imageClassName={fm.uxImage} src="/figma1/figma1.png" alt="Collaborative Travel App high-fidelity prototype" width={1600} height={900} style={{ width: "100%", height: "auto" }} /></div><div className={fm.placeholderPanel}><strong>Figma prototype area</strong><span>Add your prototype description here.</span><Link href="#" className={fm.figmaPrototypeButton}>Figma source ↗</Link></div></section>
