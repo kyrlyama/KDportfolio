@@ -97,7 +97,7 @@ const outcome = [
 const designSystemIntro = {
   id: "design-system",
   title: "Design System",
-  text: "The design system is structured as reusable product foundations: color tokens, semantic states, typography, components, spacing, radius, icons and design principles.",
+  text: "The design system is structured as reusable product foundations: color tokens, semantic states, typography, components, spacing, radius, icons and interaction rules.",
 };
 
 const colorTokenGroups = [
@@ -149,79 +149,54 @@ const colorTokenGroups = [
 const typographyScale = [
   {
     label: "H1",
-    sample: "Headline",
+    sample: "Inter / Regular · 28px",
     usage: "Large page titles and onboarding screens",
-    className: "typeH1",
+    className: "typeBody",
   },
   {
     label: "H2",
-    sample: "Headline",
+    sample: "Inter / Regular · 20px",
     usage: "Section titles and screen headings",
-    className: "typeH2",
+    className: "typeBody",
   },
   {
     label: "Body",
-    sample: "Body text",
+    sample: "Inter / Regular · 16px",
     usage: "Descriptions, cards and interface content",
     className: "typeBody",
   },
   {
     label: "Caption",
-    sample: "Caption",
+    sample: "Inter / Regular · 12px",
     usage: "Supporting text and helper labels",
     className: "typeCaption",
   },
 ];
 
-const componentSystem = [
+const designSystemCards = [
   {
-    title: "Buttons",
-    items: ["Primary button", "Secondary button", "Icon button", "Disabled state"],
+    step: "01",
+    title: "8pt grid",
+    text: "Spacing follows 8px steps so trip cards, filters, voting blocks and responsive mobile sections stay predictable.",
+    src: "/figma1/8pt.png",
+    alt: "Collaborative Travel App 8pt spacing grid",
+    href: "#",
   },
   {
-    title: "Inputs",
-    items: ["Search", "Text input", "Dropdown", "Filter chips"],
+    step: "02",
+    title: "Reusable components",
+    text: "Buttons, inputs, search, destination cards, travel cards, activity cards, voting cards and navigation patterns.",
+    src: "/figma1/components.png",
+    alt: "Collaborative Travel App reusable components",
+    href: "#",
   },
   {
-    title: "Cards",
-    items: ["Destination card", "Travel card", "Activity card", "Voting card"],
-  },
-  {
-    title: "Navigation",
-    items: ["Tab bar", "Back action", "Progress flow", "Contextual CTA"],
-  },
-];
-
-const systemRules = [
-  {
-    title: "Spacing",
-    value: "8 / 16 / 24 / 32 px",
-    text: "Based on an 8-point grid system for predictable rhythm across mobile screens.",
-  },
-  {
-    title: "Radius",
-    value: "8 / 12 / 16 / 24 px",
-    text: "Rounded UI supports a friendly, soft and approachable travel experience.",
-  },
-  {
-    title: "Icons",
-    value: "Outlined set",
-    text: "Used for navigation, travel, accommodation, activities, budget, chat and profile actions.",
-  },
-];
-
-const designPrinciples = [
-  {
-    title: "Collaboration",
-    text: "The system supports planning with friends through voting, shared itinerary and group decisions.",
-  },
-  {
-    title: "Clarity",
-    text: "Simple hierarchy, readable cards and predictable actions reduce planning complexity.",
-  },
-  {
-    title: "Consistency",
-    text: "Reusable tokens and components keep the experience coherent across trip-planning flows.",
+    step: "03",
+    title: "Interaction states",
+    text: "Default, hover, active, disabled and selected states are prepared for buttons, filters, cards and voting actions.",
+    src: "/figma1/states.png",
+    alt: "Collaborative Travel App interaction states",
+    href: "#",
   },
 ];
 
@@ -669,9 +644,9 @@ export default function Figma1() {
                 <article className={fm.designIntroCard}>
                   <h3>Typography scale</h3>
                   <p>
-                    The type scale separates screen titles, section headings,
-                    body copy and helper labels so mobile screens stay readable
-                    during travel planning.
+                    The type scale uses Inter Regular and separates screen
+                    titles, section headings, body copy and helper labels so
+                    mobile screens stay readable during travel planning.
                   </p>
                 </article>
               </div>
@@ -705,8 +680,8 @@ export default function Figma1() {
                   <div>
                     <h3>Typography</h3>
                     <p>
-                      Readable hierarchy for a mobile travel product with
-                      planning, voting, booking and chat content.
+                      Inter Regular typography system for mobile travel planning
+                      screens.
                     </p>
                   </div>
                 </div>
@@ -722,40 +697,30 @@ export default function Figma1() {
                 </div>
               </div>
 
-              <h3 className={fm.uxH3}>Components</h3>
-              <div className={fm.cardGrid3}>
-                {componentSystem.map((group) => (
-                  <article key={group.title} className={fm.storyCard}>
-                    <h3>{group.title}</h3>
-                    <ul>
-                      {group.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
+              <div className={fm.designSystemFlow}>
+                {designSystemCards.map((card) => (
+                  <article key={card.title} className={fm.designSystemCard}>
+                    <div className={fm.designSystemCardBody}>
+                      <div className={fm.designCardTopline}>
+                        <span>{card.step}</span>
+                      </div>
+                      <h3>{card.title}</h3>
+                      <p>{card.text}</p>
+                    </div>
 
-              <h3 className={fm.uxH3}>Foundation rules</h3>
-              <div className={fm.metaGrid}>
-                {systemRules.map((rule) => (
-                  <article key={rule.title} className={fm.metaCard}>
-                    <h3 className={fm.metaTitle}>{rule.title}</h3>
-                    <p className={fm.metaText}>
-                      <strong>{rule.value}</strong>
-                      <br />
-                      {rule.text}
-                    </p>
-                  </article>
-                ))}
-              </div>
+                    <figure className={fm.designSystemCardMedia}>
+                      <ZoomableImage
+                        src={card.src}
+                        alt={card.alt}
+                        width={1200}
+                        height={820}
+                        imageClassName={fm.designSystemZoomImage}
+                      />
+                    </figure>
 
-              <h3 className={fm.uxH3}>Design principles</h3>
-              <div className={fm.emotionsGrid}>
-                {designPrinciples.map((principle) => (
-                  <article key={principle.title} className={fm.emotionCard}>
-                    <h4 className={fm.emotionTitle}>{principle.title}</h4>
-                    <p className={fm.metaText}>{principle.text}</p>
+                    <Link href={card.href} className={fm.smallFigmaButton}>
+                      Figma source ↗
+                    </Link>
                   </article>
                 ))}
               </div>
