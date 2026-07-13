@@ -37,17 +37,17 @@ const personaImages = [
 
 const journeyMapImages = [
   {
-    src: "/figma3/customerMapAnna.png",
+    src: "/figma3/customermapAnna.png",
     title: "Customer Journey Map — Anna",
     description: "Shows the offline buyer path from phone protection need to store consultation, website research, and confident purchase.",
   },
   {
-    src: "/figma3/customerMapMarina.png",
+    src: "/figma3/customermapMarina.png",
     title: "Customer Journey Map — Marina",
     description: "Documents the online comparison journey where website catalog, photos, and availability help her decide faster.",
   },
   {
-    src: "/figma3/customerMapOleg.png",
+    src: "/figma3/customermapOleg.png",
     title: "Customer Journey Map — Oleg",
     description: "Highlights the deal-seeking path where promotions and bundle visibility become the main conversion opportunity.",
   },

@@ -341,12 +341,11 @@
    === НОВОЕ: UI/UX layout как в кейсе про клининг (Contents слева)      ===
    ======================================================================= */
 
-.uxLayout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 28px;
-  margin-top: 28px;
-  align-items: start;
+.uxLayout{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:40px;
+    align-items:start;
 }
 
 /* ===== Contents block (Figma 2) ===== */
@@ -355,18 +354,19 @@
 
 /* Правая колонка */
 .uxContent {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+    display:flex;
+    flex-direction:column;
+    gap:48px;
 }
 
 /* Карточки-секции */
-.uxCard {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+.uxCard{
+    background:#fff;
+    border:none;
+    border-radius:32px;
+    padding:48px;
+    box-shadow:0 20px 60px rgba(16,24,40,.06);
+    scroll-margin-top:120px;
 }
 
 .uxH2 {
@@ -390,17 +390,18 @@
 }
 
 /* Медиа */
-.uxMedia {
-  border-radius: 16px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
+.uxMedia{
+    width:100%;
+    max-width:1450px;
+    margin:40px auto;
+    border:none;
+    background:transparent;
 }
 
-.uxImage {
-  width: 100%;
-  height: auto;
-  display: block;
+.uxImage{
+    width:100%;
+    height:auto;
+    display:block;
 }
 
 /* Сетка для персон */
@@ -590,12 +591,11 @@
 /* ===== Contents (Figma) — SAME AS UI/UX toc (size + look) ===== */
 /* Поставь ЭТО самым последним в Figma.module.css */
 
-.uxLayout {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 28px;
-  margin-top: 28px;
-  align-items: start;
+.uxLayout{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    gap:40px;
+    align-items:start;
 }
 
 .contents {
@@ -2416,9 +2416,11 @@
     gap: 18px;
   }
 
-  .uxContent {
-    gap: 18px;
-  }
+.uxContent{
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+}
 
   .androidLike {
     padding: clamp(14px, 3vw, 20px);
@@ -2950,8 +2952,9 @@
 }
 
 .figmaLegacyCase .uxContent {
-  display: grid !important;
-  gap: 24px !important;
+    display:flex;
+    flex-direction:column;
+    gap:48px;
 }
 
 .figmaLegacyCase .uxCard {
@@ -3196,5 +3199,3 @@
 
 /* Keep Likefon Design System readable and correct:
    do not override .colorSwatch background here — colors come from inline token values. */
-/ *   T E S T   V E R C E L   C H A N G E   * /  
- 
