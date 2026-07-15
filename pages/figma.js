@@ -61,7 +61,7 @@ function ProjectBlock({ title, description, images, slug }) {
         <div className={`${pm.media} ${fm.media}`}>
           <div className={`${pm.frame} ${fm.frame}`}>
             {/* без aspect="landscape", чтобы на мобиле не резало */}
-            <Carousel images={images} alt={`${title} preview`} tight />
+            <Carousel images={images} alt={`${title} preview`} tight showControls={false} />
           </div>
         </div>
       ) : (
