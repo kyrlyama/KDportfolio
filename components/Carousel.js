@@ -18,6 +18,7 @@ export default function Carousel({
   alt = "",
   aspect = "landscape",
   tight = false,
+  showControls = true,
   ariaLabel = "Image carousel",
   whiteFrameFor = [],
 }) {
@@ -111,7 +112,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
     zIndex: 2,
   });
 
-  const hasArrows = len > 1;
+  const hasNavigation = showControls && len > 1;
 
   return (
     <div
@@ -124,7 +125,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
       onTouchEnd={onTouchEnd}
       style={frame}
     >
-      {hasArrows && (
+      {hasNavigation && (
         <>
           <button
           type="button"
@@ -141,7 +142,7 @@ if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
       )}
 
 
-{hasArrows ? (
+{hasNavigation ? (
         <div
           aria-label="Choose image"
           style={{

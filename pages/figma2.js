@@ -96,55 +96,95 @@ const outcome = [
 const paletteTone = {
   id: "design-system",
   title: "Design System",
-  text: "The visual system feels supportive and optimistic to reduce decision friction and help users choose gifts faster.",
+  text: "The visual system feels supportive and optimistic while guiding users through gift selection with calm, accessible, and emotionally friendly interactions.",
   colors: [
     {
-      name: "Primary Purple",
-      hex: "#735BF2",
-      usage: "Primary actions, key UI focus, navigation accents",
+      name: "Primary 600",
+      hex: "#8A2DCE",
+      usage: "Primary CTA, key actions, navigation accents",
     },
     {
-      name: "Accent Pink",
-      hex: "#EF5BF2",
-      usage: "Emotional accents, highlights, micro-interactions",
+      name: "Primary 500",
+      hex: "#A84DE8",
+      usage: "Hover states, selection emphasis, interactive accents",
     },
     {
-      name: "Soft Lavender",
-      hex: "#E8C3FF",
-      usage: "Background gradients, cards, soft UI surfaces",
+      name: "Primary 100",
+      hex: "#F1E1FE",
+      usage: "Soft backgrounds, tags, light surfaces",
     },
     {
-      name: "Light Violet",
-      hex: "#BBAFFC",
-      usage: "Secondary backgrounds, decorative UI elements",
+      name: "Hover / Active 700",
+      hex: "#7107BD",
+      usage: "Pressed states and stronger CTA emphasis",
     },
     {
-      name: "Warm Peach",
-      hex: "#FFD88C",
-      usage: "Warm highlights, friendly emphasis, visual contrast",
+      name: "Hover / Active 200",
+      hex: "#D194FC",
+      usage: "Secondary hover states and focus support",
     },
     {
-      name: "White",
-      hex: "#FFFFFF",
-      usage: "Main background, spacing, content clarity",
+      name: "Neutral 900",
+      hex: "#111827",
+      usage: "Primary text, icons, strong contrast",
     },
     {
-      name: "Black",
-      hex: "#000000",
-      usage: "Primary text, icons, high-contrast elements",
+      name: "Neutral 700",
+      hex: "#374151",
+      usage: "Secondary text and supporting labels",
+    },
+    {
+      name: "Neutral 500",
+      hex: "#6B7280",
+      usage: "Muted labels and helper text",
+    },
+    {
+      name: "Neutral 300",
+      hex: "#D1D5DB",
+      usage: "Dividers and inactive UI elements",
+    },
+    {
+      name: "Neutral 200",
+      hex: "#E5E7EB",
+      usage: "Subtle borders and card structure",
+    },
+    {
+      name: "Neutral 100",
+      hex: "#F3F4F6",
+      usage: "Cards and neutral surfaces",
+    },
+    {
+      name: "Neutral 50",
+      hex: "#F9FAFB",
+      usage: "Soft page backgrounds and quiet containers",
+    },
+    {
+      name: "Success",
+      hex: "#59B985",
+      usage: "Confirmation and positive feedback",
+    },
+    {
+      name: "Error",
+      hex: "#E1524C",
+      usage: "Validation and error feedback",
+    },
+    {
+      name: "Warning",
+      hex: "#9500FF",
+      usage: "Attention and priority cues",
     },
   ],
   scheme: [
-    "Purple as the anchor for CTAs and key hierarchy.",
-    "Pink adds emotional accents and playful micro-feedback.",
-    "High contrast on light surfaces for fast scanning on mobile.",
+    "Purple anchors the main actions and decision moments.",
+    "Neutral surfaces keep content readable and structured.",
+    "Semantic feedback states support clear completion and error handling.",
   ],
   typography:
-    "System UI / Inter (or equivalent) for clear readability, strong UI rhythm and predictable rendering.",
-  tools: "Figma styles, contrast checks, reusable components and component tokens.",
+    "Inter regular with H1 28px, H2 20px, body 16px, and caption 12px for clear hierarchy and readable mobile UI.",
+  tools: "Figma styles, component variants, semantic color usage, and interactive prototype states.",
   emotions: [
     {
-      title: "User under time pressure",
+      title: "Under time pressure",
       points: [
         "Relief from overload",
         "Confidence to choose quickly",
@@ -565,6 +605,46 @@ export default function Figma2() {
                   imageClassName={fm.uxImage}
                   src="/figma2/prototype.png"
                   alt="Low-fidelity hand-drawn prototype"
+                  width={1600}
+                  height={900}
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
+            </section>
+
+            <section id="prototype-ui" className={fm.uxCard}>
+              <p className={fm.weekLabel}>Stage 6</p>
+              <h2 className={fm.uxH2}>High-fidelity UI + prototype</h2>
+
+              <p className={fm.uxP}>
+                The final prototype ties together filtering, favorites, planning,
+                and reminders to make gift selection feel calm and less
+                overwhelming.
+              </p>
+
+              <div className={fm.metaGrid}>
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>Final screens</h3>
+                  <p className={fm.metaText}>
+                    The interface focuses on calm visual rhythm, strong hierarchy,
+                    and low-friction interaction to guide decisions.
+                  </p>
+                </div>
+
+                <div className={fm.metaCard}>
+                  <h3 className={fm.metaTitle}>Prototype focus</h3>
+                  <p className={fm.metaText}>
+                    The experience emphasizes smart filters, profiles, and reminder
+                    moments that help users feel prepared.
+                  </p>
+                </div>
+              </div>
+
+              <div className={fm.uxMedia}>
+                <ZoomableImage
+                  imageClassName={fm.uxImage}
+                  src="/figma2/prototype.png"
+                  alt="High-fidelity gift helper prototype"
                   width={1600}
                   height={900}
                   style={{ width: "100%", height: "auto" }}

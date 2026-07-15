@@ -123,7 +123,7 @@ const quickFacts = [
   { label: "Deliverable", value: "Discovery document for PDF / Notion" },
 ];
 
-const projectMetrics = [
+const _projectMetrics = [
   { label: "Business goal", value: "+30% foot traffic" },
   { label: "Target visitors", value: "1,500 / month" },
   { label: "Primary users", value: "35–60" },
