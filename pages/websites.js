@@ -19,9 +19,11 @@ export default function Websites() {
 
 const projects = [
   {
-    title: "CleanseTeam",
-    slug: "project1",
+    title: "Stock Tracker",
+    slug: "projects/stock-tracker",
+    label: "Commercial project",
     description:
+
       "Website for cleaning services in Tallinn. Built during 3rd year of study.",
     images: ["/project1.png", "/project12.png", "/project13.png"],
   },
@@ -29,15 +31,34 @@ const projects = [
     {
     title: "Practical experience",
     slug: "project4",
-    description: "Store inventory management web app for Likefon internship.",
+    label: "Internship project",
+    description:
+
+    "Inventory management web app built around a real Likefon store workflow.",
     images: ["/project40.png", "/project41.png", "/project42.png" , "/project43.png"],
   },
-
+  {
+    title: "CleanseTeam",
+    slug: "uiux/cleaning-website",
+    label: "University project · Year 3",
+    description:
+      "Cleaning service website with a booking flow, pricing clarity, and conversion-focused structure.",
+    images: ["/project1.png", "/project12.png", "/project13.png"],
+  },
+  {
+    title: "Choose your musician",
+    slug: "project3",
+    label: "University project · Year 2",
+    description:
+      "Interactive quiz experience that selects a musician from a library based on user answers.",
+    images: ["/project3.png", "/project31.png", "/project32.png"],
+  },
   {
     title: "Welcome to the world space!",
     slug: "project2",
+    label: "University project · Year 1",
     description:
-      "The very first project in year 1 — educational space site with quiz.",
+      "My first university web project — an educational space site with quiz interactions.",
     images: [
       "/project2.png",
       "/project21.png",
@@ -46,16 +67,9 @@ const projects = [
       "/project24.png",
     ],
   },
-  {
-    title: "Choose your musician",
-    slug: "project3",
-    description:
-      "Year 2 project. Based on your answers, a musician is selected from the library.",
-    images: ["/project3.png", "/project31.png", "/project32.png"],
-  },
 ];
 
-function ProjectBlock({ title, description, images, reverse, slug }) {
+function ProjectBlock({ title, label, description, images, reverse, slug }) {
   const hasImages = images && images.length > 0;
 
   return (
@@ -69,6 +83,9 @@ function ProjectBlock({ title, description, images, reverse, slug }) {
       )}
 
       <div className={styles.text}>
+        <span style={{ fontSize: 12, fontWeight: 800, color: "#6b7280", letterSpacing: ".08em", textTransform: "uppercase" }}>
+          {label}
+        </span>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.p}>{description}</p>
         <Link
