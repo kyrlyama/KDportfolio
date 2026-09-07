@@ -53,7 +53,15 @@ export default function Contacts() {
           <aside className={styles.left}>
             <h2 className={styles.h2}>Let’s connect</h2>
 
-            <div className={styles.contactList}>
+            <div className={styles.contactDoc}>
+<a
+  href="/cv.pdf"
+  download
+  className={styles.contactItem}
+>
+  <span className={styles.contactIcon}>📄</span>
+  <span>CV / Resume</span>
+</a>
               <a
                 href="mailto:kdunaeva04@gmail.com"
                 className={styles.contactItem}

@@ -1,15 +1,14 @@
 /* ===== Страница / контейнер ===== */
 .page {
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) 20px
+  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) var(--page-px)
     calc(72px + env(safe-area-inset-bottom));
   position: relative;
   color: #111;
 }
 .container {
-  max-width: 1560px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 32px;
 }
 
 /* ===== Сетка (по умолчанию одна колонка; ≥980px — 2 колонки) ===== */
@@ -378,7 +377,6 @@
 
   .container {
     width: 100%;
-    padding-inline: clamp(12px, 3vw, 20px);
   }
 
   .card {

@@ -4,9 +4,9 @@
   padding-bottom: clamp(72px, 10vh, 120px);
 }
 .container {
-  max-width: 1280px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding-inline: clamp(16px, 3vw, 32px);
+  padding-inline: var(--page-px);
 }
 
 /* ===== 2 колонки карточек ===== */

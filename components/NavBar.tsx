@@ -67,6 +67,11 @@ export default function NavBar() {
       label: "Contacts",
       active: (p) => p.startsWith("/contacts"),
     },
+    {
+      href: "/cv.pdf",
+      label: "CV / Resume",
+      active: (p) => p.startsWith("/cv.pdf"),
+    },
   ];
 
   // Закрывать меню после перехода

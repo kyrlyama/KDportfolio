@@ -12,8 +12,6 @@ export default function Uiux() {
       <section className={styles.cards}>
         {uiuxCases.map((item) => {
 const href = item.href || `/uiux/${item.slug}`;
-<Link href={href} className={styles.cardLink}>Open case</Link>
-
           return (
             <article key={item.slug} className={styles.card}>
               <div className={styles.cardMedia}>

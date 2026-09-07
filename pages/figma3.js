@@ -1,13 +1,16 @@
 import {
+  Check,
   Component,
   ExternalLink,
   Grid3X3,
   MousePointerClick,
   Palette,
   Type,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import ZoomableImage from "@/components/ZoomableImage";
 import fm from "@/styles/Figma.module.css";
@@ -123,70 +126,16 @@ const quickFacts = [
   { label: "Deliverable", value: "Discovery document for PDF / Notion" },
 ];
 
-const _projectMetrics = [
-  { label: "Business goal", value: "+30% foot traffic" },
-  { label: "Target visitors", value: "1,500 / month" },
-  { label: "Primary users", value: "35–60" },
-  { label: "Secondary users", value: "18–35" },
-  { label: "Personas", value: "3" },
-  { label: "Journey maps", value: "3" },
-  { label: "JTBD statements", value: "9" },
-  { label: "Hypotheses", value: "5" },
-  { label: "UX decisions", value: "7" },
-  { label: "Edge cases", value: "4" },
-  { label: "Technical stack", value: "8 items" },
-  { label: "SEO tasks", value: "5" },
-];
-
 const targetAudiences = [
   {
     title: "Primary audience — 35–60",
-    intro: "Customers who prefer shopping offline and value personal consultation.",
-    groups: [
-      {
-        title: "Behavior",
-        items: [
-          "Visit stores to see products before buying",
-          "Ask sales assistants for advice",
-          "Prefer installation services in the store",
-        ],
-      },
-      {
-        title: "Motivation",
-        items: ["Trust and reliability", "Personal consultation", "Professional installation"],
-      },
-      {
-        title: "Pain points",
-        items: [
-          "Difficulty choosing the right accessory online",
-          "Fear of buying the wrong product",
-          "Lack of trust in unknown online sellers",
-        ],
-      },
-    ],
+    summary:
+      "Prefer shopping offline and value personal consultation. Their main fear is buying the wrong accessory online, so trust and in-store guidance matter more than speed.",
   },
   {
     title: "Secondary audience — 18–35",
-    intro:
-      "Customers who research products online but visit the store when they need accessories quickly.",
-    groups: [
-      {
-        title: "Behavior",
-        items: ["Search Google before buying", "Compare options online", "Visit the store for a fast solution"],
-      },
-      {
-        title: "Motivation",
-        items: ["Speed", "Convenience", "Seeing products before purchase"],
-      },
-      {
-        title: "Pain points",
-        items: [
-          "Long delivery times from online shops",
-          "Uncertainty about product quality",
-          "Need accessories urgently",
-        ],
-      },
-    ],
+    summary:
+      "Research prices and options online, then visit the store to buy quickly. Long delivery times elsewhere push them toward a store that can fulfill urgent needs on the spot.",
   },
 ];
 
@@ -200,20 +149,8 @@ const kpis = [
 
 const competitiveInsights = [
   {
-    title: "Market context",
-    text: "Click and Evelatus already work as omnichannel retailers with offline stores and online shops. They benefit from search visibility, visible pricing, and digital product discovery, while Likefon currently has an offline-only visibility gap.",
-  },
-  {
-    title: "Pricing model insight",
-    text: "Evelatus looks cheaper at first glance with €10–12 glass, but installation adds about €4. Likefon’s €10–15 glass price includes installation, free reinstallation in case of defect, product fitting before purchase, and a 6–12 month warranty.",
-  },
-  {
     title: "Assortment advantage",
     text: "Competitors focus mostly on newer phone models. Likefon keeps accessories for older devices, which creates a niche advantage for customers aged 35+ who do not upgrade frequently.",
-  },
-  {
-    title: "Promotion strategy",
-    text: "Competitors mainly use large retail events such as Black Friday, Christmas, and New Year. Likefon can stand out with year-round campaigns: back-to-school, Valentine’s Day, local events, and targeted offers for older customers.",
   },
   {
     title: "Key conclusion",
@@ -231,29 +168,6 @@ const competitorRows = [
   ["Micro-seasonal promotions", "❌", "❌", "❌", "✔"],
   ["SEO visibility", "Medium", "Medium", "❌", "High"],
 ];
-
-const interviewQuestions = [
-  {
-    title: "Audience 35+",
-    items: [
-      "Where do you usually buy phone accessories?",
-      "Do you search online before visiting a store?",
-      "What information do you want to see before visiting a store?",
-      "Do you trust accessories purchased online?",
-      "What makes you choose one store over another?",
-    ],
-  },
-  {
-    title: "Audience 18–30",
-    items: [
-      "Do you search Google before buying accessories?",
-      "What information helps you decide which store to visit?",
-      "How important are photos and product descriptions?",
-      "Would you check a store website before going there?",
-    ],
-  },
-];
-
 
 const researchTasks = [
   "Conduct 5–7 mini interviews with real or similar Likefon customers",
@@ -331,33 +245,23 @@ const jtbd = [
     character: "Anna",
     jobs: [
       "When my phone needs protection, I want to visit a store and get help choosing accessories so that I do not buy the wrong product.",
-      "When I buy a screen protector, I want a salesperson to install it for me so that I know it is applied correctly.",
-      "When I need phone accessories, I want clear prices and simple explanations so that I feel confident about my purchase.",
     ],
   },
   {
     character: "Marina",
     jobs: [
       "When I plan to buy phone accessories, I want to check prices and options online so that I can choose the best offer before visiting the store.",
-      "When I compare products online, I want to see clear photos and product details so that I know the item will match what I expect.",
-      "When I visit the store, I want the product to be available and ready to buy so that I do not waste time searching elsewhere.",
     ],
   },
   {
     character: "Oleg",
     jobs: [
       "When I want to buy phone accessories, I want to see current discounts and bundle offers so that I can save money.",
-      "When I check the store website, I want to quickly find promotions and special deals so that I know when it is profitable to buy.",
-      "When I recommend the store to friends, I want to be sure that prices and offers are competitive so that they have a good experience too.",
     ],
   },
 ];
 
 const hypotheses = [
-  {
-    title: "Price transparency",
-    text: "If we present a clear catalog of phone accessories, then more customers will visit the store because they understand what is available before coming.",
-  },
   {
     title: "Phone model filtering",
     text: "If we add a phone model filter, then customers will feel more confident because they know the products are compatible with their device.",
@@ -365,14 +269,6 @@ const hypotheses = [
   {
     title: "Promotions visibility",
     text: "If we highlight seasonal offers, then customers will visit the store more often because they know when special deals are available.",
-  },
-  {
-    title: "In-store service promotion",
-    text: "If we clearly communicate installation and repair services, then customers will prefer Likefon instead of ordering online because they want professional assistance.",
-  },
-  {
-    title: "Staff recommendation",
-    text: "If store staff recommend the website, then more customers will use it before visiting because they trust store-provided information.",
   },
 ];
 
@@ -421,6 +317,21 @@ const userFlows = [
   "Home → Catalog → Phone Cases → Samsung → Samsung A Series → Samsung A36 → Product List",
   "Home → Catalog → Screen Protectors → Samsung → Samsung A36 → Product List",
   "Home → Promotions → Seasonal Promotions → Valentine’s Day → Product List",
+];
+
+const keyDecisions = [
+  {
+    title: "Products grouped by phone model, not just category",
+    text: "The \"phone model filtering\" hypothesis tested well, so the catalog groups products by model instead of a flat category list — this prevents users from choosing an incompatible accessory.",
+  },
+  {
+    title: "Large banner-style promotion blocks",
+    text: "The \"promotions visibility\" hypothesis showed deals get missed if buried in a menu. Promotions got a dedicated, highly visible block instead of a small link.",
+  },
+  {
+    title: "Large contact buttons over a contact form",
+    text: "The business goal is offline foot traffic, not online leads, so contact actions are big, direct buttons (call, directions) instead of a form that would keep the user on the site.",
+  },
 ];
 
 const uxDecisions = [
@@ -577,22 +488,42 @@ const mainUserFlowDetails = [
 ];
 
 const mainUserFlowMetrics = [
-  "Clicks on “Get directions”",
-  "Clicks on “Call store”",
+  "Clicks on “Get directions” and “Call store”",
   "Visits to product and category pages",
-  "Search usage",
   "Promotion banner clicks",
-  "Google Maps route requests",
 ];
 
 const mainUserFlowReasons = [
   "Model-based navigation reduces the risk of choosing the wrong accessory.",
   "Product photos improve trust before visiting the store.",
-  "Offline-focused CTA buttons support real business goals.",
-  "The flow is designed for fast product discovery with minimal steps.",
+  "Offline-focused CTA buttons support the real business goal.",
 ];
 
-function ImageTopicBlock({ title, description, images, columns = "two", link }) {
+function AvailabilityCell({ value }) {
+  if (value === "✔") {
+    return (
+      <span className={fm.availabilityYes}>
+        <Check aria-hidden="true" size={16} />
+        <span className={fm.srOnly}>Yes</span>
+      </span>
+    );
+  }
+  if (value === "❌") {
+    return (
+      <span className={fm.availabilityNo}>
+        <X aria-hidden="true" size={16} />
+        <span className={fm.srOnly}>No</span>
+      </span>
+    );
+  }
+  return <span className={fm.availabilityPartial}>{value}</span>;
+}
+
+function ImageTopicBlock({ title, description, images, columns = "two", link, progressive = false }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = progressive && images.length > 1;
+  const visibleImages = hasMore && !expanded ? images.slice(0, 1) : images;
+
   return (
     <section className={fm.imageTopicBlock}>
       <div className={fm.imageTopicHeader}>
@@ -605,7 +536,7 @@ function ImageTopicBlock({ title, description, images, columns = "two", link }) 
         ) : null}
       </div>
       <div className={`${fm.imageGallery} ${columns === "three" ? fm.imageGallery3 : ""}`}>
-        {images.map((image) => (
+        {visibleImages.map((image) => (
           <figure key={image.src} className={fm.caseImageCard}>
             <ZoomableImage
               src={image.src}
@@ -621,11 +552,20 @@ function ImageTopicBlock({ title, description, images, columns = "two", link }) 
           </figure>
         ))}
       </div>
+      {hasMore ? (
+        <button type="button" className={pm.btn} onClick={() => setExpanded((v) => !v)}>
+          {expanded ? "Show less" : `Show ${images.length - 1} more`}
+        </button>
+      ) : null}
     </section>
   );
 }
 
 export default function Figma3() {
+  const [journeysExpanded, setJourneysExpanded] = useState(false);
+  const [competitorExpanded, setCompetitorExpanded] = useState(false);
+  const visibleJourneys = journeysExpanded ? journeyMaps : journeyMaps.slice(0, 1);
+
   return (
     <main className={`${fm.page} ${fm.likefonCase}`}>
       <div className={`${pm.container} ${fm.containerWide}`}>
@@ -703,6 +643,7 @@ export default function Figma3() {
               <a className={fm.contentsLink} href="#research">Research</a>
               <a className={fm.contentsLink} href="#jtbd">JTBD</a>
               <a className={fm.contentsLink} href="#journey">Journey & hypotheses</a>
+              <a className={fm.contentsLink} href="#decisions">Key decisions</a>
               <a className={fm.contentsLink} href="#architecture">Information architecture</a>
               <a className={fm.contentsLink} href="#wireframes">Wireframes + UX decisions</a>
               <a className={fm.contentsLink} href="#design-system">Design system</a>
@@ -711,7 +652,8 @@ export default function Figma3() {
               <a className={fm.contentsLink} href="#states">Edge, empty, and error states</a>
               <a className={fm.contentsLink} href="#technical">Technical planning</a>
               <a className={fm.contentsLink} href="#optimization">SEO + performance</a>
-              <a className={fm.contentsLink} href="#reflection">Final polish</a>
+              <a className={fm.contentsLink} href="#result">Result</a>
+              <a className={fm.contentsLink} href="#reflection">Retrospective</a>
               <Link href="/figma" className={`${pm.btn} ${fm.contentsBackButton}`}>
                 ← Back
               </Link>
@@ -755,17 +697,7 @@ export default function Figma3() {
                 {targetAudiences.map((audience) => (
                   <article key={audience.title} className={fm.audienceCard}>
                     <h3>{audience.title}</h3>
-                    <p>{audience.intro}</p>
-                    {audience.groups.map((group) => (
-                      <div key={group.title}>
-                        <h4>{group.title}</h4>
-                        <ul>
-                          {group.items.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                    <p>{audience.summary}</p>
                   </article>
                 ))}
               </div>
@@ -791,30 +723,39 @@ export default function Figma3() {
                   </article>
                 ))}
               </div>
-              <div className={fm.tableWrap}>
-                <table className={fm.summaryTable}>
-                  <thead>
-                    <tr>
-                      <th>Feature</th>
-                      <th>Click</th>
-                      <th>Evelatus</th>
-                      <th>Likefon current</th>
-                      <th>Likefon proposed</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {competitorRows.map(([feature, click, evelatus, current, proposed]) => (
-                      <tr key={feature}>
-                        <td>{feature}</td>
-                        <td>{click}</td>
-                        <td>{evelatus}</td>
-                        <td>{current}</td>
-                        <td>{proposed}</td>
+              <button
+                type="button"
+                className={pm.btn}
+                onClick={() => setCompetitorExpanded((v) => !v)}
+              >
+                {competitorExpanded ? "Hide comparison table" : "Show full comparison table"}
+              </button>
+              {competitorExpanded ? (
+                <div className={fm.tableWrap}>
+                  <table className={fm.summaryTable}>
+                    <thead>
+                      <tr>
+                        <th>Feature</th>
+                        <th>Click</th>
+                        <th>Evelatus</th>
+                        <th>Likefon current</th>
+                        <th>Likefon proposed</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody>
+                      {competitorRows.map(([feature, click, evelatus, current, proposed]) => (
+                        <tr key={feature}>
+                          <td>{feature}</td>
+                          <td><AvailabilityCell value={click} /></td>
+                          <td><AvailabilityCell value={evelatus} /></td>
+                          <td><AvailabilityCell value={current} /></td>
+                          <td><AvailabilityCell value={proposed} /></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : null}
               <div className={fm.deliverable}>Deliverable: Discovery document for PDF / Notion.</div>
             </section>
 
@@ -832,18 +773,10 @@ export default function Figma3() {
                   <li key={task}>{task}</li>
                 ))}
               </ul>
-              <div className={fm.twoColGrid}>
-                {interviewQuestions.map((block) => (
-                  <div key={block.title} className={fm.metaCard}>
-                    <h3 className={fm.metaTitle}>{block.title}</h3>
-                    <ul className={fm.compactList}>
-                      {block.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+              <p className={fm.uxP}>
+                Interviews covered both segments: current buying habits, trust in online stores, and what
+                information would make them check a website before visiting.
+              </p>
               <h3 className={fm.uxH3}>Validated pain points</h3>
               <div className={fm.twoColGrid}>
                 {painPointGroups.map((group) => (
@@ -862,6 +795,7 @@ export default function Figma3() {
                 description="Separate persona cards describe the main user archetypes before moving into journey maps or wireframes. This keeps the research artifacts easy to scan and understand."
                 images={personaImages}
                 columns="three"
+                progressive
               />
               <div className={fm.deliverable}>Deliverable: research section for the case study.</div>
             </section>
@@ -914,10 +848,11 @@ export default function Figma3() {
                 title="Customer Journey Map visuals"
                 description="Journey map screenshots are separated from personas because they explain the step-by-step customer behavior, pain points, and opportunities after the user archetypes are defined."
                 images={journeyMapImages}
+                progressive
               />
               <h3 className={fm.uxH3}>Detailed customer journey maps</h3>
               <div className={fm.journeyStack}>
-                {journeyMaps.map((journey) => (
+                {visibleJourneys.map((journey) => (
                   <article key={journey.title} className={fm.journeyCard}>
                     <h3>{journey.title}</h3>
                     <div className={fm.tableWrap}>
@@ -947,12 +882,39 @@ export default function Figma3() {
                   </article>
                 ))}
               </div>
+              {journeyMaps.length > 1 ? (
+                <button
+                  type="button"
+                  className={pm.btn}
+                  onClick={() => setJourneysExpanded((v) => !v)}
+                >
+                  {journeysExpanded
+                    ? "Show fewer journeys"
+                    : `Show ${journeyMaps.length - 1} more customer journeys`}
+                </button>
+              ) : null}
               <h3 className={fm.uxH3}>Formulated hypotheses</h3>
               <div className={fm.hypothesisGrid}>
                 {hypotheses.map((hypothesis) => (
                   <article key={hypothesis.title} className={fm.hypothesisCard}>
                     <h3>{hypothesis.title}</h3>
                     <p>{hypothesis.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section id="decisions" className={fm.uxCard}>
+              <h2 className={fm.uxH2}>Key decisions</h2>
+              <p className={fm.uxP}>
+                Three decisions came directly out of the research above — not from personal taste, but from a
+                hypothesis, a pain point, or the business goal.
+              </p>
+              <div className={fm.hypothesisGrid}>
+                {keyDecisions.map((decision) => (
+                  <article key={decision.title} className={fm.hypothesisCard}>
+                    <h3>{decision.title}</h3>
+                    <p>{decision.text}</p>
                   </article>
                 ))}
               </div>
@@ -982,9 +944,8 @@ export default function Figma3() {
               <div className={fm.insightBox}>
                 <h3>Navigation logic</h3>
                 <p>
-                  The structure starts with clear home-page entry points, then narrows product discovery by
-                  category, phone brand, series, and model so customers can reach compatible accessories with
-                  fewer decisions.
+                  Product discovery narrows by category, brand, and model so customers reach compatible
+                  accessories in fewer decisions.
                 </p>
               </div>
               <ImageTopicBlock
@@ -1001,8 +962,8 @@ export default function Figma3() {
               <p className={fm.weekLabel}>Stage 4</p>
               <h2 className={fm.uxH2}>Wireframes + UX decisions</h2>
               <p className={fm.uxP}>
-                Low-fidelity wireframes should be mobile-first and focused on product discovery, search, and
-                promotions. Each screen includes a decision explanation and UX reasoning.
+                Low-fidelity wireframes are mobile-first and focused on product discovery, search, and
+                promotions.
               </p>
               <ImageTopicBlock
                 title="Low-fidelity wireframes"
@@ -1022,8 +983,8 @@ export default function Figma3() {
               <div className={fm.insightBox}>
                 <h3>Mobile-first thinking</h3>
                 <p>
-                  The wireframes prioritize product discovery, search, and promotions first because mobile users
-                  need a fast path from Google search to product confidence and then to the physical store.
+                  Product discovery, search, and promotions come first because mobile users need a fast path
+                  from Google search to store confidence.
                 </p>
               </div>
             </section>
@@ -1032,10 +993,8 @@ export default function Figma3() {
               <p className={fm.weekLabel}>Stage 5</p>
               <h2 className={fm.uxH2}>Design system</h2>
               <p className={fm.uxP}>
-                The design system is built as a practical Figma foundation: brand colors, semantic states,
-                typography, spacing rules, reusable components, interaction states, and accessibility checks.
-                I use icons and CSS previews here instead of screenshots because these artifacts are clearer as
-                structured tokens and component examples.
+                A practical Figma foundation: brand colors, semantic states, typography, spacing, reusable
+                components, and interaction states.
               </p>
 
               <div className={fm.designHeroGrid}>
@@ -1136,9 +1095,8 @@ export default function Figma3() {
               <p className={fm.weekLabel}>Stage 6</p>
               <h2 className={fm.uxH2}>High-fidelity UI + prototype</h2>
               <p className={fm.uxP}>
-                The final Figma prototype should include desktop, tablet, and mobile layouts, hover states,
-                micro-interactions, Smart Animate transitions, and the full flow: Home → Catalog → Filter →
-                Product Page.
+                The final prototype covers desktop, tablet, and mobile, with hover states and the full flow:
+                Home → Catalog → Filter → Product Page.
               </p>
               <div className={fm.twoColGrid}>
                 <article className={fm.metaCard}>
@@ -1164,10 +1122,9 @@ export default function Figma3() {
                 ))}
               </div>
               <div className={fm.placeholderPanel}>
-                <strong>Figma prototype area</strong>
                 <span>Desktop, tablet, and mobile screens connect the catalog path with offline store actions.</span>
                 <Link href={figmaPrototypeUrl} className={fm.figmaPrototypeButton}>
-                  Прототип фигмы <ExternalLink aria-hidden="true" size={18} />
+                  Open full prototype in Figma <ExternalLink aria-hidden="true" size={18} />
                 </Link>
               </div>
             </section>
@@ -1256,6 +1213,16 @@ export default function Figma3() {
               />
             </section>
 
+            <section id="result" className={fm.uxCard}>
+              <h2 className={fm.uxH2}>Result</h2>
+              <p className={fm.uxP}>
+                This is a design plan, not a launched site, so results are framed as what the solution is
+                built to achieve rather than measured traffic. The catalog structure and promotions layout
+                map directly to the two tested hypotheses above, and every screen ties back to one KPI: getting
+                a search visitor into the physical store.
+              </p>
+            </section>
+
             <section id="technical" className={fm.uxCard}>
               <p className={fm.weekLabel}>Stage 9</p>
               <h2 className={fm.uxH2}>Technical planning</h2>
@@ -1291,7 +1258,7 @@ export default function Figma3() {
 
             <section id="reflection" className={fm.uxCard}>
               <p className={fm.weekLabel}>Stage 11</p>
-              <h2 className={fm.uxH2}>Final polish + reflection</h2>
+              <h2 className={fm.uxH2}>Retrospective</h2>
               <ul className={fm.uxList}>
                 {finalPolish.map((item) => (
                   <li key={item}>{item}</li>

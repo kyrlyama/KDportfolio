@@ -100,6 +100,10 @@ export default function Home() {
   <p className={styles.eyebrow}>Portfolio</p>
   <h1>Kristina Dunajeva</h1>
   <p>Frontend Developer &amp; UI/UX Designer</p>
+  <p>I design and build web interfaces — Narva, Estonia, open to work</p>
+  <a href="/cv.pdf" download className={styles.cvBtn}>
+  Download CV
+</a>
 </div>
 
       {/* 4 главных круга */}

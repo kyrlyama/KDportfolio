@@ -101,14 +101,14 @@
 .skillsPage {
   min-height: 100svh;
   padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
-    clamp(14px, 3vw, 34px)
+    var(--page-px)
     calc(88px + env(safe-area-inset-bottom)) !important;
   color: #111827;
   overflow-x: hidden;
 }
 
 .wrap {
-  max-width: clamp(1180px, 92vw, 1560px) !important;
+  max-width: var(--content-max) !important;
   margin: 0 auto;
 }
 

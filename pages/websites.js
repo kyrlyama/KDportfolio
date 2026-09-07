@@ -30,7 +30,7 @@ const projects = [
     title: "Practical experience",
     slug: "project4",
     description: "Store inventory management web app for Likefon internship.",
-    images: ["/project4.png", "/project41.png", "/project42.png"],
+    images: ["/project40.png", "/project41.png", "/project42.png" , "/project43.png"],
   },
 
   {
