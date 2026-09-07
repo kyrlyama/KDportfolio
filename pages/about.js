@@ -78,7 +78,7 @@ export default function About() {
 
               <div className={styles.experienceList}>
                 <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>August 2020 — present</div>
+                  <div className={styles.experienceDate}>August 2021 — present</div>
                   <div className={styles.experienceContent}>
                     <h3>Sales Consultant — Likefon OÜ · Part-time / current</h3>
                     <p>
@@ -153,7 +153,7 @@ export default function About() {
                       <span>UX/UI design</span>
                       <span>Figma</span>
                     </div>
-                    <Link href="/figma3" className={styles.experienceLink}>
+                    <Link href="/uiux/likefon-prototype" className={styles.experienceLink}>
                       View Figma prototype case
                     </Link>
                   </div>
@@ -173,7 +173,7 @@ export default function About() {
                       <span>Responsive layout</span>
                       <span>From Figma to code</span>
                     </div>
-                    <Link href="/figma3" className={styles.experienceLink}>
+                    <Link href="/uiux/likefon-prototype" className={styles.experienceLink}>
                       View project foundation
                     </Link>
                   </div>
@@ -183,9 +183,7 @@ export default function About() {
 
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Education</h2>
-              <p className={styles.cardText}>
-                2025 — Mainor University of Entrepreneurship
-              </p>
+              <p className={styles.cardText}>2025 — Mainor University of Entrepreneurship</p>
               <p className={styles.cardText}>2022 — Narva Central Gymnasium</p>
             </section>
 
