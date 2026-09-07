@@ -1,8 +1,15 @@
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const categoryNames = ["Websites", "Android", "Figma", "UI/UX", "Illustrator"];
+const categories = [
+  { name: "Websites", href: "/websites" },
+  { name: "Android", href: "/android_studio" },
+  { name: "Figma", href: "/figma" },
+  { name: "UI/UX", href: "/uiux" },
+  { name: "Illustrator", href: "/illustrator" },
+];
 
-export default function ProjectOrbit({ active, onChange }) {
+export default function ProjectOrbit() {
   const [rotation, setRotation] = useState(0);
   const [hovered, setHovered] = useState(null);
   const [paused, setPaused] = useState(false);
@@ -42,18 +49,18 @@ export default function ProjectOrbit({ active, onChange }) {
         overflow: "hidden",
       }}
     >
-      {categoryNames.map((name, index) => {
-        const angle = ((rotation + index * (360 / categoryNames.length)) * Math.PI) / 180;
+      {categories.map(({ name, href }, index) => {
+        const angle = ((rotation + index * (360 / categories.length)) * Math.PI) / 180;
         const depth = (Math.cos(angle) + 1) / 2;
         const x = Math.sin(angle) * 42;
         const y = Math.sin(angle * 2) * 12;
-        const selected = active === name;
         const dimmed = hovered && hovered !== name;
 
         return (
-          <button
+          <Link
             key={name}
-            type="button"
+            href={href}
+            aria-label={`Open ${name} projects`}
             style={{
               position: "absolute",
               left: `${50 + x}%`,
@@ -64,12 +71,13 @@ export default function ProjectOrbit({ active, onChange }) {
               filter: dimmed ? "grayscale(1)" : `blur(${(1 - depth) * 0.45}px)`,
               border: "none",
               background: "transparent",
-              color: selected || hovered === name ? "#111" : "#777",
+              color: hovered === name ? "#111" : "#777",
               fontSize: "clamp(24px, 5vw, 56px)",
-              fontWeight: selected || hovered === name ? 900 : 800,
+              fontWeight: hovered === name ? 900 : 800,
               letterSpacing: "-0.05em",
               cursor: "pointer",
               whiteSpace: "nowrap",
+              textDecoration: "none",
               transition: "opacity .2s ease, color .2s ease, filter .2s ease",
             }}
             onMouseEnter={() => {
@@ -84,11 +92,9 @@ export default function ProjectOrbit({ active, onChange }) {
               setHovered(null);
               setPaused(false);
             }}
-            onClick={() => onChange(name)}
-            aria-pressed={selected}
           >
             {name}
-          </button>
+          </Link>
         );
       })}
     </div>
