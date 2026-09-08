@@ -1,10 +1,10 @@
 // pages/_app.tsx
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Head from "next/head";
-import Script from "next/script";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { useEffect } from "react";
-import { Inter } from "next/font/google";
 
 
 import type { NextPage } from "next";
@@ -21,11 +21,6 @@ type AppPropsWithOptions = AppProps & {
   Component: NextPageWithOptions;
 };
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext", "cyrillic-ext", "vietnamese"],
@@ -163,7 +158,8 @@ function Footer() {
         <a href="https://github.com/kyrlyama?tab=repositories" target="_blank" rel="noreferrer">
           GitHub
         </a>
-        <a href="/contacts">Contact</a>
+        <Link href="/contacts/">Contacts</Link>
+
       </nav>
     </footer>
   );
@@ -171,10 +167,9 @@ function Footer() {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
   const router = useRouter();
-  const pathname = router.asPath.split("?")[0].split("#")[0] || "/";
+  const pathname = router.asPath.split("?")[0]?.split("#")[0] || "/";
   const meta = getMeta(pathname);
   const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
-  const ogImage = `${SITE_URL}/og-cover.png`;
 
   function ScrollToTop() {
   const router = useRouter();
@@ -199,13 +194,11 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={ogImage} />
       </Head>
 
       {process.env.NODE_ENV === "production" && (

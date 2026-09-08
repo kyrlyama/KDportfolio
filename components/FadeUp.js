@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+
 import styles from "@/styles/Animations.module.css";
 
 export default function FadeUp({ children, delay = 0 }) {
