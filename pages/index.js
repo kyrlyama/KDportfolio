@@ -112,8 +112,8 @@ export default function Home() {
           aria-hidden="true"
           style={{
             position: "absolute",
-            top: "21%",
-            left: "13%",
+            top: "10%",
+            left: "10%",
             zIndex: 6,
             fontFamily: '"Segoe Print", "Comic Sans MS", cursive',
             fontSize: "clamp(15px, 1.6vw, 21px)",
@@ -141,7 +141,7 @@ export default function Home() {
             pointerEvents: "none",
           }}
         >
-          click a bubble ↖
+          click a bubble
         </div>
 
         {/* центральное фото */}

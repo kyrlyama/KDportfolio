@@ -1,39 +1,41 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import ProjectOrbit from "@/components/ProjectOrbit";
 import styles from "@/styles/Project.module.css";
 
-const categories = [
+export const featuredProjects = [
   {
-    title: "Websites",
-    href: "/websites",
-    description: "Responsive websites and practical frontend projects.",
+    title: "Stock Tracker",
+    label: "Commercial project",
+    description:
+      "Inventory management system for a real two-store workflow.",
+    image: "/project40.png",
+    href: "/projects/stock-tracker",
   },
   {
-    title: "UI/UX",
-    href: "/uiux",
-    description: "Research, user flows, visual design, and case studies.",
+    title: "Like store redesign",
+    label: "Commercial UX/UI",
+    description:
+      "Visual identity and store experience redesign for Likefon.",
+    image: "/uiux/redesign/redesign.png",
+    href: "/uiux/shop-redesign",
   },
   {
-    title: "Figma",
-    href: "/figma",
-    description: "Interactive prototypes, design systems, and product concepts.",
-  },
-  {
-    title: "Android",
-    href: "/android_studio",
-    description: "Mobile application projects from my development studies.",
-  },
-  {
-    title: "Illustrator",
-    href: "/illustrator",
-    description: "Posters, branding materials, and visual design work.",
+    title: "Travel Planning App",
+    label: "University project",
+    description:
+      "Research-driven Figma concept for planning trips with friends.",
+    image: "/figma23.png",
+    href: "/uiux/travel-app",
   },
 ];
 
 export default function Projects() {
   return (
     <main className={styles.page}>
+
+      {/* HERO */}
       <section
         style={{
           textAlign: "center",
@@ -53,7 +55,9 @@ export default function Projects() {
         >
           Explore my work
         </p>
+
         <h1 className="pageTitle">Projects</h1>
+
         <p
           style={{
             margin: "0 auto",
@@ -62,70 +66,132 @@ export default function Projects() {
             lineHeight: 1.6,
           }}
         >
-          Choose a category. The orbit below is navigation, while the cards give a
-          quick overview of what you will find in each section.
+          Choose a category. The orbit below is navigation, while the cards
+          give a quick overview of what you will find in each section.
         </p>
 
         <ProjectOrbit />
       </section>
 
+
+      {/* FEATURED PROJECTS */}
       <section
-        aria-label="Project categories"
-        className={styles.container}
+        aria-labelledby="featured-work-title"
         style={{
-          marginTop: 24,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 16,
+          width: "min(1120px, calc(100% - 32px))",
+          margin: "0 auto",
+          padding: "50px 0 80px",
         }}
       >
-        {categories.map((category) => (
-          <Link
-            key={category.href}
-            href={category.href}
+        <div style={{ marginBottom: 22 }}>
+          <p
             style={{
-              display: "block",
-              padding: 22,
-              borderRadius: 24,
-              background: "rgba(255,255,255,.78)",
-              color: "inherit",
-              textDecoration: "none",
-              boxShadow: "0 14px 40px rgba(17,24,39,.06)",
+              margin: 0,
+              color: "#6b7280",
+              fontSize: 12,
+              fontWeight: 900,
+              letterSpacing: ".14em",
+              textTransform: "uppercase",
             }}
           >
-            <h2
+            Selected work
+          </p>
+
+          <h2
+            id="featured-work-title"
+            style={{
+              margin: "6px 0 0",
+              color: "#111827",
+              fontSize: "clamp(26px, 4vw, 38px)",
+              lineHeight: 1.08,
+              letterSpacing: "-.04em",
+            }}
+          >
+            A few projects worth opening first
+          </h2>
+        </div>
+
+
+        {/* THREE PROJECT CARDS */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 18,
+          }}
+        >
+          {featuredProjects.map((project) => (
+            <Link
+              key={project.href}
+              href={project.href}
               style={{
-                margin: "0 0 8px",
-                color: "#111827",
-                fontSize: 21,
+                display: "block",
+                overflow: "hidden",
+                borderRadius: 24,
+                background: "rgba(255,255,255,.78)",
+                color: "inherit",
+                textDecoration: "none",
+                boxShadow: "0 14px 40px rgba(17,24,39,.08)",
               }}
             >
-              {category.title}
-            </h2>
-            <p
-              style={{
-                margin: 0,
-                color: "#6b7280",
-                lineHeight: 1.55,
-                fontSize: 14,
-              }}
-            >
-              {category.description}
-            </p>
-            <span
-              style={{
-                display: "inline-block",
-                marginTop: 16,
-                color: "#1f52c9",
-                fontWeight: 800,
-                fontSize: 13,
-              }}
-            >
-              Open category →
-            </span>
-          </Link>
-        ))}
+              <div
+                style={{
+                  aspectRatio: "16 / 10",
+                  position: "relative",
+                }}
+              >
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(max-width: 720px) 100vw, 33vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+
+              <div style={{ padding: 18 }}>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    letterSpacing: ".09em",
+                    textTransform: "uppercase",
+                    color: "#6b7280",
+                  }}
+                >
+                  {project.label}
+                </p>
+
+                <h3
+                  style={{
+                    margin: "7px 0 6px",
+                    fontSize: 20,
+                    lineHeight: 1.15,
+                    color: "#111827",
+                  }}
+                >
+                  {project.title}
+                </h3>
+
+                <p
+                  style={{
+                    margin: 0,
+                    color: "#4b5563",
+                    fontSize: 14,
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {project.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
+
     </main>
   );
 }

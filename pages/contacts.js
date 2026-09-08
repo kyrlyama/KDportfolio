@@ -79,7 +79,7 @@ export default function Contacts() {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://github.com/kyrlyama?tab=repositories"
+                href="https://github.com/kyrlyama"
                 target="_blank"
                 rel="noreferrer"
                 className={styles.contactItem}
