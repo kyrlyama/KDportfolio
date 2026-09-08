@@ -114,15 +114,11 @@ export default function About() {
           <span>Staff usability</span>
         </div>
 
-        <Link href="/project4" className={styles.experienceLink}>
-          Stock Tracker
-        </Link>
-                <Link href="/figma3" className={styles.experienceLink}>
-          Figma prototype
-        </Link>
-                <Link href="/uiux/shop-redesign" className={styles.experienceLink}>
-          Logo Redesign
-        </Link>
+        <div className={styles.experienceLinks}>
+  <Link href="/project4" className={styles.experienceLink}>Stock Tracker</Link>
+  <Link href="/figma3" className={styles.experienceLink}>Figma prototype</Link>
+  <Link href="/uiux/shop-redesign" className={styles.experienceLink}>Logo Redesign</Link>
+</div>
       </div>
     </article>
   </div>

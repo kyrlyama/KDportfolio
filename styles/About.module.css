@@ -725,3 +725,10 @@
     text-align: center;
   }
 }
+
+.experienceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}

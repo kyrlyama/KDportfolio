@@ -31,8 +31,8 @@
   --bp-xs: 480px;
 
   /* типографика */
-  --fz-h1: clamp(24px, 3.5vw, 44px);
-  --fz-h2: clamp(20px, 2.6vw, 32px);
+  --fz-h1: clamp(48px, 3.5vw, 44px);
+  --fz-h2: clamp(32px, 2.6vw, 32px);
   --fz-h3: clamp(18px, 2.2vw, 26px);
   --fz-body: clamp(14px, 1.4vw, 18px);
 
@@ -72,21 +72,19 @@ h3 {
   margin: 0;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
+
+:root {
+  --fz-h1: clamp(36px, 5vw, 64px);
+  --fz-h2: clamp(26px, 3vw, 32px);
+  --fz-h3: clamp(19px, 2vw, 22px);
+  --fz-body: clamp(16px, 1.4vw, 18px);
+  --lh-body: 1.6;
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 24px;
+  --shadow-card: 0 14px 40px rgba(17, 24, 39, .08);
 }
+body { line-height: var(--lh-body); }
 
 /* фон всего сайта */
 body {

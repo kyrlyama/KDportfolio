@@ -3,6 +3,9 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { Inter } from "next/font/google";
+
 
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -10,12 +13,19 @@ import type { AppProps } from "next/app";
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
 
+
 export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
   NextPage<P, IP> & { noGradient?: boolean };
 
 type AppPropsWithOptions = AppProps & {
   Component: NextPageWithOptions;
 };
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext", "cyrillic-ext", "vietnamese"],
@@ -166,6 +176,16 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
   const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
   const ogImage = `${SITE_URL}/og-cover.png`;
 
+  function ScrollToTop() {
+  const router = useRouter();
+  useEffect(() => {
+    const handle = () => window.scrollTo(0, 0);
+    router.events.on("routeChangeComplete", handle);
+    return () => router.events.off("routeChangeComplete", handle);
+  }, [router.events]);
+  return null;
+}
+
   return (
     <>
       <Head>
@@ -199,6 +219,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <a href="#main" className="skipLink">Skip to content</a>
 
         <NavBar />
+        <ScrollToTop />
 
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />

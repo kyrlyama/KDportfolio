@@ -1,0 +1,22 @@
+.caseNav {
+  position: sticky;
+  top: calc(var(--nav-h) + 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: start;
+}
+.caseNav a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color .2s, background .2s;
+}
+.caseNav a:hover { color: #111827; }
+.caseNav a.active {
+  background: rgba(17, 24, 39, .92);
+  color: #fff;
+}

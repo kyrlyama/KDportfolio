@@ -13,7 +13,7 @@ const featuredProjects = [
     title: "Stock Tracker",
     label: "Commercial project",
     description: "Inventory management system for a real two-store workflow.",
-    image: "/project4.png",
+    image: "/project40.png",
     href: "/projects/stock-tracker",
   },
   {
@@ -156,59 +156,26 @@ export default function Home() {
           />
         </div>
 
-        <div className={styles.introText}>
-          <p className={styles.eyebrow}>Portfolio</p>
-          <h1>Kristina Dunajeva</h1>
-          <p>Frontend Developer &amp; UI/UX Designer</p>
+<div className={styles.introText}>
+  <p className={styles.eyebrow}>Portfolio</p>
+  <h1>Kristina Dunajeva</h1>
+  <p>Frontend Developer &amp; UI/UX Designer</p>
+  <p className={styles.tagline}>
+    I design and build web interfaces — Narva, Estonia · open to work
+  </p>
 
-          <div
-            style={{
-              marginTop: 18,
-              display: "flex",
-              justifyContent: "center",
-              gap: 10,
-              flexWrap: "wrap",
-              pointerEvents: "auto",
-            }}
-          >
-            <Link
-              href="/projects"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,.88)",
-                color: "#111827",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.08)",
-              }}
-            >
-              View projects ↓
-            </Link>
-            <Link
-              href="/contacts"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(17,24,39,.92)",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.12)",
-              }}
-            >
-              Contact me →
-            </Link>
-          </div>
-        </div>
+  <div className={styles.ctaRow}>
+    <Link href="/projects" className={`${styles.ctaBtn} ${styles.ctaLight}`}>
+      View projects
+    </Link>
+    <Link href="/contacts" className={`${styles.ctaBtn} ${styles.ctaDark}`}>
+      Contact me
+    </Link>
+    <a href="/cv.pdf" download className={`${styles.ctaBtn} ${styles.ctaLight}`}>
+      Download CV
+    </a>
+  </div>
+</div>
 
         {/* 5 кликабельных пузырей */}
         <FloatingBubble
@@ -234,16 +201,6 @@ export default function Home() {
         />
       </section>
 
-
-      <div className={styles.introText}>
-  <p className={styles.eyebrow}>Portfolio</p>
-  <h1>Kristina Dunajeva</h1>
-  <p>Frontend Developer &amp; UI/UX Designer</p>
-  <p>I design and build web interfaces — Narva, Estonia, open to work</p>
-  <a href="/cv.pdf" download className={styles.cvBtn}>
-  Download CV
-</a>
-</div>
       <section
         aria-labelledby="featured-work-title"
         style={{
