@@ -17,7 +17,7 @@
 
 /* Сетка лэйаута */
 .grid {
-  max-width: 1100px;
+  max-width: var(--content-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
@@ -241,7 +241,7 @@
 .aboutPage {
   min-height: 100svh;
   padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
-    clamp(14px, 3vw, 34px)
+    var(--page-px)
     calc(88px + env(safe-area-inset-bottom)) !important;
   background: transparent !important;
   color: #111827;
@@ -250,7 +250,7 @@
 }
 
 .grid {
-  max-width: clamp(1180px, 92vw, 1560px) !important;
+  max-width: var(--content-max) !important;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 360px) !important;
   gap: 28px !important;
@@ -724,4 +724,11 @@
     width: 100%;
     text-align: center;
   }
+}
+
+.experienceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
 }

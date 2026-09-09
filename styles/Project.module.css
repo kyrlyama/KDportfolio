@@ -1,15 +1,14 @@
 /* ===== Страница / контейнер ===== */
 .page {
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) 20px
+  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) var(--page-px)
     calc(72px + env(safe-area-inset-bottom));
   position: relative;
   color: #111;
 }
 .container {
-  max-width: 1560px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 32px;
 }
 
 /* ===== Сетка (по умолчанию одна колонка; ≥980px — 2 колонки) ===== */
@@ -378,7 +377,6 @@
 
   .container {
     width: 100%;
-    padding-inline: clamp(12px, 3vw, 20px);
   }
 
   .card {
@@ -926,4 +924,50 @@
   .projectSnapshotCard strong {
     font-size: 14px !important;
   }
+}
+
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.resultCard {
+  padding: 22px 18px;
+  border: 1px solid rgba(91, 108, 255, 0.12);
+  border-radius: var(--radius-m);
+  background: var(--color-accent-soft);
+}
+
+.resultCard strong {
+  display: block;
+  color: var(--color-accent-text);
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1;
+}
+
+.resultCard span {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  .resultsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.resultValue {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  color: var(--accent, #4f46e5);
+}
+.projectSnapshotCard:has(.resultValue) {
+  text-align: center;
+  gap: 8px;
 }

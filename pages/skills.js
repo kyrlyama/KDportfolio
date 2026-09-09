@@ -13,12 +13,9 @@ export default function Skills() {
     { img: "/tools/github.png", title: "Git & GitHub" },
     { img: "/tools/xampp.png", title: "XAMPP" },
     { img: "/tools/dockerdesktop.png", title: "Docker Desktop" },
-    { img: "/tools/wix.png", title: "Wix / Google Sites" },
-    { img: "/tools/chatgpt.png", title: "ChatGPT" },
     { img: "/tools/androidstudio.png", title: "Android Studio" },
-    { img: "/tools/canva.png", title: "Canva" },
     { img: "/tools/oracle.png", title: "Oracle" },
-    { img: "/tools/notepad.png", title: "Notepad++" },
+    { img: "/tools/vercel.png", title: "Vercel" },
   ];
 
   const LANGS = [

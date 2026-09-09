@@ -1,14 +1,19 @@
 // pages/_app.tsx
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Head from "next/head";
-import Script from "next/script";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import Script from "next/script";
+import { useEffect } from "react";
+
+
 
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
+
 
 export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
   NextPage<P, IP> & { noGradient?: boolean };
@@ -17,10 +22,11 @@ type AppPropsWithOptions = AppProps & {
   Component: NextPageWithOptions;
 };
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext", "cyrillic-ext", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 const SITE_URL = "https://kdportfolio-ecru.vercel.app";
@@ -127,33 +133,16 @@ function getMeta(pathname: string) {
 
 function Footer() {
   return (
-    <footer
-      style={{
-        width: "min(1120px, calc(100% - 32px))",
-        margin: "0 auto",
-        padding: "34px 0 44px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 20,
-        flexWrap: "wrap",
-        color: "#6b7280",
-        fontSize: 13,
-      }}
-    >
+    <footer className="siteFooter">
       <div>
-        <strong style={{ color: "#111827" }}>Kristina Dunajeva</strong>
+        <strong>Kristina Dunajeva</strong>
         <span style={{ marginLeft: 8 }}>Frontend Developer &amp; UI/UX Designer</span>
       </div>
-      <nav aria-label="Footer links" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      <nav aria-label="Footer links">
         <a href="mailto:kdunaeva04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">
-          LinkedIn
-        </a>
-        <a href="https://github.com/kyrlyama?tab=repositories" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <a href="/contacts">Contact</a>
+        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/kyrlyama" target="_blank" rel="noreferrer">GitHub</a>
+        <Link href="/contacts">Contact</Link>
       </nav>
     </footer>
   );
@@ -161,10 +150,19 @@ function Footer() {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
   const router = useRouter();
-  const pathname = router.asPath.split("?")[0].split("#")[0] || "/";
+  const pathname = router.asPath.split("?")[0]?.split("#")[0] || "/";
   const meta = getMeta(pathname);
   const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
-  const ogImage = `${SITE_URL}/og-cover.png`;
+
+  function ScrollToTop() {
+  const router = useRouter();
+  useEffect(() => {
+    const handle = () => window.scrollTo(0, 0);
+    router.events.on("routeChangeComplete", handle);
+    return () => router.events.off("routeChangeComplete", handle);
+  }, [router.events]);
+  return null;
+}
 
   return (
     <>
@@ -179,13 +177,11 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={ogImage} />
       </Head>
 
       {process.env.NODE_ENV === "production" && (
@@ -195,10 +191,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         />
       )}
 
-      <div id="app-root" className={jakarta.className}>
-        <a href="#main" className="skipLink">Skip to content</a>
+          <div id="app-root" className={inter.className}>
+          <a href="#main" className="skipLink">Skip to content</a>
 
-        <NavBar />
 
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />
@@ -209,6 +204,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <main id="main" role="main" className="pageContainer">
           <Component {...pageProps} />
         </main>
+        <NavBar />
+        <ScrollToTop />
 
         <Footer />
       </div>

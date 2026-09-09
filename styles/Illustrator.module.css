@@ -6,7 +6,7 @@
 .page {
   min-height: 100svh;
   padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
-    clamp(14px, 3vw, 34px)
+    var(--page-px)
     calc(88px + env(safe-area-inset-bottom));
   color: #111827;
   font: inherit;
@@ -15,7 +15,7 @@
 }
 
 .container {
-  width: min(1560px, 100%);
+  width: min(var(--content-max), 100%);
   margin-inline: auto;
 }
 

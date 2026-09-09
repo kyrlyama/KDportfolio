@@ -1,4 +1,3 @@
-// pages/about.js
 import Image from "next/image";
 import Link from "next/link";
 
@@ -70,120 +69,69 @@ export default function About() {
           </div>
 
           <div className={styles.cardsGrid}>
-            <section className={`${styles.card} ${styles.cardWide}`}>
-              <div className={styles.sectionTop}>
-                <h2 className={styles.cardTitle}>Work experience</h2>
-                <span>Current role + concurrent project work</span>
-              </div>
+<section className={`${styles.card} ${styles.cardWide}`}>
+  <div className={styles.sectionTop}>
+    <h2 className={styles.cardTitle}>Work experience</h2>
+    <span>Project-backed experience</span>
+  </div>
 
-              <div className={styles.experienceList}>
-                <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>August 2021 — present</div>
-                  <div className={styles.experienceContent}>
-                    <h3>Sales Consultant — Likefon OÜ · Part-time / current</h3>
-                    <p>
-                      Work directly with customers in a phone accessories store,
-                      helping users choose products and understanding real customer
-                      needs, product selection behavior, and everyday service pain points.
-                    </p>
-                    <div className={styles.experienceTags}>
-                      <span>Current role</span>
-                      <span>Customer communication</span>
-                      <span>Product knowledge</span>
-                      <span>User needs</span>
-                    </div>
-                  </div>
-                </article>
+  <div className={styles.experienceList}>
+    <article className={styles.experienceItem}>
+      <div className={styles.experienceDate}>August 2021 — present</div>
 
-                <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>August 2024 — May 2025</div>
-                  <div className={styles.experienceContent}>
-                    <h3>Frontend Developer — Likefon OÜ · Part-time / concurrent</h3>
-                    <p>
-                      Built an inventory management interface around real store
-                      workflows, improving product search, filtering, availability
-                      states, and day-to-day stock handling.
-                    </p>
-                    <div className={styles.experienceTags}>
-                      <span>Frontend</span>
-                      <span>JavaScript</span>
-                      <span>Inventory system</span>
-                      <span>Business workflow</span>
-                    </div>
-                    <Link href="/projects/stock-tracker" className={styles.experienceLink}>
-                      View related project
-                    </Link>
-                  </div>
-                </article>
+      <div className={styles.experienceContent}>
+        <h3>Sales Consultant — Likefon OÜ</h3>
+        <p>
+          Worked directly with customers in a phone accessories store, helping
+          users choose products and understanding real customer needs, product
+          selection behavior, and everyday service pain points.
+        </p>
 
-                <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>November 2025 — February 2026</div>
-                  <div className={styles.experienceContent}>
-                    <h3>In-store UX & Visual Designer — Likefon OÜ · Part-time / concurrent</h3>
-                    <p>
-                      Worked on in-store visual and UX improvements, including
-                      promotional materials, customer-facing communication, visual
-                      hierarchy, and shop redesign ideas for a clearer store experience.
-                    </p>
-                    <div className={styles.experienceTags}>
-                      <span>Visual design</span>
-                      <span>UX thinking</span>
-                      <span>Shop redesign</span>
-                      <span>Brand materials</span>
-                    </div>
-                    <Link href="/uiux/shop-redesign" className={styles.experienceLink}>
-                      View shop redesign
-                    </Link>
-                  </div>
-                </article>
+        <div className={styles.experienceTags}>
+          <span>Customer communication</span>
+          <span>Product knowledge</span>
+          <span>User needs</span>
+        </div>
+      </div>
+    </article>
 
-                <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>February 2026 — May 2026</div>
-                  <div className={styles.experienceContent}>
-                    <h3>UX/UI Designer — Commercial Figma Prototype · Likefon OÜ</h3>
-                    <p>
-                      Created a commercial clickable Figma prototype independently,
-                      covering competitor research, customer and business needs,
-                      information architecture, interface structure, visual design,
-                      and interactive prototype behavior.
-                    </p>
-                    <div className={styles.experienceTags}>
-                      <span>Competitor research</span>
-                      <span>Customer analysis</span>
-                      <span>UX/UI design</span>
-                      <span>Figma</span>
-                    </div>
-                    <Link href="/uiux/likefon-prototype" className={styles.experienceLink}>
-                      View Figma prototype case
-                    </Link>
-                  </div>
-                </article>
+    <article className={styles.experienceItem}>
+      <div className={styles.experienceDate}>August 2024 — present</div>
 
-                <article className={styles.experienceItem}>
-                  <div className={styles.experienceDate}>May 2026 — present</div>
-                  <div className={styles.experienceContent}>
-                    <h3>Frontend Developer — Likefon Website Implementation · Part-time / concurrent</h3>
-                    <p>
-                      Continuing the Likefon redesign by turning the Figma prototype
-                      into a working website, focusing on responsive layout, reusable
-                      frontend sections, and implementation of the designed user flow.
-                    </p>
-                    <div className={styles.experienceTags}>
-                      <span>Frontend development</span>
-                      <span>Responsive layout</span>
-                      <span>From Figma to code</span>
-                    </div>
-                    <Link href="/uiux/likefon-prototype" className={styles.experienceLink}>
-                      View project foundation
-                    </Link>
-                  </div>
-                </article>
-              </div>
-            </section>
+      <div className={styles.experienceContent}>
+        <h3>Product Designer (UI/UX) & Frontend Developer — Likefon OÜ</h3>
+        <p>• Designed and built a web-based inventory management system from scratch (HTML, CSS/Bootstrap, JavaScript, Fetch API, JSON)
+        - dynamic filtering and live stock indicators replaced manual stock checks, now used daily by store staff</p>
+        <p>• Led an in-store branding refresh end to end - logo, posters, business cards - based on competitor and customer research, from brief through management approval. </p>
+        <p> • Designed and implemented a responsive, interactive user interface for a full-stack web application, including user authentication, inventory management, and order processing </p>
+        <p> • Designed a commercial Figma prototype independently, from competitor research and customer analysis through to high-fidelity, interactive UI covering full user flows and information architecture. </p>
+        <p>• Currently converting that prototype into a responsive production website with reusable components and structured frontend layout</p>
+
+        <div className={styles.experienceTags}>
+          <span>Frontend</span>
+          <span>JavaScript</span>
+          <span>Inventory system</span>
+          <span>Staff usability</span>
+        </div>
+
+        <div className={styles.experienceLinks}>
+  <Link href="/project4" className={styles.experienceLink}>Stock Tracker</Link>
+  <Link href="/figma3" className={styles.experienceLink}>Figma prototype</Link>
+  <Link href="/uiux/shop-redesign" className={styles.experienceLink}>Logo Redesign</Link>
+</div>
+      </div>
+    </article>
+  </div>
+</section>
 
             <section className={styles.card}>
               <h2 className={styles.cardTitle}>Education</h2>
-              <p className={styles.cardText}>2025 — Mainor University of Entrepreneurship</p>
+              <p className={styles.cardText}>
+                2025 —  Estonian Entrepreneurship University of Applied Sciences. 
+              </p> 
+              <p className={styles.cardText}>
+                Bachelor of Arts in Web Technologies and Design
+              </p> 
               <p className={styles.cardText}>2022 — Narva Central Gymnasium</p>
             </section>
 
@@ -207,7 +155,6 @@ export default function About() {
                 width={160}
                 height={160}
                 className={styles.avatar}
-                priority
               />
             </div>
 

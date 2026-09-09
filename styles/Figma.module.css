@@ -33,8 +33,8 @@
 
 /* ===== ВЫТЯНУТАЯ ГОРИЗОНТАЛЬНАЯ КАРТОЧКА (для figma1/figma2) ===== */
 .containerWide {
-  max-width: clamp(1200px, 92vw, 1760px);
-  padding-inline: clamp(16px, 3vw, 32px);
+  max-width: var(--content-max);
+  padding-inline: var(--page-px);
 }
 
 /* карточка в стиле Android Studio: белая панель, горизонтальная сетка */
@@ -1123,6 +1123,41 @@
 .summaryTable tr:last-child td,
 .journeyTable tr:last-child td {
   border-bottom: 0;
+}
+
+/* Availability cells (comparison table): icons instead of raw emoji characters */
+.availabilityYes,
+.availabilityNo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+}
+.availabilityYes {
+  color: #1a7f4b;
+  background: rgba(26, 127, 75, 0.12);
+}
+.availabilityNo {
+  color: #9ca3af;
+  background: rgba(156, 163, 175, 0.14);
+}
+.availabilityPartial {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .deliverable {
@@ -2880,8 +2915,8 @@
 }
 
 .figmaLegacyCase .containerWide {
-  max-width: clamp(1180px, 92vw, 1560px) !important;
-  padding-inline: clamp(18px, 3vw, 34px) !important;
+  max-width: var(--content-max) !important;
+  padding-inline: var(--page-px) !important;
 }
 
 .figmaLegacyCase .androidLike {
