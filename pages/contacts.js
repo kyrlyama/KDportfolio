@@ -52,7 +52,11 @@ export default function Contacts() {
           {/* Левая колонка: контакты/соцсети */}
           <aside className={styles.left}>
             <h2 className={styles.h2}>Let’s connect</h2>
-
+<span className={styles.statusBadge}>
+  <span className={styles.statusDot} />
+  Open to work
+</span>
+<p className={styles.metaLine}>Narva, Estonia · GMT+3</p>
             <div className={styles.contactDoc}>
 <a
   href="/cv.pdf"
@@ -182,8 +186,9 @@ export default function Contacts() {
             </form>
 
             <p className={styles.microcopy}>
-              By sending this form you agree that I can contact you back. I
-              don’t store personal data and do not share it with third parties.
+  By sending this form you agree that I can contact you back. I don’t
+  store personal data and do not share it with third parties. I usually
+  reply within 1–2 business days.
             </p>
           </section>
         </div>
