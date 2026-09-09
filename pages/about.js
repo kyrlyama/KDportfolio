@@ -155,7 +155,6 @@ export default function About() {
                 width={160}
                 height={160}
                 className={styles.avatar}
-                priority
               />
             </div>
 

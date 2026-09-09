@@ -731,3 +731,211 @@
   color: #fff;
   box-shadow: 0 8px 24px rgba(17,24,39,.12);
 }
+
+
+/* =========================================
+   FEATURED WORK
+   ========================================= */
+
+.featuredSection {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0 80px;
+}
+
+.featuredHeader {
+  margin-bottom: 22px;
+}
+
+.sectionEyebrow {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.featuredTitle {
+  margin: 6px 0 0;
+  color: var(--color-text);
+  font-size: clamp(26px, 4vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.featuredCard {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+  background: rgba(255, 255, 255, 0.8);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+}
+
+.featuredImageWrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.featuredImage {
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.featuredCard:hover .featuredImage {
+  transform: scale(1.025);
+}
+
+.featuredCardBody {
+  padding: 18px;
+}
+
+.featuredLabel {
+  margin: 0;
+  color: var(--color-accent-text);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.featuredCardTitle {
+  margin: 7px 0 6px;
+  color: var(--color-text);
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.featuredDescription {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== intro ====== */
+.tagline {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 500;
+}
+.ctaRow {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  pointer-events: auto;
+}
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.ctaBtn:hover { transform: translateY(-2px); }
+.ctaLight {
+  background: rgba(255, 255, 255, .88);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+.ctaDark {
+  background: rgba(17, 24, 39, .92);
+  color: #fff;
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ====== featured ====== */
+.featured {
+  width: min(var(--container-max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0 80px;
+}
+.featuredHeader { margin-bottom: 22px; }
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.featuredTitle {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: var(--fz-h2);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.card {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+.cardMedia { aspect-ratio: 16 / 10; position: relative; }
+.cardBody { padding: 18px; }
+.cardLabel {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cardTitle {
+  margin: 7px 0 6px;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.cardText {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.55;
+}

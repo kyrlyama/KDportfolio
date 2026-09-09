@@ -157,23 +157,19 @@ export default function Home() {
         </div>
 
 <div className={styles.introText}>
-  <p className={styles.eyebrow}>Portfolio</p>
   <h1>Kristina Dunajeva</h1>
   <p>Frontend Developer &amp; UI/UX Designer</p>
   <p className={styles.tagline}>
-    I design and build web interfaces — Narva, Estonia · open to work
+    Narva, Estonia · open to work
   </p>
 
   <div className={styles.ctaRow}>
     <Link href="/projects" className={`${styles.ctaBtn} ${styles.ctaLight}`}>
-      View projects
+      View projects ↓
     </Link>
     <Link href="/contacts" className={`${styles.ctaBtn} ${styles.ctaDark}`}>
-      Contact me
+      Contact me →
     </Link>
-    <a href="/cv.pdf" download className={`${styles.ctaBtn} ${styles.ctaLight}`}>
-      Download CV
-    </a>
   </div>
 </div>
 
@@ -201,109 +197,35 @@ export default function Home() {
         />
       </section>
 
-      <section
-        aria-labelledby="featured-work-title"
-        style={{
-          width: "min(1120px, calc(100% - 32px))",
-          margin: "0 auto",
-          padding: "18px 0 80px",
-        }}
-      >
-        <div style={{ marginBottom: 22 }}>
-          <p
-            style={{
-              margin: 0,
-              color: "#6b7280",
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-            }}
-          >
-            Selected work
-          </p>
-          <h2
-            id="featured-work-title"
-            style={{
-              margin: "6px 0 0",
-              color: "#111827",
-              fontSize: "clamp(26px, 4vw, 38px)",
-              lineHeight: 1.08,
-              letterSpacing: "-.04em",
-            }}
-          >
-            A few projects worth opening first
-          </h2>
-        </div>
+<section aria-labelledby="featured-work-title" className={styles.featured}>
+  <div className={styles.featuredHeader}>
+    <p className={styles.eyebrow}>Selected work</p>
+    <h2 id="featured-work-title" className={styles.featuredTitle}>
+      A few projects worth opening first
+    </h2>
+  </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 18,
-          }}
-        >
-          {featuredProjects.map((project) => (
-            <Link
-              key={project.href}
-              href={project.href}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                borderRadius: 24,
-                background: "rgba(255,255,255,.78)",
-                color: "inherit",
-                textDecoration: "none",
-                boxShadow: "0 14px 40px rgba(17,24,39,.08)",
-              }}
-            >
-              <div style={{ aspectRatio: "16 / 10", position: "relative" }}>
-                <Image
-                  src={project.image}
-                  alt={`${project.title} preview`}
-                  fill
-                  sizes="(max-width: 720px) 100vw, 33vw"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div style={{ padding: 18 }}>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    letterSpacing: ".09em",
-                    textTransform: "uppercase",
-                    color: "#6b7280",
-                  }}
-                >
-                  {project.label}
-                </p>
-                <h3
-                  style={{
-                    margin: "7px 0 6px",
-                    fontSize: 20,
-                    lineHeight: 1.15,
-                    color: "#111827",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    color: "#4b5563",
-                    fontSize: 14,
-                    lineHeight: 1.55,
-                  }}
-                >
-                  {project.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+  <div className={styles.featuredGrid}>
+    {featuredProjects.map((project) => (
+      <Link key={project.href} href={project.href} className={styles.card}>
+        <div className={styles.cardMedia}>
+          <Image
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            sizes="(max-width: 720px) 100vw, 33vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
-      </section>
-    </div>
+        <div className={styles.cardBody}>
+          <p className={styles.cardLabel}>{project.label}</p>
+          <h3 className={styles.cardTitle}>{project.title}</h3>
+          <p className={styles.cardText}>{project.description}</p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
+</div>
   );
 }

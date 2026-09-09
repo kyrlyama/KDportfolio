@@ -1,197 +1,79 @@
-import Image from "next/image";
+import { Globe, Frame, PenTool, Smartphone, Palette } from "lucide-react";
 import Link from "next/link";
 
-import ProjectOrbit from "@/components/ProjectOrbit";
-import styles from "@/styles/Project.module.css";
+import styles from "@/styles/ProjectsPage.module.css";
 
-export const featuredProjects = [
+const categories = [
   {
-    title: "Stock Tracker",
-    label: "Commercial project",
+    title: "Websites",
+    href: "/websites",
+    icon: Globe,
+    size: "large",
     description:
-      "Inventory management system for a real two-store workflow.",
-    image: "/project40.png",
-    href: "/projects/stock-tracker",
+      "Responsive websites and a full-stack inventory system built for a real store workflow.",
+    meta: "Stock Tracker · CleanseTeam",
   },
   {
-    title: "Like store redesign",
-    label: "Commercial UX/UI",
+    title: "UI/UX",
+    href: "/uiux",
+    icon: Frame,
+    size: "large",
     description:
-      "Visual identity and store experience redesign for Likefon.",
-    image: "/uiux/redesign/redesign.png",
-    href: "/uiux/shop-redesign",
+      "Research, personas, user flows, information architecture and tested prototypes.",
+    meta: "4 case studies",
   },
   {
-    title: "Travel Planning App",
-    label: "University project",
-    description:
-      "Research-driven Figma concept for planning trips with friends.",
-    image: "/figma23.png",
-    href: "/uiux/travel-app",
+    title: "Figma",
+    href: "/figma",
+    icon: PenTool,
+    size: "small",
+    description: "Interactive prototypes, components and design systems.",
+  },
+  {
+    title: "Android",
+    href: "/android_studio",
+    icon: Smartphone,
+    size: "small",
+    description: "Mobile apps from development studies: Kotlin and Java.",
+  },
+  {
+    title: "Illustrator",
+    href: "/illustrator",
+    icon: Palette,
+    size: "small",
+    description: "Posters, branding materials and visual design work.",
   },
 ];
 
 export default function Projects() {
   return (
     <main className={styles.page}>
-
-      {/* HERO */}
-      <section
-        style={{
-          textAlign: "center",
-          maxWidth: 1100,
-          margin: "0 auto",
-        }}
-      >
-        <p
-          style={{
-            margin: "0 0 10px",
-            color: "#6b7280",
-            fontSize: 13,
-            fontWeight: 800,
-            letterSpacing: ".14em",
-            textTransform: "uppercase",
-          }}
-        >
-          Explore my work
-        </p>
-
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>Explore my work</p>
         <h1 className="pageTitle">Projects</h1>
-
-        <p
-          style={{
-            margin: "0 auto",
-            maxWidth: 680,
-            color: "#6b7280",
-            lineHeight: 1.6,
-          }}
-        >
-          Choose a category. The orbit below is navigation, while the cards
-          give a quick overview of what you will find in each section.
+        <p className={styles.lead}>
+          Five directions, one goal — interfaces that are clear, tested and
+          shipped. Start with the big two.
         </p>
+      </header>
 
-        <ProjectOrbit />
-      </section>
-
-
-      {/* FEATURED PROJECTS */}
-      <section
-        aria-labelledby="featured-work-title"
-        style={{
-          width: "min(1120px, calc(100% - 32px))",
-          margin: "0 auto",
-          padding: "50px 0 80px",
-        }}
-      >
-        <div style={{ marginBottom: 22 }}>
-          <p
-            style={{
-              margin: 0,
-              color: "#6b7280",
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-            }}
+      <section aria-label="Project categories" className={styles.grid}>
+        {categories.map(({ icon: Icon, ...category }) => (
+          <Link
+            key={category.href}
+            href={category.href}
+            className={`${styles.card} ${styles[category.size]}`}
           >
-            Selected work
-          </p>
-
-          <h2
-            id="featured-work-title"
-            style={{
-              margin: "6px 0 0",
-              color: "#111827",
-              fontSize: "clamp(26px, 4vw, 38px)",
-              lineHeight: 1.08,
-              letterSpacing: "-.04em",
-            }}
-          >
-            A few projects worth opening first
-          </h2>
-        </div>
-
-
-        {/* THREE PROJECT CARDS */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 18,
-          }}
-        >
-          {featuredProjects.map((project) => (
-            <Link
-              key={project.href}
-              href={project.href}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                borderRadius: 24,
-                background: "rgba(255,255,255,.78)",
-                color: "inherit",
-                textDecoration: "none",
-                boxShadow: "0 14px 40px rgba(17,24,39,.08)",
-              }}
-            >
-              <div
-                style={{
-                  aspectRatio: "16 / 10",
-                  position: "relative",
-                }}
-              >
-                <Image
-                  src={project.image}
-                  alt={`${project.title} preview`}
-                  fill
-                  sizes="(max-width: 720px) 100vw, 33vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-
-              <div style={{ padding: 18 }}>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    letterSpacing: ".09em",
-                    textTransform: "uppercase",
-                    color: "#6b7280",
-                  }}
-                >
-                  {project.label}
-                </p>
-
-                <h3
-                  style={{
-                    margin: "7px 0 6px",
-                    fontSize: 20,
-                    lineHeight: 1.15,
-                    color: "#111827",
-                  }}
-                >
-                  {project.title}
-                </h3>
-
-                <p
-                  style={{
-                    margin: 0,
-                    color: "#4b5563",
-                    fontSize: 14,
-                    lineHeight: 1.55,
-                  }}
-                >
-                  {project.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
+            <span className={styles.iconWrap}>
+              <Icon size={22} strokeWidth={2} aria-hidden="true" />
+            </span>
+            <h2 className={styles.cardTitle}>{category.title}</h2>
+            <p className={styles.cardText}>{category.description}</p>
+            {category.meta && <p className={styles.cardMeta}>{category.meta}</p>}
+            <span className={styles.cardLink}>Open →</span>
+          </Link>
+        ))}
       </section>
-
     </main>
   );
 }

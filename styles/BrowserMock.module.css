@@ -1,0 +1,39 @@
+.figure { margin: 0; }
+.frame {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #f3f4f6;
+  border-bottom: 1px solid var(--line);
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+}
+.url {
+  margin-left: 10px;
+  flex: 1;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+}
+.viewport { position: relative; }
+.image { width: 100%; height: auto; display: block; }
+.caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}

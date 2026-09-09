@@ -1,10 +1,11 @@
 // pages/_app.tsx
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
+
 
 
 import type { NextPage } from "next";
@@ -22,10 +23,10 @@ type AppPropsWithOptions = AppProps & {
 };
 
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext", "cyrillic-ext", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 const SITE_URL = "https://kdportfolio-ecru.vercel.app";
@@ -132,34 +133,16 @@ function getMeta(pathname: string) {
 
 function Footer() {
   return (
-    <footer
-      style={{
-        width: "min(1120px, calc(100% - 32px))",
-        margin: "0 auto",
-        padding: "34px 0 44px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 20,
-        flexWrap: "wrap",
-        color: "#6b7280",
-        fontSize: 13,
-      }}
-    >
+    <footer className="siteFooter">
       <div>
-        <strong style={{ color: "#111827" }}>Kristina Dunajeva</strong>
+        <strong>Kristina Dunajeva</strong>
         <span style={{ marginLeft: 8 }}>Frontend Developer &amp; UI/UX Designer</span>
       </div>
-      <nav aria-label="Footer links" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      <nav aria-label="Footer links">
         <a href="mailto:kdunaeva04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">
-          LinkedIn
-        </a>
-        <a href="https://github.com/kyrlyama?tab=repositories" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <Link href="/contacts/">Contacts</Link>
-
+        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/kyrlyama" target="_blank" rel="noreferrer">GitHub</a>
+        <Link href="/contacts">Contact</Link>
       </nav>
     </footer>
   );
@@ -208,11 +191,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         />
       )}
 
-      <div id="app-root" className={jakarta.className}>
-        <a href="#main" className="skipLink">Skip to content</a>
+          <div id="app-root" className={inter.className}>
+          <a href="#main" className="skipLink">Skip to content</a>
 
-        <NavBar />
-        <ScrollToTop />
 
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />
@@ -223,6 +204,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <main id="main" role="main" className="pageContainer">
           <Component {...pageProps} />
         </main>
+        <NavBar />
+        <ScrollToTop />
 
         <Footer />
       </div>
