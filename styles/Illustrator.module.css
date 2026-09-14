@@ -24,9 +24,9 @@
   padding: clamp(28px, 4vw, 52px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 12%, rgba(31, 82, 201, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
     linear-gradient(145deg, #ffffff, #f8fbff);
-  border: 1px solid rgba(31, 82, 201, 0.08);
+  border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
 }
 
@@ -35,8 +35,8 @@
   margin: 0 0 12px;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -71,8 +71,8 @@
 .heroMeta span {
   padding: 8px 11px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 13px;
   font-weight: 800;
 }
@@ -183,8 +183,8 @@
   max-width: 100%;
   padding: 7px 10px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 800;
 }

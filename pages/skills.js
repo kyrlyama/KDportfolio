@@ -25,12 +25,10 @@ export default function Skills() {
   ];
 
   const SOFT = [
-    "Creativity and visual thinking",
     "Attention to detail",
     "Problem-solving and adaptability",
     "Communication and teamwork",
     "Time management and responsibility",
-    "Willingness to learn and grow",
     "User-centered mindset",
     "Presentation and storytelling",
   ];

@@ -269,7 +269,7 @@
   padding: clamp(28px, 4vw, 52px) !important;
   border-radius: 30px !important;
   background:
-    radial-gradient(circle at 88% 12%, rgba(31, 82, 201, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
     linear-gradient(145deg, #ffffff, #f8fbff) !important;
 }
 
@@ -278,8 +278,8 @@
   margin: 0 0 12px;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -315,7 +315,7 @@
   padding: 16px;
   border-radius: 18px;
   background: #ffffff;
-  border: 1px solid rgba(31, 82, 201, 0.1);
+  border: 1px solid rgba(109, 40, 217, 0.1);
   box-shadow: 0 10px 26px rgba(17, 24, 39, 0.05);
 }
 
@@ -361,7 +361,7 @@
 
 .cardTitle {
   margin: 0 0 12px !important;
-  color: #1f52c9 !important;
+  color: #6d28d9 !important;
   font-size: 20px !important;
   font-weight: 900 !important;
 }
@@ -391,10 +391,10 @@
 }
 
 .chip {
-  background: #eaf3ff !important;
-  color: #1f52c9 !important;
+  background: #f2ecfe !important;
+  color: #6d28d9 !important;
   box-shadow: none !important;
-  border: 1px solid rgba(31, 82, 201, 0.12);
+  border: 1px solid rgba(109, 40, 217, 0.12);
 }
 
 .barLabel {
@@ -409,7 +409,7 @@
 }
 
 .barFill {
-  background: linear-gradient(90deg, #1f52c9, #8b5cf6) !important;
+  background: linear-gradient(90deg, #6d28d9, #8b5cf6) !important;
   box-shadow: none !important;
 }
 
@@ -505,12 +505,12 @@
   padding: 18px;
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
-  border: 1px solid rgba(31, 82, 201, 0.1);
+  border: 1px solid rgba(109, 40, 217, 0.1);
   box-shadow: 0 10px 26px rgba(17, 24, 39, 0.05);
 }
 
 .experienceDate {
-  color: #1f52c9;
+  color: #6d28d9;
   font-size: 13px;
   font-weight: 900;
   line-height: 1.4;
@@ -541,8 +541,8 @@
 .experienceTags span {
   padding: 6px 9px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 800;
 }
@@ -556,7 +556,7 @@
   margin-top: 14px;
   padding: 10px 14px;
   border-radius: 999px;
-  background: #1f52c9;
+  background: #6d28d9;
   color: #ffffff;
   font-size: 13px;
   font-weight: 900;
@@ -617,12 +617,12 @@
   padding: 18px;
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
-  border: 1px solid rgba(31, 82, 201, 0.1);
+  border: 1px solid rgba(109, 40, 217, 0.1);
   box-shadow: 0 10px 26px rgba(17, 24, 39, 0.05);
 }
 
 .experienceDate {
-  color: #1f52c9;
+  color: #6d28d9;
   font-size: 13px;
   font-weight: 900;
   line-height: 1.4;
@@ -654,8 +654,8 @@
 .focusList span {
   padding: 6px 9px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 800;
 }
@@ -669,7 +669,7 @@
   margin-top: 14px;
   padding: 10px 14px;
   border-radius: 999px;
-  background: #1f52c9;
+  background: #6d28d9;
   color: #ffffff;
   font-size: 13px;
   font-weight: 900;

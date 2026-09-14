@@ -117,9 +117,9 @@
   padding: clamp(28px, 4vw, 52px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 12%, rgba(31, 82, 201, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
     linear-gradient(145deg, #ffffff, #f8fbff);
-  border: 1px solid rgba(31, 82, 201, 0.08);
+  border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
 }
 
@@ -128,8 +128,8 @@
   margin: 0 0 12px;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -177,7 +177,7 @@
 
 .coreCard h2 {
   margin: 0 0 10px;
-  color: #1f52c9;
+  color: #6d28d9;
   font-size: 20px;
   font-weight: 900;
 }
@@ -198,8 +198,8 @@
 .tagRow span {
   padding: 7px 10px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 800;
 }
@@ -241,7 +241,7 @@
 
 .smallCard,
 .softCard {
-  border: 1px solid rgba(31, 82, 201, 0.08);
+  border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 8px 20px rgba(17, 24, 39, 0.05) !important;
   transition:
     transform 0.18s ease,
@@ -257,7 +257,7 @@
 }
 
 .iconBox {
-  background: #eaf3ff !important;
+  background: #f2ecfe !important;
 }
 
 .langName {
@@ -266,7 +266,7 @@
 }
 
 .langLevel {
-  color: #1f52c9;
+  color: #6d28d9;
   font-weight: 900;
 }
 
@@ -287,7 +287,7 @@
 
 .techCard h3 {
   margin: 0 0 8px;
-  color: #1f52c9;
+  color: #6d28d9;
   font-size: 17px;
   font-weight: 900;
 }
