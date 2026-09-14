@@ -33,9 +33,9 @@
   --space-6: 48px;
 
   /* прочее */
-  --container-max: 1120px;
-  --content-max: 1120px;      /* макс. ширина контента на страницах-кейсах */
-  --page-px: clamp(16px, 4vw, 40px); /* боковые отступы страниц */
+  --container-max: 1240px;
+  --content-max: 1240px;      /* макс. ширина контента на страницах-кейсах */
+  --page-px: clamp(16px, 3vw, 28px); /* боковые отступы страниц */
   --nav-h: 64px;
   --page-title-size: clamp(28px, 4vw, 44px);
 }
@@ -181,7 +181,7 @@ html {
   font-size: 13px;
 }
 .siteFooter strong { color: var(--ink); }
-.siteFooter nav { display: flex; gap: 16px; flex-wrap: wrap; }
+.siteFooter nav { display: flex; gap: 26px; flex-wrap: wrap; }
 .siteFooter a { color: var(--muted); text-decoration: none; }
 .siteFooter a:hover { color: var(--ink); }
 

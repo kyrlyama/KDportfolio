@@ -1,6 +1,6 @@
 .page {
   min-height: 100svh;
-  padding: calc(var(--nav-h, 60px) + 18px) var(--page-px) 96px;
+  padding: calc(var(--nav-h, 60px) + 30px) var(--page-px) 96px;
   color: #111;
 }
 

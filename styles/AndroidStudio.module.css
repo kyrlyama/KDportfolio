@@ -1,6 +1,6 @@
 /* ===== страница ===== */
 .page {
-  padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
+  padding-top: calc(var(--nav-h) + 32px + env(safe-area-inset-top));
   padding-bottom: clamp(72px, 10vh, 120px);
 }
 .container {

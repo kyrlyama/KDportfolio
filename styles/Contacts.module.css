@@ -55,7 +55,7 @@
 /* Контакты/соцсети */
 .contactList {
   display: grid;
-  gap: 22px;
+  gap: 28px;
   margin-top: 14px;
   margin-bottom: 16px;
 }

@@ -1,8 +1,8 @@
 /* ===== Страница / контейнер ===== */
 .page {
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) var(--page-px)
-    calc(72px + env(safe-area-inset-bottom));
+  padding: calc(var(--nav-h) + 32px + env(safe-area-inset-top)) var(--page-px)
+  calc(72px + env(safe-area-inset-bottom));
   position: relative;
   color: #111;
 }
