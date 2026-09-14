@@ -120,6 +120,61 @@ const PAGE_META = {
     title: "Currency Converter — Android App",
     description: "Android currency converter project with validation and locale-aware formatting.",
   },
+    "/skills": {
+    title: "Skills — Kristina Dunajeva",
+    description:
+      "Frontend, UI/UX and practical product-building skills: React, Next.js, Figma, and the tools behind them.",
+  },
+  "/project1": {
+    title: "CleanseTeam — Website Case Study",
+    description:
+      "A cleaning service website with a booking flow, transparent pricing and a conversion-focused structure.",
+  },
+  "/project2": {
+    title: "Space Website — Educational Planet Explorer",
+    description:
+      "An educational website about the Solar System with planet pages, tables, and an interactive quiz.",
+  },
+  "/project3": {
+    title: "Music Portal — Artist Discovery Website",
+    description:
+      "A music discovery web application that helps users find musicians by year, genre, and region.",
+  },
+  "/project4": {
+    title: "Stock Tracker — Screen Protector Inventory",
+    description:
+      "A full-stack inventory management system for tracking screen protector stock across two store locations.",
+  },
+  "/androidstudio1": {
+    title: "Translator — Android Studio App",
+    description:
+      "Multilingual translator (RU/EN/EE/DE) with history, Material Design UI and simple cloud sync.",
+  },
+  "/androidstudio2": {
+    title: "Calculator — Android Studio App",
+    description:
+      "Mobile calculator with basic operations, polished layout and a responsive keypad.",
+  },
+  "/androidstudio3": {
+    title: "Currency Converter — Android Studio App",
+    description:
+      "Simple currency converter demonstrating input validation, formatting and instant conversion.",
+  },
+  "/figma1": {
+    title: "Travel Planning App — Figma Case Study",
+    description:
+      "A prototype for an app that helps friends plan group trips: budgets, AI recommendations, swipe decisions.",
+  },
+  "/figma2": {
+    title: "Gift Helper — Figma Case Study",
+    description:
+      "A mobile app that helps users find the perfect gift based on age, budget, hobbies and occasion.",
+  },
+  "/figma3": {
+    title: "Likefon Marketing Website — Figma Case Study",
+    description:
+      "A Figma case study plan for a marketing website that improves Likefon's online visibility in Narva.",
+  },
 };
 
 function getMeta(pathname: string) {
@@ -177,11 +232,13 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={`${SITE_URL}/og-cover.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={`${SITE_URL}/og-cover.png`} />
       </Head>
 
       {process.env.NODE_ENV === "production" && (

@@ -32,10 +32,10 @@
   pointer-events: auto;
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.82), transparent 31%),
-    radial-gradient(circle at 88% 14%, rgba(255, 255, 255, 0.52), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.18));
-  border: 1px solid rgba(255, 255, 255, 0.54);
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.92), transparent 31%),
+    radial-gradient(circle at 88% 14%, rgba(255, 255, 255, 0.85), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow:
     0 24px 70px rgba(15, 23, 42, 0.16),
     0 8px 24px rgba(15, 23, 42, 0.1),
@@ -149,6 +149,12 @@
 .active {
   color: #111827;
   font-weight: 800;
+}
+
+.themeToggleSlot {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
 }
 
 .menuBtn {

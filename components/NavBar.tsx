@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+
+import ThemeToggle from "@/components/ThemeToggle";
 import styles from "@/styles/NavBar.module.css";
+
 
 /** Монтируем порталом внутрь #app-root (если есть), иначе в <body> */
 function usePortal(targetSelector = "#app-root", id = "nav-portal") {
@@ -120,6 +123,10 @@ export default function NavBar() {
                 {l.label}
               </Link>
             ))}
+          </div>
+
+          <div className={styles.themeToggleSlot}>
+            <ThemeToggle />
           </div>
 
           {/* Бургер */}
