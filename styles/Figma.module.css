@@ -2,6 +2,7 @@
 .page {
   padding-top: calc(var(--nav-h) + 32px + env(safe-area-inset-top));
   padding-bottom: clamp(80px, 10vh, 140px);
+  padding-inline: var(--page-px);
 }
 
 /* ===== СТРАНИЦА СПИСКА: сетка в 2 колонки, карточки рядом ===== */
@@ -44,6 +45,7 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  object-position: top !important;
   position: absolute !important;
   inset: 0 !important;
 }

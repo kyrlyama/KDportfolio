@@ -1,7 +1,7 @@
 /* Корневой контейнер страницы About */
 .aboutPage {
   min-height: 100vh;
-  padding: 120px 24px 80px;
+  padding: calc(var(--nav-h) + 32px + env(safe-area-inset-top)) var(--page-px) 80px;
   position: relative;
   /* если фон уже глобальный — эту строку можно убрать;
      если нужен локально — оставь */

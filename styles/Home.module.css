@@ -878,7 +878,7 @@
 
 /* ====== featured ====== */
 .featured {
-  width: min(var(--container-max), calc(100% - 32px));
+  width: min(var(--container-max), calc(100% - 2 * var(--page-px)));
   margin: 0 auto;
   padding: 18px 0 80px;
 }
