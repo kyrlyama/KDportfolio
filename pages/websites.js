@@ -19,20 +19,21 @@ export default function Websites() {
 
 const projects = [
   {
-    title: "Stock Tracker",
-    slug: "projects/stock-tracker",
-    label: "Commercial project",
-    description:
-      "Inventory management web app built around a real Likefon store workflow.",
-    images: ["/project4.png", "/project41.png", "/project42.png"],
-  },
-  {
     title: "CleanseTeam",
-    slug: "uiux/cleaning-website",
+    slug: "project1",
     label: "University project · Year 3",
     description:
       "Cleaning service website with a booking flow, pricing clarity, and conversion-focused structure.",
     images: ["/project1.png", "/project12.png", "/project13.png"],
+  },
+    {
+    title: "Practical experience",
+    slug: "project4",
+    label: "Internship project",
+    description:
+
+    "Inventory management web app built around a real Likefon store workflow.",
+    images: ["/project40.png", "/project41.png", "/project42.png" , "/project43.png"],
   },
   {
     title: "Choose your musician",

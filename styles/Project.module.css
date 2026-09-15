@@ -1,22 +1,21 @@
 /* ===== Страница / контейнер ===== */
 .page {
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 12px + env(safe-area-inset-top)) 20px
+  padding: calc(var(--nav-h) + 56px + env(safe-area-inset-top)) var(--page-px)
     calc(72px + env(safe-area-inset-bottom));
   position: relative;
   color: #111;
 }
 .container {
-  max-width: 1560px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 32px;
 }
 
 /* ===== Сетка (по умолчанию одна колонка; ≥980px — 2 колонки) ===== */
 .cardsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px;
+  gap: 32px;
 }
 @media (min-width: 980px) {
   .cardsGrid {
@@ -26,7 +25,7 @@
 }
 @media (min-width: 1440px) {
   .cardsGrid {
-    gap: 36px;
+    gap: 40px;
   }
 }
 
@@ -38,11 +37,11 @@
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
-  padding: 24px 28px;
+  padding: 24px 32px;
   container-type: inline-size;
   content-visibility: auto;
   contain-intrinsic-size: 560px;
-  scroll-margin-top: calc(var(--nav-h) + 12px);
+  scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 .column {
   flex-direction: column;
@@ -56,7 +55,7 @@
 .title {
   font-size: clamp(22px, 2.2vw, 30px);
   font-weight: 800;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #111;
 }
 .p {
@@ -67,12 +66,12 @@
 .h2 {
   font-size: 20px;
   font-weight: 800;
-  margin: 18px 0 10px;
+  margin: 16px 0 8px;
   color: #111;
 }
 .list {
-  margin: 0 0 10px;
-  padding-left: 18px;
+  margin: 0 0 8px;
+  padding-left: 16px;
   line-height: 1.8;
   color: #333;
 }
@@ -87,14 +86,14 @@
   width: auto;
   max-width: max-content;
   align-self: flex-start;
-  padding: 14px 24px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  padding: 16px 24px;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-weight: 800;
   border-radius: 18px;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 18px 40px rgba(31, 82, 201, 0.16);
+  box-shadow: 0 18px 40px rgba(109, 40, 217, 0.16);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -104,7 +103,7 @@
 .repoBtn:hover {
   transform: translateY(-1px);
   background: #e3eeff;
-  box-shadow: 0 22px 48px rgba(31, 82, 201, 0.2);
+  box-shadow: 0 22px 48px rgba(109, 40, 217, 0.2);
 }
 .btn:focus-visible,
 .repoBtn:focus-visible {
@@ -114,7 +113,7 @@
 .btnRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 .btnRow :where(.btn, .repoBtn) {
   width: auto;
@@ -123,7 +122,7 @@
 @media (max-width: 540px) {
   .btn,
   .repoBtn {
-    padding: 12px 18px;
+    padding: 16px 16px;
     border-radius: 16px;
     white-space: normal;
     text-align: center;
@@ -134,7 +133,7 @@
 .cardsGrid .card {
   flex-direction: column;
   gap: 16px;
-  padding: 18px;
+  padding: 16px;
   border-radius: 20px;
 }
 .cardsGrid .media,
@@ -170,7 +169,7 @@
 .card.column {
   max-width: 920px;
   margin-inline: auto;
-  padding: 20px 22px;
+  padding: 24px 24px;
   border-radius: 20px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
@@ -229,7 +228,7 @@
     font-size: 22px;
   }
   .slider {
-    padding: 12px;
+    padding: 16px;
   }
 }
 @media (max-width: 420px) {
@@ -254,18 +253,18 @@
    ========================= */
 @media (max-width: 880px) {
   .websitesPage {
-    padding-top: calc(var(--nav-h, 60px) + 10px + env(safe-area-inset-top));
-    padding-bottom: clamp(56px, 12vh, 84px);
+    padding-top: calc(var(--nav-h, 64px) + 8px + env(safe-area-inset-top));
+    padding-bottom: clamp(56px, 12vh, 88px);
     overflow-x: hidden;
   }
 
   .websitesPage .container {
-    padding-inline: 12px;
+    padding-inline: 16px;
   }
   .websitesPage .cardsGrid {
     grid-template-columns: 1fr !important;
-    gap: 14px !important; /* было 12px */
-    margin: 10px 0 60px !important;
+    gap: 16px !important; /* было 12px */
+    margin: 8px 0 64px !important;
   }
 
   /* карточка — чуть шире и с большим внутренним отступом */
@@ -273,7 +272,7 @@
     width: 100%;
     max-width: 480px; /* было 420px */
     margin-inline: auto;
-    padding: 14px 16px !important; /* было 12px 14px */
+    padding: 16px 16px !important; /* было 12px 14px */
     border-radius: 14px !important;
     background: #fff;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
@@ -283,7 +282,7 @@
 
   /* фото — немного выше, но без обрезаний */
   .websitesPage .media {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     padding: 0;
   }
   .websitesPage .frame {
@@ -308,7 +307,7 @@
   /* кнопки/текст — на полшага крупнее */
   .websitesPage .title {
     font-size: clamp(17px, 4.6vw, 20px) !important; /* +чуть-чуть */
-    margin: 4px 0 6px !important;
+    margin: 8px 0 8px !important;
     text-align: left !important;
   }
   .websitesPage .p {
@@ -319,7 +318,7 @@
   }
   .websitesPage .btn {
     width: 100% !important;
-    padding: 10px 13px !important; /* +чуть-чуть */
+    padding: 8px 16px !important; /* +чуть-чуть */
     border-radius: 12px !important;
     font-size: clamp(13.5px, 3.8vw, 15.5px) !important;
     white-space: normal !important;
@@ -338,12 +337,12 @@
 .buttonRow {
   display: flex;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
 .secondaryBtn {
-  padding: 12px 20px;
+  padding: 16px 24px;
   border-radius: 14px;
   font-weight: 500;
   background: #e4ebf7;
@@ -357,11 +356,11 @@
 }
 .btn,
 .repoBtn {
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   border-radius: 18px;
   font-weight: 800;
-  box-shadow: 0 18px 40px rgba(31, 82, 201, 0.16);
+  box-shadow: 0 18px 40px rgba(109, 40, 217, 0.16);
 }
 .secondaryBtn {
   background: #e4ebf7;
@@ -373,17 +372,16 @@
 /* Cross-site responsive tightening for tablets and phones */
 @media (max-width: 1024px) {
   .page {
-    padding-inline: clamp(12px, 3vw, 20px);
+    padding-inline: clamp(16px, 3vw, 24px);
   }
 
   .container {
     width: 100%;
-    padding-inline: clamp(12px, 3vw, 20px);
   }
 
   .card {
     gap: clamp(16px, 3vw, 24px);
-    padding: clamp(16px, 3vw, 22px);
+    padding: clamp(16px, 3vw, 24px);
     border-radius: 20px;
   }
 }
@@ -426,7 +424,7 @@
 
 @media (max-width: 480px) {
   .page {
-    padding-inline: 10px;
+    padding-inline: 8px;
   }
 
   .container {
@@ -436,7 +434,7 @@
   .card,
   .cardsGrid .card,
   .card.column {
-    padding: 14px;
+    padding: 16px;
     border-radius: 16px;
   }
 }
@@ -450,31 +448,31 @@
 .projectHero {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(32px, 4vw, 56px);
   align-items: center;
-  margin: clamp(24px, 4vw, 56px) 0 28px;
-  padding: clamp(26px, 4vw, 48px);
+  margin: clamp(24px, 4vw, 56px) 0 32px;
+  padding: clamp(24px, 4vw, 48px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 14%, rgba(31, 82, 201, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 14%, rgba(109, 40, 217, 0.12), transparent 34%),
     linear-gradient(145deg, #ffffff, #f8fbff);
-  border: 1px solid rgba(31, 82, 201, 0.08);
+  border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
 }
 
 .projectHeroText {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   max-width: 720px;
 }
 
 .projectEyebrow {
   width: max-content;
   margin: 0;
-  padding: 7px 12px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -514,7 +512,7 @@
 
 .projectSection {
   margin-top: 24px;
-  padding: clamp(22px, 3vw, 34px);
+  padding: clamp(24px, 3vw, 32px);
   border-radius: 26px;
   background: #ffffff;
   border: 1px solid rgba(17, 24, 39, 0.06);
@@ -524,13 +522,13 @@
 .projectSectionHeader {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
+  gap: 16px;
   align-items: flex-start;
   margin-bottom: 16px;
 }
 
 .projectSectionTitle {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #111827;
   font-size: clamp(24px, 2.4vw, 34px);
   line-height: 1.15;
@@ -548,7 +546,7 @@
 .projectSnapshotGrid,
 .projectFeatureGrid {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   margin-top: 16px;
 }
 
@@ -563,7 +561,7 @@
 .projectSnapshotCard,
 .projectFeatureCard {
   border-radius: 18px;
-  border: 1px solid rgba(31, 82, 201, 0.1);
+  border: 1px solid rgba(109, 40, 217, 0.1);
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   box-shadow: 0 10px 26px rgba(17, 24, 39, 0.05);
 }
@@ -589,12 +587,12 @@
 }
 
 .projectFeatureCard {
-  padding: 18px;
+  padding: 16px;
 }
 
 .projectFeatureCard h3 {
   margin: 0 0 8px;
-  color: #1f52c9;
+  color: #6d28d9;
   font-size: 17px;
   font-weight: 900;
 }
@@ -607,9 +605,9 @@
 
 .projectList {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin: 16px 0 0;
-  padding-left: 20px;
+  padding-left: 24px;
   color: #374151;
   font-size: 16px;
   line-height: 1.65;
@@ -617,10 +615,10 @@
 
 .projectCounter {
   flex: 0 0 auto;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-size: 13px;
   font-weight: 900;
 }
@@ -644,8 +642,8 @@
 .projectThumbGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .projectThumb {
@@ -667,7 +665,7 @@
 }
 
 .projectThumbActive {
-  border-color: #1f52c9;
+  border-color: #6d28d9;
 }
 
 @media (max-width: 1100px) {
@@ -716,8 +714,8 @@
 @media (max-width: 900px) {
   .page {
     overflow-x: hidden !important;
-    padding-top: calc(var(--nav-h, 60px) + 14px + env(safe-area-inset-top)) !important;
-    padding-inline: 12px !important;
+    padding-top: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top)) !important;
+    padding-inline: 16px !important;
     padding-bottom: calc(64px + env(safe-area-inset-bottom)) !important;
   }
 
@@ -725,15 +723,15 @@
     width: 100% !important;
     max-width: 100% !important;
     padding-inline: 0 !important;
-    gap: 18px !important;
+    gap: 16px !important;
   }
 
   .projectHero {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 18px !important;
+    gap: 16px !important;
     width: 100% !important;
-    margin: 14px 0 18px !important;
+    margin: 16px 0 16px !important;
     padding: 16px !important;
     border-radius: 20px !important;
     min-height: unset !important;
@@ -742,12 +740,12 @@
   .projectHeroText {
     width: 100% !important;
     max-width: 100% !important;
-    gap: 12px !important;
+    gap: 16px !important;
   }
 
   .projectEyebrow {
     font-size: 11px !important;
-    padding: 6px 10px !important;
+    padding: 8px 8px !important;
     max-width: 100% !important;
     white-space: normal !important;
   }
@@ -788,13 +786,13 @@
   .projectSectionHeader {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
 
   .projectSectionTitle {
     font-size: clamp(22px, 7vw, 30px) !important;
     line-height: 1.15 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
   }
 
   .projectText,
@@ -810,7 +808,7 @@
   .projectThumbGrid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    gap: 16px !important;
     width: 100% !important;
   }
 
@@ -818,7 +816,7 @@
   .projectFeatureCard {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 14px !important;
+    padding: 16px !important;
     border-radius: 16px !important;
   }
 
@@ -828,14 +826,14 @@
   }
 
   .projectList {
-    padding-left: 18px !important;
+    padding-left: 16px !important;
     gap: 8px !important;
   }
 
   .projectCounter {
     width: max-content !important;
     font-size: 12px !important;
-    padding: 7px 10px !important;
+    padding: 8px 8px !important;
   }
 
   .projectSlider {
@@ -865,7 +863,7 @@
   .btnRow {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 10px !important;
+    gap: 8px !important;
     width: 100% !important;
   }
 
@@ -877,7 +875,7 @@
     justify-content: center !important;
     text-align: center !important;
     white-space: normal !important;
-    padding: 12px 16px !important;
+    padding: 16px 16px !important;
     border-radius: 16px !important;
   }
 
@@ -898,12 +896,12 @@
 
 @media (max-width: 480px) {
   .page {
-    padding-inline: 10px !important;
+    padding-inline: 8px !important;
   }
 
   .projectHero,
   .projectSection {
-    padding: 14px !important;
+    padding: 16px !important;
     border-radius: 18px !important;
   }
 
@@ -926,4 +924,50 @@
   .projectSnapshotCard strong {
     font-size: 14px !important;
   }
+}
+
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.resultCard {
+  padding: 24px 16px;
+  border: 1px solid rgba(91, 108, 255, 0.12);
+  border-radius: var(--radius-m);
+  background: var(--color-accent-soft);
+}
+
+.resultCard strong {
+  display: block;
+  color: var(--color-accent-text);
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1;
+}
+
+.resultCard span {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  .resultsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.resultValue {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  color: var(--accent, #7c3aed);
+}
+.projectSnapshotCard:has(.resultValue) {
+  text-align: center;
+  gap: 8px;
 }

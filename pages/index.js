@@ -13,7 +13,7 @@ const featuredProjects = [
     title: "Stock Tracker",
     label: "Commercial project",
     description: "Inventory management system for a real two-store workflow.",
-    image: "/project4.png",
+    image: "/project40.png",
     href: "/projects/stock-tracker",
   },
   {
@@ -112,8 +112,8 @@ export default function Home() {
           aria-hidden="true"
           style={{
             position: "absolute",
-            top: "21%",
-            left: "13%",
+            top: "10%",
+            left: "10%",
             zIndex: 6,
             fontFamily: '"Segoe Print", "Comic Sans MS", cursive',
             fontSize: "clamp(15px, 1.6vw, 21px)",
@@ -141,7 +141,7 @@ export default function Home() {
             pointerEvents: "none",
           }}
         >
-          click a bubble ↖
+          click a bubble
         </div>
 
         {/* центральное фото */}
@@ -156,59 +156,22 @@ export default function Home() {
           />
         </div>
 
-        <div className={styles.introText}>
-          <p className={styles.eyebrow}>Portfolio</p>
-          <h1>Kristina Dunajeva</h1>
-          <p>Frontend Developer &amp; UI/UX Designer</p>
+<div className={styles.introText}>
+  <h1>Kristina Dunajeva</h1>
+  <p>Frontend Developer &amp; UI/UX Designer</p>
+  <p className={styles.tagline}>
+    Narva, Estonia · open to work
+  </p>
 
-          <div
-            style={{
-              marginTop: 18,
-              display: "flex",
-              justifyContent: "center",
-              gap: 10,
-              flexWrap: "wrap",
-              pointerEvents: "auto",
-            }}
-          >
-            <Link
-              href="/projects"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,.88)",
-                color: "#111827",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.08)",
-              }}
-            >
-              View projects ↓
-            </Link>
-            <Link
-              href="/contacts"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(17,24,39,.92)",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.12)",
-              }}
-            >
-              Contact me →
-            </Link>
-          </div>
-        </div>
+  <div className={styles.ctaRow}>
+    <Link href="/projects" className={`${styles.ctaBtn} ${styles.ctaLight}`}>
+      View projects ↓
+    </Link>
+    <Link href="/contacts" className={`${styles.ctaBtn} ${styles.ctaDark}`}>
+      Contact me →
+    </Link>
+  </div>
+</div>
 
         {/* 5 кликабельных пузырей */}
         <FloatingBubble
@@ -234,109 +197,35 @@ export default function Home() {
         />
       </section>
 
-      <section
-        aria-labelledby="featured-work-title"
-        style={{
-          width: "min(1120px, calc(100% - 32px))",
-          margin: "0 auto",
-          padding: "18px 0 80px",
-        }}
-      >
-        <div style={{ marginBottom: 22 }}>
-          <p
-            style={{
-              margin: 0,
-              color: "#6b7280",
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-            }}
-          >
-            Selected work
-          </p>
-          <h2
-            id="featured-work-title"
-            style={{
-              margin: "6px 0 0",
-              color: "#111827",
-              fontSize: "clamp(26px, 4vw, 38px)",
-              lineHeight: 1.08,
-              letterSpacing: "-.04em",
-            }}
-          >
-            A few projects worth opening first
-          </h2>
-        </div>
+<section aria-labelledby="featured-work-title" className={styles.featured}>
+  <div className={styles.featuredHeader}>
+    <p className={styles.eyebrow}>Selected work</p>
+    <h2 id="featured-work-title" className={styles.featuredTitle}>
+      A few projects worth opening first
+    </h2>
+  </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 18,
-          }}
-        >
-          {featuredProjects.map((project) => (
-            <Link
-              key={project.href}
-              href={project.href}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                borderRadius: 24,
-                background: "rgba(255,255,255,.78)",
-                color: "inherit",
-                textDecoration: "none",
-                boxShadow: "0 14px 40px rgba(17,24,39,.08)",
-              }}
-            >
-              <div style={{ aspectRatio: "16 / 10", position: "relative" }}>
-                <Image
-                  src={project.image}
-                  alt={`${project.title} preview`}
-                  fill
-                  sizes="(max-width: 720px) 100vw, 33vw"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div style={{ padding: 18 }}>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    letterSpacing: ".09em",
-                    textTransform: "uppercase",
-                    color: "#6b7280",
-                  }}
-                >
-                  {project.label}
-                </p>
-                <h3
-                  style={{
-                    margin: "7px 0 6px",
-                    fontSize: 20,
-                    lineHeight: 1.15,
-                    color: "#111827",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    color: "#4b5563",
-                    fontSize: 14,
-                    lineHeight: 1.55,
-                  }}
-                >
-                  {project.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+  <div className={styles.featuredGrid}>
+    {featuredProjects.map((project) => (
+      <Link key={project.href} href={project.href} className={styles.card}>
+        <div className={styles.cardMedia}>
+          <Image
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            sizes="(max-width: 720px) 100vw, 33vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
-      </section>
-    </div>
+        <div className={styles.cardBody}>
+          <p className={styles.cardLabel}>{project.label}</p>
+          <h3 className={styles.cardTitle}>{project.title}</h3>
+          <p className={styles.cardText}>{project.description}</p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
+</div>
   );
 }
