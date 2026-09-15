@@ -68,8 +68,6 @@ export default function Skills() {
     "Wireframing & Prototyping — from low-fidelity sketches to high-fidelity interactive Figma prototypes.",
     "Usability Testing — validating ideas with users and iterating designs.",
     "Design Systems & UI Guidelines — ensuring consistency across the product.",
-    "Microinteractions & Chatbot Flows — focusing on details that improve user experience.",
-    "MVC Pattern — separating business logic, UI, and data for cleaner and more scalable design.",
   ];
 
   const CORE = [

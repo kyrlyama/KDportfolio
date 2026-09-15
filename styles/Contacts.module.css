@@ -1,7 +1,7 @@
 /* Корневой контейнер страницы (фон общий, поэтому без локального градиента) */
 .contactsPage {
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 32px) var(--page-px) 80px; /* чуть ниже навбара */
+  padding: calc(var(--nav-h) + 56px) var(--page-px) 80px; /* чуть ниже навбара */
   color: #111;
   position: relative;
 }
@@ -55,7 +55,7 @@
 /* Контакты/соцсети */
 .contactList {
   display: grid;
-  gap: 32px;
+  gap: 10px;
   margin-top: 14px;
   margin-bottom: 16px;
 }

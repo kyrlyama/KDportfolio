@@ -101,7 +101,7 @@
 .skillsPage {
   min-height: 100svh;
   padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
-    var(--page-px)
+    clamp(12px, 2vw, 20px)
     calc(88px + env(safe-area-inset-bottom)) !important;
   color: #111827;
   overflow-x: hidden;
