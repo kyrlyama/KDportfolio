@@ -23,11 +23,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
-  padding: 9px 12px;
+  padding: 8px 16px;
   border-radius: 999px;
   pointer-events: auto;
   overflow: hidden;
@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
   flex-wrap: nowrap;
 }
 
@@ -112,7 +112,7 @@
   text-decoration: none;
   font: inherit;
   letter-spacing: inherit;
-  padding: 12px 16px;
+  padding: 16px 16px;
   border-radius: 999px;
   transition:
     color 0.22s ease,
@@ -154,7 +154,7 @@
 .themeToggleSlot {
   display: flex;
   align-items: center;
-  margin-left: 4px;
+  margin-left: 8px;
 }
 
 .menuBtn {
@@ -192,7 +192,7 @@
   .row {
     width: 100%;
     min-height: 58px;
-    padding: 7px 8px 7px 12px;
+    padding: 8px 8px 8px 16px;
   }
 
   .linksDesktop {
@@ -285,7 +285,7 @@
     gap: 8px;
     max-width: 520px;
     margin: 0 auto;
-    padding: 12px;
+    padding: 16px;
     border-radius: 28px;
     background:
       radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.82), transparent 32%),
@@ -305,7 +305,7 @@
     text-decoration: none;
     font: inherit;
     letter-spacing: inherit;
-    padding: 13px 16px;
+    padding: 16px 16px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.24);
     transition:

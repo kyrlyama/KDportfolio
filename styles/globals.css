@@ -122,12 +122,12 @@ a { color: var(--accent); }
   line-height: 1.15;
   letter-spacing: -0.01em;
   text-align: center;
-  margin: clamp(8px, 1.5vw, 20px) 0 clamp(16px, 3.5vw, 40px);
-  scroll-margin-top: calc(var(--nav-h) + 12px);
+  margin: clamp(8px, 1.5vw, 24px) 0 clamp(16px, 3.5vw, 40px);
+  scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 .pageWrapper {
   min-height: calc(100svh - var(--nav-h));
-  padding: calc(var(--nav-h) + 32px + env(safe-area-inset-top))
+  padding: calc(var(--nav-h) + 56px + env(safe-area-inset-top))
     env(safe-area-inset-right) var(--space-6) env(safe-area-inset-left);
   display: flex;
   flex-direction: column;
@@ -155,7 +155,7 @@ a { color: var(--accent); }
   top: calc(env(safe-area-inset-top) + 12px);
   width: auto;
   height: auto;
-  padding: 10px 14px;
+  padding: 8px 16px;
   z-index: 10000;
   background: #fff;
   color: var(--ink);
@@ -164,24 +164,24 @@ a { color: var(--accent); }
 }
 
 html {
-  scroll-padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
+  scroll-padding-top: calc(var(--nav-h) + 16px + env(safe-area-inset-top));
 }
 
 /* футер */
 .siteFooter {
   width: min(var(--container-max), calc(100% - 32px));
   margin: 0 auto;
-  padding: var(--space-4) 0 44px;
+  padding: var(--space-4) 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
   color: var(--muted);
   font-size: 13px;
 }
 .siteFooter strong { color: var(--ink); }
-.siteFooter nav { display: flex; gap: 26px; flex-wrap: wrap; }
+.siteFooter nav { display: flex; gap: 24px; flex-wrap: wrap; }
 .siteFooter a { color: var(--muted); text-decoration: none; }
 .siteFooter a:hover { color: var(--ink); }
 
@@ -204,8 +204,8 @@ html {
 @media (max-width: 768px) {
   .pageWrapper {
     width: 100%;
-    padding-top: calc(var(--nav-h) + 18px + env(safe-area-inset-top));
-    padding-inline: clamp(10px, 3vw, 18px);
+    padding-top: calc(var(--nav-h) + 16px + env(safe-area-inset-top));
+    padding-inline: clamp(8px, 3vw, 16px);
   }
   .container { width: 100%; }
 }

@@ -57,7 +57,7 @@ export default function Contacts() {
   Open to work
 </span>
 <p className={styles.metaLine}>Narva, Estonia · GMT+3</p>
-  <div className={styles.contactList}>
+            <div className={styles.contactList}>
 <a
   href="/cv.pdf"
   download

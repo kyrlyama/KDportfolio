@@ -16,7 +16,7 @@
 .glassCard {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) 1.6fr;
-  gap: 28px;
+  gap: 32px;
   border-radius: 24px;
   padding: 24px;
   background: rgba(255, 255, 255, 0.6);
@@ -35,7 +35,7 @@
 .right {
   background: #fff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -43,28 +43,28 @@
 .h2 {
   font-size: 22px;
   font-weight: 800;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #111;
 }
 .p {
   color: #334155;
   line-height: 1.6;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 /* Контакты/соцсети */
 .contactList {
   display: grid;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 16px;
+  margin-top: 16px;
   margin-bottom: 16px;
 }
 .contactItem {
   display: grid;
   grid-template-columns: 28px 1fr;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 16px;
+  padding: 16px 16px;
   border-radius: 12px;
   background: #f8fafc;
   color: #0f172a;
@@ -107,7 +107,7 @@
 .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 @media (max-width: 640px) {
   .row2 {
@@ -127,7 +127,7 @@
 
 .input,
 .textarea {
-  padding: 12px 14px;
+  padding: 16px 16px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   background: #fff;
@@ -152,13 +152,13 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .button {
-  padding: 12px 20px;
+  padding: 16px 24px;
   background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: #fff;
   border: none;
@@ -186,7 +186,7 @@
 
 .alert {
   font-weight: 700;
-  padding: 10px 12px;
+  padding: 8px 16px;
   border-radius: 10px;
 }
 .alertOk {
@@ -201,7 +201,7 @@
 }
 
 .microcopy {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 12.5px;
   color: #475569;
 }
@@ -211,14 +211,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: #ecfdf5;
   color: #065f46;
   font-size: 13px;
   font-weight: 800;
   border: 1px solid #a7f3d0;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .statusDot {
   width: 8px;
@@ -230,7 +230,7 @@
 
 /* Локация */
 .metaLine {
-  margin: 0 0 4px;
+  margin: 0 0 8px;
   color: #475569;
   font-size: 14px;
   font-weight: 600;

@@ -120,7 +120,7 @@ const PAGE_META = {
     title: "Currency Converter — Android App",
     description: "Android currency converter project with validation and locale-aware formatting.",
   },
-    "/skills": {
+  "/skills": {
     title: "Skills — Kristina Dunajeva",
     description:
       "Frontend, UI/UX and practical product-building skills: React, Next.js, Figma, and the tools behind them.",

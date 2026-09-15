@@ -9,8 +9,8 @@
 .bar {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
+  gap: 8px;
+  padding: 8px 16px;
   background: #f3f4f6;
   border-bottom: 1px solid var(--line);
 }
@@ -21,9 +21,9 @@
   background: #d1d5db;
 }
 .url {
-  margin-left: 10px;
+  margin-left: 8px;
   flex: 1;
-  padding: 4px 12px;
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
   background: #fff;
   color: var(--muted);
@@ -32,7 +32,7 @@
 .viewport { position: relative; }
 .image { width: 100%; height: auto; display: block; }
 .caption {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 13px;
   color: var(--muted);
   text-align: center;

@@ -1,7 +1,7 @@
 /* Корневой контейнер страницы About */
 .aboutPage {
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 32px + env(safe-area-inset-top)) var(--page-px) 80px;
+  padding: calc(var(--nav-h) + 56px + env(safe-area-inset-top)) var(--page-px) 80px;
   position: relative;
   /* если фон уже глобальный — эту строку можно убрать;
      если нужен локально — оставь */
@@ -21,7 +21,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 28px;
+  gap: 32px;
 }
 @media (max-width: 1024px) {
   .grid {
@@ -50,7 +50,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   letter-spacing: -0.02em;
   color: #111111;
 }
@@ -64,8 +64,8 @@
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 18px;
+  gap: 16px;
+  margin-top: 16px;
 }
 @media (max-width: 768px) {
   .cardsGrid {
@@ -77,7 +77,7 @@
 .card {
   background: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
-  padding: 18px;
+  padding: 16px;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
@@ -91,7 +91,7 @@
   color: #1a1a1a;
 }
 .cardText {
-  margin: 6px 0;
+  margin: 8px 0;
   color: #2a2a2a;
   line-height: 1.6;
 }
@@ -102,7 +102,7 @@
   top: 100px; /* можно: calc(var(--nav-h) + 36px) */
   background: rgba(255, 255, 255, 0.9);
   border-radius: 18px;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
@@ -111,7 +111,7 @@
 .avatarWrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .avatar {
   border-radius: 50%;
@@ -125,10 +125,10 @@
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .chip {
-  padding: 6px 10px;
+  padding: 8px 8px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
@@ -143,14 +143,14 @@
 
 /* Прогресс-бары */
 .barWrap {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .barLabel {
   display: inline-block;
   font-size: 12px;
   font-weight: 700;
   color: #3a3a3a;
-  margin: 10px 0 4px;
+  margin: 8px 0 8px;
 }
 .barTrack {
   width: 100%;
@@ -240,7 +240,7 @@
 
 .aboutPage {
   min-height: 100svh;
-  padding: calc(var(--nav-h, 60px) + 28px + env(safe-area-inset-top))
+  padding: calc(var(--nav-h, 64px) + 56px + env(safe-area-inset-top))
     var(--page-px)
     calc(88px + env(safe-area-inset-bottom)) !important;
   background: transparent !important;
@@ -253,7 +253,7 @@
   max-width: var(--content-max) !important;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 360px) !important;
-  gap: 28px !important;
+  gap: 32px !important;
   align-items: start !important;
 }
 
@@ -266,7 +266,7 @@
 }
 
 .heroCard {
-  padding: clamp(28px, 4vw, 52px) !important;
+  padding: clamp(32px, 4vw, 56px) !important;
   border-radius: 30px !important;
   background:
     radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
@@ -275,8 +275,8 @@
 
 .eyebrow {
   width: max-content;
-  margin: 0 0 12px;
-  padding: 7px 12px;
+  margin: 0 0 16px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
   color: #6d28d9;
@@ -307,8 +307,8 @@
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin: 26px 0 28px;
+  gap: 16px;
+  margin: 24px 0 32px;
 }
 
 .summaryItem {
@@ -346,12 +346,12 @@
 .cardsGrid {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 20px !important;
-  margin-top: 28px !important;
+  gap: 24px !important;
+  margin-top: 32px !important;
 }
 
 .card {
-  padding: 22px !important;
+  padding: 24px !important;
   border-radius: 24px !important;
 }
 
@@ -360,7 +360,7 @@
 }
 
 .cardTitle {
-  margin: 0 0 12px !important;
+  margin: 0 0 16px !important;
   color: #6d28d9 !important;
   font-size: 20px !important;
   font-weight: 900 !important;
@@ -387,7 +387,7 @@
 
 .facts {
   gap: 8px !important;
-  margin: 18px 0 !important;
+  margin: 16px 0 !important;
 }
 
 .chip {
@@ -439,12 +439,12 @@
 
 @media (max-width: 760px) {
   .aboutPage {
-    padding-inline: 12px !important;
-    padding-top: calc(var(--nav-h, 60px) + 16px + env(safe-area-inset-top)) !important;
+    padding-inline: 16px !important;
+    padding-top: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top)) !important;
   }
 
   .grid {
-    gap: 20px !important;
+    gap: 24px !important;
   }
 
   .heroCard,
@@ -483,8 +483,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .sectionTop span {
@@ -501,8 +501,8 @@
 .experienceItem {
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
-  gap: 18px;
-  padding: 18px;
+  gap: 16px;
+  padding: 16px;
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   border: 1px solid rgba(109, 40, 217, 0.1);
@@ -535,11 +535,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .experienceTags span {
-  padding: 6px 9px;
+  padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
   color: #6d28d9;
@@ -553,8 +553,8 @@
   max-width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 14px;
-  padding: 10px 14px;
+  margin-top: 16px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: #6d28d9;
   color: #ffffff;
@@ -570,13 +570,13 @@
 @media (max-width: 760px) {
   .sectionTop {
     display: grid;
-    gap: 4px;
+    gap: 8px;
   }
 
   .experienceItem {
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 14px;
+    gap: 8px;
+    padding: 16px;
     border-radius: 16px;
   }
 
@@ -595,8 +595,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .sectionTop span {
@@ -613,8 +613,8 @@
 .experienceItem {
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
-  gap: 18px;
-  padding: 18px;
+  gap: 16px;
+  padding: 16px;
   border-radius: 20px;
   background: linear-gradient(180deg, #ffffff, #f8fbff);
   border: 1px solid rgba(109, 40, 217, 0.1);
@@ -647,12 +647,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .experienceTags span,
 .focusList span {
-  padding: 6px 9px;
+  padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
   color: #6d28d9;
@@ -666,8 +666,8 @@
   max-width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: 14px;
-  padding: 10px 14px;
+  margin-top: 16px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: #6d28d9;
   color: #ffffff;
@@ -681,13 +681,13 @@
 }
 
 .focusBox {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px solid rgba(17, 24, 39, 0.08);
 }
 
 .focusBox h2 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   color: #111827;
   font-size: 16px;
   font-weight: 900;
@@ -702,13 +702,13 @@
 @media (max-width: 760px) {
   .sectionTop {
     display: grid;
-    gap: 4px;
+    gap: 8px;
   }
 
   .experienceItem {
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 14px;
+    gap: 8px;
+    padding: 16px;
     border-radius: 16px;
   }
 
@@ -729,6 +729,6 @@
 .experienceLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 8px;
+  margin-top: 16px;
 }

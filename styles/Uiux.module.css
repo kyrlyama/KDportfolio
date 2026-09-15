@@ -1,6 +1,6 @@
 .page {
-  padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
-  padding-bottom: clamp(80px, 10vh, 140px);
+  padding-top: calc(var(--nav-h) + 16px + env(safe-area-inset-top));
+  padding-bottom: clamp(80px, 10vh, 144px);
   padding-left: calc(var(--page-px) + env(safe-area-inset-left));
   padding-right: calc(var(--page-px) + env(safe-area-inset-right));
 }
@@ -20,7 +20,7 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: #7b7b7b;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-weight: 600;
 }
 
@@ -43,14 +43,14 @@
   gap: 8px;
   background: #eaf1ff;
   color: #245ad6;
-  padding: 10px 14px;
+  padding: 8px 16px;
   border-radius: 14px;
   font-weight: 600;
 }
 
 .subtitle {
   font-size: clamp(20px, 2.6vw, 30px);
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 
 .lead {
@@ -61,9 +61,9 @@
 
 .list {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 16px;
   display: grid;
-  gap: 6px;
+  gap: 8px;
   color: #2d2d2d;
 }
 
@@ -71,7 +71,7 @@
   max-width: var(--content-max);
   margin: 0 auto;
   display: grid;
-  gap: 28px;
+  gap: 32px;
 }
 
 .card {
@@ -80,7 +80,7 @@
   display: grid;
   grid-template-columns: minmax(200px, 320px) minmax(0, 1fr);
   gap: 24px;
-  padding: clamp(18px, 3vw, 28px);
+  padding: clamp(16px, 3vw, 32px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -98,7 +98,7 @@
 
 .cardContent {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 .cardLabel {
@@ -124,10 +124,10 @@
 
 .cardHighlights {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 16px;
   color: #2b2b2b;
   display: grid;
-  gap: 4px;
+  gap: 8px;
 }
 
 .cardLink {
@@ -136,7 +136,7 @@
   justify-content: center;
   background: #eaf1ff;
   color: #1d4ccf;
-  padding: 12px 20px;
+  padding: 16px 24px;
   border-radius: 16px;
   font-weight: 600;
   text-decoration: none;
@@ -155,7 +155,7 @@
 
 @media (max-width: 600px) {
   .page {
-    padding-inline: 12px;
+    padding-inline: 16px;
   }
   .hero {
     border-radius: 20px;

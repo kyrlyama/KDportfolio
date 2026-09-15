@@ -1,5 +1,10 @@
 // eslint.config.mjs
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { FlatCompat } from "@eslint/eslintrc";
+
+// плагин для порядка импортов (совместимый с flat)
 import importX from "eslint-plugin-import-x";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -7,8 +12,8 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({ baseDirectory: __dirname });
 
-const eslintConfig = [
-    { ignores: ["node_modules/**", ".next/**", "out/**", "public/**"] },
+export default [
+  { ignores: ["node_modules/**", ".next/**", "out/**", "public/**"] },
 
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
@@ -45,4 +50,4 @@ const eslintConfig = [
 }
 ];
 
-export default eslintConfig;
+
