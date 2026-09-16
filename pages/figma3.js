@@ -119,7 +119,7 @@ const wireframeImages = [
 ];
 
 const quickFacts = [
-  { label: "Project type", value: "Marketing website + Figma case study" },
+  { label: "Project type", value: "Commercial project · Likefon" },
   { label: "Business", value: "Likefon phone accessories store in Narva" },
   { label: "Main goal", value: "+30% offline foot traffic in 6 months" },
   { label: "Primary users", value: "Offline shoppers 35–60 and fast-research users 18–35" },
@@ -461,7 +461,7 @@ const seoPerformance = [
   "Semantic HTML and local business structured data",
   "Lazy loading and optimized images",
   "Code splitting for fast initial load",
-  "Lighthouse audit and PageSpeed screenshots for the case study",
+  "Lighthouse audit and PageSpeed performance screenshots",
 ];
 
 const finalPolish = [
@@ -571,7 +571,7 @@ export default function Figma3() {
       <div className={`${pm.container} ${fm.containerWide}`}>
         <section className={`${pm.card} ${fm.androidLike} ${fm.likefonHero}`}>
           <div className={`${pm.text} ${fm.colText}`}>
-            <p className={fm.eyebrow}>Figma case study</p>
+            <p className={fm.eyebrow}>Commercial Project · Likefon</p>
             <h1 className={pm.title}>Likefon — marketing website for a phone accessories store</h1>
 
             <p className={pm.p}>
@@ -666,7 +666,9 @@ export default function Figma3() {
               <h2 className={fm.uxH2}>Product framing & problem definition</h2>
               <p className={fm.uxP}>
                 The website should make Likefon visible online and help customers understand products,
-                services, prices, promotions, and location before visiting the physical store.
+                services, prices, promotions, and location before visiting the physical store. Online payment
+                and checkout are intentionally out of scope: the goal is not e-commerce, it is driving offline
+                foot traffic and growing Likefon&apos;s customer base.
               </p>
 
               <div className={fm.factGrid}>
@@ -797,8 +799,8 @@ export default function Figma3() {
                 columns="three"
                 progressive
               />
-              <div className={fm.deliverable}>Deliverable: research section for the case study.</div>
-            </section>
+              <div className={fm.deliverable}>Deliverable: research section for the Likefon project.</div>
+              </section>
 
             <section id="jtbd" className={fm.uxCard}>
               <h2 className={fm.uxH2}>Jobs To Be Done</h2>
@@ -1216,10 +1218,12 @@ export default function Figma3() {
             <section id="result" className={fm.uxCard}>
               <h2 className={fm.uxH2}>Result</h2>
               <p className={fm.uxP}>
-                This is a design plan, not a launched site, so results are framed as what the solution is
-                built to achieve rather than measured traffic. The catalog structure and promotions layout
-                map directly to the two tested hypotheses above, and every screen ties back to one KPI: getting
-                a search visitor into the physical store.
+                This is a commercial project for Likefon: a customer-facing website so people know what is
+                available in the offline store before they visit. Online payment and checkout are intentionally
+                out of scope — the goal is not e-commerce, it is increasing offline foot traffic and growing the
+                store&apos;s customer base. The catalog structure and promotions layout map directly to the two
+                tested hypotheses above, and every screen ties back to one KPI: getting a search visitor into
+                the physical store.
               </p>
             </section>
 

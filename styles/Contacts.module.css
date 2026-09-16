@@ -2,7 +2,7 @@
 .contactsPage {
   min-height: 100vh;
   padding: calc(var(--nav-h) + 56px) var(--page-px) 80px; /* чуть ниже навбара */
-  color: #111;
+  color: var(--ink);
   position: relative;
 }
 
@@ -19,7 +19,7 @@
   gap: 32px;
   border-radius: 24px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.6);
+  background:var(--surface);
   backdrop-filter: blur(10px);
   box-shadow: 0 24px 48px rgba(2, 6, 23, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -44,10 +44,10 @@
   font-size: 22px;
   font-weight: 800;
   margin: 0 0 8px;
-  color: #111;
+  color:var(--ink);
 }
 .p {
-  color: #334155;
+  color:  var(--muted);
   line-height: 1.6;
   margin: 0 0 16px;
 }
@@ -67,7 +67,7 @@
   padding: 16px 16px;
   border-radius: 12px;
   background: #f8fafc;
-  color: #0f172a;
+  color:var(--ink);
   text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition:
@@ -122,16 +122,16 @@
 .label {
   font-size: 13px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--ink);
 }
 
 .input,
 .textarea {
   padding: 16px 16px;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  color: #0f172a;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
   outline: none;
   transition:
     box-shadow 0.2s ease,
@@ -203,7 +203,7 @@
 .microcopy {
   margin-top: 8px;
   font-size: 12.5px;
-  color: #475569;
+  color: var(--muted);
 }
 
 /* Статус «Open to work» */
@@ -231,7 +231,18 @@
 /* Локация */
 .metaLine {
   margin: 0 0 8px;
-  color: #475569;
+  color: var(--muted);
   font-size: 14px;
   font-weight: 600;
+}
+/* ===== Тёмная тема: светлые фоны, не пойманные общей заменой ===== */
+:global([data-theme="dark"]) .contactItem {
+  background: var(--surface);
+}
+:global([data-theme="dark"]) .contactItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+:global([data-theme="dark"]) .glassCard {
+  background: rgba(17, 24, 39, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
 }

@@ -3,7 +3,7 @@ export const uiuxCases = [
     slug: "shop-redesign",
     href: "/uiux/shop-redesign",
     title: "Redesign Like store",
-    label: "VISUAL IDENTITY UPDATE · AFFINITY DESIGNER",
+    label: "COMMERCIAL PROJECT · AFFINITY DESIGNER",
     description:
       "Refreshing a local phone accessories retailer’s identity to improve clarity, trust, and visibility in a competitive mall environment.",
     highlights: ["Visual audit", "Logo redesign", "Mockups + print/digital"],
@@ -14,7 +14,7 @@ export const uiuxCases = [
     slug: "cleaning-website",
     // href не нужен — пойдёт по /uiux/[slug]
     title: "Case: Cleaning website",
-    label: "STARTUP PROJECT · VISUAL STUDIO CODE",
+    label: "FREELANCE · VISUAL STUDIO CODE",
     description:
       "Service landing + booking flow for a cleaning company. Focus on pricing clarity, trust signals, and conversion-friendly structure.",
     highlights: ["Booking flow", "Value proposition", "Design artifacts"],

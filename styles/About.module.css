@@ -52,10 +52,10 @@
   font-weight: 800;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
-  color: #111111;
+  color:  var(--ink);
 }
 .p {
-  color: #1a1a1a;
+  color:  var(--ink);
   line-height: 1.75;
   margin: 0 0 16px;
 }
@@ -87,12 +87,12 @@
 .cardTitle {
   font-size: 16px;
   font-weight: 700;
-  margin: 0 0 8px;
-  color: #1a1a1a;
+  margin: 8px 0;
+  color: var(--ink);
 }
 .cardText {
   margin: 8px 0;
-  color: #2a2a2a;
+  color:  var(--ink);
   line-height: 1.6;
 }
 
@@ -244,7 +244,7 @@
     var(--page-px)
     calc(88px + env(safe-area-inset-bottom)) !important;
   background: transparent !important;
-  color: #111827;
+  color: var(--ink);
   overflow-x: hidden;
   backdrop-filter: none !important;
 }
@@ -260,7 +260,7 @@
 .heroCard,
 .card,
 .stickyCard {
-  background: #ffffff !important;
+  background:var(--surface) !important;
   border: 1px solid rgba(17, 24, 39, 0.06) !important;
   box-shadow: 0 14px 38px rgba(17, 24, 39, 0.07) !important;
 }
@@ -288,7 +288,7 @@
 
 .title {
   margin: 0 !important;
-  color: #111827 !important;
+  color: var(--ink) !important;
   font-size: clamp(36px, 4.8vw, 64px) !important;
   line-height: 1.02 !important;
   letter-spacing: -0.055em !important;
@@ -298,7 +298,7 @@
 .lead {
   max-width: 860px;
   margin: 16px 0 0;
-  color: #374151;
+  color:var(--muted);
   font-size: clamp(17px, 1.55vw, 22px);
   line-height: 1.65;
   font-weight: 600;
@@ -314,7 +314,7 @@
 .summaryItem {
   padding: 16px;
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid rgba(109, 40, 217, 0.1);
   box-shadow: 0 10px 26px rgba(17, 24, 39, 0.05);
 }
@@ -322,7 +322,7 @@
 .summaryItem span {
   display: block;
   margin-bottom: 8px;
-  color: #667085;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -331,14 +331,14 @@
 
 .summaryItem strong {
   display: block;
-  color: #111827;
+  color: var(--ink);
   font-size: 15px;
   line-height: 1.35;
 }
 
 .p {
   max-width: 940px;
-  color: #374151 !important;
+  color: var(--muted) !important;
   font-size: 16px;
   line-height: 1.75 !important;
 }
@@ -398,7 +398,7 @@
 }
 
 .barLabel {
-  color: #111827 !important;
+  color: var(--ink) !important;
   font-size: 13px !important;
   font-weight: 900 !important;
 }
@@ -488,7 +488,7 @@
 }
 
 .sectionTop span {
-  color: #667085;
+  color: var(--ink);
   font-size: 13px;
   font-weight: 800;
 }
@@ -526,7 +526,7 @@
 
 .experienceContent p {
   margin: 0;
-  color: #374151;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -600,7 +600,7 @@
 }
 
 .sectionTop span {
-  color: #667085;
+  color: var(--muted);
   font-size: 13px;
   font-weight: 800;
 }
@@ -630,7 +630,7 @@
 
 .experienceContent h3 {
   margin: 0 0 8px;
-  color: #111827;
+  color: var(--ink);
   font-size: 18px;
   line-height: 1.25;
   font-weight: 900;
@@ -638,7 +638,7 @@
 
 .experienceContent p {
   margin: 0;
-  color: #374151;
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
 }
@@ -688,7 +688,7 @@
 
 .focusBox h2 {
   margin: 0 0 16px;
-  color: #111827;
+  color:  var(--ink);
   font-size: 16px;
   font-weight: 900;
 }
@@ -731,4 +731,13 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 16px;
+}
+/* ===== Тёмная тема: градиентные "белые" карточки ===== */
+:global([data-theme="dark"]) .experienceItem {
+  background: var(--surface) !important;
+}
+:global([data-theme="dark"]) .heroCard {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.18), transparent 34%),
+    var(--surface) !important;
 }

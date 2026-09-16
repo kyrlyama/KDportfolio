@@ -51,7 +51,7 @@ const PAGE_META = {
   "/websites": {
     title: "Websites — Kristina Dunajeva",
     description:
-      "Frontend website projects including Stock Tracker, CleanseTeam, and university web projects.",
+      "Frontend website projects including Stock Tracker, CleanseTeam, and creative freelance sites.",
   },
   "/figma": {
     title: "Figma Projects — Kristina Dunajeva",

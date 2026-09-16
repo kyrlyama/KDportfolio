@@ -36,7 +36,7 @@
   aspect-ratio: 4 / 3;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
 }
 .grid .frame > div {
   height: 100% !important;
@@ -138,7 +138,7 @@
 }
 .processBlock {
   margin: 0;
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
@@ -161,7 +161,7 @@
 .processTitle {
   font-size: 15px;
   font-weight: 800;
-  color: #222;
+  color: var(--ink);
   margin: 0;
 }
 .processText {
@@ -425,7 +425,7 @@
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  background: #fff;
+  background: var(--surface);
 }
 
 /* Responsive: на мобильных Contents становится сверху */
@@ -459,7 +459,7 @@
   gap: 16px;
   padding: 16px;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
@@ -510,7 +510,7 @@
 .metaCard {
   padding: 16px;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -610,7 +610,7 @@
 }
 
 .contents {
-  background: #fff;
+  background: var(--surface);
   border-radius: 20px;
   padding: 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
@@ -630,7 +630,7 @@
   margin: 0 0 16px;
   font-size: 16px;
   font-weight: 600;
-  color: #111;
+  color: var(--ink);
 }
 
 .contentsNav {
@@ -675,7 +675,7 @@
   margin: 0 0 8px;
   padding: 8px 8px;
   border-radius: 999px;
-  background: #ffffff;
+  background: var(--surface);
   color: #6d28d9;
   font-size: 12px;
   font-weight: 900;
@@ -730,7 +730,7 @@
   border-radius: 999px;
   padding: 8px 16px;
   color: #6d28d9;
-  background: #fff;
+  background:var(--surface);
   font-weight: 900;
 }
 
@@ -810,7 +810,7 @@
 .factCard span {
   display: block;
   margin-bottom: 8px;
-  color: #516070;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -818,7 +818,7 @@
 }
 
 .factCard strong {
-  color: #111827;
+  color: var(--ink);
   line-height: 1.35;
 }
 
@@ -827,7 +827,7 @@
   padding: 16px;
   border-left: 5px solid #6d28d9;
   border-radius: 16px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .insightBox h3,
@@ -904,7 +904,7 @@
   height: 28px;
   border-radius: 50%;
   background: #dbeafe;
-  color: #111827;
+  color: var(--ink);
   font-weight: 900;
 }
 
@@ -934,7 +934,7 @@
   align-items: start;
   padding: 16px;
   border-radius: 16px;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid rgba(109, 40, 217, 0.10);
 }
 
@@ -1059,7 +1059,7 @@
   margin: 0;
   border: 1px solid rgba(109, 40, 217, 0.12);
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--surface);
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
 }
 
@@ -1072,7 +1072,7 @@
 
 .caseImageCard figcaption {
   padding: 8px 16px 16px;
-  color: #334155;
+  color: var(--muted);
   font-size: 13px;
   font-weight: 800;
   line-height: 1.35;
@@ -1099,7 +1099,7 @@
 .deliverable {
   border: 1px solid rgba(109, 40, 217, 0.12);
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .insightMiniCard,
@@ -1151,7 +1151,7 @@
 
 .summaryTable th,
 .journeyTable th {
-  background: #ffffff;
+  background: var(--surface);
   color: #6d28d9;
   font-size: 13px;
   text-transform: uppercase;
@@ -1183,7 +1183,7 @@
 }
 .availabilityPartial {
   font-size: 13px;
-  color: #4b5563;
+  color: var(--muted);
 }
 
 .srOnly {
@@ -1201,7 +1201,7 @@
 .deliverable {
   margin-top: 16px;
   padding: 16px 16px;
-  color: #111827;
+  color: var(--ink);
   font-weight: 900;
   background: linear-gradient(135deg, #fff7e8, #ffffff);
 }
@@ -1212,7 +1212,7 @@
 }
 
 .requirementCard span {
-  color: #64748b;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -1222,7 +1222,7 @@
 .requirementCard strong {
   display: block;
   margin: 8px 0 16px;
-  color: #111827;
+  color: var(--ink);
   line-height: 1.45;
 }
 
@@ -1283,7 +1283,7 @@
 .imageTopicHeader p {
   max-width: 860px;
   margin: 0;
-  color: #334155;
+  color: var(--muted);
   line-height: 1.65;
 }
 
@@ -1303,7 +1303,7 @@
 }
 
 .caseImageCard figcaption span {
-  color: #475569;
+  color: var(--muted);
   font-weight: 600;
   line-height: 1.55;
 }
@@ -1323,7 +1323,7 @@
 .heroPreviewCard {
   grid-column: 1 / -1;
   width: 100%;
-  background: #fff;
+  background: var(--surface);
 }
 
 .heroPreviewCard img {
@@ -1377,7 +1377,7 @@
 .typographyHeader h3,
 .colorGroup h3 {
   margin: 8px 0 8px;
-  color: #111827;
+  color: var(--ink);
 }
 
 .designIntroCard p,
@@ -1402,7 +1402,7 @@
   gap: 16px;
   padding: 16px;
   border-radius: 22px;
-  background: #f9fafb;
+  background: var(--surface);
   border: 1px solid rgba(17, 24, 39, 0.08);
 }
 
@@ -1462,7 +1462,7 @@
   align-items: baseline;
   padding: 16px;
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid rgba(17, 24, 39, 0.08);
 }
 
@@ -1473,7 +1473,7 @@
 
 .typeScaleItem p {
   margin: 0;
-  color: #64748b;
+  color: var(--muted);
   line-height: 1.5;
 }
 
@@ -1501,7 +1501,7 @@
 }
 
 .typeCaption {
-  color: #64748b;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -1521,7 +1521,7 @@
   gap: 16px;
   padding: 16px;
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   border: 1px dashed rgba(109, 40, 217, 0.30);
 }
 
@@ -1546,7 +1546,7 @@
 
 .secondaryDemoButton {
   color: #6d28d9;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid #d1d5db;
 }
 
@@ -1554,7 +1554,7 @@
   display: grid;
   grid-column: 1 / -1;
   gap: 8px;
-  color: #64748b;
+  color: var(--muted);
   font-size: 13px;
   font-weight: 800;
 }
@@ -1567,8 +1567,8 @@
   padding: 0 16px;
   border: 1px solid #6d28d9;
   border-radius: 14px;
-  color: #6b7280;
-  background: #fff;
+  color: var(--muted);
+  background: var(--surface);
 }
 
 .demoProductCard {
@@ -1591,12 +1591,12 @@
 }
 
 .demoProductCard strong {
-  color: #111827;
+  color: var(--ink);
 }
 
 .demoProductCard p {
   margin: 0;
-  color: #64748b;
+    color: #64748b;
 }
 
 .futureAssetsGrid {
@@ -1609,7 +1609,7 @@
   gap: 8px;
   padding: 16px;
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid rgba(17, 24, 39, 0.08);
 }
 
@@ -1618,7 +1618,7 @@
 }
 
 .futureAssetsGrid span {
-  color: #475569;
+  color: var(--muted);
   line-height: 1.5;
 }
 
@@ -1689,7 +1689,7 @@
 .componentPreviewBoard figcaption,
 .statesBoardPanel figcaption {
   padding: 16px 16px 0;
-  color: #475569;
+  color: var(--muted);
   font-weight: 800;
   line-height: 1.55;
 }
@@ -1787,7 +1787,7 @@
 .statesBoardPanel img {
   height: clamp(180px, 20vw, 280px);
   object-fit: contain;
-  background: #fff;
+  background: var(--surface);
 }
 
 .componentPreviewBoard,
@@ -1818,7 +1818,7 @@
 
 .componentPreviewBoard figcaption,
 .statesBoardPanel figcaption {
-  color: #374151;
+  color: var(--muted);
 }
 
 .componentPreviewBoard {
@@ -1848,15 +1848,12 @@
 }
 
 .designSystemFlow .designSystemCardMedia {
-  display: grid;
-  min-height: 280px;
   margin: 0;
-  place-items: center;
 }
 
 .designSystemFlow .designSystemCardMedia img {
   width: 100%;
-  height: clamp(260px, 28vw, 420px);
+  height: auto;
   object-fit: contain;
 }
 
@@ -1895,18 +1892,14 @@
 
 .designSystemFlow .designSystemCardMedia {
   width: 100%;
-  min-height: auto;
   overflow: hidden;
-  padding: 8px;
-  border: 1px solid rgba(109, 40, 217, 0.1);
   border-radius: 16px;
-  background: #fff;
 }
 
 .designSystemFlow .designSystemCardMedia img {
   display: block;
   width: 100%;
-  height: clamp(240px, 28vw, 420px);
+  height: auto;
   object-fit: contain;
   object-position: center;
 }
@@ -1929,7 +1922,7 @@
   padding: 16px;
   border: 1px solid rgba(109, 40, 217, 0.12);
   border-radius: 16px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .heroOverviewGrid span {
@@ -1941,7 +1934,7 @@
 }
 
 .heroOverviewGrid strong {
-  color: #111827;
+  color: var(--ink);
   line-height: 1.4;
 }
 
@@ -1962,14 +1955,14 @@
 
 .secondaryCaseButton {
   color: #6d28d9 !important;
-  background: #fff !important;
+  background: var(--surface) !important;
   border: 1px solid rgba(109, 40, 217, 0.18) !important;
   box-shadow: none !important;
 }
 
 .secondaryCaseButton:hover {
   color: #4c1d95 !important;
-  background: #ffffff !important;
+  background: var(--surface) !important;
 }
 
 .inlineFigmaLink {
@@ -2009,7 +2002,7 @@
 }
 
 .userScenarioMedia {
-  background: #fff;
+  background: var(--surface) !important;
 }
 
 .userScenarioMedia img {
@@ -2042,7 +2035,7 @@
   margin: 24px 0 16px;
   border: 1px solid rgba(109, 40, 217, 0.12);
   border-radius: 22px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
 }
 
@@ -2051,7 +2044,7 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  background: #fff;
+  background: var(--surface);
 }
 
 .likefonCase .mainFlowInfoGrid {
@@ -2066,7 +2059,7 @@
   padding: 16px;
   border: 1px solid rgba(109, 40, 217, 0.12);
   border-radius: 20px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 12px 28px rgba(17, 24, 39, 0.05);
 }
 
@@ -2081,7 +2074,7 @@
 
 .likefonCase .flowInfoCard p {
   margin: 0;
-  color: #111827;
+  color: var(--ink);
   font-size: 15px;
   line-height: 1.7;
 }
@@ -2098,7 +2091,7 @@
   gap: 8px;
   margin: 0;
   padding-left: 16px;
-  color: #111827;
+  color: var(--ink);
   line-height: 1.7;
 }
 
@@ -2256,7 +2249,7 @@
   gap: 16px;
   padding: clamp(16px, 2vw, 24px);
   border-radius: 24px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
 }
 
@@ -2305,7 +2298,7 @@
 
 .figmaLegacyCase .uxMediaItem,
 .figmaLegacyCase .uxMedia {
-  background: #fff !important;
+  background: var(--surface);
   border-color: rgba(17, 24, 39, 0.08) !important;
   box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
 }
@@ -2323,7 +2316,7 @@
 .figmaLegacyCase .metaCard,
 .figmaLegacyCase .colorCard,
 .figmaLegacyCase .emotionCard {
-  background: #fff !important;
+  background: var(--surface);
   background-image: none !important;
   border-color: rgba(113, 7, 189, 0.12) !important;
 }
@@ -2459,7 +2452,7 @@
   width: 100% !important;
   max-height: 360px;
   object-fit: contain;
-  background: #fff;
+  background: var(--surface);
 }
 
 .likefonCase .imageGallery {
@@ -2474,7 +2467,7 @@
 .likefonCase .imageTopicBlock .caseImageCard img {
   max-height: 360px;
   object-fit: contain;
-  background: #fff;
+  background: var(--surface);
 }
 
 .likefonCase .designSystemFlow .designSystemCardMedia img {
@@ -2906,8 +2899,8 @@
   place-items: center !important;
   border: 0 !important;
   border-radius: 999px !important;
-  background: #ffffff !important;
-  color: #111827 !important;
+  background: var(--surface) !important;
+  color: var(--ink) !important;
   font-size: 40px !important;
   font-weight: 600 !important;
   line-height: 1 !important;
@@ -2966,7 +2959,7 @@
   min-height: clamp(460px, 38vw, 680px) !important;
   padding: clamp(24px, 3.5vw, 48px) !important;
   border-radius: 28px !important;
-  background: #ffffff !important;
+  background: var(--surface) !important;
   box-shadow: 0 18px 48px rgba(17, 24, 39, 0.1) !important;
 }
 
@@ -3005,7 +2998,7 @@
   overflow: auto !important;
   padding: 16px !important;
   border-radius: 22px !important;
-  background: #ffffff !important;
+  background: var(--surface) !important;
   box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08) !important;
   will-change: transform !important;
 }
@@ -3036,7 +3029,7 @@
 .figmaLegacyCase .uxCard {
   padding: clamp(24px, 3vw, 32px) !important;
   border-radius: 24px !important;
-  background: #ffffff !important;
+  background: var(--surface) !important;
   border: 1px solid rgba(17, 24, 39, 0.06) !important;
   box-shadow: 0 14px 36px rgba(17, 24, 39, 0.07) !important;
 }
@@ -3293,3 +3286,93 @@
 
 /* Keep Likefon Design System readable and correct:
    do not override .colorSwatch background here — colors come from inline token values. */
+/* ===== Тёмная тема: карточки кейсов (rgba(255,255,255,x) и белые градиенты) ===== */
+:global([data-theme="dark"]) .uxCard {
+  background: var(--surface);
+}
+:global([data-theme="dark"]) .factCard,
+:global([data-theme="dark"]) .audienceCard,
+:global([data-theme="dark"]) .storyCard,
+:global([data-theme="dark"]) .hypothesisCard,
+:global([data-theme="dark"]) .techPill,
+:global([data-theme="dark"]) .placeholderPanel {
+  background: var(--surface);
+}
+
+/* ===== Тёмная тема: специфичные для Likefon/legacy кейсов карточки ===== */
+:global([data-theme="dark"]) .likefonCase .androidLike,
+:global([data-theme="dark"]) .likefonCase .futureAssetsBox,
+:global([data-theme="dark"]) .figmaLegacyCase .colorGroup,
+:global([data-theme="dark"]) .likefonCase .colorGroup,
+:global([data-theme="dark"]) .figmaLegacyCase .deliverable,
+:global([data-theme="dark"]) .likefonCase .deliverable,
+:global([data-theme="dark"]) .figmaLegacyCase .emotionCard,
+:global([data-theme="dark"]) .likefonCase .emotionCard,
+:global([data-theme="dark"]) .likefonCase .likefonHero {
+  background: var(--surface) !important;
+}
+
+/* ===== Тёмная тема: финальный приоритетный блок =====
+   Ниже по файлу есть старые "форс-светлые" правила с !important
+   (.figmaLegacyCase/.likefonCase карточки, .contentsLink, .insightBox),
+   написанные ещё до тёмной темы. Этот блок идёт последним в файле,
+   поэтому при равной специфичности побеждает он. */
+:global([data-theme="dark"]) .figmaLegacyCase .uxCard,
+:global([data-theme="dark"]) .likefonCase .uxCard,
+:global([data-theme="dark"]) .figmaLegacyCase .factCard,
+:global([data-theme="dark"]) .likefonCase .factCard,
+:global([data-theme="dark"]) .figmaLegacyCase .metaCard,
+:global([data-theme="dark"]) .likefonCase .metaCard,
+:global([data-theme="dark"]) .figmaLegacyCase .storyCard,
+:global([data-theme="dark"]) .likefonCase .storyCard,
+:global([data-theme="dark"]) .figmaLegacyCase .hypothesisCard,
+:global([data-theme="dark"]) .likefonCase .hypothesisCard,
+:global([data-theme="dark"]) .figmaLegacyCase .audienceCard,
+:global([data-theme="dark"]) .likefonCase .audienceCard,
+:global([data-theme="dark"]) .figmaLegacyCase .requirementCard,
+:global([data-theme="dark"]) .likefonCase .requirementCard,
+:global([data-theme="dark"]) .figmaLegacyCase .journeyCard,
+:global([data-theme="dark"]) .likefonCase .journeyCard,
+:global([data-theme="dark"]) .figmaLegacyCase .stateCard,
+:global([data-theme="dark"]) .likefonCase .stateCard,
+:global([data-theme="dark"]) .figmaLegacyCase .techPill,
+:global([data-theme="dark"]) .likefonCase .techPill,
+:global([data-theme="dark"]) .figmaLegacyCase .placeholderPanel,
+:global([data-theme="dark"]) .likefonCase .placeholderPanel,
+:global([data-theme="dark"]) .figmaLegacyCase .designIntroCard,
+:global([data-theme="dark"]) .likefonCase .designIntroCard,
+:global([data-theme="dark"]) .figmaLegacyCase .designSystemCard,
+:global([data-theme="dark"]) .likefonCase .designSystemCard,
+:global([data-theme="dark"]) .figmaLegacyCase .typographyPanel,
+:global([data-theme="dark"]) .likefonCase .typographyPanel,
+:global([data-theme="dark"]) .figmaLegacyCase .componentPreviewPanel,
+:global([data-theme="dark"]) .likefonCase .componentPreviewPanel,
+:global([data-theme="dark"]) .figmaLegacyCase .futureAssetsBox,
+:global([data-theme="dark"]) .likefonCase .futureAssetsBox,
+:global([data-theme="dark"]) .figmaLegacyCase .colorGroup,
+:global([data-theme="dark"]) .likefonCase .colorGroup,
+:global([data-theme="dark"]) .figmaLegacyCase .deliverable,
+:global([data-theme="dark"]) .likefonCase .deliverable,
+:global([data-theme="dark"]) .figmaLegacyCase .emotionCard,
+:global([data-theme="dark"]) .likefonCase .emotionCard {
+  background: var(--surface) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+:global([data-theme="dark"]) .figmaLegacyCase .insightBox,
+:global([data-theme="dark"]) .likefonCase .insightBox {
+  background: var(--surface) !important;
+}
+
+:global([data-theme="dark"]) .contentsLink,
+:global([data-theme="dark"]) .figmaLegacyCase .contentsLink,
+:global([data-theme="dark"]) .likefonCase .contentsLink {
+  color: var(--ink) !important;
+}
+
+:global([data-theme="dark"]) .contentsLink:hover,
+:global([data-theme="dark"]) .figmaLegacyCase .contentsLink:hover,
+:global([data-theme="dark"]) .likefonCase .contentsLink:hover,
+:global([data-theme="dark"]) .figmaLegacyCase .uxH3,
+:global([data-theme="dark"]) .figmaLegacyCase .colorName {
+  color: #c4b5fd !important;
+}

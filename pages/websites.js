@@ -21,35 +21,33 @@ const projects = [
   {
     title: "CleanseTeam",
     slug: "project1",
-    label: "University project · Year 3",
-    description:
-      "Cleaning service website with a booking flow, pricing clarity, and conversion-focused structure.",
+    label: "Freelance",
+    description:"Trial website template for a cleaning company, with a booking flow, pricing clarity, and conversion-focused structure.",
     images: ["/project1.png", "/project12.png", "/project13.png"],
   },
     {
     title: "Practical experience",
     slug: "project4",
-    label: "Internship project",
+    label: "Commercial project · Likefon",
     description:
-
-    "Inventory management web app built around a real Likefon store workflow.",
+    "Inventory management web app designed and built for Likefon's daily store workflow as part of my Product Designer & Frontend Developer role.",
     images: ["/project40.png", "/project41.png", "/project42.png" , "/project43.png"],
   },
   {
     title: "Choose your musician",
     slug: "project3",
-    label: "University project · Year 2",
+    label: "Freelance",
     description:
-      "Interactive quiz experience that selects a musician from a library based on user answers.",
+"Experimental, music-themed creative project — an interactive quiz experience that selects a musician from a library based on user answers.",
     images: ["/project3.png", "/project31.png", "/project32.png"],
   },
   {
     title: "Welcome to the world space!",
     slug: "project2",
-    label: "University project · Year 1",
+    label: "Freelance",
     description:
-      "My first university web project — an educational space site with quiz interactions.",
-    images: [
+      "Experimental, space-themed creative project — an educational site with playful quiz interactions.",
+      images: [
       "/project2.png",
       "/project21.png",
       "/project22.png",
