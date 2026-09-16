@@ -13,12 +13,10 @@ export default function Skills() {
     { img: "/tools/github.png", title: "Git & GitHub" },
     { img: "/tools/xampp.png", title: "XAMPP" },
     { img: "/tools/dockerdesktop.png", title: "Docker Desktop" },
-    { img: "/tools/wix.png", title: "Wix / Google Sites" },
-    { img: "/tools/chatgpt.png", title: "ChatGPT" },
     { img: "/tools/androidstudio.png", title: "Android Studio" },
-    { img: "/tools/canva.png", title: "Canva" },
     { img: "/tools/oracle.png", title: "Oracle" },
-    { img: "/tools/notepad.png", title: "Notepad++" },
+    { img: "/tools/vercel.png", title: "Vercel" },
+    { img: "/tools/touchdesigner.png", title: "TouchDesigner" },
   ];
 
   const LANGS = [
@@ -28,12 +26,10 @@ export default function Skills() {
   ];
 
   const SOFT = [
-    "Creativity and visual thinking",
     "Attention to detail",
     "Problem-solving and adaptability",
     "Communication and teamwork",
     "Time management and responsibility",
-    "Willingness to learn and grow",
     "User-centered mindset",
     "Presentation and storytelling",
   ];
@@ -57,11 +53,11 @@ export default function Skills() {
     },
     {
       lead: "Design & Prototyping",
-      text: "Figma, Adobe Photoshop, Adobe Illustrator, Canva, Affinity",
+      text: "Figma, TouchDesigner, Adobe Photoshop, Adobe Illustrator, Affinity",
     },
     {
       lead: "Other Tools",
-      text: "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix, Notepad++",
+      text: "VS Code, Vercel, InfinityFree, XAMPP, Docker, Notepad++",
     },
   ];
 
@@ -73,8 +69,6 @@ export default function Skills() {
     "Wireframing & Prototyping — from low-fidelity sketches to high-fidelity interactive Figma prototypes.",
     "Usability Testing — validating ideas with users and iterating designs.",
     "Design Systems & UI Guidelines — ensuring consistency across the product.",
-    "Microinteractions & Chatbot Flows — focusing on details that improve user experience.",
-    "MVC Pattern — separating business logic, UI, and data for cleaner and more scalable design.",
   ];
 
   const CORE = [

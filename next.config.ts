@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      { source: "/project4", destination: "/projects/stock-tracker", permanent: true },
+      { source: "/project40", destination: "/projects/stock-tracker", permanent: true },
       { source: "/figma1", destination: "/uiux/travel-app", permanent: true },
       { source: "/figma2", destination: "/uiux/gift-helper", permanent: true },
       { source: "/figma3", destination: "/uiux/likefon-prototype", permanent: true },

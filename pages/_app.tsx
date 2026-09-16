@@ -1,14 +1,19 @@
 // pages/_app.tsx
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Head from "next/head";
-import Script from "next/script";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import Script from "next/script";
+import { useEffect } from "react";
+
+
 
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
+
 
 export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
   NextPage<P, IP> & { noGradient?: boolean };
@@ -17,10 +22,11 @@ type AppPropsWithOptions = AppProps & {
   Component: NextPageWithOptions;
 };
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext", "cyrillic-ext", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
   display: "swap",
+  variable: "--font-inter",
 });
 
 const SITE_URL = "https://kdportfolio-ecru.vercel.app";
@@ -45,7 +51,7 @@ const PAGE_META = {
   "/websites": {
     title: "Websites — Kristina Dunajeva",
     description:
-      "Frontend website projects including Stock Tracker, CleanseTeam, and university web projects.",
+      "Frontend website projects including Stock Tracker, CleanseTeam, and creative freelance sites.",
   },
   "/figma": {
     title: "Figma Projects — Kristina Dunajeva",
@@ -114,6 +120,61 @@ const PAGE_META = {
     title: "Currency Converter — Android App",
     description: "Android currency converter project with validation and locale-aware formatting.",
   },
+  "/skills": {
+    title: "Skills — Kristina Dunajeva",
+    description:
+      "Frontend, UI/UX and practical product-building skills: React, Next.js, Figma, and the tools behind them.",
+  },
+  "/project1": {
+    title: "CleanseTeam — Website Case Study",
+    description:
+      "A cleaning service website with a booking flow, transparent pricing and a conversion-focused structure.",
+  },
+  "/project2": {
+    title: "Space Website — Educational Planet Explorer",
+    description:
+      "An educational website about the Solar System with planet pages, tables, and an interactive quiz.",
+  },
+  "/project3": {
+    title: "Music Portal — Artist Discovery Website",
+    description:
+      "A music discovery web application that helps users find musicians by year, genre, and region.",
+  },
+  "/project4": {
+    title: "Stock Tracker — Screen Protector Inventory",
+    description:
+      "A full-stack inventory management system for tracking screen protector stock across two store locations.",
+  },
+  "/androidstudio1": {
+    title: "Translator — Android Studio App",
+    description:
+      "Multilingual translator (RU/EN/EE/DE) with history, Material Design UI and simple cloud sync.",
+  },
+  "/androidstudio2": {
+    title: "Calculator — Android Studio App",
+    description:
+      "Mobile calculator with basic operations, polished layout and a responsive keypad.",
+  },
+  "/androidstudio3": {
+    title: "Currency Converter — Android Studio App",
+    description:
+      "Simple currency converter demonstrating input validation, formatting and instant conversion.",
+  },
+  "/figma1": {
+    title: "Travel Planning App — Figma Case Study",
+    description:
+      "A prototype for an app that helps friends plan group trips: budgets, AI recommendations, swipe decisions.",
+  },
+  "/figma2": {
+    title: "Gift Helper — Figma Case Study",
+    description:
+      "A mobile app that helps users find the perfect gift based on age, budget, hobbies and occasion.",
+  },
+  "/figma3": {
+    title: "Likefon Marketing Website — Figma Case Study",
+    description:
+      "A Figma case study plan for a marketing website that improves Likefon's online visibility in Narva.",
+  },
 };
 
 function getMeta(pathname: string) {
@@ -127,33 +188,16 @@ function getMeta(pathname: string) {
 
 function Footer() {
   return (
-    <footer
-      style={{
-        width: "min(1120px, calc(100% - 32px))",
-        margin: "0 auto",
-        padding: "34px 0 44px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 20,
-        flexWrap: "wrap",
-        color: "#6b7280",
-        fontSize: 13,
-      }}
-    >
+    <footer className="siteFooter">
       <div>
-        <strong style={{ color: "#111827" }}>Kristina Dunajeva</strong>
+        <strong>Kristina Dunajeva</strong>
         <span style={{ marginLeft: 8 }}>Frontend Developer &amp; UI/UX Designer</span>
       </div>
-      <nav aria-label="Footer links" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      <nav aria-label="Footer links">
         <a href="mailto:kdunaeva04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">
-          LinkedIn
-        </a>
-        <a href="https://github.com/kyrlyama?tab=repositories" target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <a href="/contacts">Contact</a>
+        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/kyrlyama" target="_blank" rel="noreferrer">GitHub</a>
+        <Link href="/contacts">Contact</Link>
       </nav>
     </footer>
   );
@@ -161,10 +205,19 @@ function Footer() {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
   const router = useRouter();
-  const pathname = router.asPath.split("?")[0].split("#")[0] || "/";
+  const pathname = router.asPath.split("?")[0]?.split("#")[0] || "/";
   const meta = getMeta(pathname);
   const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
-  const ogImage = `${SITE_URL}/og-cover.png`;
+
+  function ScrollToTop() {
+  const router = useRouter();
+  useEffect(() => {
+    const handle = () => window.scrollTo(0, 0);
+    router.events.on("routeChangeComplete", handle);
+    return () => router.events.off("routeChangeComplete", handle);
+  }, [router.events]);
+  return null;
+}
 
   return (
     <>
@@ -179,13 +232,13 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:image" content={`${SITE_URL}/og-cover.png`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image" content={`${SITE_URL}/og-cover.png`} />
       </Head>
 
       {process.env.NODE_ENV === "production" && (
@@ -195,10 +248,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         />
       )}
 
-      <div id="app-root" className={jakarta.className}>
-        <a href="#main" className="skipLink">Skip to content</a>
+          <div id="app-root" className={inter.className}>
+          <a href="#main" className="skipLink">Skip to content</a>
 
-        <NavBar />
 
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />
@@ -209,6 +261,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <main id="main" role="main" className="pageContainer">
           <Component {...pageProps} />
         </main>
+        <NavBar />
+        <ScrollToTop />
 
         <Footer />
       </div>

@@ -1,14 +1,14 @@
 /* Корневой контейнер страницы (фон общий, поэтому без локального градиента) */
 .contactsPage {
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 32px) 24px 80px; /* чуть ниже навбара */
-  color: #111;
+  padding: calc(var(--nav-h) + 56px) var(--page-px) 80px; /* чуть ниже навбара */
+  color: var(--ink);
   position: relative;
 }
 
 /* Центровка по ширине */
 .container {
-  max-width: 1100px;
+  max-width: var(--content-max);
   margin: 0 auto;
 }
 
@@ -16,10 +16,10 @@
 .glassCard {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) 1.6fr;
-  gap: 28px;
+  gap: 32px;
   border-radius: 24px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.6);
+  background:var(--surface);
   backdrop-filter: blur(10px);
   box-shadow: 0 24px 48px rgba(2, 6, 23, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -35,7 +35,7 @@
 .right {
   background: #fff;
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -43,31 +43,31 @@
 .h2 {
   font-size: 22px;
   font-weight: 800;
-  margin: 0 0 10px;
-  color: #111;
+  margin: 0 0 8px;
+  color:var(--ink);
 }
 .p {
-  color: #334155;
+  color:  var(--muted);
   line-height: 1.6;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 /* Контакты/соцсети */
 .contactList {
   display: grid;
-  gap: 10px;
-  margin-top: 12px;
-  margin-bottom: 14px;
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 .contactItem {
   display: grid;
   grid-template-columns: 28px 1fr;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 16px;
+  padding: 16px 16px;
   border-radius: 12px;
   background: #f8fafc;
-  color: #0f172a;
+  color:var(--ink);
   text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition:
@@ -107,7 +107,7 @@
 .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 @media (max-width: 640px) {
   .row2 {
@@ -122,16 +122,16 @@
 .label {
   font-size: 13px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--ink);
 }
 
 .input,
 .textarea {
-  padding: 12px 14px;
+  padding: 16px 16px;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  color: #0f172a;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
   outline: none;
   transition:
     box-shadow 0.2s ease,
@@ -140,8 +140,8 @@
 }
 .input:focus,
 .textarea:focus {
-  border-color: #93c5fd;
-  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.35);
+  border-color: #c4b5fd;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.35);
 }
 .textarea {
   resize: vertical;
@@ -152,14 +152,14 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .button {
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -186,7 +186,7 @@
 
 .alert {
   font-weight: 700;
-  padding: 10px 12px;
+  padding: 8px 16px;
   border-radius: 10px;
 }
 .alertOk {
@@ -201,7 +201,48 @@
 }
 
 .microcopy {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 12.5px;
-  color: #475569;
+  color: var(--muted);
+}
+
+/* Статус «Open to work» */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid #a7f3d0;
+  margin-bottom: 8px;
+}
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Локация */
+.metaLine {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+/* ===== Тёмная тема: светлые фоны, не пойманные общей заменой ===== */
+:global([data-theme="dark"]) .contactItem {
+  background: var(--surface);
+}
+:global([data-theme="dark"]) .contactItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+:global([data-theme="dark"]) .glassCard {
+  background: rgba(17, 24, 39, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
 }

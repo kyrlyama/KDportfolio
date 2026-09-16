@@ -1,128 +1,76 @@
+import { Globe, Frame, PenTool, Smartphone, Palette } from "lucide-react";
 import Link from "next/link";
 
-import ProjectOrbit from "@/components/ProjectOrbit";
-import styles from "@/styles/Project.module.css";
+import styles from "@/styles/ProjectsPage.module.css";
 
 const categories = [
   {
     title: "Websites",
     href: "/websites",
-    description: "Responsive websites and practical frontend projects.",
+    icon: Globe,
+    size: "large",
+    description:
+      "Responsive websites and a full-stack inventory system built for a real store workflow.",
+    meta: "Stock Tracker · CleanseTeam",
   },
   {
     title: "UI/UX",
     href: "/uiux",
-    description: "Research, user flows, visual design, and case studies.",
+    icon: Frame,
+    size: "large",
+    description:
+      "Research, personas, user flows, information architecture and tested prototypes.",
+    meta: "4 case studies",
   },
   {
     title: "Figma",
     href: "/figma",
-    description: "Interactive prototypes, design systems, and product concepts.",
+    icon: PenTool,
+    size: "small",
+    description: "Interactive prototypes, components and design systems.",
   },
   {
     title: "Android",
     href: "/android_studio",
-    description: "Mobile application projects from my development studies.",
+    icon: Smartphone,
+    size: "small",
+    description: "Mobile apps from development studies: Kotlin and Java.",
   },
   {
     title: "Illustrator",
     href: "/illustrator",
-    description: "Posters, branding materials, and visual design work.",
+    icon: Palette,
+    size: "small",
+    description: "Posters, branding materials and visual design work.",
   },
 ];
 
 export default function Projects() {
   return (
     <main className={styles.page}>
-      <section
-        style={{
-          textAlign: "center",
-          maxWidth: 1100,
-          margin: "0 auto",
-        }}
-      >
-        <p
-          style={{
-            margin: "0 0 10px",
-            color: "#6b7280",
-            fontSize: 13,
-            fontWeight: 800,
-            letterSpacing: ".14em",
-            textTransform: "uppercase",
-          }}
-        >
-          Explore my work
-        </p>
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>Explore my work</p>
         <h1 className="pageTitle">Projects</h1>
-        <p
-          style={{
-            margin: "0 auto",
-            maxWidth: 680,
-            color: "#6b7280",
-            lineHeight: 1.6,
-          }}
-        >
-          Choose a category. The orbit below is navigation, while the cards give a
-          quick overview of what you will find in each section.
+        <p className={styles.lead}>
+          Five directions, one goal — interfaces that are clear, tested and
+          shipped. Start with the big two.
         </p>
+      </header>
 
-        <ProjectOrbit />
-      </section>
-
-      <section
-        aria-label="Project categories"
-        className={styles.container}
-        style={{
-          marginTop: 24,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 16,
-        }}
-      >
-        {categories.map((category) => (
+      <section aria-label="Project categories" className={styles.grid}>
+        {categories.map(({ icon: Icon, ...category }) => (
           <Link
             key={category.href}
             href={category.href}
-            style={{
-              display: "block",
-              padding: 22,
-              borderRadius: 24,
-              background: "rgba(255,255,255,.78)",
-              color: "inherit",
-              textDecoration: "none",
-              boxShadow: "0 14px 40px rgba(17,24,39,.06)",
-            }}
+            className={`${styles.card} ${styles[category.size]}`}
           >
-            <h2
-              style={{
-                margin: "0 0 8px",
-                color: "#111827",
-                fontSize: 21,
-              }}
-            >
-              {category.title}
-            </h2>
-            <p
-              style={{
-                margin: 0,
-                color: "#6b7280",
-                lineHeight: 1.55,
-                fontSize: 14,
-              }}
-            >
-              {category.description}
-            </p>
-            <span
-              style={{
-                display: "inline-block",
-                marginTop: 16,
-                color: "#1f52c9",
-                fontWeight: 800,
-                fontSize: 13,
-              }}
-            >
-              Open category →
+            <span className={styles.iconWrap}>
+              <Icon size={22} strokeWidth={2} aria-hidden="true" />
             </span>
+            <h2 className={styles.cardTitle}>{category.title}</h2>
+            <p className={styles.cardText}>{category.description}</p>
+            {category.meta && <p className={styles.cardMeta}>{category.meta}</p>}
+            <span className={styles.cardLink}>Open →</span>
           </Link>
         ))}
       </section>

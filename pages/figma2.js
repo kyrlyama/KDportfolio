@@ -1,3 +1,11 @@
+import {
+  Component,
+  ExternalLink,
+  Grid3X3,
+  MousePointerClick,
+  Palette,
+  Type,
+} from "lucide-react";
 import Link from "next/link";
 
 import Carousel from "@/components/Carousel";
@@ -93,95 +101,87 @@ const outcome = [
   "Built a friendly visual system with clear hierarchy and emotional tone.",
 ];
 
+const figmaPrototypeUrl =
+  "https://www.figma.com/design/joVwSJGnBQUslG8eSYn2iB/Untitled?node-id=0-1";
+
+const colorTokenGroups = [
+  {
+    title: "Primary",
+    description:
+      "Warm purple brand colors for CTAs, favorite actions, filter highlights, and key conversion moments like saving a gift idea or setting a reminder.",
+    tokens: [
+      { name: "Primary 600", value: "#8A2DCE", text: "#FFFFFF" },
+      { name: "Primary 500", value: "#A84DE8", text: "#FFFFFF" },
+      { name: "Primary 100", value: "#F1E1FE", text: "#111827" },
+    ],
+  },
+  {
+    title: "Hover / Active",
+    description:
+      "Stronger CTA color for hover/active actions and a pale tint for lightweight interactive states like taps and focus.",
+    tokens: [
+      { name: "Primary 700", value: "#7107BD", text: "#FFFFFF" },
+      { name: "Primary 200", value: "#D194FC", text: "#111827" },
+    ],
+  },
+  {
+    title: "Neutrals",
+    description:
+      "Neutral scale for text hierarchy, cards, dividers, disabled controls, and quiet surfaces across the mobile UI.",
+    tokens: [
+      { name: "Neutral 900", value: "#111827", text: "#FFFFFF" },
+      { name: "Neutral 700", value: "#374151", text: "#FFFFFF" },
+      { name: "Neutral 500", value: "#6B7280", text: "#FFFFFF" },
+      { name: "Neutral 300", value: "#D1D5DB", text: "#111827" },
+      { name: "Neutral 200", value: "#E5E7EB", text: "#111827" },
+      { name: "Neutral 100", value: "#F3F4F6", text: "#111827" },
+      { name: "Neutral 50", value: "#F9FAFB", text: "#111827" },
+    ],
+  },
+  {
+    title: "Semantic",
+    description:
+      "Semantic feedback colors for saved gifts, validation errors, and reminder alerts.",
+    tokens: [
+      { name: "Success", value: "#59B985", text: "#FFFFFF" },
+      { name: "Error", value: "#E1524C", text: "#FFFFFF" },
+      { name: "Warning", value: "#9500FF", text: "#FFFFFF" },
+    ],
+  },
+];
+
+const typographyScale = [
+  { label: "H1", sample: "Headline", usage: "Onboarding and key screen titles", className: "typeH1" },
+  { label: "H2", sample: "Headline", usage: "Section titles for filters, favorites, and reminders", className: "typeH2" },
+  { label: "Body", sample: "Body text", usage: "Gift descriptions, filter copy, and explanatory text", className: "typeBody" },
+  { label: "Caption", sample: "Caption", usage: "Helper text, filter labels, and small tags", className: "typeCaption" },
+];
+
+const designSystemCards = [
+  {
+    step: "01",
+    icon: Grid3X3,
+    title: "8pt grid",
+    text: "Spacing follows 8px steps so gift cards, filter chips, profile rows, and mobile sections stay predictable.",
+  },
+  {
+    step: "02",
+    icon: Component,
+    title: "Reusable components",
+    text: "Navigation bar, gift card, filter chip, favorite button, profile card, reminder badge, and input field.",
+  },
+  {
+    step: "03",
+    icon: MousePointerClick,
+    title: "Interaction states",
+    text: "Hover, active, disabled, and focus-visible states are defined for buttons, filter chips, favorite toggles, and inputs.",
+  },
+];
+
 const paletteTone = {
   id: "design-system",
   title: "Design System",
   text: "The visual system feels supportive and optimistic while guiding users through gift selection with calm, accessible, and emotionally friendly interactions.",
-  colors: [
-    {
-      name: "Primary 600",
-      hex: "#8A2DCE",
-      usage: "Primary CTA, key actions, navigation accents",
-    },
-    {
-      name: "Primary 500",
-      hex: "#A84DE8",
-      usage: "Hover states, selection emphasis, interactive accents",
-    },
-    {
-      name: "Primary 100",
-      hex: "#F1E1FE",
-      usage: "Soft backgrounds, tags, light surfaces",
-    },
-    {
-      name: "Hover / Active 700",
-      hex: "#7107BD",
-      usage: "Pressed states and stronger CTA emphasis",
-    },
-    {
-      name: "Hover / Active 200",
-      hex: "#D194FC",
-      usage: "Secondary hover states and focus support",
-    },
-    {
-      name: "Neutral 900",
-      hex: "#111827",
-      usage: "Primary text, icons, strong contrast",
-    },
-    {
-      name: "Neutral 700",
-      hex: "#374151",
-      usage: "Secondary text and supporting labels",
-    },
-    {
-      name: "Neutral 500",
-      hex: "#6B7280",
-      usage: "Muted labels and helper text",
-    },
-    {
-      name: "Neutral 300",
-      hex: "#D1D5DB",
-      usage: "Dividers and inactive UI elements",
-    },
-    {
-      name: "Neutral 200",
-      hex: "#E5E7EB",
-      usage: "Subtle borders and card structure",
-    },
-    {
-      name: "Neutral 100",
-      hex: "#F3F4F6",
-      usage: "Cards and neutral surfaces",
-    },
-    {
-      name: "Neutral 50",
-      hex: "#F9FAFB",
-      usage: "Soft page backgrounds and quiet containers",
-    },
-    {
-      name: "Success",
-      hex: "#59B985",
-      usage: "Confirmation and positive feedback",
-    },
-    {
-      name: "Error",
-      hex: "#E1524C",
-      usage: "Validation and error feedback",
-    },
-    {
-      name: "Warning",
-      hex: "#9500FF",
-      usage: "Attention and priority cues",
-    },
-  ],
-  scheme: [
-    "Purple anchors the main actions and decision moments.",
-    "Neutral surfaces keep content readable and structured.",
-    "Semantic feedback states support clear completion and error handling.",
-  ],
-  typography:
-    "Inter regular with H1 28px, H2 20px, body 16px, and caption 12px for clear hierarchy and readable mobile UI.",
-  tools: "Figma styles, component variants, semantic color usage, and interactive prototype states.",
   emotions: [
     {
       title: "Under time pressure",
@@ -227,7 +227,7 @@ export default function Figma2() {
               during gift selection.
             </p>
 
-            <div className={fm.factGrid}>
+            <div className={`${fm.factGrid} ${fm.heroFactGrid}`}>
               {projectFacts.map((fact) => (
                 <div key={fact.label} className={fm.factCard}>
                   <span>{fact.label}</span>
@@ -257,7 +257,7 @@ export default function Figma2() {
             </ul>
 
             <Link
-              href="https://www.figma.com/design/joVwSJGnBQUslG8eSYn2iB/Untitled?node-id=0-1"
+              href={figmaPrototypeUrl}
               target="_blank"
               className={pm.btn}
             >
@@ -679,41 +679,91 @@ export default function Figma2() {
 
               <p className={fm.uxP}>{paletteTone.text}</p>
 
-              <div className={fm.paletteGrid}>
-                {paletteTone.colors.map((c) => (
-                  <div key={c.hex} className={fm.colorCard}>
-                    <span
-                      className={fm.swatch}
-                      style={{ backgroundColor: c.hex }}
-                    />
-                    <div className={fm.colorMeta}>
-                      <div className={fm.colorTop}>
-                        <strong className={fm.colorName}>{c.name}</strong>
-                        <code className={fm.colorHex}>{c.hex}</code>
-                      </div>
-                      <div className={fm.colorUsage}>{c.usage}</div>
+              <div className={fm.designHeroGrid}>
+                <article className={fm.designIntroCard}>
+                  <Palette aria-hidden="true" />
+                  <h3>Color tokens</h3>
+                  <p>
+                    The color system uses purple for key actions, neutrals for
+                    hierarchy and readability, and semantic accents for state
+                    clarity during gift selection.
+                  </p>
+                </article>
+                <article className={fm.designIntroCard}>
+                  <Type aria-hidden="true" />
+                  <h3>Typography scale</h3>
+                  <p>
+                    The scale keeps headlines, section titles, body copy, and
+                    captions distinct so the mobile experience feels calm and
+                    easy to scan.
+                  </p>
+                </article>
+              </div>
+
+              <div className={fm.colorSystem}>
+                {colorTokenGroups.map((group) => (
+                  <article key={group.title} className={fm.colorGroup}>
+                    <div>
+                      <h3>{group.title}</h3>
+                      <p>{group.description}</p>
                     </div>
-                  </div>
+                    <div className={fm.colorSwatches}>
+                      {group.tokens.map((token) => (
+                        <div
+                          key={token.name}
+                          className={fm.colorSwatch}
+                          style={{ backgroundColor: token.value, color: token.text }}
+                        >
+                          <strong>{token.name}</strong>
+                          <span>{token.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
                 ))}
               </div>
 
-              <h3 className={fm.uxH3}>Scheme</h3>
-              <ul className={fm.uxList}>
-                {paletteTone.scheme.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-
-              <div className={fm.metaGrid}>
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Typography</h3>
-                  <p className={fm.metaText}>{paletteTone.typography}</p>
+              <div className={fm.typographyPanel}>
+                <div className={fm.typographyHeader}>
+                  <Type aria-hidden="true" />
+                  <div>
+                    <h3>Typography</h3>
+                    <p>
+                      Readable hierarchy for a gift-finding app with filters,
+                      favorites, reminders, and profile content.
+                    </p>
+                  </div>
                 </div>
-
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Tools</h3>
-                  <p className={fm.metaText}>{paletteTone.tools}</p>
+                <div className={fm.typeScaleList}>
+                  {typographyScale.map((item) => (
+                    <article key={item.label} className={fm.typeScaleItem}>
+                      <span>{item.label}</span>
+                      <strong className={fm[item.className]}>{item.sample}</strong>
+                      <p>{item.usage}</p>
+                    </article>
+                  ))}
                 </div>
+              </div>
+
+              <div className={fm.designSystemFlow}>
+                {designSystemCards.map((card) => {
+                  const Icon = card.icon;
+                  return (
+                    <article key={card.title} className={fm.designSystemCard}>
+                      <div className={fm.designSystemCardBody}>
+                        <div className={fm.designCardTopline}>
+                          <span>{card.step}</span>
+                          <Icon aria-hidden="true" />
+                        </div>
+                        <h3>{card.title}</h3>
+                        <p>{card.text}</p>
+                      </div>
+                      <Link href={figmaPrototypeUrl} target="_blank" className={fm.smallFigmaButton}>
+                        Figma source <ExternalLink aria-hidden="true" size={14} />
+                      </Link>
+                    </article>
+                  );
+                })}
               </div>
 
               <h3 className={fm.uxH3}>Emotional intent</h3>

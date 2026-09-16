@@ -317,7 +317,7 @@ export default function Figma1() {
               travel space.
             </p>
 
-            <div className={fm.factGrid}>
+            <div className={`${fm.factGrid} ${fm.heroFactGrid}`}>
               {projectFacts.map((fact) => (
                 <div key={fact.label} className={fm.factCard}>
                   <span>{fact.label}</span>
@@ -347,9 +347,14 @@ export default function Figma1() {
               </li>
             </ul>
 
-<a href="https://www.figma.com/design/lSyW28vXTWfd7wGZ81aAnx/Diplom?node-id=0-1&m=dev&t=sgkhJ5frAjpAZyiN-1" target="_blank" rel="noreferrer">
-  Open in Figma <ExternalLink size={14} />
-</a>
+            <a
+              href={_figmaPrototypeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={fm.smallFigmaButton}
+            >
+              Open in Figma <ExternalLink size={14} />
+            </a>
           </div>
 
           <div className={`${pm.media} ${fm.colMedia}`}>

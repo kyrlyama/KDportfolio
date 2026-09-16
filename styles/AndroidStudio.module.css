@@ -1,19 +1,20 @@
 /* ===== страница ===== */
 .page {
-  padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top));
+  padding-top: calc(var(--nav-h) + 56px + env(safe-area-inset-top));
   padding-bottom: clamp(72px, 10vh, 120px);
+  padding-inline: var(--page-px);
 }
 .container {
-  max-width: 1280px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding-inline: clamp(16px, 3vw, 32px);
+  padding-inline: var(--page-px);
 }
 
 /* ===== 2 колонки карточек ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  gap: 32px;
   align-items: stretch;
 }
 
@@ -22,10 +23,10 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  padding: clamp(14px, 2vw, 22px);
+  padding: clamp(16px, 2vw, 24px);
   display: grid;
   grid-template-columns: 46% 54%;
-  gap: 22px;
+  gap: 24px;
   align-items: center;
 }
 
@@ -89,7 +90,7 @@
 .cardText {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   text-align: left;
 }
 .cardTitle {
@@ -113,11 +114,11 @@
 .cardRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 32px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  padding: clamp(18px, 2.4vw, 26px);
+  padding: clamp(16px, 2.4vw, 24px);
   align-items: center;
 }
 /* одна колонка: контент на всю ширину */
@@ -126,13 +127,13 @@
 }
 /* вдвое компактнее по вертикали */
 .cardRowCompact {
-  padding: clamp(9px, 1.2vw, 14px);
-  gap: 14px;
+  padding: clamp(8px, 1.2vw, 16px);
+  gap: 16px;
 }
 .colText {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   text-align: left;
 }
 .title {
@@ -146,7 +147,7 @@
 .h2 {
   font-size: clamp(18px, 2.2vw, 22px);
   font-weight: 800;
-  margin: 10px 0 8px;
+  margin: 8px 0 8px;
 }
 .p {
   line-height: 1.65;
@@ -159,20 +160,20 @@
 
 .ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 24px;
   line-height: 1.6;
 }
 
 /* кнопка GitHub как «See more details» */
 .repoBtn {
   align-self: flex-start;
-  background: #eaf3ff;
-  color: #1f52c9;
+  background: #f2ecfe;
+  color: #6d28d9;
   font-weight: 800;
-  padding: 12px 18px;
+  padding: 16px 16px;
   border-radius: 14px;
   text-decoration: none;
-  box-shadow: 0 10px 26px rgba(31, 82, 201, 0.18);
+  box-shadow: 0 10px 26px rgba(109, 40, 217, 0.18);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -180,7 +181,7 @@
 }
 .repoBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(31, 82, 201, 0.22);
+  box-shadow: 0 12px 30px rgba(109, 40, 217, 0.22);
   background: #e4efff;
 }
 
@@ -203,7 +204,7 @@
 }
 @media (max-width: 480px) {
   .cardRow {
-    padding: 12px;
+    padding: 16px;
     border-radius: 14px;
   }
 }
@@ -213,7 +214,7 @@
   /* Список карточек → 1 колонка */
   .cards {
     grid-template-columns: 1fr !important;
-    gap: 22px;
+    gap: 24px;
   }
 
   /* Горизонтальная карточка → вертикально */
@@ -230,10 +231,10 @@
 
 @media (max-width: 480px) {
   .page {
-    padding-bottom: clamp(60px, 12vh, 96px);
+    padding-bottom: clamp(64px, 12vh, 96px);
   }
   .cardH {
-    padding: 14px 12px;
+    padding: 16px 16px;
     border-radius: 14px;
   }
 }
