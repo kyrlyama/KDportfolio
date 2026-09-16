@@ -227,7 +227,7 @@ export default function Figma2() {
               during gift selection.
             </p>
 
-            <div className={fm.factGrid}>
+            <div className={`${fm.factGrid} ${fm.heroFactGrid}`}>
               {projectFacts.map((fact) => (
                 <div key={fact.label} className={fm.factCard}>
                   <span>{fact.label}</span>

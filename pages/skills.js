@@ -16,6 +16,7 @@ export default function Skills() {
     { img: "/tools/androidstudio.png", title: "Android Studio" },
     { img: "/tools/oracle.png", title: "Oracle" },
     { img: "/tools/vercel.png", title: "Vercel" },
+    { img: "/tools/touchdesigner.png", title: "TouchDesigner" },
   ];
 
   const LANGS = [
@@ -52,11 +53,11 @@ export default function Skills() {
     },
     {
       lead: "Design & Prototyping",
-      text: "Figma, Adobe Photoshop, Adobe Illustrator, Canva, Affinity",
+      text: "Figma, TouchDesigner, Adobe Photoshop, Adobe Illustrator, Affinity",
     },
     {
       lead: "Other Tools",
-      text: "VS Code, XAMPP, Docker, ChatGPT, Google Sites, Wix, Notepad++",
+      text: "VS Code, Vercel, InfinityFree, XAMPP, Docker, Notepad++",
     },
   ];
 

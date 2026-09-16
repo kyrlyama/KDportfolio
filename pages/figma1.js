@@ -306,7 +306,7 @@ export default function Figma1() {
       <div className={`${pm.container} ${fm.containerWide}`}>
         <section className={`${pm.card} ${fm.androidLike}`}>
           <div className={`${pm.text} ${fm.colText}`}>
-            <p className={fm.eyebrow}>PERSONAL PROJECT · UX/UI Case Study · Mobile App</p>
+            <p className={fm.eyebrow}>UX/UI Case Study · Mobile App</p>
 
             <h1 className={pm.title}>Collaborative Travel Planning App</h1>
 
@@ -317,7 +317,7 @@ export default function Figma1() {
               travel space.
             </p>
 
-            <div className={fm.factGrid}>
+            <div className={`${fm.factGrid} ${fm.heroFactGrid}`}>
               {projectFacts.map((fact) => (
                 <div key={fact.label} className={fm.factCard}>
                   <span>{fact.label}</span>
@@ -347,9 +347,14 @@ export default function Figma1() {
               </li>
             </ul>
 
-<a href="https://www.figma.com/design/lSyW28vXTWfd7wGZ81aAnx/Diplom?node-id=0-1&m=dev&t=sgkhJ5frAjpAZyiN-1" target="_blank" rel="noreferrer">
-  Open in Figma <ExternalLink size={14} />
-</a>
+            <a
+              href={_figmaPrototypeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={fm.smallFigmaButton}
+            >
+              Open in Figma <ExternalLink size={14} />
+            </a>
           </div>
 
           <div className={`${pm.media} ${fm.colMedia}`}>
@@ -387,7 +392,7 @@ export default function Figma1() {
               <h2 className={fm.uxH2}>Project snapshot</h2>
 
               <p className={fm.uxP}>
-                The project was created as a full UX/UI case study/personal project for a group
+                The project was created as a full UX/UI case study for a group
                 travel planning product. The focus was not only on visual
                 screens, but also on research, decision-making logic, reusable
                 UI patterns and a clear mobile flow.
