@@ -6,22 +6,20 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
 
-
-
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
 import "@/styles/globals.css";
 import NavBar from "@/components/NavBar";
 
-
-export type NextPageWithOptions<P = Record<string, unknown>, IP = P> =
-  NextPage<P, IP> & { noGradient?: boolean };
+export type NextPageWithOptions<P = Record<string, unknown>, IP = P> = NextPage<
+  P,
+  IP
+> & { noGradient?: boolean };
 
 type AppPropsWithOptions = AppProps & {
   Component: NextPageWithOptions;
 };
-
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -78,6 +76,11 @@ const PAGE_META = {
     description:
       "Get in touch with Kristina Dunajeva about frontend, UI/UX, and hybrid design-development opportunities.",
   },
+  "/projects/likefon": {
+    title: "Likefon — Brand, UX and Website",
+    description:
+      "Likefon client project: brand refresh, UX case study and a Next.js website for a phone-accessories shop in Narva.",
+  },
   "/projects/stock-tracker": {
     title: "Stock Tracker — Kristina Dunajeva",
     description:
@@ -105,20 +108,22 @@ const PAGE_META = {
   },
   "/uiux/likefon-prototype": {
     title: "Likefon Website Prototype — UI/UX Case Study",
-    description:
-      "Commercial Figma prototype for the Likefon website redesign.",
+    description: "Commercial Figma prototype for the Likefon website redesign.",
   },
   "/android/translator": {
     title: "Translator — Android App",
-    description: "Android translator app project built with Java and Material Design.",
+    description:
+      "Android translator app project built with Java and Material Design.",
   },
   "/android/calculator": {
     title: "Calculator — Android App",
-    description: "Android calculator app project built with Kotlin and Material components.",
+    description:
+      "Android calculator app project built with Kotlin and Material components.",
   },
   "/android/currency-converter": {
     title: "Currency Converter — Android App",
-    description: "Android currency converter project with validation and locale-aware formatting.",
+    description:
+      "Android currency converter project with validation and locale-aware formatting.",
   },
   "/skills": {
     title: "Skills — Kristina Dunajeva",
@@ -191,12 +196,22 @@ function Footer() {
     <footer className="siteFooter">
       <div>
         <strong>Kristina Dunajeva</strong>
-        <span style={{ marginLeft: 8 }}>Frontend Developer &amp; UI/UX Designer</span>
+        <span style={{ marginLeft: 8 }}>
+          Frontend Developer &amp; UI/UX Designer
+        </span>
       </div>
       <nav aria-label="Footer links">
         <a href="mailto:kdunaeva04@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/kristina-dunajeva-kd/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/kyrlyama" target="_blank" rel="noreferrer">GitHub</a>
+        <a
+          href="https://www.linkedin.com/in/kristina-dunajeva-kd/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a href="https://github.com/kyrlyama" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
         <Link href="/contacts">Contact</Link>
       </nav>
     </footer>
@@ -210,14 +225,14 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
   const canonical = `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
 
   function ScrollToTop() {
-  const router = useRouter();
-  useEffect(() => {
-    const handle = () => window.scrollTo(0, 0);
-    router.events.on("routeChangeComplete", handle);
-    return () => router.events.off("routeChangeComplete", handle);
-  }, [router.events]);
-  return null;
-}
+    const router = useRouter();
+    useEffect(() => {
+      const handle = () => window.scrollTo(0, 0);
+      router.events.on("routeChangeComplete", handle);
+      return () => router.events.off("routeChangeComplete", handle);
+    }, [router.events]);
+    return null;
+  }
 
   return (
     <>
@@ -248,9 +263,10 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         />
       )}
 
-          <div id="app-root" className={inter.className}>
-          <a href="#main" className="skipLink">Skip to content</a>
-
+      <div id="app-root" className={inter.className}>
+        <a href="#main" className="skipLink">
+          Skip to content
+        </a>
 
         <div className="site-bg" aria-hidden="true">
           <div className="blob b1" />

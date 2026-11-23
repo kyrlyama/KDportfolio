@@ -105,8 +105,7 @@
 .skillsPage {
   min-height: 100svh;
   padding: calc(var(--nav-h, 64px) + 56px + env(safe-area-inset-top))
-    clamp(16px, 2vw, 24px)
-    calc(88px + env(safe-area-inset-bottom)) !important;
+    clamp(16px, 2vw, 24px) calc(88px + env(safe-area-inset-bottom)) !important;
   color: var(--ink);
   overflow-x: hidden;
 }
@@ -121,7 +120,11 @@
   padding: clamp(32px, 4vw, 56px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(109, 40, 217, 0.12),
+      transparent 34%
+    ),
     linear-gradient(145deg, #ffffff, #f8fbff);
   border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
@@ -133,7 +136,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -181,14 +184,14 @@
 
 .coreCard h2 {
   margin: 0 0 8px;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 20px;
   font-weight: 900;
 }
 
 .coreCard p {
   margin: 0;
-  color:  var(--muted);
+  color: var(--muted);
   line-height: 1.65;
 }
 
@@ -203,14 +206,17 @@
   padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 800;
 }
 
 .row {
   display: grid !important;
-  grid-template-columns: minmax(420px, 1.1fr) minmax(260px, 0.65fr) minmax(360px, 0.95fr) !important;
+  grid-template-columns: minmax(420px, 1.1fr) minmax(260px, 0.65fr) minmax(
+      360px,
+      0.95fr
+    ) !important;
   gap: 32px !important;
   margin: 0 !important;
   align-items: stretch !important;
@@ -270,7 +276,7 @@
 }
 
 .langLevel {
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-weight: 900;
 }
 
@@ -291,7 +297,7 @@
 
 .techCard h3 {
   margin: 0 0 8px;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 17px;
   font-weight: 900;
 }
@@ -333,7 +339,9 @@
 @media (max-width: 640px) {
   .skillsPage {
     padding-inline: 16px !important;
-    padding-top: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top)) !important;
+    padding-top: calc(
+      var(--nav-h, 64px) + 16px + env(safe-area-inset-top)
+    ) !important;
   }
 
   .hero,
@@ -417,13 +425,16 @@
 /* ===== Тёмная тема: градиентные "белые" карточки ===== */
 :global([data-theme="dark"]) .hero {
   background:
-    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.18), transparent 34%),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(109, 40, 217, 0.18),
+      transparent 34%
+    ),
     var(--surface);
 }
 :global([data-theme="dark"]) .softCard {
   background: var(--surface) !important;
 }
-
 
 @media (max-width: 640px) {
   .wrap {

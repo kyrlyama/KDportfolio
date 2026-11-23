@@ -1,7 +1,8 @@
 /* Корневой контейнер страницы About */
 .aboutPage {
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 56px + env(safe-area-inset-top)) var(--page-px) 80px;
+  padding: calc(var(--nav-h) + 56px + env(safe-area-inset-top)) var(--page-px)
+    80px;
   position: relative;
   /* если фон уже глобальный — эту строку можно убрать;
      если нужен локально — оставь */
@@ -52,10 +53,10 @@
   font-weight: 800;
   margin: 0 0 16px;
   letter-spacing: -0.02em;
-  color:  var(--ink);
+  color: var(--ink);
 }
 .p {
-  color:  var(--ink);
+  color: var(--ink);
   line-height: 1.75;
   margin: 0 0 16px;
 }
@@ -92,7 +93,7 @@
 }
 .cardText {
   margin: 8px 0;
-  color:  var(--ink);
+  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -232,7 +233,6 @@
   }
 }
 
-
 /* =========================================================
    FINAL PROFESSIONAL ABOUT PAGE
    Middle-level portfolio presentation
@@ -241,8 +241,7 @@
 .aboutPage {
   min-height: 100svh;
   padding: calc(var(--nav-h, 64px) + 56px + env(safe-area-inset-top))
-    var(--page-px)
-    calc(88px + env(safe-area-inset-bottom)) !important;
+    var(--page-px) calc(88px + env(safe-area-inset-bottom)) !important;
   background: transparent !important;
   color: var(--ink);
   overflow-x: hidden;
@@ -260,7 +259,7 @@
 .heroCard,
 .card,
 .stickyCard {
-  background:var(--surface) !important;
+  background: var(--surface) !important;
   border: 1px solid rgba(17, 24, 39, 0.06) !important;
   box-shadow: 0 14px 38px rgba(17, 24, 39, 0.07) !important;
 }
@@ -269,7 +268,11 @@
   padding: clamp(32px, 4vw, 56px) !important;
   border-radius: 30px !important;
   background:
-    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(109, 40, 217, 0.12),
+      transparent 34%
+    ),
     linear-gradient(145deg, #ffffff, #f8fbff) !important;
 }
 
@@ -279,7 +282,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -298,7 +301,7 @@
 .lead {
   max-width: 860px;
   margin: 16px 0 0;
-  color:var(--muted);
+  color: var(--muted);
   font-size: clamp(17px, 1.55vw, 22px);
   line-height: 1.65;
   font-weight: 600;
@@ -361,7 +364,7 @@
 
 .cardTitle {
   margin: 0 0 16px !important;
-  color: #6d28d9 !important;
+  color: var(--accent-strong) !important;
   font-size: 20px !important;
   font-weight: 900 !important;
 }
@@ -392,7 +395,7 @@
 
 .chip {
   background: #f2ecfe !important;
-  color: #6d28d9 !important;
+  color: var(--accent-strong) !important;
   box-shadow: none !important;
   border: 1px solid rgba(109, 40, 217, 0.12);
 }
@@ -409,7 +412,7 @@
 }
 
 .barFill {
-  background: linear-gradient(90deg, #6d28d9, #8b5cf6) !important;
+  background: linear-gradient(90deg, var(--accent-strong), #8b5cf6) !important;
   box-shadow: none !important;
 }
 
@@ -440,7 +443,9 @@
 @media (max-width: 760px) {
   .aboutPage {
     padding-inline: 16px !important;
-    padding-top: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top)) !important;
+    padding-top: calc(
+      var(--nav-h, 64px) + 16px + env(safe-area-inset-top)
+    ) !important;
   }
 
   .grid {
@@ -510,7 +515,7 @@
 }
 
 .experienceDate {
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 13px;
   font-weight: 900;
   line-height: 1.4;
@@ -542,7 +547,7 @@
   padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 800;
 }
@@ -556,7 +561,7 @@
   margin-top: 16px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: #6d28d9;
+  background: var(--accent-strong);
   color: #ffffff;
   font-size: 13px;
   font-weight: 900;
@@ -584,7 +589,6 @@
     width: 100%;
   }
 }
-
 
 /* =========================================================
    FINAL ABOUT EXPERIENCE + FOCUS AREAS
@@ -622,7 +626,7 @@
 }
 
 .experienceDate {
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 13px;
   font-weight: 900;
   line-height: 1.4;
@@ -655,7 +659,7 @@
   padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 800;
 }
@@ -669,7 +673,7 @@
   margin-top: 16px;
   padding: 8px 16px;
   border-radius: 999px;
-  background: #6d28d9;
+  background: var(--accent-strong);
   color: #ffffff;
   font-size: 13px;
   font-weight: 900;
@@ -688,7 +692,7 @@
 
 .focusBox h2 {
   margin: 0 0 16px;
-  color:  var(--ink);
+  color: var(--ink);
   font-size: 16px;
   font-weight: 900;
 }
@@ -738,6 +742,10 @@
 }
 :global([data-theme="dark"]) .heroCard {
   background:
-    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.18), transparent 34%),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(109, 40, 217, 0.18),
+      transparent 34%
+    ),
     var(--surface) !important;
 }

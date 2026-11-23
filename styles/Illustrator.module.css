@@ -6,8 +6,7 @@
 .page {
   min-height: 100svh;
   padding: calc(var(--nav-h, 64px) + 56px + env(safe-area-inset-top))
-    var(--page-px)
-    calc(88px + env(safe-area-inset-bottom));
+    var(--page-px) calc(88px + env(safe-area-inset-bottom));
   color: #111827;
   font: inherit;
   letter-spacing: inherit;
@@ -24,7 +23,11 @@
   padding: clamp(32px, 4vw, 56px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 12%, rgba(109, 40, 217, 0.12), transparent 34%),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(109, 40, 217, 0.12),
+      transparent 34%
+    ),
     linear-gradient(145deg, #ffffff, #f8fbff);
   border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
@@ -36,7 +39,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -72,7 +75,7 @@
   padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 13px;
   font-weight: 800;
 }
@@ -148,8 +151,11 @@
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  background:
-    linear-gradient(180deg, rgba(248, 251, 255, 0.95), rgba(234, 243, 255, 0.55));
+  background: linear-gradient(
+    180deg,
+    rgba(248, 251, 255, 0.95),
+    rgba(234, 243, 255, 0.55)
+  );
 }
 
 .thumbImage {
@@ -184,7 +190,7 @@
   padding: 8px 8px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 800;
 }
@@ -196,10 +202,8 @@
   z-index: 10000;
   display: grid;
   place-items: center;
-  padding:
-    calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top))
-    max(16px, env(safe-area-inset-right))
-    max(16px, env(safe-area-inset-bottom))
+  padding: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom))
     max(16px, env(safe-area-inset-left));
   background: rgba(0, 0, 0, 0.76);
   overscroll-behavior: contain;
@@ -345,10 +349,7 @@
   }
 
   .modal {
-    padding:
-      calc(var(--nav-h, 64px) + 8px + env(safe-area-inset-top))
-      8px
-      8px;
+    padding: calc(var(--nav-h, 64px) + 8px + env(safe-area-inset-top)) 8px 8px;
   }
 
   .modalCard {

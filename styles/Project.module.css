@@ -88,7 +88,7 @@
   align-self: flex-start;
   padding: 16px 24px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-weight: 800;
   border-radius: 18px;
   text-decoration: none;
@@ -357,7 +357,7 @@
 .btn,
 .repoBtn {
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   border-radius: 18px;
   font-weight: 800;
   box-shadow: 0 18px 40px rgba(109, 40, 217, 0.16);
@@ -366,8 +366,6 @@
   background: #e4ebf7;
   font-weight: 500;
 }
-
-
 
 /* Cross-site responsive tightening for tablets and phones */
 @media (max-width: 1024px) {
@@ -439,7 +437,6 @@
   }
 }
 
-
 /* =========================================================
    PROJECT CASE STUDY LAYOUT — Project 1
    Professional frontend portfolio presentation
@@ -454,7 +451,11 @@
   padding: clamp(24px, 4vw, 48px);
   border-radius: 30px;
   background:
-    radial-gradient(circle at 88% 14%, rgba(109, 40, 217, 0.12), transparent 34%),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(109, 40, 217, 0.12),
+      transparent 34%
+    ),
     linear-gradient(145deg, #ffffff, #f8fbff);
   border: 1px solid rgba(109, 40, 217, 0.08);
   box-shadow: 0 22px 60px rgba(17, 24, 39, 0.1);
@@ -472,7 +473,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -592,7 +593,7 @@
 
 .projectFeatureCard h3 {
   margin: 0 0 8px;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 17px;
   font-weight: 900;
 }
@@ -618,7 +619,7 @@
   padding: 8px 16px;
   border-radius: 999px;
   background: #f2ecfe;
-  color: #6d28d9;
+  color: var(--accent-strong);
   font-size: 13px;
   font-weight: 900;
 }
@@ -665,7 +666,7 @@
 }
 
 .projectThumbActive {
-  border-color: #6d28d9;
+  border-color: var(--accent-strong);
 }
 
 @media (max-width: 1100px) {
@@ -704,7 +705,6 @@
   }
 }
 
-
 /* =========================================================
    FINAL MOBILE FIX FOR PROJECT CASE STUDY PAGES
    Project 1 / 2 / 3 / 4
@@ -714,7 +714,9 @@
 @media (max-width: 900px) {
   .page {
     overflow-x: hidden !important;
-    padding-top: calc(var(--nav-h, 64px) + 16px + env(safe-area-inset-top)) !important;
+    padding-top: calc(
+      var(--nav-h, 64px) + 16px + env(safe-area-inset-top)
+    ) !important;
     padding-inline: 16px !important;
     padding-bottom: calc(64px + env(safe-area-inset-bottom)) !important;
   }
@@ -925,7 +927,6 @@
     font-size: 14px !important;
   }
 }
-
 
 .resultsGrid {
   display: grid;

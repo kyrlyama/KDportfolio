@@ -1,11 +1,14 @@
 /* ====== ДИЗАЙН-ТОКЕНЫ ====== */
 :root {
   /* цвета */
-  --accent: #7c3aed;          /* единственный акцентный цвет (violet-600) */
+  --accent: #7c3aed; /* единственный акцентный цвет (violet-600) */
+  --accent-strong: #6d28d9; /* тёмный акцент: текст кнопок, hover (был захардкожен) */
   --accent-soft: #f2ecfe;
-  --ink: #111827;             /* основной текст */
-  --muted: #6b7280;           /* вторичный текст */
-  --surface: rgba(255, 255, 255, 0.78);  /* карточки */
+  --text: var(--ink); /* алиас из плана редизайна */
+  --body: #374151; /* текст абзацев */
+  --ink: #111827; /* основной текст */
+  --muted: #6b7280; /* вторичный текст */
+  --surface: rgba(255, 255, 255, 0.78); /* карточки */
   --line: rgba(17, 24, 39, 0.08);
 
   /* типографика */
@@ -34,20 +37,48 @@
 
   /* прочее */
   --container-max: 1240px;
-  --content-max: 1240px;      /* макс. ширина контента на страницах-кейсах */
+  --content-max: 1240px; /* макс. ширина контента на страницах-кейсах */
   --page-px: clamp(16px, 3vw, 28px); /* боковые отступы страниц */
   --nav-h: 64px;
   --page-title-size: clamp(28px, 4vw, 44px);
+
+  /* ===== LIQUID GLASS ===== */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-bg-strong: rgba(255, 255, 255, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-blur: 18px;
+  --glass-shadow:
+    0 18px 50px rgba(76, 29, 149, 0.12), 0 4px 14px rgba(17, 24, 39, 0.06);
+  --glass-inner:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -16px 32px rgba(124, 58, 237, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --glass-rim: conic-gradient(
+    from 210deg,
+    #ff9ad5,
+    #c4b5fd,
+    #7dd3fc,
+    #86efac,
+    #fde68a,
+    #ff9ad5
+  );
 }
 
 @media (max-width: 980px) {
-  :root { --nav-h: 60px; }
+  :root {
+    --nav-h: 60px;
+  }
 }
 
 /* ====== БАЗА ====== */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -68,9 +99,19 @@ body {
   overflow-x: hidden;
 }
 
-img { max-width: 100%; height: auto; display: block; }
-h1, h2, h3 { margin: 0; }
-a { color: var(--accent); }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+a {
+  color: var(--accent);
+}
 
 /* Шрифт подставляет next/font через класс на #app-root — не переопределять */
 
@@ -94,21 +135,56 @@ a { color: var(--accent); }
   pointer-events: none;
 }
 .blob.b1 {
-  width: 420px; height: 420px; top: -80px; left: -60px;
-  background: radial-gradient(circle at 30% 30%, #fff 0%, #b9d3ff 35%, #e5c9ff 70%, #ffd6e6 100%);
+  width: 420px;
+  height: 420px;
+  top: -80px;
+  left: -60px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    #b9d3ff 35%,
+    #e5c9ff 70%,
+    #ffd6e6 100%
+  );
 }
 .blob.b2 {
-  width: 360px; height: 360px; bottom: 10%; right: 8%;
-  background: radial-gradient(circle at 30% 30%, #fff 0%, #bfe1ff 35%, #dbcbff 70%, #ffe6ef 100%);
+  width: 360px;
+  height: 360px;
+  bottom: 10%;
+  right: 8%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    #bfe1ff 35%,
+    #dbcbff 70%,
+    #ffe6ef 100%
+  );
 }
 .blob.b3 {
-  width: 300px; height: 300px; top: 30%; right: 35%;
-  background: radial-gradient(circle at 30% 30%, #fff 0%, #c9e0ff 35%, #e6d6ff 70%, #ffeaf2 100%);
+  width: 300px;
+  height: 300px;
+  top: 30%;
+  right: 35%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    #c9e0ff 35%,
+    #e6d6ff 70%,
+    #ffeaf2 100%
+  );
 }
 @media (max-width: 1024px) {
-  .blob.b1 { width: 320px; height: 320px; }
-  .blob.b2 { width: 270px; height: 270px; }
-  .blob.b3 { display: none; }
+  .blob.b1 {
+    width: 320px;
+    height: 320px;
+  }
+  .blob.b2 {
+    width: 270px;
+    height: 270px;
+  }
+  .blob.b3 {
+    display: none;
+  }
 }
 
 /* контейнеры и заголовки страниц */
@@ -180,10 +256,21 @@ html {
   color: var(--muted);
   font-size: 13px;
 }
-.siteFooter strong { color: var(--ink); }
-.siteFooter nav { display: flex; gap: 24px; flex-wrap: wrap; }
-.siteFooter a { color: var(--muted); text-decoration: none; }
-.siteFooter a:hover { color: var(--ink); }
+.siteFooter strong {
+  color: var(--ink);
+}
+.siteFooter nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.siteFooter a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.siteFooter a:hover {
+  color: var(--ink);
+}
 
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -207,7 +294,9 @@ html {
     padding-top: calc(var(--nav-h) + 16px + env(safe-area-inset-top));
     padding-inline: clamp(8px, 3vw, 16px);
   }
-  .container { width: 100%; }
+  .container {
+    width: 100%;
+  }
 }
 
 /* фон для UI/UX кейсов — используется на страницах из pages/uiux */
@@ -216,10 +305,28 @@ html {
   isolation: isolate;
   overflow: hidden;
   background:
-    radial-gradient(900px 620px at 6% 6%, rgba(185, 211, 255, 0.52), transparent 58%),
-    radial-gradient(820px 620px at 92% 12%, rgba(255, 214, 230, 0.52), transparent 58%),
-    radial-gradient(760px 560px at 48% 46%, rgba(229, 201, 255, 0.38), transparent 62%),
-    radial-gradient(1200px 800px at 50% -10%, #fff 0%, rgba(240,246,255,.9) 45%, rgba(242,230,255,.85) 75%, rgba(255,236,243,.85) 100%);
+    radial-gradient(
+      900px 620px at 6% 6%,
+      rgba(185, 211, 255, 0.52),
+      transparent 58%
+    ),
+    radial-gradient(
+      820px 620px at 92% 12%,
+      rgba(255, 214, 230, 0.52),
+      transparent 58%
+    ),
+    radial-gradient(
+      760px 560px at 48% 46%,
+      rgba(229, 201, 255, 0.38),
+      transparent 62%
+    ),
+    radial-gradient(
+      1200px 800px at 50% -10%,
+      #fff 0%,
+      rgba(240, 246, 255, 0.9) 45%,
+      rgba(242, 230, 255, 0.85) 75%,
+      rgba(255, 236, 243, 0.85) 100%
+    );
 }
 .seniorCase::before,
 .seniorCase::after {
@@ -232,18 +339,49 @@ html {
   pointer-events: none;
 }
 .seniorCase::before {
-  width: 440px; height: 440px; top: 40px; left: -90px;
-  background: radial-gradient(circle at 30% 30%, #fff 0%, #b9d3ff 35%, #e5c9ff 70%, #ffd6e6 100%);
+  width: 440px;
+  height: 440px;
+  top: 40px;
+  left: -90px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    #b9d3ff 35%,
+    #e5c9ff 70%,
+    #ffd6e6 100%
+  );
 }
 .seniorCase::after {
-  width: 380px; height: 380px; top: 22%; right: -80px;
-  background: radial-gradient(circle at 30% 30%, #fff 0%, #bfe1ff 35%, #dbcbff 70%, #ffe6ef 100%);
+  width: 380px;
+  height: 380px;
+  top: 22%;
+  right: -80px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff 0%,
+    #bfe1ff 35%,
+    #dbcbff 70%,
+    #ffe6ef 100%
+  );
 }
-.seniorCase > * { position: relative; z-index: 1; }
+.seniorCase > * {
+  position: relative;
+  z-index: 1;
+}
 
 /* ====== ТЁМНАЯ ТЕМА ====== */
 [data-theme="dark"] {
   --ink: #f3f4f6;
+  --body: #d1d5db;
+  --glass-bg: rgba(17, 24, 39, 0.45);
+  --glass-bg-strong: rgba(17, 24, 39, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.25);
+  --glass-inner:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -16px 32px rgba(124, 58, 237, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
   --muted: #9ca3af;
   --surface: rgba(17, 24, 39, 0.72);
   --line: rgba(255, 255, 255, 0.1);
@@ -271,4 +409,137 @@ html {
 [data-theme="dark"] .skipLink:focus {
   background: #1f2937;
   color: #f3f4f6;
+}
+
+/* =====================================================================
+   LIQUID GLASS — 4 общих класса. Используем их везде, не пишем стекло
+   заново в каждом модуле.
+   .glass        — карточки, панели, snapshot
+   .glass-strong — блоки с текстом (секции кейсов, формы) → контраст AA
+   .glass-pill   — теги, кнопки, eyebrow
+   .glass-bubble — круглые элементы + радужный ободок
+   ===================================================================== */
+.glass,
+.glass-strong,
+.glass-pill,
+.glass-bubble {
+  position: relative;
+  isolation: isolate;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+  border-radius: var(--radius-l);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+}
+.glass-pill {
+  border-radius: var(--radius-pill);
+  box-shadow:
+    var(--glass-inner),
+    0 4px 14px rgba(76, 29, 149, 0.08);
+}
+.glass-bubble {
+  border-radius: 50%;
+}
+
+/* мягкий блик сверху (верхние 45%) */
+.glass::before,
+.glass-strong::before,
+.glass-pill::before,
+.glass-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 55% 0;
+  z-index: -1;
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(180deg, var(--glass-highlight), transparent);
+  pointer-events: none;
+}
+
+/* радужный ободок 3px — только bubbles и hero */
+.glass-bubble::after,
+.glass-rim::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  padding: 3px;
+  border-radius: inherit;
+  background: var(--glass-rim);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* интерактивные стеклянные элементы */
+a.glass,
+a.glass-strong,
+a.glass-pill,
+button.glass-pill {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+a.glass:hover,
+a.glass-strong:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 24px 60px rgba(76, 29, 149, 0.16),
+    var(--glass-inner);
+}
+
+/* Фолбэк 1: браузер без backdrop-filter → сегодняшний вид (--surface) */
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass,
+  .glass-strong,
+  .glass-pill,
+  .glass-bubble {
+    background: var(--surface);
+  }
+}
+
+/* Фолбэк 2: пользователь просит меньше прозрачности */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong,
+  .glass-pill,
+  .glass-bubble {
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* На телефонах блюр дороже — делаем его слабее */
+@media (max-width: 640px) {
+  :root {
+    --glass-blur: 12px;
+  }
+}
+
+/* Видимая метка для фактов, которые Кристина впишет сама */
+.placeholder {
+  background: rgba(253, 230, 138, 0.55);
+  color: #78350f;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-weight: 600;
+}
+[data-theme="dark"] .placeholder {
+  background: rgba(253, 230, 138, 0.2);
+  color: #fde68a;
 }
