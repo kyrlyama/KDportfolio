@@ -1,121 +1,223 @@
+// pages/uiux/shop-redesign.js — Likefon logo & brand refresh.
+// PROJECT PLAN order. Logo versions 1–3 moved to "Testing and iterations";
+// before/after moved to "Result". Every old image and text is kept.
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "@/styles/UiuxCase.module.css";
+import {
+  BulletList,
+  CaseHero,
+  CasePage,
+  CasePlan,
+  DecisionCard,
+  Gallery,
+  P,
+  Placeholder,
+  TextPanel,
+  caseStyles as styles,
+} from "@/components/case";
 
-const toc = [
-  { id: "background", label: "Project background" },
-  { id: "goal", label: "Goal" },
-  { id: "audit", label: "UX / Visual audit" },
-  { id: "final", label: "Final result" },
-  { id: "logo", label: "Logo design" },
-  { id: "mockups", label: "Mockups" },
-  { id: "outcome", label: "Outcome & learnings" },
+const snapshot = [
+  { label: "Role", value: "Brand designer · Solo" },
+  { label: "Timeline", value: <Placeholder>MONTHS</Placeholder> },
+  { label: "Stack", value: "Affinity Designer" },
+  { label: "Status", value: "Approved, used in both stores" },
 ];
 
-const likeImages = {
-  hero: [{ src: "/uiux/redesign/like-store-final.png", alt: "Like store after the logo redesign" }],
-  compare: [
-    { src: "/uiux/redesign/beforeredesign.jpg", alt: "Before redesign" },
-    { src: "/uiux/redesign/like-store-final.png", alt: "Like store after redesign" },
-  ],
-  logo: [
-    { src: "/uiux/redesign/Logo_likefon_1.png", alt: "Logo Likefon concept 1" },
-    { src: "/uiux/redesign/Logo_likefon_2.png", alt: "Logo Likefon concept 2" },
-    { src: "/uiux/redesign/logo_likefon_3.png", alt: "Logo Likefon concept 3" },
-  ],
-  mockups: [
-    { src: "/uiux/redesign/like-brand-mockup.png", alt: "Like brand identity mockup" }
-  ],
-};
+const logoVersions = [
+  {
+    src: "/uiux/redesign/Logo_likefon_1.png",
+    alt: "Logo Likefon concept 1",
+    title: "Version 1",
+  },
+  {
+    src: "/uiux/redesign/Logo_likefon_2.png",
+    alt: "Logo Likefon concept 2",
+    title: "Version 2",
+  },
+  {
+    src: "/uiux/redesign/logo_likefon_3.png",
+    alt: "Logo Likefon concept 3",
+    title: "Version 3",
+  },
+];
+
+const outcome = [
+  "A more readable mark increased clarity and category association.",
+  "Testing at small sizes helped keep the logo scalable and consistent.",
+  "Mockups validated how the identity performs in real retail contexts.",
+];
 
 export default function ShopRedesign() {
-  return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        <section className={styles.heroCard}>
-         <div className={styles.heroMedia}>
-          <Image src={likeImages.hero[0].src} alt={likeImages.hero[0].alt} fill sizes="(max-width: 900px) 100vw, 420px" className={styles.heroImage} priority />
-          </div>
-          <div className={styles.heroText}>
-            <p className={styles.kicker}>VISUAL IDENTITY UPDATE · AFFINITY DESIGNER</p>
-            <h1 className={styles.title}>Logo Redesign for Like</h1>
-            <p className={styles.lead}>Refreshing a local phone accessories retailer’s identity to improve clarity, trust, and visibility in a competitive mall environment.</p>
-          </div>
-        </section>
+  const sections = {
+    context: (
+      <TextPanel>
+        <BulletList
+          items={[
+            <>
+              <strong>Store type:</strong> local retail shop.
+            </>,
+            <>
+              <strong>What it sells:</strong> phone accessories and headsets.
+            </>,
+            <>
+              <strong>Competitive context:</strong> strong competition with
+              Click, Evelatus, and OnOff.
+            </>,
+          ]}
+        />
+        <P>
+          Part of the <Link href="/projects/likefon">Likefon project</Link>:
+          brand refresh → UX case study → website.
+        </P>
+      </TextPanel>
+    ),
 
-        <div className={styles.body}>
-          <aside className={styles.toc}>
-            <h3>Contents</h3>
-            <ul>{toc.map((s) => <li key={s.id}><a href={`#${s.id}`}>{s.label}</a></li>)}</ul>
-            <div className={styles.tocActions}><Link href="/uiux" className={styles.btn}>← Back</Link></div>
-          </aside>
+    problem: (
+      <>
+        <TextPanel>
+          <P>
+            <strong>UX / Visual audit.</strong> The original mark was too
+            abstract and didn’t communicate the store’s category well. It also
+            lost clarity at small sizes, reducing memorability and trust.
+          </P>
+        </TextPanel>
+      </>
+    ),
 
-          <div className={styles.sections}>
-            <section id="background" className={styles.section}><h2>Project background</h2><ul><li><strong>Store type:</strong> local retail shop.</li><li><strong>What it sells:</strong> phone accessories and headsets.</li><li><strong>Competitive context:</strong> strong competition with Click, Evelatus, and OnOff.</li></ul></section>
-            <section id="goal" className={styles.section}><h2>Goal</h2><p className={styles.p}>Create a clearer and more recognisable brand mark that is readable at distance, scalable for print and digital use, and visually connected to the store’s category.</p></section>
-            <section id="audit" className={styles.section}><h2>UX / Visual audit</h2><p className={styles.p}>The original mark was too abstract and didn’t communicate the store’s category well. It also lost clarity at small sizes, reducing memorability and trust.</p></section>
+    goal: (
+      <TextPanel>
+        Create a clearer and more recognisable brand mark that is readable at
+        distance, scalable for print and digital use, and visually connected to
+        the store’s category.
+      </TextPanel>
+    ),
 
-            <section id="final" className={styles.section}>
-              <h2>Final result</h2>
-              <div className={styles.compareGrid}>
-                {likeImages.compare.map((image, index) => (
-                  <div className={styles.compareCard} key={image.src}>
-                    <div className={styles.compareImageWrapper}>
-                      <Image src={image.src} alt={image.alt} width={1200} height={800} className={styles.compareImage} />
-                    </div>
-                    <h3 className={styles.h3}>{index === 0 ? "Before" : "After"}</h3>
-                    <p className={styles.p}>{index === 0 ? "Abstract mark with low association to the store’s products and weak scalability." : "The redesigned identity is now visible in the real retail environment and works clearly at storefront scale."}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+    research: (
+      <TextPanel>
+        <P>
+          The refresh was based on competitor and customer research in a
+          competitive mall environment (Click, Evelatus, OnOff).
+        </P>
+        <P>
+          <Placeholder>
+            What did you look at in competitors’ logos? What did customers say?
+          </Placeholder>
+        </P>
+      </TextPanel>
+    ),
 
-<section id="logo" className={styles.section}>
-  <h2>Logo design</h2>
-
-  <div className={styles.mediaGrid}>
-    {likeImages.logo.map((image) => (
-      <div key={image.src} className={styles.mediaCard}>
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(max-width: 900px) 100vw, 33vw"
+    decisions: (
+      <div className={styles.decisions}>
+        <DecisionCard
+          chose={<Placeholder>X</Placeholder>}
+          over={<Placeholder>Y</Placeholder>}
+          why={<Placeholder>why</Placeholder>}
+          cost={<Placeholder>cost</Placeholder>}
         />
       </div>
-    ))}
-  </div>
-</section>
+    ),
 
-            <section id="mockups" className={styles.section}>
-              <h2>Mockups</h2>
-<section id="mockups" className={styles.section}>
-  <h2>Mockups</h2>
+    design: (
+      <>
+        <Gallery
+          cols={1}
+          title="Mockups"
+          images={[
+            {
+              src: "/uiux/redesign/like-brand-mockup.png",
+              alt: "Like brand identity mockup",
+              title: "Like brand identity mockup",
+            },
+          ]}
+        />
+      </>
+    ),
 
-  <div className={styles.mockupGrid}>
-    {likeImages.mockups.map((image) => (
-      <div className={styles.mockupItem} key={image.src}>
-        <div className={styles.mockupMedia}>
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(max-width: 720px) 100vw, 50vw"
-            className={styles.mockupImage}
+    testing: (
+      <>
+        <P>
+          Logo design: three versions of the new mark. Testing at small sizes
+          helped keep the logo scalable and consistent.
+        </P>
+        <Gallery cols={3} title="Logo versions" images={logoVersions} />
+        <TextPanel>
+          <P>
+            <Placeholder>Which version won and why?</Placeholder>
+          </P>
+        </TextPanel>
+      </>
+    ),
+
+    result: (
+      <>
+        <div className={styles.compare}>
+          <Gallery
+            cols={1}
+            images={[
+              {
+                src: "/uiux/redesign/beforeredesign.jpg",
+                alt: "Before redesign",
+                title: "Before",
+                text: "Abstract mark with low association to the store’s products and weak scalability.",
+              },
+            ]}
+          />
+          <Gallery
+            cols={1}
+            images={[
+              {
+                src: "/uiux/redesign/like-store-final.png",
+                alt: "Like store after redesign",
+                title: "After",
+                text: "The redesigned identity is now visible in the real retail environment and works clearly at storefront scale.",
+              },
+            ]}
           />
         </div>
+        <p>Approved by management and used in both stores.</p>
+      </>
+    ),
 
-        <h3 className={styles.mockupTitle}>{image.alt}</h3>
-      </div>
-    ))}
-  </div>
-</section>            </section>
+    hardest: (
+      <TextPanel>
+        <P>
+          <Placeholder>
+            The hardest problem in this project and how you solved it.
+          </Placeholder>
+        </P>
+      </TextPanel>
+    ),
 
-            <section id="outcome" className={styles.section}><h2>Outcome & learnings</h2><ul className={styles.list}><li>A more readable mark increased clarity and category association.</li><li>Testing at small sizes helped keep the logo scalable and consistent.</li><li>Mockups validated how the identity performs in real retail contexts.</li></ul></section>
-          </div>
-        </div>
-      </div>
-    </main>
+    learned: (
+      <TextPanel>
+        <P>Outcome &amp; learnings:</P>
+        <BulletList items={outcome} />
+      </TextPanel>
+    ),
+  };
+
+  return (
+    <CasePage>
+      <CaseHero
+        back={{ href: "/projects/likefon", label: "← Likefon project" }}
+        eyebrow="Commercial · Visual identity update · Affinity Designer"
+        title="Logo Redesign for Like"
+        result="Refreshing a local phone accessories retailer’s identity to improve clarity, trust, and visibility in a competitive mall environment."
+        snapshot={snapshot}
+        links={[{ href: "/uiux", label: "← Back to UI/UX" }]}
+        media={
+          <Image
+            src="/uiux/redesign/like-store-final.png"
+            alt="Like store after the logo redesign"
+            width={1448}
+            height={1086}
+            sizes="(max-width: 1240px) 100vw, 1240px"
+            priority
+          />
+        }
+      />
+      <CasePlan sections={sections} />
+    </CasePage>
   );
 }

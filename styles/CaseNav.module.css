@@ -1,22 +1,39 @@
 .caseNav {
-  position: sticky;
-  top: calc(var(--nav-h) + 16px);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-self: start;
+  gap: var(--sp-4);
 }
 .caseNav a {
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 13px;
+  padding: var(--sp-8) var(--sp-16);
+  border-radius: var(--radius-pill);
+  font-size: var(--fz-small);
   font-weight: 600;
-  color: #6b7280;
+  line-height: 1.4;
+  color: var(--muted);
   text-decoration: none;
-  transition: color .2s, background .2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
-.caseNav a:hover { color: #111827; }
+.caseNav a:hover {
+  color: var(--ink);
+}
 .caseNav a.active {
-  background: rgba(17, 24, 39, .92);
-  color: #fff;
+  background: var(--ink);
+  color: var(--bg-base);
+}
+
+@media (max-width: 980px) {
+  .caseNav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--sp-4);
+    scrollbar-width: thin;
+  }
+  .caseNav a {
+    flex: 0 0 auto;
+  }
+}
+[data-theme="dark"] .caseNav a.active {
+  color: #111827;
 }

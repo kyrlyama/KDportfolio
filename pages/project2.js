@@ -1,34 +1,40 @@
+// pages/project2.js — Welcome to the world space! (Space website)
+// PROJECT PLAN order. All old text, features and 6 screenshots are kept.
 import Image from "next/image";
-import { useState } from "react";
 
-import styles from "@/styles/Project.module.css";
+import {
+  BulletList,
+  CaseHero,
+  CasePage,
+  CasePlan,
+  Cards,
+  H3,
+  P,
+  Placeholder,
+  Screens,
+  TextPanel,
+  Todo,
+} from "@/components/case";
 
-const images = [
+const repoUrl = "https://github.com/kyrlyama/space-site";
+
+const screens = [
   "/project2.png",
   "/project21.png",
   "/project22.png",
   "/project23.png",
   "/project24.png",
   "/project25.png",
-];
+].map((src, i) => ({ src, alt: `Space website screenshot ${i + 1}` }));
 
 const snapshot = [
   {
     label: "Role",
     value: "Frontend development, responsive layout, JavaScript quiz logic",
   },
-  {
-    label: "Stack",
-    value: "HTML, CSS, Bootstrap, JavaScript",
-  },
-  {
-    label: "Project type",
-    value: "Educational interactive website",
-  },
-  {
-    label: "Focus",
-    value: "Planet pages, quiz validation, tables, visual learning",
-  },
+  { label: "Timeline", value: <Placeholder>MONTHS</Placeholder> },
+  { label: "Stack", value: "HTML, CSS, Bootstrap, JavaScript" },
+  { label: "Status", value: "Code on GitHub" },
 ];
 
 const features = [
@@ -75,196 +81,105 @@ const improvements = [
 ];
 
 export default function Project2() {
-  const [current, setCurrent] = useState(0);
-
-  const nextImage = () => setCurrent((current + 1) % images.length);
-  const prevImage = () =>
-    setCurrent((current - 1 + images.length) % images.length);
-
-  return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        {/* HERO */}
-        <section className={styles.projectHero}>
-          <div className={styles.projectHeroText}>
-            <p className={styles.projectEyebrow}>Frontend project</p>
-
-            <h1 className={styles.projectHeroTitle}>
-              Space Website — Educational Planet Explorer
-            </h1>
-
-            <p className={styles.projectHeroLead}>
-              An educational website about space and the planets of the Solar
-              System. The project combines informational pages, planet
-              characteristics, visual content, and an interactive quiz to help
-              users learn in a more engaging way.
-            </p>
-
-            <div className={styles.btnRow}>
-              <a
-                href="https://github.com/kyrlyama/space-site"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.repoBtn}
-              >
-                GitHub repository
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.projectHeroMedia}>
-            <Image
-              src="/project2.png"
-              alt="Space website homepage preview"
-              width={1200}
-              height={760}
-              className={styles.projectHeroImage}
-              priority
-            />
-          </div>
-        </section>
-
-        {/* SNAPSHOT */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Project snapshot</h2>
-
-          <div className={styles.projectSnapshotGrid}>
-            {snapshot.map((item) => (
-              <article key={item.label} className={styles.projectSnapshotCard}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* OVERVIEW */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Overview</h2>
-
-          <p className={styles.projectText}>
-            The goal of this project was to create a simple but engaging
-            educational website where users can explore information about the
-            Solar System. The website combines static informational content with
-            interactive quiz functionality, making the learning experience more
-            active and memorable.
-          </p>
-        </section>
-
-        {/* FEATURES */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Key features</h2>
-
-          <div className={styles.projectFeatureGrid}>
-            {features.map((feature) => (
-              <article key={feature.title} className={styles.projectFeatureCard}>
-                <h3>{feature.title}</h3>
-                <p>{feature.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* TECHNICAL IMPLEMENTATION */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>
-            Technical implementation
-          </h2>
-
-          <p className={styles.projectText}>
+  const sections = {
+    context: (
+      <>
+        <Cards
+          cols={2}
+          items={[
+            { label: "Project type", title: "Educational interactive website" },
+            {
+              label: "Focus",
+              title: "Planet pages, quiz validation, tables, visual learning",
+            },
+          ]}
+        />
+        <Todo>Who was this for (client / course)? Your role in one line.</Todo>
+      </>
+    ),
+    problem: <Todo>What problem did this site solve?</Todo>,
+    goal: (
+      <TextPanel>
+        The goal of this project was to create a simple but engaging educational
+        website where users can explore information about the Solar System. The
+        website combines static informational content with interactive quiz
+        functionality, making the learning experience more active and memorable.
+      </TextPanel>
+    ),
+    research: (
+      <Todo>Any research? (who the users were, what you looked at)</Todo>
+    ),
+    decisions: <Todo>One key decision: chose X over Y, why, cost.</Todo>,
+    design: (
+      <TextPanel>
+        <P>
+          The design uses a space-themed visual style with gradients, readable
+          tables, and interactive states.
+        </P>
+      </TextPanel>
+    ),
+    development: (
+      <>
+        <H3>Key features</H3>
+        <Cards items={features} />
+        <H3>Technical implementation</H3>
+        <TextPanel>
+          <P>
             I focused on building a clear frontend structure, responsive
             educational pages, and JavaScript logic for the interactive quiz.
-            The design uses a space-themed visual style with gradients,
-            readable tables, and interactive states.
-          </p>
+            The design uses a space-themed visual style with gradients, readable
+            tables, and interactive states.
+          </P>
+          <BulletList items={technicalFocus} />
+        </TextPanel>
+        <H3>Screenshots</H3>
+        <P>
+          Main screens showing the homepage, planet pages, quiz flow, and
+          educational content structure.
+        </P>
+        <Screens images={screens} label="Space website screenshots" />
+      </>
+    ),
+    testing: <Todo>How did you test it? What changed?</Todo>,
+    result: (
+      <p>
+        <Placeholder>
+          A real outcome: grade, client feedback, or usage.
+        </Placeholder>
+      </p>
+    ),
+    hardest: (
+      <Todo>The hardest problem in this project and how you solved it.</Todo>
+    ),
+    learned: (
+      <TextPanel>
+        <P>What I would improve next:</P>
+        <BulletList items={improvements} />
+      </TextPanel>
+    ),
+  };
 
-          <ul className={styles.projectList}>
-            {technicalFocus.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* SCREENSHOTS */}
-        <section className={styles.projectSection}>
-          <div className={styles.projectSectionHeader}>
-            <div>
-              <h2 className={styles.projectSectionTitle}>Screenshots</h2>
-              <p className={styles.projectText}>
-                Main screens showing the homepage, planet pages, quiz flow, and
-                educational content structure.
-              </p>
-            </div>
-
-            <span className={styles.projectCounter}>
-              {current + 1} / {images.length}
-            </span>
-          </div>
-
-          <div className={styles.projectSlider}>
-            <Image
-              src={images[current]}
-              alt={`Space website screenshot ${current + 1}`}
-              width={1200}
-              height={760}
-              className={styles.projectSliderImage}
-              sizes="(max-width: 640px) 100vw, 1200px"
-            />
-
-            <button
-              type="button"
-              aria-label="Previous screenshot"
-              className={`${styles.arrow} ${styles.left}`}
-              onClick={prevImage}
-            >
-              &#10094;
-            </button>
-
-            <button
-              type="button"
-              aria-label="Next screenshot"
-              className={`${styles.arrow} ${styles.right}`}
-              onClick={nextImage}
-            >
-              &#10095;
-            </button>
-          </div>
-
-          <div className={styles.projectThumbGrid}>
-            {images.map((src, index) => (
-              <button
-                key={src}
-                type="button"
-                className={`${styles.projectThumb} ${
-                  index === current ? styles.projectThumbActive : ""
-                }`}
-                onClick={() => setCurrent(index)}
-                aria-label={`Show screenshot ${index + 1}`}
-              >
-                <Image
-                  src={src}
-                  alt={`Space website thumbnail ${index + 1}`}
-                  width={320}
-                  height={200}
-                />
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* REFLECTION */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>
-            What I would improve next
-          </h2>
-
-          <ul className={styles.projectList}>
-            {improvements.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
-    </main>
+  return (
+    <CasePage>
+      <CaseHero
+        back={{ href: "/websites", label: "← Websites" }}
+        eyebrow="Freelance · Frontend project"
+        title="Space Website — Educational Planet Explorer"
+        result="An educational website about space and the planets of the Solar System. The project combines informational pages, planet characteristics, visual content, and an interactive quiz to help users learn in a more engaging way."
+        snapshot={snapshot}
+        links={[{ href: repoUrl, label: "GitHub repository ↗" }]}
+        media={
+          <Image
+            src="/project2.png"
+            alt="Space website homepage preview"
+            width={3664}
+            height={1982}
+            sizes="(max-width: 1240px) 100vw, 1240px"
+            priority
+          />
+        }
+      />
+      <CasePlan sections={sections} />
+    </CasePage>
   );
 }

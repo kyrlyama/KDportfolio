@@ -193,11 +193,11 @@ function getMeta(pathname: string) {
 
 function Footer() {
   return (
-    <footer className="siteFooter">
+    <footer className="siteFooter glass">
       <div>
         <strong>Kristina Dunajeva</strong>
-        <span style={{ marginLeft: 8 }}>
-          Frontend Developer &amp; UI/UX Designer
+        <span className="siteFooterRole">
+          Product designer &amp; frontend developer
         </span>
       </div>
       <nav aria-label="Footer links">
@@ -267,12 +267,6 @@ export default function MyApp({ Component, pageProps }: AppPropsWithOptions) {
         <a href="#main" className="skipLink">
           Skip to content
         </a>
-
-        <div className="site-bg" aria-hidden="true">
-          <div className="blob b1" />
-          <div className="blob b2" />
-          <div className="blob b3" />
-        </div>
 
         <main id="main" role="main" className="pageContainer">
           <Component {...pageProps} />

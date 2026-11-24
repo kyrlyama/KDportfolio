@@ -6,12 +6,12 @@ import styles from "@/styles/Illustrator.module.css";
 
 const works = [
   {
-  src: "/digitaldesign/poster9.png",
-  title: "Like Store Advertising Poster",
-  category: "Advertising poster for Like store",
-  tools: "Adobe Illustrator / Photoshop",
-  alt: "Advertising poster for Like store",
-},
+    src: "/digitaldesign/poster9.png",
+    title: "Like Store Advertising Poster",
+    category: "Advertising poster for Like store",
+    tools: "Adobe Illustrator / Photoshop",
+    alt: "Advertising poster for Like store",
+  },
   {
     src: "/digitaldesign/poster1.png",
     title: "Poster Design",
@@ -26,13 +26,13 @@ const works = [
     tools: "Affinity",
     alt: "Digital poster design 2",
   },
-{
-  src: "/digitaldesign/poster3.png",
-  title: "Music Track Cover",
-  category: "Cover artwork for a music track",
-  tools: "Affinity",
-  alt: "Cover artwork for a music track",
-},
+  {
+    src: "/digitaldesign/poster3.png",
+    title: "Music Track Cover",
+    category: "Cover artwork for a music track",
+    tools: "Affinity",
+    alt: "Cover artwork for a music track",
+  },
   {
     src: "/digitaldesign/poster4.png",
     title: "Poster Design",
@@ -68,7 +68,6 @@ const works = [
     tools: "Adobe Illustrator / Photoshop",
     alt: "Digital poster design 8",
   },
-
 ];
 
 const highlights = [
@@ -100,9 +99,9 @@ export default function Illustrator() {
   }, [openIndex, close]);
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <div className={styles.container}>
-        <section className={styles.hero}>
+        <section className={`glass-strong ${styles.hero}`}>
           <p className={styles.eyebrow}>Digital design</p>
 
           <h1 className={styles.heroTitle}>
@@ -130,12 +129,12 @@ export default function Illustrator() {
               creating a clear focal point.
             </p>
           </div>
-          <span>{works.length} posters</span>
+          <span className="glass-pill">{works.length} posters</span>
         </section>
 
         <section className={styles.grid} aria-label="Digital design posters">
           {works.map((item, i) => (
-            <article key={item.src} className={styles.card}>
+            <article key={item.src} className={`glass ${styles.card}`}>
               <button
                 type="button"
                 className={styles.previewButton}
@@ -206,6 +205,6 @@ export default function Illustrator() {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

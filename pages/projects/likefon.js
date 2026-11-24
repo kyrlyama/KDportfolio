@@ -26,6 +26,13 @@ const parts = [
     text: "Logo, posters and business cards, based on competitor and customer research. Approved by management and used in both stores.",
     href: "/uiux/shop-redesign",
     cta: "See the brand →",
+    images: [
+      { src: "/uiux/redesign/Logo_likefon_2.png", alt: "New Likefon logo" },
+      {
+        src: "/uiux/redesign/like-store-final.png",
+        alt: "Like store with the new identity",
+      },
+    ],
   },
   {
     num: "02 · UX",
@@ -33,6 +40,7 @@ const parts = [
     text: "Interviews, personas and journey maps turned into a high-fidelity Figma prototype for a showroom website.",
     href: "/uiux/likefon-prototype",
     cta: "Read the case study →",
+    images: [{ src: "/figma3/figma1.png", alt: "Likefon Figma screens" }],
   },
   {
     num: "03 · Code",
@@ -63,7 +71,7 @@ export default function LikefonHub() {
         <SnapshotBox items={snapshot} side />
       </header>
 
-      <div className={`glass glass-rim ${styles.heroMedia}`}>
+      <div className={`glass ${styles.heroMedia}`}>
         {LIKEFON_WEBSITE_IMAGE ? (
           <Image
             src={LIKEFON_WEBSITE_IMAGE}
@@ -137,9 +145,23 @@ export default function LikefonHub() {
   );
 }
 
-function PartContent({ num, title, text }) {
+function PartContent({ num, title, text, images = [] }) {
   return (
     <>
+      {images.length > 0 && (
+        <div className={styles.partMedia}>
+          {images.map((img) => (
+            <Image
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              width={480}
+              height={300}
+              sizes="(max-width: 900px) 50vw, 200px"
+            />
+          ))}
+        </div>
+      )}
       <span className={styles.partNum}>{num}</span>
       <h3 className={styles.cardTitle}>{title}</h3>
       <p className={styles.cardText}>{text}</p>

@@ -1,19 +1,33 @@
+// pages/figma2.js — Gift Helper (also /uiux/gift-helper).
+// Same PROJECT PLAN structure as the Travel App (pages/figma1.js).
+// FIX: the design system now shows Gift Helper's OWN "Palette & Tone"
+// (from the project_move branch), not the Travel App purple.
+// Development is skipped: this is a Figma-only project.
 import {
-  Component,
-  ExternalLink,
-  Grid3X3,
-  MousePointerClick,
-  Palette,
-  Type,
-} from "lucide-react";
-import Link from "next/link";
+  BulletList,
+  Callout,
+  CaseHero,
+  CasePage,
+  CasePlan,
+  Cards,
+  DecisionCard,
+  Facts,
+  Gallery,
+  H3,
+  P,
+  Placeholder,
+  Screens,
+  Steps,
+  Swatches,
+  TextPanel,
+  TypeScale,
+  caseStyles as styles,
+} from "@/components/case";
 
-import Carousel from "@/components/Carousel";
-import ZoomableImage from "@/components/ZoomableImage";
-import fm from "@/styles/Figma.module.css";
-import pm from "@/styles/Project.module.css";
+const figmaPrototypeUrl =
+  "https://www.figma.com/design/joVwSJGnBQUslG8eSYn2iB/Untitled?node-id=0-1";
 
-const images = [
+const finalScreens = [
   "/figma1.png",
   "/figma12.png",
   "/figma13.png",
@@ -21,22 +35,13 @@ const images = [
   "/figma15.png",
   "/figma16.png",
   "/figma17.png",
-];
+].map((src, i) => ({ src, alt: `Gift Helper screen ${i + 1}` }));
 
-const assets = {
-  empathy: "/figma2/empathymap.png",
-  scenario: "/figma2/scenario.png",
-  userStory: "/figma2/userstory.png",
-  persona1: "/figma2/persona1.png",
-  persona2: "/figma2/persona2.png",
-  persona3: "/figma2/persona3.png",
-};
-
-const projectFacts = [
+const snapshot = [
   { label: "Role", value: "UX/UI Designer" },
-  { label: "Duration", value: "6 weeks" },
-  { label: "Platform", value: "Mobile app" },
-  { label: "Prototype", value: "Interactive Figma" },
+  { label: "Timeline", value: "6 weeks" },
+  { label: "Stack", value: "Figma · Mobile app" },
+  { label: "Status", value: "Interactive Figma prototype" },
 ];
 
 const highlightMetrics = [
@@ -50,6 +55,34 @@ const highlightMetrics = [
   { label: "Prototype", value: "Clickable" },
 ];
 
+const highlights = [
+  <>
+    <strong>7 mobile screens</strong> showing the core gift-finding experience.
+  </>,
+  <>
+    <strong>3 personas</strong> used to define user needs and decision patterns.
+  </>,
+  <>
+    <strong>4 smart filters</strong>: age, budget, hobbies and occasion.
+  </>,
+  <>
+    <strong>5 key modules</strong>: filters, favorites, calendar, people
+    profiles and recommendations.
+  </>,
+];
+
+const responsibilities = [
+  "UX research",
+  "Personas",
+  "Empathy map",
+  "User scenarios",
+  "User stories",
+  "Low-fidelity wireframes",
+  "UI design",
+  "Interactive prototype",
+  "Visual system",
+];
+
 const processSteps = [
   "Research",
   "Personas",
@@ -58,6 +91,31 @@ const processSteps = [
   "Wireframes",
   "UI design",
 ];
+
+const researchArtifacts = [
+  <>
+    <strong>Personas:</strong> key user segments, goals and constraints.
+  </>,
+  <>
+    <strong>Empathy Map:</strong> emotions and pain points during gift
+    selection.
+  </>,
+  <>
+    <strong>User Scenarios:</strong> journey from first search to saving ideas.
+  </>,
+  <>
+    <strong>User Story:</strong> functional expectations aligned to real needs.
+  </>,
+  <>
+    <strong>Low-fidelity wireframes:</strong> layout, navigation and
+    micro-interactions.
+  </>,
+];
+
+const personas = [1, 2, 3].map((n) => ({
+  src: `/figma2/persona${n}.png`,
+  alt: `Persona ${n}`,
+}));
 
 const designDecisions = [
   [
@@ -82,16 +140,129 @@ const designDecisions = [
   ],
 ];
 
-const responsibilities = [
-  "UX research",
-  "Personas",
-  "Empathy map",
-  "User scenarios",
-  "User stories",
-  "Low-fidelity wireframes",
-  "UI design",
-  "Interactive prototype",
-  "Visual system",
+// Gift Helper "Palette & Tone" — its real Figma colors (project_move branch)
+const paletteTone = {
+  text: "The visual system feels supportive and optimistic to reduce decision friction and help users choose gifts faster.",
+  colors: [
+    {
+      name: "Primary Purple",
+      hex: "#735BF2",
+      usage: "Primary actions, key UI focus, navigation accents",
+    },
+    {
+      name: "Accent Pink",
+      hex: "#EF5BF2",
+      usage: "Emotional accents, highlights, micro-interactions",
+    },
+    {
+      name: "Soft Lavender",
+      hex: "#E8C3FF",
+      usage: "Background gradients, cards, soft UI surfaces",
+    },
+    {
+      name: "Light Violet",
+      hex: "#BBAFFC",
+      usage: "Secondary backgrounds, decorative UI elements",
+    },
+    {
+      name: "Warm Peach",
+      hex: "#FFD88C",
+      usage: "Warm highlights, friendly emphasis, visual contrast",
+    },
+    {
+      name: "White",
+      hex: "#FFFFFF",
+      usage: "Main background, spacing, content clarity",
+    },
+    {
+      name: "Black",
+      hex: "#000000",
+      usage: "Primary text, icons, high-contrast elements",
+    },
+  ],
+  scheme: [
+    "Purple as the anchor for CTAs and key hierarchy.",
+    "Pink adds emotional accents and playful micro-feedback.",
+    "High contrast on light surfaces for fast scanning on mobile.",
+  ],
+  typography:
+    "System UI / Inter (or equivalent) for clear readability, strong UI rhythm and predictable rendering.",
+  tools: "Figma styles + contrast checks (WCAG) and component tokens.",
+  emotions: [
+    {
+      title: "User under time pressure",
+      items: [
+        "Relief from overload",
+        "Confidence to choose quickly",
+        "Feeling guided, not judged",
+      ],
+    },
+    {
+      title: "Planner (keeps dates / contacts)",
+      items: [
+        "Sense of control",
+        "Trust in saved preferences",
+        "Calm about reminders",
+      ],
+    },
+    {
+      title: "Gift giver (social occasions)",
+      items: [
+        "Confidence in the choice",
+        "Feeling thoughtful and prepared",
+        "Positive emotional feedback",
+      ],
+    },
+  ],
+};
+
+// Gift Helper's own gradient: lavender → peach (shown inside its own swatch)
+const giftGradient = "linear-gradient(90deg, #E8C3FF 0%, #FFD88C 100%)";
+
+const typographyScale = [
+  {
+    label: "H1",
+    previewSize: 28,
+    weight: 700,
+    sample: "Headline",
+    usage: "Key screen titles",
+  },
+  {
+    label: "H2",
+    previewSize: 20,
+    weight: 700,
+    sample: "Headline",
+    usage: "Section titles for filters, favorites, and reminders",
+  },
+  {
+    label: "Body",
+    previewSize: 16,
+    weight: 400,
+    sample: "Body text",
+    usage: "Gift descriptions, filter copy, and explanatory text",
+  },
+  {
+    label: "Caption",
+    previewSize: 12,
+    weight: 400,
+    sample: "Caption",
+    usage: "Helper text, filter labels, and small tags",
+  },
+];
+
+const designSystemCards = [
+  {
+    title: "01 · 8pt grid",
+    text: "Spacing follows 8px steps so gift cards, filter chips, profile rows, and mobile sections stay predictable.",
+  },
+  {
+    title: "02 · Reusable components",
+    text: "Navigation bar, gift card, filter chip, favorite button, profile card, reminder badge, and input field.",
+  },
+  {
+    title: "03 · Interaction states",
+    text: "Hover, active, disabled, and focus-visible states are defined for buttons, filter chips, favorite toggles, and inputs.",
+  },
 ];
 
 const outcome = [
@@ -101,733 +272,295 @@ const outcome = [
   "Built a friendly visual system with clear hierarchy and emotional tone.",
 ];
 
-const figmaPrototypeUrl =
-  "https://www.figma.com/design/joVwSJGnBQUslG8eSYn2iB/Untitled?node-id=0-1";
-
-const colorTokenGroups = [
-  {
-    title: "Primary",
-    description:
-      "Warm purple brand colors for CTAs, favorite actions, filter highlights, and key conversion moments like saving a gift idea or setting a reminder.",
-    tokens: [
-      { name: "Primary 600", value: "#8A2DCE", text: "#FFFFFF" },
-      { name: "Primary 500", value: "#A84DE8", text: "#FFFFFF" },
-      { name: "Primary 100", value: "#F1E1FE", text: "#111827" },
-    ],
-  },
-  {
-    title: "Hover / Active",
-    description:
-      "Stronger CTA color for hover/active actions and a pale tint for lightweight interactive states like taps and focus.",
-    tokens: [
-      { name: "Primary 700", value: "#7107BD", text: "#FFFFFF" },
-      { name: "Primary 200", value: "#D194FC", text: "#111827" },
-    ],
-  },
-  {
-    title: "Neutrals",
-    description:
-      "Neutral scale for text hierarchy, cards, dividers, disabled controls, and quiet surfaces across the mobile UI.",
-    tokens: [
-      { name: "Neutral 900", value: "#111827", text: "#FFFFFF" },
-      { name: "Neutral 700", value: "#374151", text: "#FFFFFF" },
-      { name: "Neutral 500", value: "#6B7280", text: "#FFFFFF" },
-      { name: "Neutral 300", value: "#D1D5DB", text: "#111827" },
-      { name: "Neutral 200", value: "#E5E7EB", text: "#111827" },
-      { name: "Neutral 100", value: "#F3F4F6", text: "#111827" },
-      { name: "Neutral 50", value: "#F9FAFB", text: "#111827" },
-    ],
-  },
-  {
-    title: "Semantic",
-    description:
-      "Semantic feedback colors for saved gifts, validation errors, and reminder alerts.",
-    tokens: [
-      { name: "Success", value: "#59B985", text: "#FFFFFF" },
-      { name: "Error", value: "#E1524C", text: "#FFFFFF" },
-      { name: "Warning", value: "#9500FF", text: "#FFFFFF" },
-    ],
-  },
-];
-
-const typographyScale = [
-  { label: "H1", sample: "Headline", usage: "Onboarding and key screen titles", className: "typeH1" },
-  { label: "H2", sample: "Headline", usage: "Section titles for filters, favorites, and reminders", className: "typeH2" },
-  { label: "Body", sample: "Body text", usage: "Gift descriptions, filter copy, and explanatory text", className: "typeBody" },
-  { label: "Caption", sample: "Caption", usage: "Helper text, filter labels, and small tags", className: "typeCaption" },
-];
-
-const designSystemCards = [
-  {
-    step: "01",
-    icon: Grid3X3,
-    title: "8pt grid",
-    text: "Spacing follows 8px steps so gift cards, filter chips, profile rows, and mobile sections stay predictable.",
-  },
-  {
-    step: "02",
-    icon: Component,
-    title: "Reusable components",
-    text: "Navigation bar, gift card, filter chip, favorite button, profile card, reminder badge, and input field.",
-  },
-  {
-    step: "03",
-    icon: MousePointerClick,
-    title: "Interaction states",
-    text: "Hover, active, disabled, and focus-visible states are defined for buttons, filter chips, favorite toggles, and inputs.",
-  },
-];
-
-const paletteTone = {
-  id: "design-system",
-  title: "Design System",
-  text: "The visual system feels supportive and optimistic while guiding users through gift selection with calm, accessible, and emotionally friendly interactions.",
-  emotions: [
-    {
-      title: "Under time pressure",
-      points: [
-        "Relief from overload",
-        "Confidence to choose quickly",
-        "Feeling guided, not judged",
-      ],
-    },
-    {
-      title: "Planner",
-      points: [
-        "Sense of control",
-        "Trust in saved preferences",
-        "Calm about reminders",
-      ],
-    },
-    {
-      title: "Gift giver",
-      points: [
-        "Confidence in the choice",
-        "Feeling thoughtful and prepared",
-        "Positive emotional feedback",
-      ],
-    },
-  ],
-};
-
 export default function Figma2() {
+  const sections = {
+    context: (
+      <>
+        <TextPanel>
+          <P>
+            Gift Helper was designed as a compact mobile product concept focused
+            on fast decision-making. The case combines research artifacts,
+            personas, scenarios, wireframes and a soft emotional visual system.
+          </P>
+          <BulletList items={highlights} />
+        </TextPanel>
+        <Facts items={highlightMetrics} />
+        <H3>My responsibilities</H3>
+        <Cards items={responsibilities.map((title) => ({ title }))} />
+      </>
+    ),
+
+    problem: (
+      <Callout title="Problem">
+        Choosing gifts often becomes stressful because users need to consider
+        budget, age, interests, occasion and personal preferences at the same
+        time. This creates uncertainty and slows down decision-making.
+      </Callout>
+    ),
+
+    goal: (
+      <Cards
+        cols={2}
+        items={[
+          {
+            title: "Product goal",
+            text: "Help users quickly find relevant gift ideas and save important information for future occasions.",
+          },
+          {
+            title: "UX solution",
+            text: "Combine smart filters, people profiles, favorites, reminders and recommendations into one simple mobile flow.",
+          },
+        ]}
+      />
+    ),
+
+    research: (
+      <>
+        <TextPanel>
+          <P>
+            The project started with lightweight UX research to understand how
+            people choose gifts under time pressure and uncertainty. Based on
+            insights, I created personas, an empathy map, scenarios and user
+            stories, then translated them into screen structure, navigation and
+            micro-interactions.
+          </P>
+          <BulletList items={researchArtifacts} />
+        </TextPanel>
+        <Facts
+          items={[
+            { label: "Personas", value: "3" },
+            { label: "Scenarios", value: "3" },
+            { label: "Core filters", value: "4" },
+            { label: "UX artifacts", value: "5" },
+          ]}
+        />
+
+        <Gallery
+          cols={3}
+          title="3 Personas"
+          text="Personas helped define priorities: fast decisions, budget control, saved preferences and confidence during recurring social occasions."
+          images={personas}
+        />
+
+        <Gallery
+          cols={1}
+          title="Empathy Map"
+          text="The empathy map captures what users think, feel and struggle with when choosing a gift. It helped shape the product tone, messaging and decision-support features."
+          images={[{ src: "/figma2/empathymap.png", alt: "Empathy Map" }]}
+        />
+
+        <H3>User Scenarios</H3>
+        <P>
+          Scenarios describe the flow from the first intent — “I need a gift” —
+          to selecting filters, saving ideas and setting reminders.
+        </P>
+        <Steps
+          items={[
+            "Need a gift",
+            "Choose filters",
+            "View ideas",
+            "Save favorites",
+            "Add reminder",
+            "Prepare gift",
+          ]}
+        />
+        <Gallery
+          cols={1}
+          images={[{ src: "/figma2/scenario.png", alt: "Scenario" }]}
+        />
+
+        <H3>User Story</H3>
+        <P>
+          User stories helped validate the feature set and keep the prototype
+          aligned with real expectations for gift search, reminders and saved
+          preferences.
+        </P>
+        <Callout title="Why it matters">
+          User stories translated emotional uncertainty into product
+          requirements: filters, saved people profiles, favorites, calendar
+          reminders and clear confirmations.
+        </Callout>
+        <Gallery
+          cols={1}
+          images={[{ src: "/figma2/userstory.png", alt: "User Story" }]}
+        />
+      </>
+    ),
+
+    decisions: (
+      <>
+        <P>
+          The key decisions focused on reducing cognitive load, supporting
+          recurring use and helping users feel more confident while choosing
+          gifts.
+        </P>
+        <div className={styles.decisions}>
+          {designDecisions.map(([area, decision, reason]) => (
+            <DecisionCard
+              key={area}
+              chose={area}
+              why={`${decision} ${reason}`}
+              cost={<Placeholder>COST: what did this choice cost?</Placeholder>}
+            />
+          ))}
+        </div>
+      </>
+    ),
+
+    design: (
+      <>
+        <H3>Design process</H3>
+        <P>
+          The workflow moved from understanding user uncertainty to structuring
+          the product around practical decision support.
+        </P>
+        <Steps items={processSteps} />
+
+        <Gallery
+          cols={1}
+          title="Low-fidelity prototype"
+          text="Early hand-drawn prototype created to explore layout structure, navigation flow and screen hierarchy before moving to high-fidelity design in Figma."
+          images={[
+            {
+              src: "/figma2/prototype.png",
+              alt: "Low-fidelity hand-drawn Gift Helper prototype",
+            },
+          ]}
+        />
+
+        <H3>Palette &amp; Tone</H3>
+        <P>{paletteTone.text}</P>
+        <Swatches colors={paletteTone.colors} />
+        <div className={`glass ${styles.gradientSwatch}`}>
+          <span style={{ background: giftGradient }} aria-hidden="true" />
+          <p>
+            <strong>Lavender → peach gradient</strong>
+            <code>#E8C3FF → #FFD88C</code>
+          </p>
+        </div>
+        <Cards
+          items={[
+            { title: "Color scheme", items: paletteTone.scheme },
+            { title: "Typography", text: paletteTone.typography },
+            { title: "Tools", text: paletteTone.tools },
+          ]}
+        />
+        <TypeScale
+          intro="Readable hierarchy for a gift-finding app with filters, favorites, reminders, and profile content. The scale keeps headlines, section titles, body copy, and captions distinct so the mobile experience feels calm and easy to scan."
+          items={typographyScale}
+        />
+        <Cards items={designSystemCards} />
+        <a
+          href={figmaPrototypeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.inlineLink}
+        >
+          Figma source ↗
+        </a>
+
+        <H3>Emotional intent</H3>
+        <Cards items={paletteTone.emotions} />
+
+        <H3>High-fidelity UI + prototype</H3>
+        <P>
+          The final prototype ties together filtering, favorites, planning, and
+          reminders to make gift selection feel calm and less overwhelming.
+        </P>
+        <Cards
+          cols={2}
+          items={[
+            {
+              title: "Final screens",
+              text: "The interface focuses on calm visual rhythm, strong hierarchy, and low-friction interaction to guide decisions.",
+            },
+            {
+              title: "Prototype focus",
+              text: "The experience emphasizes smart filters, profiles, and reminder moments that help users feel prepared.",
+            },
+          ]}
+        />
+        <Screens images={finalScreens} label="Gift Helper screens" phone />
+      </>
+    ),
+
+    testing: (
+      <>
+        <P>
+          The low-fidelity wireframes were used to check the structure before
+          visual styling was applied.
+        </P>
+        <Cards
+          cols={2}
+          items={[
+            {
+              title: "Validated",
+              text: "Navigation, filter logic, screen hierarchy and content structure.",
+            },
+            {
+              title: "Result",
+              text: "The final UI became easier to structure before visual styling was applied.",
+            },
+          ]}
+        />
+        <TextPanel>
+          <P>
+            <Placeholder>
+              Did you test the prototype with anyone? What changed after it?
+            </Placeholder>
+          </P>
+        </TextPanel>
+      </>
+    ),
+
+    result: (
+      <>
+        <Facts
+          items={[
+            { label: "Screens", value: "7" },
+            { label: "Personas", value: "3" },
+            { label: "Core filters", value: "4" },
+            { label: "Modules", value: "5" },
+          ]}
+        />
+        <BulletList items={outcome} />
+        <p>
+          Final deliverable: interactive Figma prototype, UX research artifacts,
+          low-fidelity wireframes and supportive visual system.
+        </p>
+      </>
+    ),
+
+    hardest: (
+      <TextPanel>
+        <P>
+          <Placeholder>
+            The hardest problem in this project and how you solved it.
+          </Placeholder>
+        </P>
+      </TextPanel>
+    ),
+
+    learned: (
+      <TextPanel>
+        <P>
+          <Placeholder>What you learned / what you would improve.</Placeholder>
+        </P>
+      </TextPanel>
+    ),
+  };
+
   return (
-    <main className={`${fm.page} ${fm.figmaLegacyCase}`}>
-      <div className={`${pm.container} ${fm.containerWide}`}>
-        <section className={`${pm.card} ${fm.androidLike}`}>
-          <div className={`${pm.text} ${fm.colText}`}>
-            <p className={fm.eyebrow}>UX/UI Case Study · Mobile App</p>
-
-            <h1 className={pm.title}>Gift Helper — Gift Finder App</h1>
-
-            <p className={pm.p}>
-              A mobile concept that helps users choose the right present faster.
-              The app combines smart filters, saved people profiles, reminders,
-              favorites and supportive micro-interactions to reduce uncertainty
-              during gift selection.
-            </p>
-
-            <div className={`${fm.factGrid} ${fm.heroFactGrid}`}>
-              {projectFacts.map((fact) => (
-                <div key={fact.label} className={fm.factCard}>
-                  <span>{fact.label}</span>
-                  <strong>{fact.value}</strong>
-                </div>
-              ))}
-            </div>
-
-            <h2 className={pm.h2}>Project highlights</h2>
-            <ul className={pm.list}>
-              <li>
-                <strong>7 mobile screens</strong> showing the core gift-finding
-                experience.
-              </li>
-              <li>
-                <strong>3 personas</strong> used to define user needs and
-                decision patterns.
-              </li>
-              <li>
-                <strong>4 smart filters</strong>: age, budget, hobbies and
-                occasion.
-              </li>
-              <li>
-                <strong>5 key modules</strong>: filters, favorites, calendar,
-                people profiles and recommendations.
-              </li>
-            </ul>
-
-            <Link
-              href={figmaPrototypeUrl}
-              target="_blank"
-              className={pm.btn}
-            >
-              Figma Prototype
-            </Link>
-          </div>
-
-          <div className={`${pm.media} ${fm.colMedia}`}>
-            <div className={`${pm.frame} ${fm.mediaFrame}`}>
-              <Carousel
-                images={images}
-                alt="Gift Helper screens"
-                aspect="square"
-                whiteFrameFor={["/figma1.png"]}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className={fm.uxLayout}>
-          <aside className={fm.contents}>
-            <h3 className={fm.contentsTitle}>Contents</h3>
-
-            <nav className={fm.contentsNav}>
-              <a className={fm.contentsLink} href="#snapshot">
-                Project snapshot
-              </a>
-              <a className={fm.contentsLink} href="#problem">
-                Problem & solution
-              </a>
-              <a className={fm.contentsLink} href="#process">
-                Design process
-              </a>
-              <a className={fm.contentsLink} href="#research">
-                Research
-              </a>
-              <a className={fm.contentsLink} href="#persona">
-                Personas
-              </a>
-              <a className={fm.contentsLink} href="#empathy">
-                Empathy Map
-              </a>
-              <a className={fm.contentsLink} href="#scenarios">
-                User Scenarios
-              </a>
-              <a className={fm.contentsLink} href="#userstory">
-                User Story
-              </a>
-              <a className={fm.contentsLink} href="#prototype">
-                Low-fidelity wireframes
-              </a>
-              <a className={fm.contentsLink} href="#decisions">
-                Design decisions
-              </a>
-              <a className={fm.contentsLink} href="#design-system">
-                Design System
-              </a>
-              <a className={fm.contentsLink} href="#outcome">
-                Outcome
-              </a>
-
-              <Link href="/figma" className={pm.btn}>
-                ← Back
-              </Link>
-            </nav>
-          </aside>
-
-          <div className={fm.uxContent}>
-            <section id="snapshot" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Overview</p>
-              <h2 className={fm.uxH2}>Project snapshot</h2>
-
-              <p className={fm.uxP}>
-                Gift Helper was designed as a compact mobile product concept
-                focused on fast decision-making. The case combines research
-                artifacts, personas, scenarios, wireframes and a soft emotional
-                visual system.
-              </p>
-
-              <div className={fm.factGrid}>
-                {highlightMetrics.map((metric) => (
-                  <div key={metric.label} className={fm.factCard}>
-                    <span>{metric.label}</span>
-                    <strong>{metric.value}</strong>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="problem" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Product thinking</p>
-              <h2 className={fm.uxH2}>Problem & solution</h2>
-
-              <div className={fm.insightBox}>
-                <h3>Problem</h3>
-                <p>
-                  Choosing gifts often becomes stressful because users need to
-                  consider budget, age, interests, occasion and personal
-                  preferences at the same time. This creates uncertainty and
-                  slows down decision-making.
-                </p>
-              </div>
-
-              <div className={fm.metaGrid}>
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Product goal</h3>
-                  <p className={fm.metaText}>
-                    Help users quickly find relevant gift ideas and save
-                    important information for future occasions.
-                  </p>
-                </div>
-
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>UX solution</h3>
-                  <p className={fm.metaText}>
-                    Combine smart filters, people profiles, favorites,
-                    reminders and recommendations into one simple mobile flow.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section id="process" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Process</p>
-              <h2 className={fm.uxH2}>Design process</h2>
-
-              <p className={fm.uxP}>
-                The workflow moved from understanding user uncertainty to
-                structuring the product around practical decision support.
-              </p>
-
-              <div className={fm.timeline}>
-                {processSteps.map((step, index) => (
-                  <div key={step} className={fm.timelineStep}>
-                    <span>{index + 1}</span>
-                    <strong>{step}</strong>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="research" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Research</p>
-              <h2 className={fm.uxH2}>Research overview</h2>
-
-              <p className={fm.uxP}>
-                The project started with lightweight UX research to understand
-                how people choose gifts under time pressure and uncertainty.
-                Based on insights, I created personas, an empathy map,
-                scenarios and user stories, then translated them into screen
-                structure, navigation and micro-interactions.
-              </p>
-
-              <div className={fm.factGrid}>
-                <div className={fm.factCard}>
-                  <span>Personas</span>
-                  <strong>3</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>Scenarios</span>
-                  <strong>3</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>Core filters</span>
-                  <strong>4</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>UX artifacts</span>
-                  <strong>5</strong>
-                </div>
-              </div>
-
-              <ul className={fm.uxList}>
-                <li>
-                  <strong>Personas:</strong> key user segments, goals and
-                  constraints.
-                </li>
-                <li>
-                  <strong>Empathy Map:</strong> emotions and pain points during
-                  gift selection.
-                </li>
-                <li>
-                  <strong>User Scenarios:</strong> journey from first search to
-                  saving ideas.
-                </li>
-                <li>
-                  <strong>User Story:</strong> functional expectations aligned
-                  to real needs.
-                </li>
-                <li>
-                  <strong>Low-fidelity wireframes:</strong> layout, navigation
-                  and micro-interactions.
-                </li>
-              </ul>
-            </section>
-
-            <section id="persona" className={fm.uxCard}>
-              <p className={fm.weekLabel}>User definition</p>
-              <h2 className={fm.uxH2}>3 Personas</h2>
-
-              <p className={fm.uxP}>
-                Personas helped define priorities: fast decisions, budget
-                control, saved preferences and confidence during recurring
-                social occasions.
-              </p>
-
-              <div className={fm.uxMediaGrid}>
-                {[assets.persona1, assets.persona2, assets.persona3].map(
-                  (src, i) => (
-                    <div key={src} className={fm.uxMediaItem}>
-                      <ZoomableImage
-                        imageClassName={fm.uxImage}
-                        src={src}
-                        alt={`Persona ${i + 1}`}
-                        width={1600}
-                        height={900}
-                        style={{ width: "100%", height: "auto" }}
-                      />
-                    </div>
-                  )
-                )}
-              </div>
-            </section>
-
-            <section id="empathy" className={fm.uxCard}>
-              <p className={fm.weekLabel}>User empathy</p>
-              <h2 className={fm.uxH2}>Empathy Map</h2>
-
-              <p className={fm.uxP}>
-                The empathy map captures what users think, feel and struggle
-                with when choosing a gift. It helped shape the product tone,
-                messaging and decision-support features.
-              </p>
-
-              <div className={fm.uxMedia}>
-                <ZoomableImage
-                  imageClassName={fm.uxImage}
-                  src={assets.empathy}
-                  alt="Empathy Map"
-                  width={1600}
-                  height={900}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-            </section>
-
-            <section id="scenarios" className={fm.uxCard}>
-              <p className={fm.weekLabel}>User journey</p>
-              <h2 className={fm.uxH2}>User Scenarios</h2>
-
-              <p className={fm.uxP}>
-                Scenarios describe the flow from the first intent — “I need a
-                gift” — to selecting filters, saving ideas and setting reminders.
-              </p>
-
-              <div className={fm.timeline}>
-                {[
-                  "Need a gift",
-                  "Choose filters",
-                  "View ideas",
-                  "Save favorites",
-                  "Add reminder",
-                  "Prepare gift",
-                ].map((step, index) => (
-                  <div key={step} className={fm.timelineStep}>
-                    <span>{index + 1}</span>
-                    <strong>{step}</strong>
-                  </div>
-                ))}
-              </div>
-
-              <div className={fm.uxMedia}>
-                <ZoomableImage
-                  imageClassName={fm.uxImage}
-                  src={assets.scenario}
-                  alt="Scenario"
-                  width={1600}
-                  height={900}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-            </section>
-
-            <section id="userstory" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Requirements</p>
-              <h2 className={fm.uxH2}>User Story</h2>
-
-              <p className={fm.uxP}>
-                User stories helped validate the feature set and keep the
-                prototype aligned with real expectations for gift search,
-                reminders and saved preferences.
-              </p>
-
-              <div className={fm.insightBox}>
-                <h3>Why it matters</h3>
-                <p>
-                  User stories translated emotional uncertainty into product
-                  requirements: filters, saved people profiles, favorites,
-                  calendar reminders and clear confirmations.
-                </p>
-              </div>
-
-              <div className={fm.uxMedia}>
-                <ZoomableImage
-                  imageClassName={fm.uxImage}
-                  src={assets.userStory}
-                  alt="User Story"
-                  width={1600}
-                  height={900}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-            </section>
-
-            <section id="prototype" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Wireframes</p>
-              <h2 className={fm.uxH2}>Low-fidelity prototype</h2>
-
-              <p className={fm.uxP}>
-                Early hand-drawn prototype created to explore layout structure,
-                navigation flow and screen hierarchy before moving to
-                high-fidelity design in Figma.
-              </p>
-
-              <div className={fm.metaGrid}>
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Validated</h3>
-                  <p className={fm.metaText}>
-                    Navigation, filter logic, screen hierarchy and content
-                    structure.
-                  </p>
-                </div>
-
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Result</h3>
-                  <p className={fm.metaText}>
-                    The final UI became easier to structure before visual
-                    styling was applied.
-                  </p>
-                </div>
-              </div>
-
-              <div className={fm.uxMedia}>
-                <ZoomableImage
-                  imageClassName={fm.uxImage}
-                  src="/figma2/prototype.png"
-                  alt="Low-fidelity hand-drawn prototype"
-                  width={1600}
-                  height={900}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-            </section>
-
-            <section id="prototype-ui" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Stage 6</p>
-              <h2 className={fm.uxH2}>High-fidelity UI + prototype</h2>
-
-              <p className={fm.uxP}>
-                The final prototype ties together filtering, favorites, planning,
-                and reminders to make gift selection feel calm and less
-                overwhelming.
-              </p>
-
-              <div className={fm.metaGrid}>
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Final screens</h3>
-                  <p className={fm.metaText}>
-                    The interface focuses on calm visual rhythm, strong hierarchy,
-                    and low-friction interaction to guide decisions.
-                  </p>
-                </div>
-
-                <div className={fm.metaCard}>
-                  <h3 className={fm.metaTitle}>Prototype focus</h3>
-                  <p className={fm.metaText}>
-                    The experience emphasizes smart filters, profiles, and reminder
-                    moments that help users feel prepared.
-                  </p>
-                </div>
-              </div>
-
-              <div className={fm.uxMedia}>
-                <ZoomableImage
-                  imageClassName={fm.uxImage}
-                  src="/figma2/prototype.png"
-                  alt="High-fidelity gift helper prototype"
-                  width={1600}
-                  height={900}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-            </section>
-
-            <section id="decisions" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Decision-making</p>
-              <h2 className={fm.uxH2}>Design decisions</h2>
-
-              <p className={fm.uxP}>
-                The key decisions focused on reducing cognitive load, supporting
-                recurring use and helping users feel more confident while
-                choosing gifts.
-              </p>
-
-              <div className={fm.decisionTable}>
-                {designDecisions.map(([area, decision, reason]) => (
-                  <article key={area} className={fm.decisionRow}>
-                    <strong>{area}</strong>
-                    <span>{decision}</span>
-                    <p>{reason}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section id={paletteTone.id} className={fm.uxCard}>
-              <p className={fm.weekLabel}>Visual system</p>
-              <h2 className={fm.uxH2}>{paletteTone.title}</h2>
-
-              <p className={fm.uxP}>{paletteTone.text}</p>
-
-              <div className={fm.designHeroGrid}>
-                <article className={fm.designIntroCard}>
-                  <Palette aria-hidden="true" />
-                  <h3>Color tokens</h3>
-                  <p>
-                    The color system uses purple for key actions, neutrals for
-                    hierarchy and readability, and semantic accents for state
-                    clarity during gift selection.
-                  </p>
-                </article>
-                <article className={fm.designIntroCard}>
-                  <Type aria-hidden="true" />
-                  <h3>Typography scale</h3>
-                  <p>
-                    The scale keeps headlines, section titles, body copy, and
-                    captions distinct so the mobile experience feels calm and
-                    easy to scan.
-                  </p>
-                </article>
-              </div>
-
-              <div className={fm.colorSystem}>
-                {colorTokenGroups.map((group) => (
-                  <article key={group.title} className={fm.colorGroup}>
-                    <div>
-                      <h3>{group.title}</h3>
-                      <p>{group.description}</p>
-                    </div>
-                    <div className={fm.colorSwatches}>
-                      {group.tokens.map((token) => (
-                        <div
-                          key={token.name}
-                          className={fm.colorSwatch}
-                          style={{ backgroundColor: token.value, color: token.text }}
-                        >
-                          <strong>{token.name}</strong>
-                          <span>{token.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              <div className={fm.typographyPanel}>
-                <div className={fm.typographyHeader}>
-                  <Type aria-hidden="true" />
-                  <div>
-                    <h3>Typography</h3>
-                    <p>
-                      Readable hierarchy for a gift-finding app with filters,
-                      favorites, reminders, and profile content.
-                    </p>
-                  </div>
-                </div>
-                <div className={fm.typeScaleList}>
-                  {typographyScale.map((item) => (
-                    <article key={item.label} className={fm.typeScaleItem}>
-                      <span>{item.label}</span>
-                      <strong className={fm[item.className]}>{item.sample}</strong>
-                      <p>{item.usage}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-
-              <div className={fm.designSystemFlow}>
-                {designSystemCards.map((card) => {
-                  const Icon = card.icon;
-                  return (
-                    <article key={card.title} className={fm.designSystemCard}>
-                      <div className={fm.designSystemCardBody}>
-                        <div className={fm.designCardTopline}>
-                          <span>{card.step}</span>
-                          <Icon aria-hidden="true" />
-                        </div>
-                        <h3>{card.title}</h3>
-                        <p>{card.text}</p>
-                      </div>
-                      <Link href={figmaPrototypeUrl} target="_blank" className={fm.smallFigmaButton}>
-                        Figma source <ExternalLink aria-hidden="true" size={14} />
-                      </Link>
-                    </article>
-                  );
-                })}
-              </div>
-
-              <h3 className={fm.uxH3}>Emotional intent</h3>
-              <div className={fm.emotionsGrid}>
-                {paletteTone.emotions.map((b) => (
-                  <div key={b.title} className={fm.emotionCard}>
-                    <h4 className={fm.emotionTitle}>{b.title}</h4>
-                    <ul className={fm.emotionList}>
-                      {b.points.map((p) => (
-                        <li key={p}>{p}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="outcome" className={fm.uxCard}>
-              <p className={fm.weekLabel}>Result</p>
-              <h2 className={fm.uxH2}>Outcome & learnings</h2>
-
-              <div className={fm.factGrid}>
-                <div className={fm.factCard}>
-                  <span>Screens</span>
-                  <strong>7</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>Personas</span>
-                  <strong>3</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>Core filters</span>
-                  <strong>4</strong>
-                </div>
-                <div className={fm.factCard}>
-                  <span>Modules</span>
-                  <strong>5</strong>
-                </div>
-              </div>
-
-              <h3 className={fm.uxH3}>Responsibilities</h3>
-              <div className={fm.cardGrid3}>
-                {responsibilities.map((item) => (
-                  <article key={item} className={fm.storyCard}>
-                    <h3>{item}</h3>
-                  </article>
-                ))}
-              </div>
-
-              <h3 className={fm.uxH3}>Final outcome</h3>
-              <ul className={fm.uxList}>
-                {outcome.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-
-              <div className={fm.deliverable}>
-                Final deliverable: interactive Figma prototype, UX research
-                artifacts, low-fidelity wireframes and supportive visual system.
-              </div>
-            </section>
-          </div>
-        </section>
-      </div>
-    </main>
+    <CasePage>
+      <CaseHero
+        back={{ href: "/figma", label: "← Figma projects" }}
+        eyebrow="Figma concept · UX/UI Case Study · Mobile App"
+        title="Gift Helper — Gift Finder App"
+        result="A mobile concept that helps users choose the right present faster. The app combines smart filters, saved people profiles, reminders, favorites and supportive micro-interactions to reduce uncertainty during gift selection."
+        snapshot={snapshot}
+        links={[{ href: figmaPrototypeUrl, label: "Figma Prototype ↗" }]}
+      />
+      <CasePlan sections={sections} />
+    </CasePage>
   );
 }

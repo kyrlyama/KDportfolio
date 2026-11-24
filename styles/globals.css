@@ -35,6 +35,34 @@
   --space-4: 24px;
   --space-6: 48px;
 
+  /* фон: мягкие пятна (radial gradients, fade at 65%) */
+  --bg-base: #f8fafc;
+  --bg-mint: #bbf7d0;
+  --bg-mint-2: #a7f3d0;
+  --bg-lavender: #ddd6fe;
+  --bg-lavender-2: #ede9fe;
+  --bg-purple: #c4b5fd;
+  --bg-pink: #fbcfe8;
+  --bg-pink-2: #fce7f3;
+  --bg-pink-3: #f9a8d4;
+
+  /* типографика — 7 стилей (Inter) */
+  --fz-lead: clamp(18px, 1.6vw, 20px);
+  --fz-small: 14px;
+  --fz-eyebrow: 12px;
+
+  /* 8-point grid: только эти значения */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-96: 96px;
+  --section-gap: 96px;
+
   /* прочее */
   --container-max: 1240px;
   --content-max: 1240px; /* макс. ширина контента на страницах-кейсах */
@@ -53,20 +81,18 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.85),
     inset 0 -16px 32px rgba(124, 58, 237, 0.08);
   --glass-highlight: rgba(255, 255, 255, 0.55);
-  --glass-rim: conic-gradient(
-    from 210deg,
-    #ff9ad5,
-    #c4b5fd,
-    #7dd3fc,
-    #86efac,
-    #fde68a,
-    #ff9ad5
-  );
+  --glass-glow: rgba(
+    196,
+    181,
+    253,
+    0.55
+  ); /* лавандовое свечение снизу у пузырей */
 }
 
 @media (max-width: 980px) {
   :root {
     --nav-h: 60px;
+    --section-gap: 64px;
   }
 }
 
@@ -85,13 +111,20 @@ body {
 }
 
 body {
-  background: radial-gradient(
-    1200px 800px at 50% -10%,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(240, 246, 255, 0.9) 45%,
-    rgba(242, 230, 255, 0.85) 75%,
-    rgba(255, 236, 243, 0.85) 100%
-  );
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(42vw 42vw at 4% 8%, var(--bg-mint), transparent 65%),
+    radial-gradient(34vw 34vw at 18% 62%, var(--bg-mint-2), transparent 65%),
+    radial-gradient(40vw 40vw at 96% 6%, var(--bg-pink), transparent 65%),
+    radial-gradient(30vw 30vw at 82% 48%, var(--bg-pink-2), transparent 65%),
+    radial-gradient(26vw 26vw at 70% 96%, var(--bg-pink-3), transparent 65%),
+    radial-gradient(
+      44vw 44vw at 50% 40%,
+      var(--bg-lavender-2),
+      transparent 65%
+    ),
+    radial-gradient(36vw 36vw at 34% 100%, var(--bg-lavender), transparent 65%),
+    radial-gradient(28vw 28vw at 100% 92%, var(--bg-purple), transparent 65%);
   background-attachment: fixed;
   color: var(--ink);
   font-size: var(--fz-body);
@@ -116,77 +149,11 @@ a {
 /* Шрифт подставляет next/font через класс на #app-root — не переопределять */
 
 /* фоновые пятна */
-.site-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
 .pageContainer {
   position: relative;
   z-index: 1;
   min-height: 100svh;
 }
-.blob {
-  position: absolute;
-  filter: blur(60px);
-  border-radius: 50%;
-  opacity: 0.55;
-  pointer-events: none;
-}
-.blob.b1 {
-  width: 420px;
-  height: 420px;
-  top: -80px;
-  left: -60px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff 0%,
-    #b9d3ff 35%,
-    #e5c9ff 70%,
-    #ffd6e6 100%
-  );
-}
-.blob.b2 {
-  width: 360px;
-  height: 360px;
-  bottom: 10%;
-  right: 8%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff 0%,
-    #bfe1ff 35%,
-    #dbcbff 70%,
-    #ffe6ef 100%
-  );
-}
-.blob.b3 {
-  width: 300px;
-  height: 300px;
-  top: 30%;
-  right: 35%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff 0%,
-    #c9e0ff 35%,
-    #e6d6ff 70%,
-    #ffeaf2 100%
-  );
-}
-@media (max-width: 1024px) {
-  .blob.b1 {
-    width: 320px;
-    height: 320px;
-  }
-  .blob.b2 {
-    width: 270px;
-    height: 270px;
-  }
-  .blob.b3 {
-    display: none;
-  }
-}
-
 /* контейнеры и заголовки страниц */
 .container {
   width: min(100%, var(--container-max));
@@ -246,15 +213,18 @@ html {
 /* футер */
 .siteFooter {
   width: min(var(--container-max), calc(100% - 32px));
-  margin: 0 auto;
-  padding: var(--space-4) 0 48px;
+  margin: 0 auto var(--sp-32);
+  padding: var(--sp-24) var(--sp-32);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: var(--sp-24);
   flex-wrap: wrap;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--fz-small);
+}
+.siteFooterRole {
+  margin-left: var(--sp-8);
 }
 .siteFooter strong {
   color: var(--ink);
@@ -299,76 +269,6 @@ html {
   }
 }
 
-/* фон для UI/UX кейсов — используется на страницах из pages/uiux */
-.seniorCase {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      900px 620px at 6% 6%,
-      rgba(185, 211, 255, 0.52),
-      transparent 58%
-    ),
-    radial-gradient(
-      820px 620px at 92% 12%,
-      rgba(255, 214, 230, 0.52),
-      transparent 58%
-    ),
-    radial-gradient(
-      760px 560px at 48% 46%,
-      rgba(229, 201, 255, 0.38),
-      transparent 62%
-    ),
-    radial-gradient(
-      1200px 800px at 50% -10%,
-      #fff 0%,
-      rgba(240, 246, 255, 0.9) 45%,
-      rgba(242, 230, 255, 0.85) 75%,
-      rgba(255, 236, 243, 0.85) 100%
-    );
-}
-.seniorCase::before,
-.seniorCase::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(62px);
-  opacity: 0.46;
-  pointer-events: none;
-}
-.seniorCase::before {
-  width: 440px;
-  height: 440px;
-  top: 40px;
-  left: -90px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff 0%,
-    #b9d3ff 35%,
-    #e5c9ff 70%,
-    #ffd6e6 100%
-  );
-}
-.seniorCase::after {
-  width: 380px;
-  height: 380px;
-  top: 22%;
-  right: -80px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff 0%,
-    #bfe1ff 35%,
-    #dbcbff 70%,
-    #ffe6ef 100%
-  );
-}
-.seniorCase > * {
-  position: relative;
-  z-index: 1;
-}
-
 /* ====== ТЁМНАЯ ТЕМА ====== */
 [data-theme="dark"] {
   --ink: #f3f4f6;
@@ -390,21 +290,28 @@ html {
   --shadow-card-hover: 0 20px 48px rgba(0, 0, 0, 0.45);
 }
 [data-theme="dark"] body {
-  background: radial-gradient(
-    1200px 800px at 50% -10%,
-    #1f2937 0%,
-    #111827 45%,
-    #0f172a 75%,
-    #111827 100%
-  );
-}
-[data-theme="dark"] .ctaLight {
-  background: rgba(31, 41, 55, 0.9);
-  color: #f3f4f6;
-}
-[data-theme="dark"] .ctaDark {
-  background: rgba(243, 244, 246, 0.92);
-  color: #111827;
+  background-color: #0f172a;
+  background-image:
+    radial-gradient(
+      42vw 42vw at 4% 8%,
+      rgba(16, 185, 129, 0.14),
+      transparent 65%
+    ),
+    radial-gradient(
+      40vw 40vw at 96% 6%,
+      rgba(236, 72, 153, 0.14),
+      transparent 65%
+    ),
+    radial-gradient(
+      44vw 44vw at 50% 40%,
+      rgba(124, 58, 237, 0.16),
+      transparent 65%
+    ),
+    radial-gradient(
+      28vw 28vw at 100% 92%,
+      rgba(139, 92, 246, 0.16),
+      transparent 65%
+    );
 }
 [data-theme="dark"] .skipLink:focus {
   background: #1f2937;
@@ -417,7 +324,7 @@ html {
    .glass        — карточки, панели, snapshot
    .glass-strong — блоки с текстом (секции кейсов, формы) → контраст AA
    .glass-pill   — теги, кнопки, eyebrow
-   .glass-bubble — круглые элементы + радужный ободок
+   .glass-bubble — круглые элементы (блик + свечение, без ободка)
    ===================================================================== */
 .glass,
 .glass-strong,
@@ -461,24 +368,29 @@ html {
   pointer-events: none;
 }
 
-/* радужный ободок 3px — только bubbles и hero */
-.glass-bubble::after,
-.glass-rim::after {
+/* .glass-bubble: белый блик + мягкое лавандовое свечение снизу.
+   Радужного ободка больше нет нигде. */
+.glass-bubble {
+  box-shadow:
+    var(--glass-shadow),
+    var(--glass-inner),
+    inset 0 -18px 28px -10px var(--glass-glow);
+}
+.glass-bubble::after {
   content: "";
   position: absolute;
-  inset: -1px;
+  top: 12%;
+  left: 18%;
+  width: 26%;
+  height: 16%;
   z-index: -1;
-  padding: 3px;
-  border-radius: inherit;
-  background: var(--glass-rim);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-  opacity: 0.85;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.95),
+    transparent
+  );
+  transform: rotate(-24deg);
   pointer-events: none;
 }
 
