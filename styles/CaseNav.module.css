@@ -1,0 +1,39 @@
+.caseNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.caseNav a {
+  padding: var(--sp-8) var(--sp-16);
+  border-radius: var(--radius-pill);
+  font-size: var(--fz-small);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--muted);
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.caseNav a:hover {
+  color: var(--ink);
+}
+.caseNav a.active {
+  background: var(--ink);
+  color: var(--bg-base);
+}
+
+@media (max-width: 980px) {
+  .caseNav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--sp-4);
+    scrollbar-width: thin;
+  }
+  .caseNav a {
+    flex: 0 0 auto;
+  }
+}
+[data-theme="dark"] .caseNav a.active {
+  color: #111827;
+}

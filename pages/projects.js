@@ -1,131 +1,198 @@
+// pages/projects.js — Commercial work first, then Personal & study work.
+// Пять старых категорий остались: фильтр-чипсы сверху + ссылка на страницу категории.
 import Link from "next/link";
+import { useState } from "react";
 
-import ProjectOrbit from "@/components/ProjectOrbit";
-import styles from "@/styles/Project.module.css";
+import { ProjectCard } from "@/components/case";
+import { LIKEFON_WEBSITE_ALT, LIKEFON_WEBSITE_IMAGE } from "@/data/likefon";
+import styles from "@/styles/Case.module.css";
 
-const categories = [
+const FILTERS = [
+  { id: "all", label: "All" },
+  { id: "websites", label: "Websites", href: "/websites" },
+  { id: "uiux", label: "UI/UX", href: "/uiux" },
+  { id: "figma", label: "Figma", href: "/figma" },
+  { id: "android", label: "Android", href: "/android_studio" },
+  { id: "illustrator", label: "Illustrator", href: "/illustrator" },
+];
+
+const commercial = [
   {
-    title: "Websites",
-    href: "/websites",
-    description: "Responsive websites and practical frontend projects.",
+    href: "/likefon",
+    size: "large",
+    image: LIKEFON_WEBSITE_IMAGE,
+    imageAlt: LIKEFON_WEBSITE_ALT,
+    placeholder: "[Likefon website screenshot — coming soon]",
+    tags: [
+      { label: "Client project", tone: "accent" },
+      { label: "Brand" },
+      { label: "UX research" },
+      { label: "Next.js" },
+    ],
+    title: "Likefon",
+    text: "A phone-accessories shop with two stores in Narva. I took it from a new visual identity to a researched UX design to a working website.",
+    meta: "3 parts · Brand refresh · UX case study · Website",
+    cta: "View project →",
+    categories: ["uiux", "figma", "websites"],
   },
   {
-    title: "UI/UX",
-    href: "/uiux",
-    description: "Research, user flows, visual design, and case studies.",
+    href: "/projects/stock-tracker",
+    size: "large",
+    image: "/project40.png",
+    imageAlt: "Stock Tracker inventory dashboard",
+    tags: [
+      { label: "In daily use", tone: "live" },
+      { label: "PHP" },
+      { label: "MySQL" },
+    ],
+    title: "Stock Tracker",
+    text: "A full-stack stock tool for a screen-protector store, rebuilt after staff feedback. Used daily by store staff.",
+    cta: "Read case study →",
+    categories: ["websites"],
+  },
+];
+
+const personal = [
+  {
+    href: "/uiux/travel-app",
+    image: "/figma23.png",
+    tags: [{ label: "University", tone: "accent" }],
+    title: "Travel Planning App",
+    text: "Helps friends plan group trips: joint budgets, AI suggestions, swipe decisions.",
+    meta: "Figma · UX research",
+    categories: ["uiux", "figma"],
   },
   {
-    title: "Figma",
-    href: "/figma",
-    description: "Interactive prototypes, design systems, and product concepts.",
+    href: "/uiux/gift-helper",
+    image: "/figma1.png",
+    tags: [{ label: "Figma concept", tone: "accent" }],
+    title: "Gift Helper",
+    text: "Finds a gift by age, budget, hobbies and occasion, with reminders.",
+    meta: "Figma · UX research",
+    categories: ["uiux", "figma"],
   },
   {
-    title: "Android",
+    href: "/project1",
+    image: "/project1.png",
+    tags: [{ label: "Freelance", tone: "accent" }],
+    title: "CleanseTeam",
+    text: "A cleaning-service landing page built around one goal: a booking.",
+    meta: "Website · UX case",
+    categories: ["websites", "uiux"],
+  },
+  {
+    href: "/project3",
+    image: "/project3.png",
+    tags: [{ label: "Freelance", tone: "accent" }],
+    title: "Choose your musician",
+    text: "A music portal: find artists by year, genre and region.",
+    meta: "Website",
+    categories: ["websites"],
+  },
+  {
+    href: "/project2",
+    image: "/project2.png",
+    tags: [{ label: "Freelance", tone: "accent" }],
+    title: "Welcome to the world space!",
+    text: "An educational Solar System site with planet pages and a quiz.",
+    meta: "HTML · CSS · JavaScript",
+    categories: ["websites"],
+  },
+  {
     href: "/android_studio",
-    description: "Mobile application projects from my development studies.",
+    size: "small",
+    image: "/androidstudio1.png",
+    tags: [{ label: "Study" }],
+    title: "Android apps (3)",
+    text: "Translator, Calculator, Currency Converter.",
+    meta: "Java · Kotlin",
+    categories: ["android"],
   },
   {
-    title: "Illustrator",
     href: "/illustrator",
-    description: "Posters, branding materials, and visual design work.",
+    size: "small",
+    image: "/digitaldesign/poster1.png",
+    tags: [{ label: "Graphic design" }],
+    title: "Illustrations (9)",
+    text: "Posters, a track cover and store advertising.",
+    meta: "Illustrator · Photoshop",
+    categories: ["illustrator"],
   },
 ];
 
 export default function Projects() {
+  const [filter, setFilter] = useState("all");
+  const active = FILTERS.find((f) => f.id === filter);
+  const match = (p) => filter === "all" || p.categories.includes(filter);
+
+  const shownCommercial = commercial.filter(match);
+  const shownPersonal = personal.filter(match);
+
   return (
-    <main className={styles.page}>
-      <section
-        style={{
-          textAlign: "center",
-          maxWidth: 1100,
-          margin: "0 auto",
-        }}
-      >
-        <p
-          style={{
-            margin: "0 0 10px",
-            color: "#6b7280",
-            fontSize: 13,
-            fontWeight: 800,
-            letterSpacing: ".14em",
-            textTransform: "uppercase",
-          }}
-        >
-          Explore my work
-        </p>
-        <h1 className="pageTitle">Projects</h1>
-        <p
-          style={{
-            margin: "0 auto",
-            maxWidth: 680,
-            color: "#6b7280",
-            lineHeight: 1.6,
-          }}
-        >
-          Choose a category. The orbit below is navigation, while the cards give a
-          quick overview of what you will find in each section.
+    <div className={styles.page}>
+      <header>
+        <p className={styles.eyebrow}>Projects</p>
+        <h1 className={styles.h1}>Design and code for real businesses</h1>
+        <p className={styles.lead}>
+          I research, design and build products end to end, from the first
+          interview to working code.
         </p>
 
-        <ProjectOrbit />
-      </section>
-
-      <section
-        aria-label="Project categories"
-        className={styles.container}
-        style={{
-          marginTop: 24,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 16,
-        }}
-      >
-        {categories.map((category) => (
-          <Link
-            key={category.href}
-            href={category.href}
-            style={{
-              display: "block",
-              padding: 22,
-              borderRadius: 24,
-              background: "rgba(255,255,255,.78)",
-              color: "inherit",
-              textDecoration: "none",
-              boxShadow: "0 14px 40px rgba(17,24,39,.06)",
-            }}
-          >
-            <h2
-              style={{
-                margin: "0 0 8px",
-                color: "#111827",
-                fontSize: 21,
-              }}
+        <div
+          className={styles.chips}
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          {FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`glass-pill ${styles.chip}`}
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
             >
-              {category.title}
-            </h2>
-            <p
-              style={{
-                margin: 0,
-                color: "#6b7280",
-                lineHeight: 1.55,
-                fontSize: 14,
-              }}
-            >
-              {category.description}
-            </p>
-            <span
-              style={{
-                display: "inline-block",
-                marginTop: 16,
-                color: "#1f52c9",
-                fontWeight: 800,
-                fontSize: 13,
-              }}
-            >
-              Open category →
-            </span>
+              {f.label}
+            </button>
+          ))}
+        </div>
+        {active?.href && (
+          <Link href={active.href} className={styles.categoryLink}>
+            Open the full {active.label} page →
           </Link>
-        ))}
-      </section>
-    </main>
+        )}
+      </header>
+
+      {shownCommercial.length > 0 && (
+        <section aria-labelledby="commercial-title">
+          <div className={styles.groupHead}>
+            <h2 id="commercial-title" className={styles.groupTitle}>
+              Commercial work
+            </h2>
+            <p className={styles.groupNote}>Real clients, real users</p>
+          </div>
+          <div className={styles.gridCommercial}>
+            {shownCommercial.map(({ categories, ...p }, i) => (
+              <ProjectCard key={p.href} {...p} priority={i === 0} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {shownPersonal.length > 0 && (
+        <section aria-labelledby="personal-title">
+          <div className={styles.groupHead}>
+            <h2 id="personal-title" className={styles.groupTitle}>
+              Personal &amp; study work
+            </h2>
+            <p className={styles.groupNote}>Experiments and new skills</p>
+          </div>
+          <div className={styles.gridPersonal}>
+            {shownPersonal.map(({ categories, size = "medium", ...p }) => (
+              <ProjectCard key={p.href} size={size} {...p} />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

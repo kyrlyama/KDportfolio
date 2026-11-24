@@ -13,6 +13,8 @@ const __dirname = dirname(__filename);
 const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default [
+  { ignores: ["node_modules/**", ".next/**", "out/**", "public/**"] },
+
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
   // общие настройки под ESM

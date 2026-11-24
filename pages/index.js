@@ -13,20 +13,21 @@ const featuredProjects = [
     title: "Stock Tracker",
     label: "Commercial project",
     description: "Inventory management system for a real two-store workflow.",
-    image: "/project4.png",
+    image: "/project40.png",
     href: "/projects/stock-tracker",
   },
   {
     title: "Like store redesign",
     label: "Commercial UX/UI",
     description: "Visual identity and store experience redesign for Likefon.",
-    image: "/uiux/redesign/redesign.png",
+    image: "/uiux/redesign/like-store-final.png",
     href: "/uiux/shop-redesign",
   },
   {
     title: "Travel Planning App",
     label: "University project",
-    description: "Research-driven Figma concept for planning trips with friends.",
+    description:
+      "Research-driven Figma concept for planning trips with friends.",
     image: "/figma23.png",
     href: "/uiux/travel-app",
   },
@@ -57,7 +58,7 @@ function FloatingBubble({ label, href, extraClass }) {
     <Link
       href={href}
       aria-label={`${label} section`}
-      className={`${styles.floatingCircle} ${extraClass}`}
+      className={`glass-bubble ${styles.floatingCircle} ${extraClass}`}
       onMouseEnter={spawnBurst}
       onFocus={spawnBurst}
       onTouchStart={() => {
@@ -81,8 +82,11 @@ function FloatingBubble({ label, href, extraClass }) {
 
 export default function Home() {
   return (
-    <div>
-      <section className={styles.homeContainer} aria-label="Portfolio introduction">
+    <>
+      <section
+        className={styles.homeContainer}
+        aria-label="Portfolio introduction"
+      >
         {/* фоновые большие/средние/малые пузыри */}
         <div className={styles.bubblesLayer} aria-hidden="true">
           <span className="decor bubbleLg pos-lg-1" />
@@ -108,102 +112,43 @@ export default function Home() {
           <span className="decor bubbleSm pos-sm-12" />
         </div>
 
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            top: "21%",
-            left: "13%",
-            zIndex: 6,
-            fontFamily: '"Segoe Print", "Comic Sans MS", cursive',
-            fontSize: "clamp(15px, 1.6vw, 21px)",
-            fontWeight: 700,
-            color: "#4b5563",
-            transform: "rotate(-7deg)",
-            pointerEvents: "none",
-          }}
-        >
+        <p className={`${styles.hint} ${styles.hintPop}`} aria-hidden="true">
           pop a bubble to explore ↘
-        </div>
-
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            top: "58%",
-            right: "13%",
-            zIndex: 6,
-            fontFamily: '"Segoe Print", "Comic Sans MS", cursive',
-            fontSize: "clamp(15px, 1.6vw, 21px)",
-            fontWeight: 700,
-            color: "#4b5563",
-            transform: "rotate(6deg)",
-            pointerEvents: "none",
-          }}
-        >
-          click a bubble ↖
-        </div>
+        </p>
+        <p className={`${styles.hint} ${styles.hintClick}`} aria-hidden="true">
+          click a bubble
+        </p>
 
         {/* центральное фото */}
-        <div className={styles.photoWrap}>
-          <Image
-            src="/me.jpg"
-            alt="My photo"
-            fill
-            priority
-            sizes="(max-width: 540px) 180px, (max-width: 1024px) 200px, 220px"
-            className={styles.photoImg}
-          />
+        <div className={`glass-bubble ${styles.photoWrap}`}>
+          <div className={styles.photoInner}>
+            <Image
+              src="/me.jpg"
+              alt="Kristina Dunajeva"
+              fill
+              priority
+              sizes="(max-width: 620px) 136px, 220px"
+              className={styles.photoImg}
+            />
+          </div>
         </div>
 
         <div className={styles.introText}>
-          <p className={styles.eyebrow}>Portfolio</p>
           <h1>Kristina Dunajeva</h1>
-          <p>Frontend Developer &amp; UI/UX Designer</p>
+          <p className={styles.role}>
+            Product designer &amp; frontend developer
+          </p>
+          <p className={styles.tagline}>
+            Research → Figma → code · Narva, Estonia · open to work
+          </p>
 
-          <div
-            style={{
-              marginTop: 18,
-              display: "flex",
-              justifyContent: "center",
-              gap: 10,
-              flexWrap: "wrap",
-              pointerEvents: "auto",
-            }}
-          >
-            <Link
-              href="/projects"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,.88)",
-                color: "#111827",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.08)",
-              }}
-            >
+          <div className={styles.ctaRow}>
+            <Link href="/projects" className={`glass-pill ${styles.ctaBtn}`}>
               View projects ↓
             </Link>
             <Link
               href="/contacts"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "10px 15px",
-                borderRadius: 999,
-                background: "rgba(17,24,39,.92)",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: 14,
-                fontWeight: 800,
-                boxShadow: "0 8px 24px rgba(17,24,39,.12)",
-              }}
+              className={`glass-pill ${styles.ctaBtn} ${styles.ctaPrimary}`}
             >
               Contact me →
             </Link>
@@ -222,11 +167,7 @@ export default function Home() {
           href="/android_studio"
           extraClass={styles.android_studio}
         />
-        <FloatingBubble
-          label="UI/UX"
-          href="/uiux"
-          extraClass={styles.uiux}
-        />
+        <FloatingBubble label="UI/UX" href="/uiux" extraClass={styles.uiux} />
         <FloatingBubble
           label="Illustrator"
           href="/illustrator"
@@ -236,61 +177,23 @@ export default function Home() {
 
       <section
         aria-labelledby="featured-work-title"
-        style={{
-          width: "min(1120px, calc(100% - 32px))",
-          margin: "0 auto",
-          padding: "18px 0 80px",
-        }}
+        className={styles.featured}
       >
-        <div style={{ marginBottom: 22 }}>
-          <p
-            style={{
-              margin: 0,
-              color: "#6b7280",
-              fontSize: 12,
-              fontWeight: 900,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-            }}
-          >
-            Selected work
-          </p>
-          <h2
-            id="featured-work-title"
-            style={{
-              margin: "6px 0 0",
-              color: "#111827",
-              fontSize: "clamp(26px, 4vw, 38px)",
-              lineHeight: 1.08,
-              letterSpacing: "-.04em",
-            }}
-          >
+        <div className={styles.featuredHeader}>
+          <p className={styles.eyebrow}>Selected work</p>
+          <h2 id="featured-work-title" className={styles.featuredTitle}>
             A few projects worth opening first
           </h2>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 18,
-          }}
-        >
+        <div className={styles.featuredGrid}>
           {featuredProjects.map((project) => (
             <Link
               key={project.href}
               href={project.href}
-              style={{
-                display: "block",
-                overflow: "hidden",
-                borderRadius: 24,
-                background: "rgba(255,255,255,.78)",
-                color: "inherit",
-                textDecoration: "none",
-                boxShadow: "0 14px 40px rgba(17,24,39,.08)",
-              }}
+              className={`glass ${styles.card}`}
             >
-              <div style={{ aspectRatio: "16 / 10", position: "relative" }}>
+              <div className={styles.cardMedia}>
                 <Image
                   src={project.image}
                   alt={`${project.title} preview`}
@@ -299,44 +202,15 @@ export default function Home() {
                   style={{ objectFit: "cover" }}
                 />
               </div>
-              <div style={{ padding: 18 }}>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    letterSpacing: ".09em",
-                    textTransform: "uppercase",
-                    color: "#6b7280",
-                  }}
-                >
-                  {project.label}
-                </p>
-                <h3
-                  style={{
-                    margin: "7px 0 6px",
-                    fontSize: 20,
-                    lineHeight: 1.15,
-                    color: "#111827",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    color: "#4b5563",
-                    fontSize: 14,
-                    lineHeight: 1.55,
-                  }}
-                >
-                  {project.description}
-                </p>
+              <div className={styles.cardBody}>
+                <p className={styles.cardLabel}>{project.label}</p>
+                <h3 className={styles.cardTitle}>{project.title}</h3>
+                <p className={styles.cardText}>{project.description}</p>
               </div>
             </Link>
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 }

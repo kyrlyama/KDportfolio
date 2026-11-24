@@ -1,84 +1,55 @@
+// pages/android_studio.js — Android apps: each app is a glass card in the
+// same order as the PROJECT PLAN, in short form (context → stack → link).
 import Link from "next/link";
 
 import Carousel from "@/components/Carousel";
-import as from "@/styles/AndroidStudio.module.css";
-import fm from "@/styles/Figma.module.css";
-import pm from "@/styles/Project.module.css";
-
-const projects = [
-  {
-    title: "Translator — Android Studio App",
-    desc: "Multilingual translator (RU/EN/EE/DE) with history, Material Design UI and simple cloud sync. Focus on clean UX and fast input.",
-    images: [
-      "/androidstudio1.png",
-      "/androidstudio12.png",
-      "/androidstudio13.png",
-    ],
-    href: "/androidstudio1",
-  },
-  {
-    title: "Calculator — Android Studio App",
-    desc: "Mobile calculator with basic operations, polished layout and responsive keypad. Built with Kotlin and Material components.",
-    images: [
-      "/androidstudio2.png",
-      "/androidstudio22.png",
-      "/androidstudio23.png",
-      "/androidstudio24.png",
-    ],
-    href: "/androidstudio2",
-  },
-  {
-    title: "EUR → USD — Currency Converter",
-    desc: "Simple currency converter demonstrating input validation, formatting and instant conversion. Lightweight UI and clear states.",
-    images: [], // ← у этой карточки нет картинок
-    href: "/androidstudio3",
-  },
-];
+import { ImagePlaceholder, Tag, caseStyles as styles } from "@/components/case";
+import { androidApps } from "@/data/androidApps";
 
 export default function AndroidStudio() {
   return (
-    <main className={as.page}>
-      <div className={pm.container}>
-        <h1 className="pageTitle">Android Studio</h1>
+    <div className={styles.page}>
+      <Link href="/projects" className={styles.backLink}>
+        ← All projects
+      </Link>
+      <header>
+        <p className={styles.eyebrow}>Study · Android</p>
+        <h1 className={styles.h1}>Android Studio</h1>
+        <p className={styles.lead}>
+          Three small Android apps built in Java and Kotlin while studying
+          mobile development.
+        </p>
+      </header>
 
-        <div className={fm.grid}>
-          {projects.map((p, i) => {
-            const hasImages = p.images?.length > 0;
-
-            return (
-              <section
-                key={i}
-                className={`${pm.card} ${fm.row} ${!hasImages ? as.cardNoMedia : ""}`}
-              >
-                {/* медиа только если есть */}
-                {hasImages && (
-                  <div className={`${pm.media} ${fm.media}`}>
-                    <div className={pm.frame}>
-                      <Carousel
-                        images={p.images}
-                        alt={`${p.title} preview`}
-                        aspect="landscape"
-                        tight
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {/* текст на всю ширину, если нет медиа */}
-                <div
-                  className={`${pm.text} ${fm.text} ${!hasImages ? as.fullText : ""}`}
-                >
-                  <h2 className={pm.title}>{p.title}</h2>
-                  <p className={pm.p}>{p.desc}</p>
-                  <Link href={p.href} className={pm.btn}>
-                    See more details
-                  </Link>
-                </div>
-              </section>
-            );
-          })}
-        </div>
+      <div className={styles.appList}>
+        {androidApps.map((app) => (
+          <article key={app.slug} className={`glass ${styles.appCard}`}>
+            <div className={styles.appMedia}>
+              {app.images.length > 0 ? (
+                <Carousel
+                  images={app.images}
+                  alt={`${app.title} preview`}
+                  aspect="phone"
+                />
+              ) : (
+                <ImagePlaceholder>[ADD SCREENSHOT]</ImagePlaceholder>
+              )}
+            </div>
+            <div className={styles.appBody}>
+              <div className={styles.tags}>
+                <Tag tone="accent">Study</Tag>
+                <Tag>{app.language}</Tag>
+              </div>
+              <h2 className={styles.cardTitle}>{app.title}</h2>
+              <p className={styles.cardText}>{app.short}</p>
+              <p className={styles.cardMeta}>{app.stack.join(" · ")}</p>
+              <Link href={app.href} className={`glass-pill ${styles.btn}`}>
+                See more details →
+              </Link>
+            </div>
+          </article>
+        ))}
       </div>
-    </main>
+    </div>
   );
 }

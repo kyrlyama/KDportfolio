@@ -12,7 +12,9 @@ function buildCSP(prod: boolean) {
       prod ? "" : "'unsafe-eval'",
       "blob:",
       "https://va.vercel-scripts.com",
-    ].filter(Boolean).join(" "),
+    ]
+      .filter(Boolean)
+      .join(" "),
     ["style-src 'self' 'unsafe-inline'", "blob:"].join(" "),
     ["img-src 'self' data: blob:", prod ? "" : "*"].filter(Boolean).join(" "),
     "font-src 'self' data:",
@@ -20,7 +22,9 @@ function buildCSP(prod: boolean) {
       "connect-src 'self' https:",
       prod ? "" : "http: ws: wss:",
       "https://vitals.vercel-insights.com",
-    ].filter(Boolean).join(" "),
+    ]
+      .filter(Boolean)
+      .join(" "),
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -34,7 +38,10 @@ const SECURITY_HEADERS = [
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=()",
+  },
 ];
 
 const nextConfig: NextConfig = {
@@ -48,13 +55,38 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      { source: "/project4", destination: "/projects/stock-tracker", permanent: true },
+      {
+        source: "/likefon",
+        destination: "/projects/likefon",
+        permanent: false,
+      },
+      {
+        source: "/project40",
+        destination: "/projects/stock-tracker",
+        permanent: true,
+      },
       { source: "/figma1", destination: "/uiux/travel-app", permanent: true },
       { source: "/figma2", destination: "/uiux/gift-helper", permanent: true },
-      { source: "/figma3", destination: "/uiux/likefon-prototype", permanent: true },
-      { source: "/androidstudio1", destination: "/android/translator", permanent: true },
-      { source: "/androidstudio2", destination: "/android/calculator", permanent: true },
-      { source: "/androidstudio3", destination: "/android/currency-converter", permanent: true },
+      {
+        source: "/figma3",
+        destination: "/uiux/likefon-prototype",
+        permanent: true,
+      },
+      {
+        source: "/androidstudio1",
+        destination: "/android/translator",
+        permanent: true,
+      },
+      {
+        source: "/androidstudio2",
+        destination: "/android/calculator",
+        permanent: true,
+      },
+      {
+        source: "/androidstudio3",
+        destination: "/android/currency-converter",
+        permanent: true,
+      },
     ];
   },
 };

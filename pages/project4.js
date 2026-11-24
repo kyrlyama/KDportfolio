@@ -1,263 +1,291 @@
+// pages/project4.js — Stock Tracker (also /projects/stock-tracker).
+// PROJECT PLAN order: Context → Problem → Goal → Research → Decisions →
+// Design → Development → Testing → Result → Hardest → Learned.
+// Every old feature, decision and all 4 screenshots are kept.
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
 
-import styles from "@/styles/Project.module.css";
+import {
+  BulletList,
+  CaseHero,
+  CasePage,
+  CasePlan,
+  Cards,
+  DecisionCard,
+  H3,
+  P,
+  Placeholder,
+  Screens,
+  TextPanel,
+  Todo,
+  caseStyles as styles,
+} from "@/components/case";
 
-const images = ["/project4.png", "/project41.png", "/project42.png"];
+const screens = [
+  { src: "/project40.png", alt: "Stock Tracker: stock list with filters" },
+  { src: "/project41.png", alt: "Stock Tracker screenshot 2" },
+  { src: "/project42.png", alt: "Stock Tracker screenshot 3" },
+  { src: "/project43.png", alt: "Stock Tracker screenshot 4" },
+];
 
 const snapshot = [
-  {
-    label: "Role",
-    value: "Frontend development, JavaScript logic, data handling",
-  },
-  {
-    label: "Stack",
-    value: "HTML, CSS, Bootstrap, JavaScript, JSON",
-  },
+  { label: "Role", value: "Solo: design, frontend, PHP backend, database" },
+  { label: "Timeline", value: <Placeholder>MONTHS</Placeholder> },
+  { label: "Stack", value: "PHP, MySQL, JavaScript" },
+  { label: "Status", value: "In daily use" },
+];
+
+// Полный список из старого snapshot — ничего не потеряно
+const snapshotDetails = [
   {
     label: "Project type",
-    value: "Inventory management web app",
+    value: "Full-stack inventory & sales management system",
+  },
+  {
+    label: "Full stack",
+    value:
+      "HTML, CSS, Bootstrap, JavaScript, PHP, MySQL, Claude API (vision), SheetJS",
   },
   {
     label: "Focus",
-    value: "Adding products, filtering, search, availability control",
+    value:
+      "Duplicate-safe multi-store stock tracking, AI-assisted sales digitization (in progress)",
+  },
+];
+
+const constraints = [
+  {
+    title: "Several users",
+    text: "Multiple staff members add stock at the same time.",
+  },
+  {
+    title: "Busy staff",
+    text: <Placeholder>e.g. one screen, a few taps, no training</Placeholder>,
+  },
+  {
+    title: "Budget",
+    text: <Placeholder>e.g. free hosting and tools only</Placeholder>,
+  },
+];
+
+const decisions = [
+  {
+    kind: "chose",
+    chose: "MySQL",
+    over: "flat files / localStorage",
+    why: "multiple staff members add stock at the same time, so I chose a real database. MySQL's unique constraint enforces data integrity that would otherwise need to be checked manually in code.",
+    cost: "needs a PHP + MySQL host and more setup.",
+  },
+  {
+    kind: "fixed",
+    chose: "Duplicate stock entries",
+    why: "adding the same model to the same store was creating a new row instead of increasing quantity. Fixed with a unique key constraint and an ON DUPLICATE KEY UPDATE pattern, instead of checking for duplicates on every request in application code.",
+  },
+  {
+    kind: "chose",
+    chose: "AI-assisted sales entry",
+    over: "manual retyping",
+    why: "staff were retyping sales from handwritten sheets by hand. I'm building a digitization flow with Claude's vision model, with low-confidence fields flagged for manual review rather than trusting AI output blindly.",
+    cost: "still in progress; every flagged field needs a human check.",
   },
 ];
 
 const features = [
   {
-    title: "Add products",
-    text: "Users can add new case models with brand, model, color, price, quantity, type, and other product details.",
+    title: "Duplicate-safe stock updates",
+    text: "Adding an existing model to the same store increases its quantity instead of creating a new row.",
   },
   {
-    title: "Automatic data storage",
-    text: "Product data is saved in localStorage and restored when the page is opened again.",
+    title: "Two-store inventory tracking",
+    text: "Stock is tracked separately for two store locations, with color-coded badges to tell them apart at a glance.",
   },
   {
-    title: "Filtering and search",
-    text: "The interface supports filtering and searching by brand, model, type, gender, price, and quantity.",
+    title: "Search and filtering",
+    text: "Inventory can be searched and filtered by brand, model, type, and availability, with model suggestions pulled live from existing stock.",
   },
   {
-    title: "Availability status",
-    text: "The system shows whether products are in stock or out of stock based on quantity.",
+    title: "AI-assisted sales digitization (in development)",
+    text: "A photo of a handwritten sales sheet can be uploaded and processed to extract each row into an editable table, flagging low-confidence fields for review.",
   },
   {
-    title: "JSON data structure",
-    text: "Product and model data is organized through JSON files to make the interface easier to manage.",
+    title: "Excel export",
+    text: "Reviewed sales data can be exported to a formatted .xlsx file matching the store's existing paperwork, generated client-side.",
   },
   {
-    title: "Practical business flow",
-    text: "The project is based on a real store workflow: tracking phone accessories and managing warehouse items.",
+    title: "Live deployment",
+    text: "The system runs on a live PHP and MySQL host and is used by store staff for day-to-day stock management.",
   },
-];
-
-const technicalFocus = [
-  "Built the frontend layout for product accounting and warehouse management.",
-  "Implemented JavaScript logic for adding, filtering, searching, and displaying products.",
-  "Used localStorage to keep product data after page reload.",
-  "Worked with JSON data files for models and case information.",
-  "Created availability logic for in-stock and out-of-stock states.",
 ];
 
 const improvements = [
-  "Connect the app to a real database instead of localStorage.",
+  "Finish and polish the AI-assisted sales digitization flow, including better handling of low-confidence fields.",
   "Add user roles for admin and staff accounts.",
-  "Add edit/delete actions for existing products.",
-  "Improve validation for product forms and empty states.",
-  "Add export/import functionality for warehouse data.",
+  "Add edit/delete actions for existing inventory entries.",
+  "Improve form validation and empty states.",
+  "Add a simple reporting view for stock trends across both stores.",
 ];
 
 export default function Project4() {
-  const [current, setCurrent] = useState(0);
+  const sections = {
+    context: (
+      <>
+        <Cards
+          items={snapshotDetails.map((d) => ({
+            label: d.label,
+            title: d.value,
+          }))}
+        />
+        <H3>Constraints</H3>
+        <Cards items={constraints} />
+      </>
+    ),
 
-  const nextImage = () => setCurrent((current + 1) % images.length);
-  const prevImage = () =>
-    setCurrent((current - 1 + images.length) % images.length);
+    problem: (
+      <TextPanel>
+        The store needed a way to track screen protector stock across two
+        locations instead of relying on a manual, paper-based process.
+      </TextPanel>
+    ),
+
+    goal: (
+      <TextPanel>
+        Replace the manual, paper-based process with a live, database-backed
+        tool that store staff use every day.
+      </TextPanel>
+    ),
+
+    research: (
+      <>
+        <TextPanel>
+          <P>
+            An earlier, more general inventory tool didn&apos;t fit the
+            team&apos;s actual workflow. After their feedback, I rebuilt it
+            specifically around this task.
+          </P>
+        </TextPanel>
+        <Todo>What did staff say? How did you watch them work?</Todo>
+      </>
+    ),
+
+    decisions: (
+      <div className={styles.decisions}>
+        {decisions.map((d) => (
+          <DecisionCard key={d.chose} {...d} />
+        ))}
+      </div>
+    ),
+
+    design: (
+      <Todo>
+        Screens / wireframes / layout decisions (e.g. color-coded store badges).
+      </Todo>
+    ),
+
+    development: (
+      <>
+        <H3>Key features</H3>
+        <Cards cols={2} items={features} />
+        <H3>Screenshots</H3>
+        <P>
+          Main screens showing the stock management interface, the two-store
+          view, and the inventory workflow.
+        </P>
+        <Screens images={screens} label="Stock Tracker screenshots" />
+      </>
+    ),
+
+    testing: (
+      <>
+        <Cards
+          cols={2}
+          items={[
+            {
+              label: "Version 1",
+              title: "General inventory tool",
+              text: "Didn’t fit the team’s actual workflow.",
+            },
+            {
+              label: "Version 2",
+              title: "Rebuilt around stock tracking",
+              text: "Rebuilt specifically around this task after staff feedback.",
+            },
+          ]}
+        />
+        <Todo>What exactly changed between version 1 and 2?</Todo>
+      </>
+    ),
+
+    result: (
+      <>
+        <p>
+          The system replaced the store&apos;s manual stock tracking and is used
+          daily by staff across both locations. Fixing the duplicate-entry bug
+          removed a recurring source of incorrect stock counts. The AI-assisted
+          sales digitization is still in progress, but even the current version
+          already saves staff from retyping every handwritten sales line by
+          hand.
+        </p>
+        <p>
+          <Placeholder>
+            A real number or a quote from staff, if you have one. No number?
+            Delete this line.
+          </Placeholder>
+        </p>
+      </>
+    ),
+
+    hardest: (
+      <Todo>
+        The hardest problem and how you solved it (the duplicate-entry bug?).
+      </Todo>
+    ),
+
+    learned: (
+      <TextPanel>
+        <P>What I&apos;d do next:</P>
+        <BulletList items={improvements} />
+      </TextPanel>
+    ),
+  };
 
   return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        {/* HERO */}
-        <section className={styles.projectHero}>
-          <div className={styles.projectHeroText}>
-            <p className={styles.projectEyebrow}>Frontend project</p>
-
-            <h1 className={styles.projectHeroTitle}>
-              Case Management System
-            </h1>
-
-            <p className={styles.projectHeroLead}>
-              A web application for managing phone case inventory in a phone
-              accessories store. The system helps add new products, search and
-              filter items, control stock availability, and organize product
-              data in a practical warehouse workflow.
-            </p>
-
-            <div className={styles.btnRow}>
-              <a
-                href="https://github.com/kyrlyama/practice"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.repoBtn}
-              >
-                GitHub repository
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.projectHeroMedia}>
-            <Image
-              src="/project4.png"
-              alt="Case Management System project preview"
-              width={1200}
-              height={760}
-              className={styles.projectHeroImage}
-              priority
-            />
-          </div>
-        </section>
-
-        {/* SNAPSHOT */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Project snapshot</h2>
-
-          <div className={styles.projectSnapshotGrid}>
-            {snapshot.map((item) => (
-              <article key={item.label} className={styles.projectSnapshotCard}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* OVERVIEW */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Overview</h2>
-
-          <p className={styles.projectText}>
-            The goal of this project was to create a practical tool for
-            accounting and managing phone case inventory. The interface is built
-            around common warehouse tasks: adding new products, checking
-            availability, filtering by product properties, and keeping data
-            accessible after the page is reopened.
-          </p>
-        </section>
-
-        {/* FEATURES */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>Key features</h2>
-
-          <div className={styles.projectFeatureGrid}>
-            {features.map((feature) => (
-              <article key={feature.title} className={styles.projectFeatureCard}>
-                <h3>{feature.title}</h3>
-                <p>{feature.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* TECHNICAL IMPLEMENTATION */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>
-            Technical implementation
-          </h2>
-
-          <p className={styles.projectText}>
-            I focused on building the frontend structure and JavaScript logic
-            needed for a small inventory management system. The project uses
-            dynamic data, localStorage, and filtering logic to simulate a
-            practical business tool for a store.
-          </p>
-
-          <ul className={styles.projectList}>
-            {technicalFocus.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* SCREENSHOTS */}
-        <section className={styles.projectSection}>
-          <div className={styles.projectSectionHeader}>
-            <div>
-              <h2 className={styles.projectSectionTitle}>Screenshots</h2>
-              <p className={styles.projectText}>
-                Main screens showing the product management interface, data
-                structure, and inventory workflow.
-              </p>
-            </div>
-
-            <span className={styles.projectCounter}>
-              {current + 1} / {images.length}
-            </span>
-          </div>
-
-          <div className={styles.projectSlider}>
-            <Image
-              src={images[current]}
-              alt={`Case Management System screenshot ${current + 1}`}
-              width={1200}
-              height={760}
-              className={styles.projectSliderImage}
-              sizes="(max-width: 640px) 100vw, 1200px"
-            />
-
-            <button
-              type="button"
-              aria-label="Previous screenshot"
-              className={`${styles.arrow} ${styles.left}`}
-              onClick={prevImage}
+    <CasePage>
+      <CaseHero
+        eyebrow="Commercial · Full-stack · Likefon"
+        title="Stock Tracker — inventory for a screen-protector store"
+        result="A full-stack web application for tracking screen protector stock across two store locations, replacing a manual, paper-based process with a live, database-backed tool used daily by staff."
+        snapshot={snapshot}
+        links={[
+          {
+            href: "https://github.com/kyrlyama/practice",
+            label: "GitHub repository ↗",
+          },
+        ]}
+        media={
+          <Image
+            src="/project40.png"
+            alt="Stock Tracker: stock list with filters"
+            width={3837}
+            height={1962}
+            sizes="(max-width: 1240px) 100vw, 1240px"
+            priority
+          />
+        }
+      />
+      <CasePlan
+        sections={sections}
+        after={
+          <aside className={`glass ${styles.alsoFor}`}>
+            <p>Also for Likefon: brand refresh, UX case study and website.</p>
+            <Link
+              href="/projects/likefon"
+              className={`glass-pill ${styles.btn}`}
             >
-              &#10094;
-            </button>
-
-            <button
-              type="button"
-              aria-label="Next screenshot"
-              className={`${styles.arrow} ${styles.right}`}
-              onClick={nextImage}
-            >
-              &#10095;
-            </button>
-          </div>
-
-          <div className={styles.projectThumbGrid}>
-            {images.map((src, index) => (
-              <button
-                key={src}
-                type="button"
-                className={`${styles.projectThumb} ${
-                  index === current ? styles.projectThumbActive : ""
-                }`}
-                onClick={() => setCurrent(index)}
-                aria-label={`Show screenshot ${index + 1}`}
-              >
-                <Image
-                  src={src}
-                  alt={`Case Management System thumbnail ${index + 1}`}
-                  width={320}
-                  height={200}
-                />
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* REFLECTION */}
-        <section className={styles.projectSection}>
-          <h2 className={styles.projectSectionTitle}>
-            What I would improve next
-          </h2>
-
-          <ul className={styles.projectList}>
-            {improvements.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
-    </main>
+              See the Likefon project →
+            </Link>
+          </aside>
+        }
+      />
+    </CasePage>
   );
 }

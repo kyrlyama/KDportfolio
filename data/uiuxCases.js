@@ -3,7 +3,7 @@ export const uiuxCases = [
     slug: "shop-redesign",
     href: "/uiux/shop-redesign",
     title: "Redesign Like store",
-    label: "VISUAL IDENTITY UPDATE · AFFINITY DESIGNER",
+    label: "COMMERCIAL PROJECT · AFFINITY DESIGNER",
     description:
       "Refreshing a local phone accessories retailer’s identity to improve clarity, trust, and visibility in a competitive mall environment.",
     highlights: ["Visual audit", "Logo redesign", "Mockups + print/digital"],
@@ -12,9 +12,11 @@ export const uiuxCases = [
 
   {
     slug: "cleaning-website",
-    // href не нужен — пойдёт по /uiux/[slug]
+    // Полный кейс теперь на /project1 (тот же контент + сайт).
+    // /uiux/cleaning-website показывает ту же страницу (pages/uiux/cleaning-website.js).
+    href: "/uiux/cleaning-website",
     title: "Case: Cleaning website",
-    label: "STARTUP PROJECT · VISUAL STUDIO CODE",
+    label: "FREELANCE · VISUAL STUDIO CODE",
     description:
       "Service landing + booking flow for a cleaning company. Focus on pricing clarity, trust signals, and conversion-friendly structure.",
     highlights: ["Booking flow", "Value proposition", "Design artifacts"],
@@ -29,7 +31,7 @@ export const uiuxCases = [
       src: "/uiux/cleaning/project1.png",
       alt: "Cleaning website cover",
     },
-buttons: [{ label: "Result", href: "/project1" }],
+    buttons: [{ label: "Result", href: "/project1" }],
 
     sections: [
       {
@@ -71,8 +73,14 @@ buttons: [{ label: "Result", href: "/project1" }],
         title: "Research & Conversation Mapping",
         text: "User interviews and objections were translated into conversational flows and mapped to functional page blocks.",
         cards: [
-          { title: "Interviews", text: "Short interviews with busy homeowners." },
-          { title: "Pain points", text: "Unclear pricing and scheduling friction." },
+          {
+            title: "Interviews",
+            text: "Short interviews with busy homeowners.",
+          },
+          {
+            title: "Pain points",
+            text: "Unclear pricing and scheduling friction.",
+          },
           { title: "Statistics", text: "Most bookings happen on mobile." },
         ],
         images: [
@@ -84,51 +92,50 @@ buttons: [{ label: "Result", href: "/project1" }],
           { src: "/uiux/cleaning/dialogues4.png", alt: "Dialogues 4" },
         ],
       },
-   {
-  id: "palette-tone",
-  type: "palette",
-  title: "Palette & Tone",
-  text: "The color system balances cleanliness, trust, and energy through a triadic scheme with clear role-based meaning.",
-  colors: [
-    { name: "Blue", hex: "#2B3CD6", usage: "Primary actions, trust" },
-    { name: "Orange", hex: "#D78F07", usage: "Accents, highlights" },
-    { name: "White", hex: "#FFFFFF", usage: "Background, clarity" },
-  ],
-  scheme: [
-    "Triadic palette with blue as the anchor, white as visual breathing room, and orange for emphasis.",
-    "Supports a clean, reliable tone while keeping key actions noticeable.",
-  ],
-  typography:
-    "Bootstrap default typography for headings and body text to keep the interface familiar and readable.",
-  tools: "Adobe Color for palette exploration and harmony checks.",
-  emotions: [
-    {
-      title: "Client (office manager)",
-      points: [
-        "Confidence in professionalism",
-        "Calm about quality",
-        "Sense of cleanliness and order",
-      ],
-    },
-    {
-      title: "Cleaning manager",
-      points: [
-        "Pride in a professional brand",
-        "Motivation to offer services",
-        "Trust in the system",
-      ],
-    },
-    {
-      title: "Potential client (after party)",
-      points: [
-        "Confidence in fast results",
-        "Ease of ordering",
-        "Modern, approachable feel",
-      ],
-    },
-  ],
-}
-
+      {
+        id: "palette-tone",
+        type: "palette",
+        title: "Palette & Tone",
+        text: "The color system balances cleanliness, trust, and energy through a triadic scheme with clear role-based meaning.",
+        colors: [
+          { name: "Blue", hex: "#2B3CD6", usage: "Primary actions, trust" },
+          { name: "Orange", hex: "#D78F07", usage: "Accents, highlights" },
+          { name: "White", hex: "#FFFFFF", usage: "Background, clarity" },
+        ],
+        scheme: [
+          "Triadic palette with blue as the anchor, white as visual breathing room, and orange for emphasis.",
+          "Supports a clean, reliable tone while keeping key actions noticeable.",
+        ],
+        typography:
+          "Bootstrap default typography for headings and body text to keep the interface familiar and readable.",
+        tools: "Adobe Color for palette exploration and harmony checks.",
+        emotions: [
+          {
+            title: "Client (office manager)",
+            points: [
+              "Confidence in professionalism",
+              "Calm about quality",
+              "Sense of cleanliness and order",
+            ],
+          },
+          {
+            title: "Cleaning manager",
+            points: [
+              "Pride in a professional brand",
+              "Motivation to offer services",
+              "Trust in the system",
+            ],
+          },
+          {
+            title: "Potential client (after party)",
+            points: [
+              "Confidence in fast results",
+              "Ease of ordering",
+              "Modern, approachable feel",
+            ],
+          },
+        ],
+      },
     ],
   },
 ];

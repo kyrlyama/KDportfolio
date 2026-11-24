@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import ThemeToggle from "@/components/ThemeToggle";
 import styles from "@/styles/NavBar.module.css";
 
 /** Монтируем порталом внутрь #app-root (если есть), иначе в <body> */
@@ -67,6 +68,11 @@ export default function NavBar() {
       label: "Contacts",
       active: (p) => p.startsWith("/contacts"),
     },
+    {
+      href: "/cv.pdf",
+      label: "CV / Resume",
+      active: (p) => p.startsWith("/cv.pdf"),
+    },
   ];
 
   // Закрывать меню после перехода
@@ -115,6 +121,10 @@ export default function NavBar() {
                 {l.label}
               </Link>
             ))}
+          </div>
+
+          <div className={styles.themeToggleSlot}>
+            <ThemeToggle />
           </div>
 
           {/* Бургер */}
